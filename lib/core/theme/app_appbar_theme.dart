@@ -21,6 +21,7 @@ abstract final class AppAppBarTheme {
     toolbarHeight: UISizes.h48,
     leadingWidth: UISizes.h72,
     scrolledUnderElevation: 0,
+    backgroundColor: Colors.transparent,
     actionsPadding: EdgeInsetsGeometry.directional(end: UISizes.w16),
   ) ;
 }

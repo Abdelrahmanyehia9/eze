@@ -56,15 +56,15 @@ class AppColors {
   static const Color black = Color(0xff000000);
   static const Color grey = grey500;
   // ─── Success ───────────────────────────────────────────
-  static const Color success100 = Color(0xFFD9FCE0);
-  static const Color success200 = Color(0xFFB3F9C1);
-  static const Color success300 = Color(0xFF80F38F);
-  static const Color success400 = Color(0xFF40E85A);
-  static const Color success500 = Color(0xFF00D611);
-  static const Color success600 = Color(0xFF00C20F);
-  static const Color success700 = Color(0xFF00AA0D);
-  static const Color success800 = Color(0xFF008F0B);
-  static const Color success900 = Color(0xFF006F08);
+  static const Color success100 = Color(0xFFE6F7EA);
+  static const Color success200 = Color(0xFFC3EBCB);
+  static const Color success300 = Color(0xFF97DBA6);
+  static const Color success400 = Color(0xFF6BC87F);
+  static const Color success500 = Color(0xFF45B563);
+  static const Color success600 = Color(0xFF2F9C4C);
+  static const Color success700 = Color(0xFF24803D);
+  static const Color success800 = Color(0xFF1C6631);
+  static const Color success900 = Color(0xFF154D25);
   static const Color success = success600;
 
   // ─── Info ──────────────────────────────────────────────

@@ -7,5 +7,6 @@ abstract class AppAssets {
   static const String faceBookSvg = "assets/svgs/facebook.svg" ;
   static const String appleSvg = "assets/svgs/apple.svg" ;
   static const String linkedInSvg = "assets/svgs/linkedin.svg" ;
+  static const String otpIllustration = "assets/svgs/otp.svg" ;
 
 }

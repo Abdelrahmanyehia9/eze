@@ -21,6 +21,7 @@ class EzeApp extends StatelessWidget {
           onGenerateRoute:router.generateRoute,
           initialRoute: Routes.splash,
           theme: AppTheme.lightTheme(),
+         debugShowCheckedModeBanner: false,
           darkTheme: AppTheme.darkTheme(),
           builder: (context, routerChild) {
             return MediaQuery(

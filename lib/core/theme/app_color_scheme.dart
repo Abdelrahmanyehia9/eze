@@ -28,7 +28,7 @@ abstract class AppColorScheme {
     shadow: Colors.white24,
   );
    static final ColorScheme light =const ColorScheme.light(
-     primary: AppColors.primary400,
+     primary: AppColors.primary,
      secondary: AppColors.secondary,
       onSecondary: AppColors.white,
     onTertiary: AppColors.white,

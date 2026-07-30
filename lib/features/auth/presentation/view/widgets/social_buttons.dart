@@ -1,8 +1,10 @@
 import 'package:eze/core/components/app_button.dart';
 import 'package:eze/core/components/app_icon_text.dart';
 import 'package:eze/core/enums/social_media.dart';
+import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
+import 'package:eze/core/routing/routes.dart';
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
@@ -28,10 +30,10 @@ class _SocialButton extends StatelessWidget {
           AppIconText(
             color: Colors.black,
             textStyle: context.textTheme.bodySmall,
-            customIcon: svgIcon ,
+            customIcon: svgIcon,
             text: title,
           ),
-          Icon(AppIcons.arrowForward, size: UISizes.sp14,)
+          Icon(AppIcons.arrowForward, size: UISizes.sp14),
         ],
       ),
     );
@@ -40,29 +42,40 @@ class _SocialButton extends StatelessWidget {
 
 class LoginWithSocialMedia extends StatelessWidget {
   final SocialMedia socialMediaType;
-  final GestureTapCallback onTap;
 
-  const LoginWithSocialMedia({
-    super.key,
-    required this.onTap,
-    required this.socialMediaType,
-  });
+  const LoginWithSocialMedia({super.key, required this.socialMediaType});
+
+  factory LoginWithSocialMedia.google() =>
+      LoginWithSocialMedia(socialMediaType: SocialMedia.google);
+
+  factory LoginWithSocialMedia.facebook() =>
+      LoginWithSocialMedia(socialMediaType: SocialMedia.facebook);
+
+  factory LoginWithSocialMedia.apple() =>
+      LoginWithSocialMedia(socialMediaType: SocialMedia.apple);
 
   @override
   Widget build(BuildContext context) {
     return _SocialButton(
-      onTap: onTap,
-      svgIcon: SvgPicture.asset(socialMediaType.svgPath, width: UISizes.sp28,height: UISizes.sp28,),
+      onTap: () {},
+      svgIcon: SvgPicture.asset(
+        socialMediaType.svgPath,
+        width: UISizes.sp28,
+        height: UISizes.sp28,
+      ),
       title: " مواصلة باستخدام ${socialMediaType.title}",
     );
   }
 }
+
 class LoginWithPhoneNumber extends StatelessWidget {
-  final GestureTapCallback onTap;
-  const LoginWithPhoneNumber({super.key, required this.onTap});
+  const LoginWithPhoneNumber({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return _SocialButton(onTap: onTap, title: "المواصلة برقم الهاتف");
+    return _SocialButton(
+      onTap: () => context.pushNamed(Routes.phoneLogin),
+      title: "المواصلة برقم الهاتف",
+    );
   }
 }

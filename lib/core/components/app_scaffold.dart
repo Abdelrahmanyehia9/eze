@@ -22,6 +22,7 @@ class AppScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.bottomSheet,
     this.backgroundColor,
+    this.hPadding = 16,
     this.resizeToAvoidBottomInset,
     this.primary = true,
     this.drawerDragStartBehavior = DragStartBehavior.start,
@@ -62,6 +63,7 @@ class AppScaffold extends StatelessWidget {
   final bool endDrawerEnableOpenDragGesture;
   final String? restorationId;
   final bool bottomPadding, topPadding ;
+  final double hPadding ;
 
 
 
@@ -71,7 +73,7 @@ class AppScaffold extends StatelessWidget {
       appBar: appBar,
       body: Padding(
         padding:  EdgeInsets.only(
-
+          right: hPadding,left: hPadding,
             bottom: bottomPadding ? context.safeBottomArea : 0 ,
         top: topPadding ?  context.safeTopArea : 0
         ),

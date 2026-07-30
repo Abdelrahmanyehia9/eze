@@ -7,12 +7,8 @@ import 'package:flutter/material.dart';
 class PrivacyAndTerms extends StatefulWidget {
   const PrivacyAndTerms({
     super.key,
-    required this.onTermsTapped,
-    required this.onPrivacyTapped,
   });
 
-  final VoidCallback onTermsTapped;
-  final VoidCallback onPrivacyTapped;
 
   @override
   State<PrivacyAndTerms> createState() => _PrivacyAndTermsState();
@@ -26,9 +22,9 @@ class _PrivacyAndTermsState extends State<PrivacyAndTerms> {
   void initState() {
     super.initState();
     _termsRecognizer = TapGestureRecognizer()
-      ..onTap = widget.onTermsTapped;
+      ..onTap = (){};
     _privacyRecognizer = TapGestureRecognizer()
-      ..onTap = widget.onPrivacyTapped;
+      ..onTap = (){};
   }
 
   @override

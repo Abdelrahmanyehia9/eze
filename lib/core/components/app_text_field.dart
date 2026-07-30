@@ -1,3 +1,7 @@
+import 'package:eze/core/components/app_text.dart';
+import 'package:eze/core/components/section_header.dart';
+import 'package:eze/core/extensions/variables.dart';
+import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,6 +26,7 @@ class AppTextField extends StatelessWidget {
   final bool autocorrect;
   final String? headerText;
   final bool? filled;
+  final TextDirection? textDirection ;
   final SmartDashesType? smartDashesType;
   final SmartQuotesType? smartQuotesType;
   final TextInputType? keyboardType;
@@ -87,6 +92,7 @@ class AppTextField extends StatelessWidget {
     this.smartQuotesType,
     this.keyboardType,
     this.textInputAction,
+    this.textDirection,
     this.textCapitalization = TextCapitalization.none,
     this.maxLines = 1,
     this.minLines,
@@ -150,7 +156,7 @@ class AppTextField extends StatelessWidget {
         spacing: gapUnderHeader,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          customHeader ?? Text(headerText!, style: headerStyle),
+          ?_header(context),
           _textField(context),
         ],
       );
@@ -178,6 +184,7 @@ class AppTextField extends StatelessWidget {
       height: height,
       child: TextFormField(
         obscureText: obscureText,
+        textDirection: textDirection,
         enabled: enabled,
         canRequestFocus: canRequestFocus,
         onChanged: onChange,
@@ -234,12 +241,17 @@ class AppTextField extends StatelessWidget {
           labelStyle: labelStyle ?? context.textTheme.bodyMedium?.copyWith(color: labelColor),
           hintStyle: resolvedHintStyle,
           helperStyle: helperStyle ?? context.textTheme.bodyMedium?.copyWith(color: helperColor),
-          errorStyle: errorStyle ?? context.textTheme.bodyMedium?.copyWith(color: errorColor),
+          errorStyle: errorStyle ,
           contentPadding: padding,
           counterText: hideCounter ? '' : null,
           counterStyle: resolvedHintStyle,
         ),
       ),
     );
+  }
+  Widget? _header(BuildContext context){
+    if(customHeader!=null) return customHeader ;
+    if(!headerText.isNullOrEmpty) return  SectionHeader.smallHeader(headerText!, context: context);
+    return null ;
   }
 }

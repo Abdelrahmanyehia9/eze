@@ -22,17 +22,15 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      topPadding: false,
-      bottomPadding: false,
+    return Scaffold(
       body: _AuthScreenLayout(
         authButtons: [
-          LoginWithSocialMedia(onTap: (){}, socialMediaType: SocialMedia.google),
-          LoginWithSocialMedia(onTap: (){}, socialMediaType: SocialMedia.facebook),
-          LoginWithSocialMedia(onTap: (){}, socialMediaType: SocialMedia.apple),
-          LoginWithPhoneNumber(onTap: (){})
+          LoginWithSocialMedia.google(),
+          LoginWithSocialMedia.facebook(),
+          LoginWithSocialMedia.apple(),
+          LoginWithPhoneNumber()
         ],
-        privacyAgree: PrivacyAndTerms(onPrivacyTapped: (){}, onTermsTapped: (){},).paddingVr,
+        privacyAgree: PrivacyAndTerms().paddingVr,
       ),
     );
   }
