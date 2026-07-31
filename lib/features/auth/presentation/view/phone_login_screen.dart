@@ -1,13 +1,16 @@
-import 'dart:ui';
 import 'package:country_picker/country_picker.dart';
 import 'package:eze/core/components/app_scaffold.dart';
 import 'package:eze/core/components/default_appbar.dart';
+import 'package:eze/core/components/overlays/bottom_sheets.dart';
+import 'package:eze/core/enums/otp_channel.dart';
 import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/routing/routes.dart';
+import 'package:eze/features/auth/presentation/view/otp_verification_screen.dart';
 import 'package:eze/shared/presentation/view/widgets/buttons/default_button.dart';
 import 'package:eze/shared/presentation/view/widgets/selectors/country_selector.dart';
 import 'package:eze/shared/presentation/view/widgets/inputs/phone_text_field.dart';
+import 'package:eze/shared/presentation/view/widgets/selectors/otp_channel_selector.dart';
 import 'package:flutter/material.dart';
 
 class PhoneLoginScreen extends StatefulWidget {
@@ -19,18 +22,22 @@ class PhoneLoginScreen extends StatefulWidget {
 
 class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
   late final ValueNotifier<Country> _countryNotifier;
-  final TextEditingController _phoneController  = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
 
   @override
   void initState() {
-    final code = PlatformDispatcher.instance.locale.countryCode;
-    _countryNotifier = ValueNotifier(Country.parse(code ?? "EG"));
+    _countryNotifier = ValueNotifier(Country.parse("EG"));
     super.initState();
   }
 
-  Future<void>onSubmit()async{
-    context.pushNamed(Routes.otpVerification) ;
-
+  Future<void> onSubmit() async {
+    final channel = await BottomSheets.show<OtpChannel>(
+      child: OtpChannelSelector(channels: OtpChannel.channelsOfVerifyPhone)
+    );
+    if(channel!=null && mounted){
+      final args = OtpVerificationArgs(code: _countryNotifier.value.phoneCode, phone: _phoneController.text , channel: channel);
+       context.pushNamed(Routes.otpVerification, arguments: args) ;
+    }
   }
 
   @override
@@ -48,20 +55,20 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                 country: country,
                 onChanged: (value) => _countryNotifier.value = value,
               ),
-              PhoneTextField(country: country, controller: _phoneController,),
-              child!
+              PhoneTextField(country: country, controller: _phoneController),
+              child!,
             ],
           );
         },
-        child: DefaultButton(text: "متابعة", onTap: onSubmit,),
+        child: DefaultButton(text: "متابعة", onTap: onSubmit),
       ),
     );
   }
 
   @override
   void dispose() {
-    _countryNotifier.dispose() ;
-    _phoneController.dispose() ;
+    _countryNotifier.dispose();
+    _phoneController.dispose();
     super.dispose();
   }
 }

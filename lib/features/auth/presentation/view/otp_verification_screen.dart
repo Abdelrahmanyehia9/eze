@@ -28,7 +28,8 @@ class OtpVerificationArgs {
 }
 
 class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({super.key});
+  final OtpVerificationArgs args ;
+  const OtpVerificationScreen({super.key, required this.args});
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
@@ -41,14 +42,13 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   );
   final PinInputController _otpController = PinInputController();
   Future<void>onSubmit()async{
-    print(_otpController.text) ;
   }
 
   @override
   Widget build(BuildContext context) {
-    final phone = "1501634466";
-    final code = "20";
-    final channel = OtpChannel.whatsapp;
+    final phone = widget.args.phone;
+    final code = widget.args.code;
+    final channel = widget.args.channel;
     return AppScaffold(
       appBar: DefaultAppBar(),
       body: Center(
@@ -80,6 +80,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   void dispose() {
     _otpCountDownController.dispose();
+    _otpController.dispose() ;
     super.dispose();
   }
 }

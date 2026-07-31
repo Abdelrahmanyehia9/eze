@@ -1,7 +1,5 @@
-import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/section_header.dart';
 import 'package:eze/core/extensions/variables.dart';
-import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -173,10 +171,7 @@ class AppTextField extends StatelessWidget {
     final Color hintColor = decoration.hintStyle?.color ?? Theme.of(context).hintColor;
     final Color labelColor = decoration.labelStyle?.color ?? Theme.of(context).hintColor;
     final Color helperColor = decoration.helperStyle?.color ?? Theme.of(context).hintColor;
-    final Color errorColor =
-        errorBorder?.borderSide.color ??
-        decoration.errorBorder?.borderSide.color ??
-        Theme.of(context).colorScheme.error;
+
 
     final TextStyle? resolvedHintStyle =hintStyle ?? context.textTheme.bodyMedium?.copyWith(color: hintColor);
 

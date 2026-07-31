@@ -1,9 +1,7 @@
 
 library ;
 import 'package:eze/core/components/app_logo.dart';
-import 'package:eze/core/components/app_scaffold.dart';
 import 'package:eze/core/components/app_text.dart';
-import 'package:eze/core/enums/social_media.dart';
 import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/sizes.dart';
 import 'package:eze/core/extensions/theme.dart';
@@ -26,7 +24,6 @@ class AuthScreen extends StatelessWidget {
       body: _AuthScreenLayout(
         authButtons: [
           LoginWithSocialMedia.google(),
-          LoginWithSocialMedia.facebook(),
           LoginWithSocialMedia.apple(),
           LoginWithPhoneNumber()
         ],

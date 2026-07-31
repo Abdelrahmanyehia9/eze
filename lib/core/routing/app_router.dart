@@ -15,7 +15,8 @@ Route? generateRoute(RouteSettings settings) {
       case Routes.phoneLogin :
         return _page(PhoneLoginScreen(), name: Routes.phoneLogin) ;
       case Routes.otpVerification:
-        return _page(OtpVerificationScreen(), name: Routes.otpVerification);
+        final OtpVerificationArgs args = settings.arguments as OtpVerificationArgs ;
+        return _page(OtpVerificationScreen(args: args,), name: Routes.otpVerification);
 
       default : 
        return null ; 

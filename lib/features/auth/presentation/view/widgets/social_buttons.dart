@@ -10,12 +10,12 @@ import 'package:eze/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class _SocialButton extends StatelessWidget {
+class _AuthButton extends StatelessWidget {
   final Widget? svgIcon;
   final String title;
   final VoidCallback onTap;
 
-  const _SocialButton({required this.onTap, required this.title, this.svgIcon});
+  const _AuthButton({required this.onTap, required this.title, this.svgIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class LoginWithSocialMedia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _SocialButton(
+    return _AuthButton(
       onTap: () {},
       svgIcon: SvgPicture.asset(
         socialMediaType.svgPath,
@@ -73,7 +73,7 @@ class LoginWithPhoneNumber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _SocialButton(
+    return _AuthButton(
       onTap: () => context.pushNamed(Routes.phoneLogin),
       title: "المواصلة برقم الهاتف",
     );

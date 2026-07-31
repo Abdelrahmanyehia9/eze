@@ -4,6 +4,8 @@ abstract class AppIcons {
 
   static const IconData arrowForward = CupertinoIcons.forward ;
   static const IconData arrowBackward = CupertinoIcons.back ;
+  static const IconData close = CupertinoIcons.xmark ;
+  static const IconData message = CupertinoIcons.chat_bubble_2_fill ;
 
 
 

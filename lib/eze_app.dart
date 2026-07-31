@@ -1,5 +1,6 @@
 import 'package:eze/core/routing/app_router.dart';
 import 'package:eze/core/routing/routes.dart';
+import 'package:eze/core/services/navigation_service.dart';
 import 'package:eze/core/theme/app_scroll_behavior.dart';
 import 'package:eze/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class EzeApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
+          navigatorKey: NavigationService.navigatorKey,
           scrollBehavior: AppScrollBehavior(),
           onGenerateRoute:router.generateRoute,
           initialRoute: Routes.splash,

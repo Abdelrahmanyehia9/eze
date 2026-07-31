@@ -40,7 +40,7 @@ class _AppClickState extends State<AppClick> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      behavior: HitTestBehavior.deferToChild,
+      behavior: HitTestBehavior.opaque,
       onTapDown: (details) {
         _press();
         widget.onTapDown?.call(details);

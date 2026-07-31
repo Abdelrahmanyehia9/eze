@@ -1,11 +1,8 @@
-import 'dart:async';
 import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/extensions/theme.dart';
-import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/app_timer.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
-import 'package:eze/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
 
@@ -53,7 +50,6 @@ class OtpCountDownController {
 class OtpColdDown extends StatefulWidget {
   final VoidCallback? onResend;
   final OtpCountDownController? controller;
-
   const OtpColdDown({super.key, this.onResend, this.controller});
 
   @override
