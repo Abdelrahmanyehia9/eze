@@ -8,18 +8,29 @@ class DefaultButton extends StatelessWidget {
   final String? text;
   final Widget? customChild;
   final GestureTapCallback? onTap;
-  final Color backgroundColor ;
-  final bool enabled ;
-
-  const DefaultButton({super.key, this.enabled =true, this.backgroundColor = AppColors.primary, this.onTap, this.text, this.customChild});
+  final Color backgroundColor;
+  final bool enabled;
+  final Size? fixedSize;
+  final double? radius;
+  const DefaultButton({
+    super.key,
+    this.radius,
+    this.fixedSize,
+    this.enabled = true,
+    this.backgroundColor = AppColors.primary,
+    this.onTap,
+    this.text,
+    this.customChild,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppButton(
       onTap: onTap,
       color: backgroundColor,
+      borderRadius: radius,
       isDisabled: !enabled,
-      fixedSize: Size(double.infinity, UISizes.h48),
+      fixedSize: fixedSize ?? Size(double.infinity, UISizes.h48),
       child: customChild ?? AppText(text, color: AppColors.white),
     );
   }

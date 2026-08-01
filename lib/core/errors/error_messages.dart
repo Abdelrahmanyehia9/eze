@@ -5,7 +5,8 @@ class ErrorMessages {
   static const String networkErrorMessage = 'error.network_error_message';
   static const String serverErrorMessage = 'error.server_error_message';
   static const String unknownErrorMessage = 'error.unknown_error_message';
-  static const String unAuthorizedErrorMessage = 'error.un_authorized_error_message';
+  static const String unAuthorizedErrorMessage =
+      'error.un_authorized_error_message';
   static const String validationErrorMessage = 'error.validation_error_message';
   static const String connectionError = 'error.connection_error';
   static const String accessForbidden = 'error.access_forbidden';

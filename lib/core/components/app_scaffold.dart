@@ -16,7 +16,7 @@ class AppScaffold extends StatelessWidget {
     this.drawer,
     this.onDrawerChanged,
     this.endDrawer,
-    this.bottomPadding = true ,
+    this.bottomPadding = true,
     this.topPadding = true,
     this.onEndDrawerChanged,
     this.bottomNavigationBar,
@@ -62,20 +62,19 @@ class AppScaffold extends StatelessWidget {
   final bool drawerEnableOpenDragGesture;
   final bool endDrawerEnableOpenDragGesture;
   final String? restorationId;
-  final bool bottomPadding, topPadding ;
-  final double hPadding ;
-
-
+  final bool bottomPadding, topPadding;
+  final double hPadding;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
       body: Padding(
-        padding:  EdgeInsets.only(
-          right: hPadding,left: hPadding,
-            bottom: bottomPadding ? context.safeBottomArea : 0 ,
-        top: topPadding ?  context.safeTopArea : 0
+        padding: EdgeInsets.only(
+          right: hPadding,
+          left: hPadding,
+          bottom: bottomPadding ? context.safeBottomArea : 0,
+          top: topPadding ? context.safeTopArea : 0,
         ),
         child: body,
       ),

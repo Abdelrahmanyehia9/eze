@@ -1,20 +1,17 @@
-
 import 'package:flutter/material.dart';
 
-import '../extensions/theme.dart';
-import '../helper/ui_sizes.dart';
-import 'app_click.dart';
-
+import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/helper/ui_sizes.dart';
+import 'package:eze/core/components/app_click.dart';
 
 class AppMenuData {
   final IconData? leadingIcon, trailingIcon;
-  final Color? leadingIconColor, trailingIconColor  ;
+  final Color? leadingIconColor, trailingIconColor;
   final String title;
   final VoidCallback? onTap;
   final double? leadingSize, trailingSize;
   final TextStyle? style;
-  final Widget? customLeading , customTrailing ;
-  
+  final Widget? customLeading, customTrailing;
 
   const AppMenuData({
     this.leadingIcon,
@@ -33,9 +30,9 @@ class AppMenuData {
 
 class AppMenuAnchor extends StatelessWidget {
   final List<AppMenuData> items;
-  final double? menuWidth ;
+  final double? menuWidth;
   final Widget? anchorIcon;
-  final Color? anchorColor, backgroundColor , foregroundColor;
+  final Color? anchorColor, backgroundColor, foregroundColor;
 
   const AppMenuAnchor({
     super.key,
@@ -45,7 +42,6 @@ class AppMenuAnchor extends StatelessWidget {
     this.backgroundColor,
     this.foregroundColor,
     this.anchorIcon,
-
   });
 
   @override
@@ -53,7 +49,9 @@ class AppMenuAnchor extends StatelessWidget {
     return MenuAnchor(
       alignmentOffset: Offset(0, UISizes.h8),
       style: MenuStyle(
-        backgroundColor: WidgetStatePropertyAll(backgroundColor ?? context.scaffoldBackgroundColor),
+        backgroundColor: WidgetStatePropertyAll(
+          backgroundColor ?? context.scaffoldBackgroundColor,
+        ),
         elevation: WidgetStatePropertyAll(UISizes.sp1),
         padding: WidgetStatePropertyAll(
           EdgeInsets.symmetric(vertical: UISizes.h4),
@@ -70,22 +68,25 @@ class AppMenuAnchor extends StatelessWidget {
         ),
       ),
       builder: (context, controller, child) {
-        return AppClick(child: child!, 
-        onTap: () {
-          if (controller.isOpen) {
-            controller.close();
-            return;
-          }
-          controller.open();
-        },
+        return AppClick(
+          child: child!,
+          onTap: () {
+            if (controller.isOpen) {
+              controller.close();
+              return;
+            }
+            controller.open();
+          },
         );
       },
       menuChildren: items.map((e) => _item(e, context)).toList(),
-      child: anchorIcon ?? Icon(
-        Icons.more_vert,
-        color: anchorColor ?? context.colors.onSurfaceVariant,
-        size: UISizes.sp20
-      ),
+      child:
+          anchorIcon ??
+          Icon(
+            Icons.more_vert,
+            color: anchorColor ?? context.colors.onSurfaceVariant,
+            size: UISizes.sp20,
+          ),
     );
   }
 
@@ -102,23 +103,29 @@ class AppMenuAnchor extends StatelessWidget {
         animationDuration: const Duration(milliseconds: 300),
         foregroundColor: WidgetStatePropertyAll(highest),
       ),
-      leadingIcon: data.customLeading ??
+      leadingIcon:
+          data.customLeading ??
           (data.leadingIcon == null
               ? null
               : Icon(
-            data.leadingIcon,
-            size: data.leadingSize ?? UISizes.sp16,
-            color: data.leadingIconColor ?? highest,
-          )),
-      trailingIcon: data.customTrailing ??
+                  data.leadingIcon,
+                  size: data.leadingSize ?? UISizes.sp16,
+                  color: data.leadingIconColor ?? highest,
+                )),
+      trailingIcon:
+          data.customTrailing ??
           (data.trailingIcon == null
               ? null
               : Icon(
-            data.trailingIcon,
-            size: data.trailingSize ?? UISizes.sp16,
-            color: data.trailingIconColor ?? highest,
-          )),
+                  data.trailingIcon,
+                  size: data.trailingSize ?? UISizes.sp16,
+                  color: data.trailingIconColor ?? highest,
+                )),
       onPressed: data.onTap,
-      child: Text(data.title, style: data.style?? context.textTheme.bodyMedium ,),
+      child: Text(
+        data.title,
+        style: data.style ?? context.textTheme.bodyMedium,
+      ),
     );
-  }}
+  }
+}

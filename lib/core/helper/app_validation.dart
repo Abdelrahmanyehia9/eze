@@ -9,8 +9,6 @@ class _AppValidationMessages {
   static const String thisField = 'هذا الحقل';
 }
 
-
-
 class AppValidation {
   AppValidation._();
 
@@ -22,9 +20,9 @@ class AppValidation {
   }
 
   static String? validateRequired(
-      String? value, {
-        String fieldName = _AppValidationMessages.thisField,
-      }) {
+    String? value, {
+    String fieldName = _AppValidationMessages.thisField,
+  }) {
     return _checkNullOrEmpty(value, fieldName);
   }
 
@@ -42,9 +40,9 @@ class AppValidation {
   }
 
   static String? validatePasswordConfirmation(
-      String? password,
-      String? confirmPassword,
-      ) {
+    String? password,
+    String? confirmPassword,
+  ) {
     final confirmCheck = _checkNullOrEmpty(
       confirmPassword,
       _AppValidationMessages.thisField,
@@ -84,13 +82,12 @@ class AppValidation {
       _AppValidationMessages.thisField,
     );
     if (emptyCheck != null) return emptyCheck;
-    if(maxLength!=null&& phone?.length!=maxLength){
-      return _AppValidationMessages.invalidPhoneNumber ;
+    if (maxLength != null && phone?.length != maxLength) {
+      return _AppValidationMessages.invalidPhoneNumber;
     }
     return null;
   }
 }
-
 
 class AppRegex {
   AppRegex._();

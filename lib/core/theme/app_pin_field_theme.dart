@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import 'app_colors.dart';
+import 'package:eze/core/theme/app_colors.dart';
 
-
-abstract  final class AppPinFieldTheme {
+abstract final class AppPinFieldTheme {
   AppPinFieldTheme._();
 
-
-  static const MaterialPinTheme  dark = MaterialPinTheme(
+  static const MaterialPinTheme dark = MaterialPinTheme(
     fillColor: AppColors.grey800,
     errorBorderWidth: 0.5,
     borderColor: AppColors.grey500,
@@ -21,7 +19,7 @@ abstract  final class AppPinFieldTheme {
     filledFillColor: AppColors.grey800,
     filledBorderColor: AppColors.grey500,
     borderWidth: 0.5,
-    borderRadius:  BorderRadius.all(Radius.circular(12)),
+    borderRadius: BorderRadius.all(Radius.circular(12)),
   );
   static const MaterialPinTheme light = MaterialPinTheme(
     fillColor: AppColors.grey100,
@@ -43,5 +41,4 @@ abstract  final class AppPinFieldTheme {
 
     borderRadius: BorderRadius.all(Radius.circular(12)),
   );
-
 }

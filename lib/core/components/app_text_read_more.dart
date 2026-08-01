@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/theme.dart';
-import 'app_click.dart';
+import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/components/app_click.dart';
 
 class AppReadMore extends StatefulWidget {
   final String text;
@@ -10,7 +10,7 @@ class AppReadMore extends StatefulWidget {
   final TextStyle? toggleStyle;
   final String readMoreText;
   final String readLessText;
-  final TextAlign? textAlign ;
+  final TextAlign? textAlign;
 
   const AppReadMore({
     super.key,
@@ -32,7 +32,11 @@ class _AppReadMoreState extends State<AppReadMore> {
 
   @override
   Widget build(BuildContext context) {
-    final toggleStyle = widget.toggleStyle ?? context.textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.primary);
+    final toggleStyle =
+        widget.toggleStyle ??
+        context.textTheme.bodyMedium?.copyWith(
+          color: Theme.of(context).colorScheme.primary,
+        );
     return LayoutBuilder(
       builder: (_, constraints) {
         final textPainter = TextPainter(
@@ -58,7 +62,7 @@ class _AppReadMoreState extends State<AppReadMore> {
                 onTap: () => setState(() => _expanded = !_expanded),
                 child: Text(
                   _expanded ? widget.readLessText : widget.readMoreText,
-                  style: toggleStyle ,
+                  style: toggleStyle,
                 ),
               ),
           ],

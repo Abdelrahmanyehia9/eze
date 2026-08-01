@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/theme.dart';
-
+import 'package:eze/core/extensions/theme.dart';
 
 class AppSwitch extends StatefulWidget {
   const AppSwitch({
@@ -32,7 +31,8 @@ class AppSwitch extends StatefulWidget {
   State<AppSwitch> createState() => _AppSwitchState();
 }
 
-class _AppSwitchState extends State<AppSwitch> with SingleTickerProviderStateMixin {
+class _AppSwitchState extends State<AppSwitch>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late Animation<double> _animation;
 
@@ -81,7 +81,9 @@ class _AppSwitchState extends State<AppSwitch> with SingleTickerProviderStateMix
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(widget.height / 2),
               gradient: t > 0 ? widget.activeGradient : null,
-              color: t == 0 ? widget.inactiveColor ?? context.colors.surfaceContainerLow : widget.activeColor ?? context.colors.primary,
+              color: t == 0
+                  ? widget.inactiveColor ?? context.colors.surfaceContainerLow
+                  : widget.activeColor ?? context.colors.primary,
             ),
             child: Stack(
               children: [

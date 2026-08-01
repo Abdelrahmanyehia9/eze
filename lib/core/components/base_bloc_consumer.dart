@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/base_state.dart';
-import '../errors/exceptions.dart';
+import 'package:eze/core/cubit/base_state.dart';
+import 'package:eze/core/errors/exceptions.dart';
 
 class BaseBlocConsumer<B extends BlocBase<BaseState<S>>, S>
     extends StatelessWidget {

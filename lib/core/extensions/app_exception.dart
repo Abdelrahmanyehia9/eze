@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../errors/error_handler.dart';
-import '../errors/exceptions.dart';
+import 'package:eze/core/errors/error_handler.dart';
+import 'package:eze/core/errors/exceptions.dart';
 
 extension ToAppException on Object {
   AppException toAppException({bool logError = true}) {

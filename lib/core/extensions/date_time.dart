@@ -1,27 +1,38 @@
-
-
-import '../models/time_message.dart';
+import 'package:eze/core/models/time_message.dart';
 
 extension OnDateTime on DateTime {
   String _iniTime({required String format, String? locale}) {
     /// This function is used to format the DateTime object into a string representation based on the provided format and locale.
     return "";
-/*     return DateFormat(format, locale ?? 'en').format(this);
+    /*     return DateFormat(format, locale ?? 'en').format(this);
 
- */  }
+ */
+  }
 
-  String time12Only({String? locale}) => _iniTime(format: 'hh:mm a', locale: locale);
-  String toTime24Only({String? locale}) => _iniTime(format: 'HH:mm', locale: locale);
-  String toCurrentHour({String? locale}) => _iniTime(format: 'HH', locale: locale);
-  String toDateOnly({String? locale}) => _iniTime(format: 'yyyy-MM-dd', locale: locale);
-  String toTimeAndDate({String? locale}) => _iniTime(format: 'yyyy-MM-dd hh:mm a', locale: locale);
-  String toCurrent({String? locale}) => _iniTime(format: 'yyyy-MM-dd hh:mm:ss', locale: locale);
-  String toMonthAndDay({String? locale}) => _iniTime(format: 'dd MM', locale: locale);
-  String toYearMonthDay({String? locale}) => _iniTime(format: 'dd MMM yyyy', locale: locale);
-  String toBirthDateForm({String? locale}) => _iniTime(format: 'dd/MM/yyyy', locale: locale);
-  String toNameOfDayAndMonth({String? locale}) => _iniTime(format: 'EEEE, MMM dd', locale: locale);
-  String toNameOfMonthAndTime({String? locale}) => _iniTime(format: 'MMM dd hh:mm a', locale: locale);
-  String toNameOfDayMonthYearTime({String? locale}) => _iniTime(format: 'E d MMM yyyy hh:mm aaa', locale: locale);
+  String time12Only({String? locale}) =>
+      _iniTime(format: 'hh:mm a', locale: locale);
+  String toTime24Only({String? locale}) =>
+      _iniTime(format: 'HH:mm', locale: locale);
+  String toCurrentHour({String? locale}) =>
+      _iniTime(format: 'HH', locale: locale);
+  String toDateOnly({String? locale}) =>
+      _iniTime(format: 'yyyy-MM-dd', locale: locale);
+  String toTimeAndDate({String? locale}) =>
+      _iniTime(format: 'yyyy-MM-dd hh:mm a', locale: locale);
+  String toCurrent({String? locale}) =>
+      _iniTime(format: 'yyyy-MM-dd hh:mm:ss', locale: locale);
+  String toMonthAndDay({String? locale}) =>
+      _iniTime(format: 'dd MM', locale: locale);
+  String toYearMonthDay({String? locale}) =>
+      _iniTime(format: 'dd MMM yyyy', locale: locale);
+  String toBirthDateForm({String? locale}) =>
+      _iniTime(format: 'dd/MM/yyyy', locale: locale);
+  String toNameOfDayAndMonth({String? locale}) =>
+      _iniTime(format: 'EEEE, MMM dd', locale: locale);
+  String toNameOfMonthAndTime({String? locale}) =>
+      _iniTime(format: 'MMM dd hh:mm a', locale: locale);
+  String toNameOfDayMonthYearTime({String? locale}) =>
+      _iniTime(format: 'E d MMM yyyy hh:mm aaa', locale: locale);
 
   int get toTimeStamp => millisecondsSinceEpoch;
   int get toTimeStampForHours =>
@@ -34,12 +45,16 @@ extension OnDateTime on DateTime {
 
   bool get isTomorrow {
     final tomorrow = DateTime.now().add(const Duration(days: 1));
-    return year == tomorrow.year && month == tomorrow.month && day == tomorrow.day;
+    return year == tomorrow.year &&
+        month == tomorrow.month &&
+        day == tomorrow.day;
   }
 
   bool get isYesterday {
     final yesterday = DateTime.now().subtract(const Duration(days: 1));
-    return year == yesterday.year && month == yesterday.month && day == yesterday.day;
+    return year == yesterday.year &&
+        month == yesterday.month &&
+        day == yesterday.day;
   }
 
   bool get isPast => isBefore(DateTime.now());
@@ -54,6 +69,19 @@ extension OnDateTime on DateTime {
     if (diff.inDays < 30) return messages.weeks((diff.inDays / 7).floor());
     if (diff.inDays < 365) return messages.months((diff.inDays / 30).floor());
     return messages.years((diff.inDays / 365).floor());
+  }
+
+  String timeAgoAbbr({TimeMessages messages = const TimeMessagesEn()}) {
+    final diff = DateTime.now().difference(this);
+    if (diff.inSeconds < 60) return messages.secondsAbbr(diff.inSeconds);
+    if (diff.inMinutes < 60) return messages.minutesAbbr(diff.inMinutes);
+    if (diff.inHours < 24) return messages.hoursAbbr(diff.inHours);
+    if (diff.inDays < 7) return messages.daysAbbr(diff.inDays);
+    if (diff.inDays < 30) return messages.weeksAbbr((diff.inDays / 7).floor());
+    if (diff.inDays < 365) {
+      return messages.monthsAbbr((diff.inDays / 30).floor());
+    }
+    return messages.yearsAbbr((diff.inDays / 365).floor());
   }
 
   String timeAfter({TimeMessages messages = const TimeMessagesEn()}) {

@@ -7,23 +7,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EzeApp extends StatelessWidget {
-  final AppRouter router ;
-  const EzeApp({super.key , required this.router});
+  final AppRouter router;
+  const EzeApp({super.key, required this.router});
 
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(390, 844),
+      designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
           navigatorKey: NavigationService.navigatorKey,
           scrollBehavior: AppScrollBehavior(),
-          onGenerateRoute:router.generateRoute,
-          initialRoute: Routes.splash,
+          onGenerateRoute: router.generateRoute,
+          initialRoute: Routes.main,
           theme: AppTheme.lightTheme(),
-         debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
           darkTheme: AppTheme.darkTheme(),
           builder: (context, routerChild) {
             return MediaQuery(
@@ -31,8 +31,9 @@ class EzeApp extends StatelessWidget {
                 context,
               ).copyWith(textScaler: TextScaler.noScaling),
               child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: routerChild!),
+                textDirection: TextDirection.rtl,
+                child: routerChild!,
+              ),
             );
           },
         );

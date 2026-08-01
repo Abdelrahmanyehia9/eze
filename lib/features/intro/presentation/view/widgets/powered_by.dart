@@ -1,8 +1,8 @@
-part of "../splash_screen.dart" ;
+part of "../splash_screen.dart";
 
 class _PoweredBy extends StatelessWidget {
-  final Animation<Offset> poweredAnim ;
-  final Animation<Offset> nexyraAnim ;
+  final Animation<Offset> poweredAnim;
+  final Animation<Offset> nexyraAnim;
 
   const _PoweredBy({required this.poweredAnim, required this.nexyraAnim});
 
@@ -22,8 +22,8 @@ class _PoweredBy extends StatelessWidget {
           SlideTransition(
             position: nexyraAnim,
             child: AppText(
-                "نيكسيرا تيكنولوجى",
-                style: context.textTheme.labelMedium
+              "نيكسيرا تيكنولوجى",
+              style: context.textTheme.labelMedium,
             ),
           ),
         ],
@@ -31,4 +31,3 @@ class _PoweredBy extends StatelessWidget {
     );
   }
 }
-

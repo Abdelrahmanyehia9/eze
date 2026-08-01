@@ -3,15 +3,25 @@ import 'package:eze/core/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract class AppGradients {
-  const AppGradients._() ;
+  const AppGradients._();
 
+  static Gradient get primary => const LinearGradient(
+    colors: [AppColors.primary, AppColors.secondary, AppColors.tertiary],
+  );
 
- static Gradient get primary => LinearGradient(colors: [AppColors.primary, AppColors.secondary, AppColors.tertiary]) ;
- static Gradient  mono(Color color, {AlignmentGeometry begin = AlignmentGeometry.topCenter, AlignmentGeometry end  = AlignmentGeometry.bottomCenter})=> LinearGradient(colors: [
-   color.darken(0.2),
-   color,
-   color.lighten(0.2)
- ]);
+  static Gradient mono(
+    Color color, {
+    AlignmentGeometry begin = AlignmentGeometry.topCenter,
+    AlignmentGeometry end = AlignmentGeometry.bottomCenter,
+  }) => LinearGradient(
+    colors: [color.darken(0.2), color, color.lighten(0.2)],
+    begin: begin,
+    end: end,
+  );
 
-
+  static Gradient monoRadial(
+    Color color, {
+    AlignmentGeometry begin = AlignmentGeometry.topCenter,
+    AlignmentGeometry end = AlignmentGeometry.bottomCenter,
+  }) => RadialGradient(colors: [color.darken(0.2), color, color.lighten(0.2)]);
 }

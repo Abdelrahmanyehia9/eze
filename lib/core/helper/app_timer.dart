@@ -11,8 +11,12 @@ class AppTimer {
   bool _isPaused = false;
   bool _isRunning = false;
 
-  AppTimer({required this.duration,  this.onTick, this.onFinish , 
-  this.tickDuration = const Duration(seconds: 1)}) {
+  AppTimer({
+    required this.duration,
+    this.onTick,
+    this.onFinish,
+    this.tickDuration = const Duration(seconds: 1),
+  }) {
     _remainingSeconds = duration;
   }
 

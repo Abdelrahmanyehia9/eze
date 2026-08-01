@@ -43,10 +43,7 @@ class _AvatarGlowState extends State<AvatarGlow>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
+    _controller = AnimationController(vsync: this, duration: widget.duration);
     _startAnimation();
   }
 
@@ -90,8 +87,10 @@ class _AvatarGlowState extends State<AvatarGlow>
     final t = widget.curve.transform(progress);
     final radius =
         widget.startRadius + (widget.endRadius - widget.startRadius) * t;
-    final opacity =
-    (math.sin(math.pi * progress) * widget.glowOpacity).clamp(0.0, widget.glowOpacity);
+    final opacity = (math.sin(math.pi * progress) * widget.glowOpacity).clamp(
+      0.0,
+      widget.glowOpacity,
+    );
 
     return Container(
       width: radius * 2,

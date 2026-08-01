@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../helper/ui_sizes.dart';
-
+import 'package:eze/core/helper/ui_sizes.dart';
 
 class AppRefreshable extends StatelessWidget {
   final VoidCallback? onRefresh;

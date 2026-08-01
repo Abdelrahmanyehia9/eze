@@ -32,11 +32,15 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
 
   Future<void> onSubmit() async {
     final channel = await BottomSheets.show<OtpChannel>(
-      child: OtpChannelSelector(channels: OtpChannel.channelsOfVerifyPhone)
+      child: OtpChannelSelector(channels: OtpChannel.channelsOfVerifyPhone),
     );
-    if(channel!=null && mounted){
-      final args = OtpVerificationArgs(code: _countryNotifier.value.phoneCode, phone: _phoneController.text , channel: channel);
-       context.pushNamed(Routes.otpVerification, arguments: args) ;
+    if (channel != null && mounted) {
+      final args = OtpVerificationArgs(
+        code: _countryNotifier.value.phoneCode,
+        phone: _phoneController.text,
+        channel: channel,
+      );
+      context.pushNamed(Routes.otpVerification, arguments: args);
     }
   }
 
@@ -44,7 +48,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
   Widget build(BuildContext context) {
     return AppScaffold(
       resizeToAvoidBottomInset: true,
-      appBar: DefaultAppBar(title: "تسجيل برقم الهاتف", centerTitle: true),
+      appBar: const DefaultAppBar(title: "تسجيل برقم الهاتف", centerTitle: true),
       body: ValueListenableBuilder(
         valueListenable: _countryNotifier,
         builder: (context, country, child) {

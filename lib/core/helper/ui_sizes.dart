@@ -78,7 +78,7 @@ class UISizes {
   static final double sp2 = 2.sp;
   static final double sp4 = 4.sp;
   static final double sp6 = 6.sp;
-  static final double sp8= 8.sp;
+  static final double sp8 = 8.sp;
   static final double sp10 = 10.sp;
   static final double sp12 = 12.sp;
   static final double sp14 = 14.sp;
@@ -101,7 +101,4 @@ class UISizes {
   static final double sp110 = 110.sp;
   static final double sp128 = 128.sp;
   static final double sp140 = 140.sp;
-
-
-
 }

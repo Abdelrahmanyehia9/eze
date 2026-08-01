@@ -28,7 +28,7 @@ class OtpVerificationArgs {
 }
 
 class OtpVerificationScreen extends StatefulWidget {
-  final OtpVerificationArgs args ;
+  final OtpVerificationArgs args;
   const OtpVerificationScreen({super.key, required this.args});
 
   @override
@@ -38,11 +38,9 @@ class OtpVerificationScreen extends StatefulWidget {
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   final OtpCountDownController _otpCountDownController = OtpCountDownController(
     duration: 10,
-    maxAttempts: 3,
   );
   final PinInputController _otpController = PinInputController();
-  Future<void>onSubmit()async{
-  }
+  Future<void> onSubmit() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +48,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     final code = widget.args.code;
     final channel = widget.args.channel;
     return AppScaffold(
-      appBar: DefaultAppBar(),
+      appBar: const DefaultAppBar(),
       body: Center(
         child: Column(
           children: [
@@ -63,13 +61,18 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               color: context.colors.surfaceContainer,
               "أدخل رمز التحقق المكوّن من 6 أرقام الذي أرسلناه عبر ${channel.text} إلى +$code $phone.",
             ),
-            OtpField(controller: _otpController, onComplete:(_)=>onSubmit(),).paddingVr,
+            OtpField(
+              controller: _otpController,
+              onComplete: (_) => onSubmit(),
+            ).paddingVr,
             OtpColdDown(controller: _otpCountDownController),
             ValueListenableBuilder(
               valueListenable: _otpController.textController,
-              builder: (_, otp , _) =>
-                  DefaultButton(text: "تاكيد",onTap: onSubmit,
-                      enabled: otp.text.length==6).paddingVr,
+              builder: (_, otp, _) => DefaultButton(
+                text: "تاكيد",
+                onTap: onSubmit,
+                enabled: otp.text.length == 6,
+              ).paddingVr,
             ),
           ],
         ),
@@ -80,7 +83,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   void dispose() {
     _otpCountDownController.dispose();
-    _otpController.dispose() ;
+    _otpController.dispose();
     super.dispose();
   }
 }

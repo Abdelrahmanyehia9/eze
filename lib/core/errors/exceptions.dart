@@ -8,7 +8,7 @@ abstract class AppException implements Exception {
   @override
   String toString() => message + (code != null ? ' (Code: $code)' : '');
 
-  String get stackTrace => originalError?.toString() ?? message; 
+  String get stackTrace => originalError?.toString() ?? message;
 }
 
 class NetworkException extends AppException {

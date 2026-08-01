@@ -1,7 +1,4 @@
-
-
-
-import '../errors/exceptions.dart';
+import 'package:eze/core/errors/exceptions.dart';
 
 enum StateStatus { initial, loading, success, failure, empty }
 
@@ -9,8 +6,13 @@ class BaseState<T> {
   final StateStatus status;
   final T? data;
   final AppException? error;
-  final int? id ; 
-  const BaseState.internal({required this.status, this.data, this.error, this.id});
+  final int? id;
+  const BaseState.internal({
+    required this.status,
+    this.data,
+    this.error,
+    this.id,
+  });
   const BaseState.initial() : this.internal(status: StateStatus.initial);
   const BaseState.loading() : this.internal(status: StateStatus.loading);
   const BaseState.empty() : this.internal(status: StateStatus.empty);
@@ -19,12 +21,17 @@ class BaseState<T> {
   const BaseState.failure(AppException error)
     : this.internal(status: StateStatus.failure, error: error);
 
-  BaseState<T> copyWith({StateStatus? status, T? data, AppException? error, int? id}) {
+  BaseState<T> copyWith({
+    StateStatus? status,
+    T? data,
+    AppException? error,
+    int? id,
+  }) {
     return BaseState.internal(
       status: status ?? this.status,
       data: data ?? this.data,
       error: error ?? this.error,
-      id: id ?? this.id
+      id: id ?? this.id,
     );
   }
 
@@ -33,7 +40,4 @@ class BaseState<T> {
   bool get isSuccess => status == StateStatus.success;
   bool get isFailure => status == StateStatus.failure;
   bool get isEmpty => status == StateStatus.empty;
-
-  
-
 }

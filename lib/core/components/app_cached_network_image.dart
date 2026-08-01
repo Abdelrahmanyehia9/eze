@@ -1,11 +1,10 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../extensions/theme.dart';
-import '../extensions/variables.dart';
-import '../helper/ui_sizes.dart';
-import 'app_click.dart';
+import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/extensions/variables.dart';
+import 'package:eze/core/helper/ui_sizes.dart';
+import 'package:eze/core/components/app_click.dart';
 
 class AppCachedNetworkImage extends StatelessWidget {
   final String? imageUrl;
@@ -22,26 +21,25 @@ class AppCachedNetworkImage extends StatelessWidget {
   final bool enableViewer;
   final BoxBorder? border;
 
-
   final Alignment? alignment;
 
   const AppCachedNetworkImage(
-      this.imageUrl, {
-        super.key,
-        this.width,
-        this.height,
-        this.fit = BoxFit.cover,
-        this.borderRadius,
-        this.enableViewer = false,
-        this.color,
-        this.alignment,
-        this.radius,
-        this.colorBlendMode,
-        this.placeholder,
-        this.errorWidget,
-        this.opacity,
-        this.border,
-      });
+    this.imageUrl, {
+    super.key,
+    this.width,
+    this.height,
+    this.fit = BoxFit.cover,
+    this.borderRadius,
+    this.enableViewer = false,
+    this.color,
+    this.alignment,
+    this.radius,
+    this.colorBlendMode,
+    this.placeholder,
+    this.errorWidget,
+    this.opacity,
+    this.border,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +62,7 @@ class AppCachedNetworkImage extends StatelessWidget {
           memCacheWidth: 600,
           placeholder: (context, url) => _buildPlaceholder(context),
           errorWidget: (context, url, error) =>
-          errorWidget ?? _buildErrorWidget(context),
+              errorWidget ?? _buildErrorWidget(context),
         ),
       ),
     );
@@ -72,7 +70,8 @@ class AppCachedNetworkImage extends StatelessWidget {
     Widget result = image;
     if (borderRadius != null || radius != null) {
       result = ClipRRect(
-        borderRadius: borderRadius ?? BorderRadius.circular(radius ?? UISizes.r8),
+        borderRadius:
+            borderRadius ?? BorderRadius.circular(radius ?? UISizes.r8),
         child: result,
       );
     }
@@ -81,7 +80,8 @@ class AppCachedNetworkImage extends StatelessWidget {
       result = DecoratedBox(
         decoration: BoxDecoration(
           border: border,
-          borderRadius: borderRadius ?? BorderRadius.circular(radius ?? UISizes.r8),
+          borderRadius:
+              borderRadius ?? BorderRadius.circular(radius ?? UISizes.r8),
         ),
         child: result,
       );
@@ -97,7 +97,8 @@ class AppCachedNetworkImage extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: context.colors.surfaceContainerLowest,
-        borderRadius: borderRadius ?? BorderRadius.circular(radius ?? UISizes.r8),
+        borderRadius:
+            borderRadius ?? BorderRadius.circular(radius ?? UISizes.r8),
         border: border,
       ),
       child: Opacity(
@@ -106,7 +107,8 @@ class AppCachedNetworkImage extends StatelessWidget {
           strokeWidth: UISizes.sp1,
           color: context.colors.surfaceContainer,
         ),
-    ));
+      ),
+    );
   }
 
   Widget _buildErrorWidget(BuildContext context) {
@@ -116,7 +118,8 @@ class AppCachedNetworkImage extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: context.colors.surfaceContainerLowest,
-        borderRadius: borderRadius ?? BorderRadius.circular(radius ?? UISizes.r8),
+        borderRadius:
+            borderRadius ?? BorderRadius.circular(radius ?? UISizes.r8),
         border: border,
       ),
       child: Icon(
@@ -128,6 +131,6 @@ class AppCachedNetworkImage extends StatelessWidget {
   }
 
   void onView() {
-   // Implement the logic to view the image in full screen or a viewer. 
+    // Implement the logic to view the image in full screen or a viewer.
   }
 }

@@ -31,13 +31,10 @@ class _SplashScreenState extends State<SplashScreen>
       body: Column(
         children: [
           const Spacer(),
-          AppLogo(
-            color: null,
-            size: UISizes.sp140,
-          ),
+          AppLogo(color: null, size: UISizes.sp140),
           const Spacer(),
           _PoweredBy(poweredAnim: _poweredByAnim, nexyraAnim: _nexyraAnim),
-          Gap(16)
+          const Gap(16),
         ],
       ),
     );

@@ -6,6 +6,13 @@ abstract interface class TimeMessages {
   String weeks(int n);
   String months(int n);
   String years(int n);
+  String minutesAbbr(int n);
+  String secondsAbbr(int n);
+  String hoursAbbr(int n);
+  String daysAbbr(int n);
+  String weeksAbbr(int n);
+  String monthsAbbr(int n);
+  String yearsAbbr(int n);
 }
 
 class TimeMessagesEn implements TimeMessages {
@@ -31,7 +38,28 @@ class TimeMessagesEn implements TimeMessages {
 
   @override
   String years(int n) => '$n ${n == 1 ? 'year' : 'years'} ago';
+
+  @override
+  String minutesAbbr(int n) => '${n}m';
+
+  @override
+  String hoursAbbr(int n) => '${n}h';
+
+  @override
+  String daysAbbr(int n) => '${n}d';
+
+  @override
+  String weeksAbbr(int n) => '${n}w';
+
+  @override
+  String monthsAbbr(int n) => '${n}M';
+
+  @override
+  String yearsAbbr(int n) => '${n}y';
+  @override
+  String secondsAbbr(int n) => '${n}s';
 }
+
 class TimeMessagesAr implements TimeMessages {
   const TimeMessagesAr();
 
@@ -55,4 +83,25 @@ class TimeMessagesAr implements TimeMessages {
 
   @override
   String years(int n) => 'منذ $n ${n == 1 ? 'سنة' : 'سنوات'}';
+
+  @override
+  String minutesAbbr(int n) => 'د$n';
+
+  @override
+  String hoursAbbr(int n) => 'س$n';
+
+  @override
+  String daysAbbr(int n) => 'ي$n';
+
+  @override
+  String weeksAbbr(int n) => 'أ$n';
+
+  @override
+  String monthsAbbr(int n) => 'ش$n';
+
+  @override
+  String yearsAbbr(int n) => 'سن$n';
+
+  @override
+  String secondsAbbr(int n) => 'ث$n';
 }

@@ -1,10 +1,10 @@
+import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:flutter/material.dart';
 
-import '../extensions/theme.dart';
-import '../theme/app_colors.dart';
-import '../theme/text_styles.dart';
-import 'app_text.dart';
-
+import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/theme/app_colors.dart';
+import 'package:eze/core/theme/text_styles.dart';
+import 'package:eze/core/components/app_text.dart';
 
 class RibbonData {
   final String text;
@@ -18,7 +18,6 @@ class RibbonData {
     this.color,
     this.customRibbon,
   });
-
 }
 
 class AppRibbon extends StatelessWidget {
@@ -55,8 +54,7 @@ class AppRibbon extends StatelessWidget {
               start: 0,
               child: LayoutBuilder(
                 builder: (context, constraints) {
-                  final ribbonWidth =
-                  (constraints.maxWidth.clamp(60.0, 180.0));
+                  final ribbonWidth = (constraints.maxWidth.clamp(60.0, 180.0));
                   return Align(
                     alignment: AlignmentDirectional.topEnd,
                     child: Transform.translate(
@@ -68,20 +66,27 @@ class AppRibbon extends StatelessWidget {
                         angle: isRtl ? -0.785 : 0.785,
                         child: Container(
                           width: ribbonWidth,
+                          height: ribbonWidth * 0.1,
+                          alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: color,
                             gradient: gradient,
                           ),
-                          child: customRibbon ??  AppText(
-                            text,
-                            textAlign: TextAlign.center,
-                            style:
-                            style ??
-                                TextStyles.labelSmall.copyWith(
-                                  color: AppColors.white,
-                                  fontSize: ribbonWidth*.075
+                          padding: EdgeInsets.symmetric(horizontal: UISizes.w8),
+                          child:
+                              customRibbon ??
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: AppText(
+                                  text,
+                                  textAlign: TextAlign.center,
+                                  style:
+                                      style ??
+                                      TextStyles.labelSmall.copyWith(
+                                        color: AppColors.white,
+                                      ),
                                 ),
-                          ),
+                              ),
                         ),
                       ),
                     ),

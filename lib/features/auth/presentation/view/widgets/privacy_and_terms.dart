@@ -5,10 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class PrivacyAndTerms extends StatefulWidget {
-  const PrivacyAndTerms({
-    super.key,
-  });
-
+  const PrivacyAndTerms({super.key});
 
   @override
   State<PrivacyAndTerms> createState() => _PrivacyAndTermsState();
@@ -21,10 +18,8 @@ class _PrivacyAndTermsState extends State<PrivacyAndTerms> {
   @override
   void initState() {
     super.initState();
-    _termsRecognizer = TapGestureRecognizer()
-      ..onTap = (){};
-    _privacyRecognizer = TapGestureRecognizer()
-      ..onTap = (){};
+    _termsRecognizer = TapGestureRecognizer()..onTap = () {};
+    _privacyRecognizer = TapGestureRecognizer()..onTap = () {};
   }
 
   @override
@@ -38,12 +33,12 @@ class _PrivacyAndTermsState extends State<PrivacyAndTerms> {
   Widget build(BuildContext context) {
     final baseStyle = context.textTheme.bodySmall?.copyWith(
       color: AppColors.white,
-      height: 0
+      height: 0,
     );
 
     final linkStyle = baseStyle?.copyWith(
       decoration: TextDecoration.underline,
-      fontWeight: FontWeightHelper.bold
+      fontWeight: FontWeightHelper.bold,
     );
 
     return Text.rich(

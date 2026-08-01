@@ -1,6 +1,6 @@
-import '../errors/exceptions.dart';
-import '../extensions/app_exception.dart';
-import 'either.dart';
+import 'package:eze/core/errors/exceptions.dart';
+import 'package:eze/core/extensions/app_exception.dart';
+import 'package:eze/core/helper/either.dart';
 
 typedef LocalGetter<T> = Future<T?> Function();
 typedef RemoteGetter<T> = Future<T> Function();
@@ -8,8 +8,8 @@ typedef LocalSaver<T> = Future<void> Function(T data);
 
 class CacheManger {
   const CacheManger._();
-  static CacheManger get instance => CacheManger._() ;
-   Future<Either<AppException, T>> cacheFirst<T>({
+  static CacheManger get instance => const CacheManger._();
+  Future<Either<AppException, T>> cacheFirst<T>({
     required LocalGetter<T> getLocal,
     required RemoteGetter<T> getRemote,
     required LocalSaver<T> saveLocal,
@@ -27,10 +27,7 @@ class CacheManger {
       final local = await getLocal();
       if (!cacheMiss(local)) {
         if (refreshInBackground) {
-          _refresh(
-            getRemote: getRemote,
-            saveLocal: saveLocal,
-          );
+          _refresh(getRemote: getRemote, saveLocal: saveLocal);
         }
         return right(local as T);
       }
@@ -42,7 +39,8 @@ class CacheManger {
       return left(e.toAppException());
     }
   }
-   Future<Either<AppException, T>> networkFirst<T>({
+
+  Future<Either<AppException, T>> networkFirst<T>({
     required LocalGetter<T> getLocal,
     required RemoteGetter<T> getRemote,
     required LocalSaver<T> saveLocal,
@@ -62,7 +60,8 @@ class CacheManger {
       return left(e.toAppException());
     }
   }
-   void _refresh<T>({
+
+  void _refresh<T>({
     required RemoteGetter<T> getRemote,
     required LocalSaver<T> saveLocal,
   }) {

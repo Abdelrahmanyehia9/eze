@@ -5,7 +5,6 @@ import 'package:eze/core/helper/app_timer.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:flutter/material.dart';
 
-
 class OtpCountDownController {
   final int duration;
   final int maxAttempts;
@@ -16,7 +15,6 @@ class OtpCountDownController {
   AppTimer? _timer;
   bool get isFinished => seconds.value == 0;
   bool get hasAttemptsLeft => attemptsLeft.value > 0;
-
 
   void start() {
     _timer?.cancel();
@@ -98,7 +96,7 @@ class _OtpColdDownState extends State<OtpColdDown> {
       spacing: UISizes.w4,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppText("لم تستلم رمز التحقق؟", style: context.textTheme.bodySmall,),
+        AppText("لم تستلم رمز التحقق؟", style: context.textTheme.bodySmall),
         AppClick(
           onTap: _onResend,
           child: AppText(
@@ -113,11 +111,13 @@ class _OtpColdDownState extends State<OtpColdDown> {
       ],
     );
   }
+
   Widget _remaining() {
-    final minutes =
-    (_controller.seconds.value ~/ 60).toString().padLeft(2, '0');
-    final seconds =
-    (_controller.seconds.value % 60).toString().padLeft(2, '0');
+    final minutes = (_controller.seconds.value ~/ 60).toString().padLeft(
+      2,
+      '0',
+    );
+    final seconds = (_controller.seconds.value % 60).toString().padLeft(2, '0');
 
     return Text.rich(
       textAlign: TextAlign.center,
@@ -135,6 +135,7 @@ class _OtpColdDownState extends State<OtpColdDown> {
       ),
     );
   }
+
   Widget _maxAttemptsReached() => AppText(
     'لقد وصلت إلى الحد الأقصى لمحاولات إعادة إرسال الرمز.',
     textAlign: TextAlign.center,

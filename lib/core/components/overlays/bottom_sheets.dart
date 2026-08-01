@@ -6,12 +6,10 @@ import 'package:eze/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../extensions/routing.dart';
-import '../../extensions/sizes.dart';
-import '../../extensions/theme.dart';
-import '../../extensions/widgets.dart';
-
-
+import 'package:eze/core/extensions/routing.dart';
+import 'package:eze/core/extensions/sizes.dart';
+import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/extensions/widgets.dart';
 
 class BottomSheets {
   const BottomSheets._();
@@ -59,11 +57,7 @@ class BottomSheets {
                 child: CircleAvatar(
                   radius: UISizes.sp20,
                   backgroundColor: context.primaryColor,
-                  child: Icon(
-                    AppIcons.close,
-                    size: 22.sp,
-                    color: Colors.white,
-                  ),
+                  child: Icon(AppIcons.close, size: 22.sp, color: Colors.white),
                 ).paddingVr.appPaddingHr(8),
               ),
           ],
@@ -74,17 +68,16 @@ class BottomSheets {
 
   // ─── Public API ────────────────────────────────────────────────
 
-  static Future<T?> show<T>(
-      {
-        required Widget child,
-        bool dismissible = true,
-        bool enableDrag = false,
-        bool showCloseButton = false,
-        Color? backgroundColor,
-        double? borderRadius,
-        List<BoxShadow>? shadow,
-        double padding = 16
-      }) {
+  static Future<T?> show<T>({
+    required Widget child,
+    bool dismissible = true,
+    bool enableDrag = false,
+    bool showCloseButton = false,
+    Color? backgroundColor,
+    double? borderRadius,
+    List<BoxShadow>? shadow,
+    double padding = 16,
+  }) {
     return showModalBottomSheet<T>(
       context: NavigationService.context!,
       isScrollControlled: true,
@@ -148,5 +141,4 @@ class BottomSheets {
   //     onConfirm?.call();
   //   }
   // }
-
 }

@@ -1,9 +1,7 @@
 import 'dart:io';
 
-import 'error_messages.dart';
-import 'exceptions.dart';
-
-
+import 'package:eze/core/errors/error_messages.dart';
+import 'package:eze/core/errors/exceptions.dart';
 
 class ErrorHandler {
   static AppException handleError(Object error) {
@@ -27,5 +25,4 @@ class ErrorHandler {
       originalError: error,
     );
   }
-
 }

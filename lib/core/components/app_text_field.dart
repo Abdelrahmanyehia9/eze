@@ -3,7 +3,7 @@ import 'package:eze/core/extensions/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../extensions/theme.dart';
+import 'package:eze/core/extensions/theme.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -24,7 +24,7 @@ class AppTextField extends StatelessWidget {
   final bool autocorrect;
   final String? headerText;
   final bool? filled;
-  final TextDirection? textDirection ;
+  final TextDirection? textDirection;
   final SmartDashesType? smartDashesType;
   final SmartQuotesType? smartQuotesType;
   final TextInputType? keyboardType;
@@ -153,10 +153,7 @@ class AppTextField extends StatelessWidget {
       return Column(
         spacing: gapUnderHeader,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ?_header(context),
-          _textField(context),
-        ],
+        children: [?_header(context), _textField(context)],
       );
     }
     return _textField(context);
@@ -168,12 +165,15 @@ class AppTextField extends StatelessWidget {
     final Color? borderSideColor =
         borderColor ?? decoration.enabledBorder?.borderSide.color;
 
-    final Color hintColor = decoration.hintStyle?.color ?? Theme.of(context).hintColor;
-    final Color labelColor = decoration.labelStyle?.color ?? Theme.of(context).hintColor;
-    final Color helperColor = decoration.helperStyle?.color ?? Theme.of(context).hintColor;
+    final Color hintColor =
+        decoration.hintStyle?.color ?? Theme.of(context).hintColor;
+    final Color labelColor =
+        decoration.labelStyle?.color ?? Theme.of(context).hintColor;
+    final Color helperColor =
+        decoration.helperStyle?.color ?? Theme.of(context).hintColor;
 
-
-    final TextStyle? resolvedHintStyle =hintStyle ?? context.textTheme.bodyMedium?.copyWith(color: hintColor);
+    final TextStyle? resolvedHintStyle =
+        hintStyle ?? context.textTheme.bodyMedium?.copyWith(color: hintColor);
 
     return SizedBox(
       height: height,
@@ -214,29 +214,54 @@ class AppTextField extends StatelessWidget {
         style: style ?? context.textTheme.bodyMedium,
         autovalidateMode: autoValidateMode,
         decoration: InputDecoration(
-          focusedBorder: _resolvedBorder(focusedBorder ?? border, decoration.focusedBorder),
-          enabledBorder: _resolvedBorder(enabledBorder ?? border, decoration.enabledBorder),
-          errorBorder: _resolvedBorder(errorBorder ?? border, decoration.errorBorder),
-          focusedErrorBorder: _resolvedBorder(focusedErrorBorder ?? border, decoration.focusedErrorBorder),
-          disabledBorder: _resolvedBorder(disabledBorder ?? border, decoration.disabledBorder),
+          focusedBorder: _resolvedBorder(
+            focusedBorder ?? border,
+            decoration.focusedBorder,
+          ),
+          enabledBorder: _resolvedBorder(
+            enabledBorder ?? border,
+            decoration.enabledBorder,
+          ),
+          errorBorder: _resolvedBorder(
+            errorBorder ?? border,
+            decoration.errorBorder,
+          ),
+          focusedErrorBorder: _resolvedBorder(
+            focusedErrorBorder ?? border,
+            decoration.focusedErrorBorder,
+          ),
+          disabledBorder: _resolvedBorder(
+            disabledBorder ?? border,
+            decoration.disabledBorder,
+          ),
           border: _resolvedBorder(border, decoration.border),
           filled: filled,
           fillColor: filledColor ?? decoration.fillColor,
           isDense: decoration.isDense,
           prefixIcon: prefix != null
-              ? IconTheme(data: IconThemeData(color: borderSideColor), child: prefix!)
+              ? IconTheme(
+                  data: IconThemeData(color: borderSideColor),
+                  child: prefix!,
+                )
               : null,
           suffixIcon: suffix != null
-              ? IconTheme(data: IconThemeData(color: borderSideColor), child: suffix!)
+              ? IconTheme(
+                  data: IconThemeData(color: borderSideColor),
+                  child: suffix!,
+                )
               : null,
           enabled: enabled,
           labelText: labelText,
           hintText: hintText,
           helperText: helperText,
-          labelStyle: labelStyle ?? context.textTheme.bodyMedium?.copyWith(color: labelColor),
+          labelStyle:
+              labelStyle ??
+              context.textTheme.bodyMedium?.copyWith(color: labelColor),
           hintStyle: resolvedHintStyle,
-          helperStyle: helperStyle ?? context.textTheme.bodyMedium?.copyWith(color: helperColor),
-          errorStyle: errorStyle ,
+          helperStyle:
+              helperStyle ??
+              context.textTheme.bodyMedium?.copyWith(color: helperColor),
+          errorStyle: errorStyle,
           contentPadding: padding,
           counterText: hideCounter ? '' : null,
           counterStyle: resolvedHintStyle,
@@ -244,9 +269,12 @@ class AppTextField extends StatelessWidget {
       ),
     );
   }
-  Widget? _header(BuildContext context){
-    if(customHeader!=null) return customHeader ;
-    if(!headerText.isNullOrEmpty) return  SectionHeader.smallHeader(headerText!, context: context);
-    return null ;
+
+  Widget? _header(BuildContext context) {
+    if (customHeader != null) return customHeader;
+    if (!headerText.isNullOrEmpty) {
+      return SectionHeader.smallHeader(headerText!, context: context);
+    }
+    return null;
   }
 }

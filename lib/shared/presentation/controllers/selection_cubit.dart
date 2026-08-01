@@ -23,21 +23,21 @@ class SelectionState<T> {
   bool get isSelectionMode => selected.isNotEmpty;
   bool isSelected(T item) => selected.contains(item);
   int get count => selected.length;
-  bool  isAllSelected(List<T> items) => selected.length == items.length;
+  bool isAllSelected(List<T> items) => selected.length == items.length;
   SelectionState<T> copyWith({Set<T>? selected}) =>
       SelectionState(selected: selected ?? this.selected);
 }
 
-
 class SelectionBuilder<T> extends StatelessWidget {
-  final Widget Function(SelectionState<T> state, SelectionCubit<T> bloc) builder ;
+  final Widget Function(SelectionState<T> state, SelectionCubit<T> bloc)
+  builder;
   const SelectionBuilder({super.key, required this.builder});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SelectionCubit<T>, SelectionState<T>>(
-        builder: (context, state) => builder(state, context.read<SelectionCubit<T>>())
-      );
-
+      builder: (context, state) =>
+          builder(state, context.read<SelectionCubit<T>>()),
+    );
   }
 }

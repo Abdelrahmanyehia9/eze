@@ -20,30 +20,35 @@ class SectionHeader extends StatelessWidget {
     this.customAction,
     this.onAction,
     this.hasAction = true,
-    this.actionStyle, this.titleStyle
+    this.actionStyle,
+    this.titleStyle,
   });
 
-  factory SectionHeader.smallHeader(String title,
-      {required BuildContext context})=>
-      SectionHeader(title: title,
-        hasAction: false,
-        titleStyle: context.textTheme.labelSmall?.copyWith(
-            fontSize: UISizes.sp14),
-
-      );
+  factory SectionHeader.smallHeader(
+    String title, {
+    required BuildContext context,
+  }) => SectionHeader(
+    title: title,
+    hasAction: false,
+    titleStyle: context.textTheme.labelSmall?.copyWith(fontSize: UISizes.sp14),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        AppText(title, style: titleStyle,),
-        if(hasAction)
-          AppClick(
-              onTap: onAction,
-              child: buildAction())
+        AppText(title, style: titleStyle ?? context.textTheme.labelMedium),
+        if (hasAction) AppClick(onTap: onAction, child: buildAction(context)),
       ],
     );
   }
 
-  Widget buildAction() => customAction ?? AppText(action, style: actionStyle,);
+  Widget buildAction(BuildContext context) =>
+      customAction ??
+      AppText(
+        action,
+        style: actionStyle ?? context.textTheme.bodySmall,
+        color: context.colors.primary,
+      );
 }

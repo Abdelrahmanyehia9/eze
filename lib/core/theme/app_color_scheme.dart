@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
-
-
+import 'package:eze/core/theme/app_colors.dart';
 
 abstract class AppColorScheme {
   const AppColorScheme._();
 
-  static Color scaffoldBackgroundColorLight = const Color.fromRGBO(249, 249, 249, 1);
-  static Color scaffoldBackgroundColorDark = const Color.fromRGBO(20, 20, 20, 1);
+  static Color scaffoldBackgroundColorLight = const Color.fromRGBO(
+    249,
+    249,
+    249,
+    1,
+  );
+  static Color scaffoldBackgroundColorDark = const Color.fromRGBO(
+    20,
+    20,
+    20,
+    1,
+  );
 
   static final ColorScheme dark = const ColorScheme.dark(
     primary: AppColors.primary,
@@ -27,21 +35,18 @@ abstract class AppColorScheme {
     onError: AppColors.white,
     shadow: Colors.white24,
   );
-   static final ColorScheme light =const ColorScheme.light(
-     primary: AppColors.primary,
-     secondary: AppColors.secondary,
-      onSecondary: AppColors.white,
+  static final ColorScheme light = const ColorScheme.light(
+    primary: AppColors.primary,
+    secondary: AppColors.secondary,
+    onSecondary: AppColors.white,
     onTertiary: AppColors.white,
-     tertiary: AppColors.tertiary,
-     surfaceContainerLowest: AppColors.grey100,
-     surfaceContainerLow: AppColors.grey300,
-     surfaceContainer: AppColors.grey500,
-     surfaceContainerHigh: AppColors.grey600,
-     surfaceContainerHighest: AppColors.grey700,
-     error: AppColors.error,
-     shadow: Colors.black26,
-   );
-
-
-
+    tertiary: AppColors.tertiary,
+    surfaceContainerLowest: AppColors.grey100,
+    surfaceContainerLow: AppColors.grey300,
+    surfaceContainer: AppColors.grey500,
+    surfaceContainerHigh: AppColors.grey600,
+    surfaceContainerHighest: AppColors.grey700,
+    error: AppColors.error,
+    shadow: Colors.black26,
+  );
 }

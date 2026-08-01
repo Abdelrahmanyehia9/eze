@@ -1,10 +1,7 @@
 sealed class Either<L, R> {
   const Either();
 
-  T fold<T>(
-      T Function(L left) onLeft,
-      T Function(R right) onRight,
-      );
+  T fold<T>(T Function(L left) onLeft, T Function(R right) onRight);
 }
 
 final class Left<L, R> extends Either<L, R> {
@@ -27,9 +24,8 @@ final class Right<L, R> extends Either<L, R> {
 final class Unit {
   const Unit._();
 }
+
 const Unit unit = Unit._();
-
-
 
 Either<L, R> left<L, R>(L value) => Left(value);
 Either<L, R> right<L, R>(R value) => Right(value);

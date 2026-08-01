@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 extension ColorExt on Color {
   Color lighten([double amount = 0.1]) {
     final hsl = HSLColor.fromColor(this);
@@ -18,8 +18,6 @@ extension ColorExt on Color {
   Color withAppOpacity(double opacity) {
     return withValues(alpha: opacity.clamp(0.0, 1.0));
   }
-  
 
-
-  Color get veryLight =>lighten().withAppOpacity(0.1) ;
+  Color get veryLight => lighten().withAppOpacity(0.1);
 }

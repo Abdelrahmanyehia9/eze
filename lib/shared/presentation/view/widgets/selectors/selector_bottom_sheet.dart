@@ -13,25 +13,32 @@ class SelectorBottomSheetData<T> {
   final String title;
   final String? subTitle;
   final Widget? leading;
-  final T id ;
-  final RibbonData? ribbon ;
+  final T id;
+  final RibbonData? ribbon;
 
   const SelectorBottomSheetData({
     required this.title,
     this.subTitle,
     this.leading,
     required this.id,
-    this.ribbon
+    this.ribbon,
   });
 }
 
 class SelectorBottomSheet extends StatelessWidget {
   final String? title;
-  final Widget? header ;
-  final Widget? footer ;
+  final Widget? header;
+  final Widget? footer;
   final List<SelectorBottomSheetData> data;
-  final bool showTrailing ;
-  const SelectorBottomSheet({super.key, this.header, this.footer, this.showTrailing = false, this.title, required this.data});
+  final bool showTrailing;
+  const SelectorBottomSheet({
+    super.key,
+    this.header,
+    this.footer,
+    this.showTrailing = false,
+    this.title,
+    required this.data,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +57,14 @@ class SelectorBottomSheet extends StatelessWidget {
           ?header,
           ListView.separated(
             shrinkWrap: true,
-            separatorBuilder: (_,_)=>VGap.small(),
+            separatorBuilder: (_, _) => VGap.small(),
             itemBuilder: (_, i) => AppClick(
-                onTap: ()=> context.pop(data[i].id),
-                child: _item(data[i])),
+              onTap: () => context.pop(data[i].id),
+              child: _item(data[i]),
+            ),
             itemCount: 2,
           ),
-          ?footer
+          ?footer,
         ],
       ),
     );
@@ -65,7 +73,7 @@ class SelectorBottomSheet extends StatelessWidget {
   Widget _item(SelectorBottomSheetData data) => Builder(
     builder: (context) {
       return AppRibbon(
-        enabled: data.ribbon!=null,
+        enabled: data.ribbon != null,
         data: data.ribbon,
         child: Container(
           decoration: BoxDecoration(
@@ -86,10 +94,12 @@ class SelectorBottomSheet extends StatelessWidget {
                     style: context.textTheme.bodySmall,
                     color: context.colors.surfaceContainer,
                   ),
-            trailing:showTrailing ?  Icon(
-              AppIcons.arrowForward,
-              color: context.colors.surfaceContainer,
-            ) : null,
+            trailing: showTrailing
+                ? Icon(
+                    AppIcons.arrowForward,
+                    color: context.colors.surfaceContainer,
+                  )
+                : null,
           ),
         ),
       );

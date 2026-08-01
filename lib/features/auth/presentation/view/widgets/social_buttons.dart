@@ -46,13 +46,13 @@ class LoginWithSocialMedia extends StatelessWidget {
   const LoginWithSocialMedia({super.key, required this.socialMediaType});
 
   factory LoginWithSocialMedia.google() =>
-      LoginWithSocialMedia(socialMediaType: SocialMedia.google);
+      const LoginWithSocialMedia(socialMediaType: SocialMedia.google);
 
   factory LoginWithSocialMedia.facebook() =>
-      LoginWithSocialMedia(socialMediaType: SocialMedia.facebook);
+      const LoginWithSocialMedia(socialMediaType: SocialMedia.facebook);
 
   factory LoginWithSocialMedia.apple() =>
-      LoginWithSocialMedia(socialMediaType: SocialMedia.apple);
+      const LoginWithSocialMedia(socialMediaType: SocialMedia.apple);
 
   @override
   Widget build(BuildContext context) {

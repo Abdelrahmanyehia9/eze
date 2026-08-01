@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/theme.dart';
-import 'app_click.dart';
+import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/components/app_click.dart';
 
 enum ButtonType { filled, outlined, text }
 
@@ -176,7 +176,10 @@ class AppButton extends StatelessWidget {
     borderColor: color,
     padding: padding,
     margin: margin,
-    child: Text(text, style: style?.copyWith(color: color) ?? TextStyle(color: color)),
+    child: Text(
+      text,
+      style: style?.copyWith(color: color) ?? TextStyle(color: color),
+    ),
   );
 
   bool get isClickable => !isDisabled && !isLoading;
@@ -196,9 +199,13 @@ class AppButton extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: isDisabled ? null : gradient,
           borderRadius: BorderRadius.circular(borderRadius ?? 16),
-          color: isDisabled ? _resolvedDisabledColor(context) : _resolvedColor(context),
+          color: isDisabled
+              ? _resolvedDisabledColor(context)
+              : _resolvedColor(context),
           border: Border.all(
-            color: isDisabled ? _resolvedDisabledBorderColor(context) : (borderColor ?? Colors.transparent),
+            color: isDisabled
+                ? _resolvedDisabledBorderColor(context)
+                : (borderColor ?? Colors.transparent),
             width: borderWidth,
           ),
         ),
@@ -208,7 +215,9 @@ class AppButton extends StatelessWidget {
   }
 
   Widget _buildLoading(BuildContext context) {
-    final double size = loadingSize ?? (fixedSize?.height != null ? fixedSize!.height * 0.5 : 20);
+    final double size =
+        loadingSize ??
+        (fixedSize?.height != null ? fixedSize!.height * 0.5 : 20);
     final Color spinnerColor = loadingColor ?? _defaultLoadingColor(context);
 
     return SizedBox(
@@ -221,7 +230,6 @@ class AppButton extends StatelessWidget {
     );
   }
 
-
   Color _defaultLoadingColor(BuildContext context) {
     switch (buttonType) {
       case ButtonType.filled:
@@ -233,8 +241,9 @@ class AppButton extends StatelessWidget {
     }
   }
 
-  Color _resolvedColor(BuildContext context) =>
-      buttonType == ButtonType.filled ? (color ?? context.primaryColor) : Colors.transparent;
+  Color _resolvedColor(BuildContext context) => buttonType == ButtonType.filled
+      ? (color ?? context.primaryColor)
+      : Colors.transparent;
 
   Color _resolvedDisabledColor(BuildContext context) =>
       disabledColor ?? Theme.of(context).disabledColor;

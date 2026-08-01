@@ -13,7 +13,11 @@ import 'package:flutter/services.dart';
 class PhoneTextField extends StatelessWidget {
   final Country country;
   final TextEditingController controller;
-  const PhoneTextField({super.key,required this.controller ,required this.country});
+  const PhoneTextField({
+    super.key,
+    required this.controller,
+    required this.country,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,8 @@ class PhoneTextField extends StatelessWidget {
           child: AppTextField(
             filled: false,
             controller: controller,
-            validator:(phone)=> AppValidation.validateNumber(phone, country.example.length),
+            validator: (phone) =>
+                AppValidation.validateNumber(phone, country.example.length),
             formatter: [FilteringTextInputFormatter.digitsOnly],
             keyboardType: TextInputType.phone,
             padding: EdgeInsets.zero,

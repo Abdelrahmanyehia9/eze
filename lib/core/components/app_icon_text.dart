@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-import '../extensions/theme.dart';
-import '../helper/ui_sizes.dart';
+import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/helper/ui_sizes.dart';
 
 class AppIconText extends StatelessWidget {
   final IconData? icon;
@@ -41,11 +40,7 @@ class AppIconText extends StatelessWidget {
       else if (icon != null)
         Icon(icon, size: iconSize, color: iconColor),
 
-      if (text != null)
-        Text(
-          text!,
-          style: style?.copyWith(color: textColor),
-        ),
+      if (text != null) Text(text!, style: style?.copyWith(color: textColor)),
     ];
 
     return Row(
