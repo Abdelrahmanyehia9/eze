@@ -11,17 +11,14 @@ abstract class AppGradients {
 
   static Gradient mono(
     Color color, {
-    AlignmentGeometry begin = AlignmentGeometry.topCenter,
-    AlignmentGeometry end = AlignmentGeometry.bottomCenter,
+    AlignmentGeometry begin = AlignmentGeometry.topStart,
+    AlignmentGeometry end = AlignmentGeometry.bottomEnd,
   }) => LinearGradient(
-    colors: [color.darken(0.2), color, color.lighten(0.2)],
+    colors: [color.darken(), color, color.lighten()],
     begin: begin,
     end: end,
   );
 
-  static Gradient monoRadial(
-    Color color, {
-    AlignmentGeometry begin = AlignmentGeometry.topCenter,
-    AlignmentGeometry end = AlignmentGeometry.bottomCenter,
-  }) => RadialGradient(colors: [color.darken(0.2), color, color.lighten(0.2)]);
+  static Gradient monoRadial(Color color) =>
+      RadialGradient(colors: [color.darken(0.2), color, color.lighten(0.2)]);
 }

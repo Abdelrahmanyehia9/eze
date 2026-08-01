@@ -11,13 +11,17 @@ class AppIconButton extends StatelessWidget {
   final IconData icon;
   final GestureTapCallback? onTap;
   final double? radius;
+  final Color? backgroundColor;
+  final Color? color;
 
   const AppIconButton({
     super.key,
     this.radius,
     this.size,
     this.onTap,
+    this.color,
     required this.icon,
+    this.backgroundColor,
   });
 
   @override
@@ -29,10 +33,12 @@ class AppIconButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(smallSize),
         decoration: BoxDecoration(
-          color: context.colors.surfaceContainerHighest.withAppOpacity(0.1),
+          color:
+              backgroundColor ??
+              context.colors.surfaceContainerHighest.withAppOpacity(0.1),
           borderRadius: BorderRadius.circular(radius ?? smallSize),
         ),
-        child: Icon(icon, size: size),
+        child: Icon(icon, size: size, color: color),
       ),
     );
   }

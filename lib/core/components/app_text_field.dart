@@ -162,9 +162,6 @@ class AppTextField extends StatelessWidget {
   Widget _textField(BuildContext context) {
     final InputDecorationThemeData decoration = context.inputDecorationTheme;
 
-    final Color? borderSideColor =
-        borderColor ?? decoration.enabledBorder?.borderSide.color;
-
     final Color hintColor =
         decoration.hintStyle?.color ?? Theme.of(context).hintColor;
     final Color labelColor =
@@ -240,13 +237,13 @@ class AppTextField extends StatelessWidget {
           isDense: decoration.isDense,
           prefixIcon: prefix != null
               ? IconTheme(
-                  data: IconThemeData(color: borderSideColor),
+                  data: IconThemeData(color: hintColor),
                   child: prefix!,
                 )
               : null,
           suffixIcon: suffix != null
               ? IconTheme(
-                  data: IconThemeData(color: borderSideColor),
+                  data: IconThemeData(color: hintColor),
                   child: suffix!,
                 )
               : null,

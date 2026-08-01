@@ -48,7 +48,10 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
   Widget build(BuildContext context) {
     return AppScaffold(
       resizeToAvoidBottomInset: true,
-      appBar: const DefaultAppBar(title: "تسجيل برقم الهاتف", centerTitle: true),
+      appBar: const DefaultAppBar(
+        title: "تسجيل برقم الهاتف",
+        centerTitle: true,
+      ),
       body: ValueListenableBuilder(
         valueListenable: _countryNotifier,
         builder: (context, country, child) {

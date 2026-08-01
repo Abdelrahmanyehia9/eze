@@ -30,7 +30,7 @@ class SectionHeader extends StatelessWidget {
   }) => SectionHeader(
     title: title,
     hasAction: false,
-    titleStyle: context.textTheme.labelSmall?.copyWith(fontSize: UISizes.sp14),
+    titleStyle: context.textTheme.titleSmall?.copyWith(fontSize: UISizes.sp14),
   );
 
   @override
@@ -38,7 +38,7 @@ class SectionHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        AppText(title, style: titleStyle ?? context.textTheme.labelMedium),
+        AppText(title, style: titleStyle ?? context.textTheme.titleSmall),
         if (hasAction) AppClick(onTap: onAction, child: buildAction(context)),
       ],
     );

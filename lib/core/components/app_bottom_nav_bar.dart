@@ -90,7 +90,7 @@ class _NavBarItem extends StatelessWidget {
             ),
             child: Badge(
               offset: Offset(0, UISizes.sp1),
-              backgroundColor: AppColors.secondary,
+              backgroundColor: context.colors.secondary,
               isLabelVisible: item.badge != null,
               label: AppText(height: 0, item.badge, fontSize: UISizes.sp12),
               child: icon,

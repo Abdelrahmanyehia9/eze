@@ -20,9 +20,13 @@ class ConversationTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppText("مريم الهوارى", height: 0, style: TextStyles.labelMedium),
               AppText(
-                style: TextStyles.bodySmall,
+                "مريم خالد",
+                height: 0,
+                style: context.textTheme.labelMedium,
+              ),
+              AppText(
+                style: context.textTheme.bodySmall,
                 maxLines: 2,
                 height: 0,
                 overflow: TextOverflow.ellipsis,

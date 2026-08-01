@@ -8,15 +8,14 @@ class UserCircleAvatar extends StatelessWidget {
   final double? size;
   final bool showName;
   const UserCircleAvatar._({this.size, this.showName = false});
-  factory UserCircleAvatar({double? size}) =>
-      UserCircleAvatar._(size: size);
+  factory UserCircleAvatar({double? size}) => UserCircleAvatar._(size: size);
   factory UserCircleAvatar.withName({double? size}) =>
       UserCircleAvatar._(size: size, showName: true);
   @override
   Widget build(BuildContext context) {
     final size = this.size ?? UISizes.sp72;
     return Column(
-      spacing: UISizes.sp2,
+      spacing: size * .01,
       children: [
         ClipOval(
           child: AppCachedNetworkImage(
@@ -30,11 +29,12 @@ class UserCircleAvatar extends StatelessWidget {
             child: SizedBox(
               width: size,
               child: AppText(
-                "مريم الهوارى".split(" ").first,
+                "مريم خالد".split(" ").first,
                 textAlign: TextAlign.center,
                 height: 0,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+                fontSize: size * .2,
                 style: context.textTheme.labelSmall,
               ),
             ),

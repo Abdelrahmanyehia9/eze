@@ -28,20 +28,23 @@ class AppTheme {
       thickness: 1,
     ),
     colorScheme: AppColorScheme.light,
-    extensions: const [MaterialPinThemeExtension(theme: AppPinFieldTheme.light)],
+    extensions: const [
+      MaterialPinThemeExtension(theme: AppPinFieldTheme.light),
+    ],
   );
 
   static ThemeData darkTheme() => ThemeData(
+    brightness: Brightness.dark,
     cardTheme: AppCardTheme.dark,
-    primaryColor: AppColors.primary,
+    primaryColor: AppColors.secondary,
     fontFamily: TextStyles.arFontFamily,
     splashColor: AppColors.secondary,
-
     shadowColor: const Color.fromRGBO(200, 200, 200, 0.1),
     scaffoldBackgroundColor: AppColorScheme.scaffoldBackgroundColorDark,
     appBarTheme: AppAppBarTheme.dark,
     textTheme: AppTextTheme.textTheme,
     disabledColor: AppColors.grey700,
+    colorScheme: AppColorScheme.dark,
     extensions: const [MaterialPinThemeExtension(theme: AppPinFieldTheme.dark)],
   );
 }

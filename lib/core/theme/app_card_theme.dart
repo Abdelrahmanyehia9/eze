@@ -6,7 +6,7 @@ abstract class AppCardTheme {
   const AppCardTheme._();
 
   static CardThemeData light = _common.copyWith(
-    color: AppColors.white,
+    color: AppColors.grey100,
     shadowColor: Colors.black12,
     elevation: 1,
   );

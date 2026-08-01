@@ -13,8 +13,8 @@ class _ChatFeaturesGrid extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: UISizes.sp2 * 1.1,
-        crossAxisSpacing: UISizes.sp12,
-        mainAxisSpacing: UISizes.sp12,
+        crossAxisSpacing: UISizes.sp6,
+        mainAxisSpacing: UISizes.sp6,
       ),
       itemBuilder: (_, i) =>
           _FeatureBox(feature: ChatFeatures.values[i], isEnabled: i == 0),
@@ -29,12 +29,12 @@ class _FeatureBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = feature.color;
+    final color = feature.color(context);
     return Container(
       decoration: BoxDecoration(
         color: color.veryLight,
         border: Border.all(color: color),
-        borderRadius: BorderRadius.circular(UISizes.r12),
+        borderRadius: BorderRadius.circular(UISizes.r8),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +56,7 @@ class _FeatureBox extends StatelessWidget {
             height: UISizes.h16,
             value: isEnabled,
             onChanged: (r) {},
-            activeColor: feature.color,
+            activeColor: color,
           ),
         ],
       ),

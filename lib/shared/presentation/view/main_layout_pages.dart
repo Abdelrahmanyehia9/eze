@@ -3,18 +3,12 @@ part of 'main_layout.dart';
 class _MainLayoutPage {
   final BottomNavItem navbar;
   final Widget body;
-  final bool topPadding;
 
-  _MainLayoutPage({
-    required this.navbar,
-    required this.body,
-    this.topPadding = true,
-  });
+  _MainLayoutPage({required this.navbar, required this.body});
 }
 
 final List<_MainLayoutPage> _pages = [
   _MainLayoutPage(
-    topPadding: false,
     navbar: const BottomNavItem(
       icon: AppIcons.home,
       selectedIcon: AppIcons.homeFilled,
@@ -23,7 +17,6 @@ final List<_MainLayoutPage> _pages = [
     body: const HomeScreen(),
   ),
   _MainLayoutPage(
-    topPadding: false,
     navbar: const BottomNavItem(
       icon: AppIcons.bubbleSquare,
       selectedIcon: AppIcons.bubbleSquareFilled,
@@ -35,16 +28,16 @@ final List<_MainLayoutPage> _pages = [
 
   _MainLayoutPage(
     navbar: const BottomNavItem(
-      icon: AppIcons.megaPhone,
-      selectedIcon: AppIcons.megaPhoneFilled,
-      title: "القنوات",
+      icon: AppIcons.saved,
+      selectedIcon: AppIcons.savedFilled,
+      title: "قاموسى",
     ),
-    body: const SizedBox(),
+    body: const DictionaryScreen(),
   ),
 
   _MainLayoutPage(
     navbar: const BottomNavItem(icon: AppIcons.profileCircle, title: "الملف "),
-    body: const SizedBox(),
+    body: const ProfileScreen(),
   ),
 ];
 

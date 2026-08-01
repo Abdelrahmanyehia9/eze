@@ -15,4 +15,5 @@ extension ThemExt on BuildContext {
   SwitchThemeData get switchTheme => Theme.of(this).switchTheme;
   ButtonThemeData get buttonTheme => Theme.of(this).buttonTheme;
   bool get isRTL => Directionality.of(this) == TextDirection.rtl;
+  CardThemeData get cardTheme => Theme.of(this).cardTheme;
 }

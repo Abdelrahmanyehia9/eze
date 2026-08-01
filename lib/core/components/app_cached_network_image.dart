@@ -44,7 +44,7 @@ class AppCachedNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (imageUrl.isNullOrEmpty) {
-      return _buildPlaceholder(context);
+      return placeholder ?? _buildPlaceholder(context);
     }
     final image = AppClick(
       enabled: !imageUrl.isNullOrEmpty,
@@ -55,6 +55,7 @@ class AppCachedNetworkImage extends StatelessWidget {
           imageUrl: imageUrl!,
           width: width ?? UISizes.w80,
           height: height ?? UISizes.h80,
+
           fit: fit,
           color: color,
           alignment: alignment ?? Alignment.topCenter,

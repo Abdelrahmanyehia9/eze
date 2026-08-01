@@ -17,7 +17,7 @@ class _HomeCompleteProfileBanner extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppText("مرحبا يا محمد", style: TextStyles.labelMedium),
+                AppText("مرحبا يا مريم خالد", style: TextStyles.labelMedium),
                 AppText(
                   style: context.textTheme.bodySmall,
                   "للحصول على تجربة استخدام افضل قم بملئ الملف الخاص بك ",

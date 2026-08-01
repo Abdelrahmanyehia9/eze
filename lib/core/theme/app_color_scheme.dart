@@ -6,31 +6,31 @@ abstract class AppColorScheme {
   const AppColorScheme._();
 
   static Color scaffoldBackgroundColorLight = const Color.fromRGBO(
-    249,
-    249,
-    249,
+    250,
+    250,
+    250,
     1,
   );
   static Color scaffoldBackgroundColorDark = const Color.fromRGBO(
-    20,
-    20,
-    20,
-    1,
+    16,
+    16,
+    16,
+    16,
   );
 
   static final ColorScheme dark = const ColorScheme.dark(
-    primary: AppColors.primary,
-    secondary: AppColors.secondary,
+    primary: AppColors.secondary,
+    secondary: AppColors.primary,
     tertiary: AppColors.tertiary,
     onPrimary: AppColors.white,
     onSecondary: AppColors.white,
     onTertiary: AppColors.white,
     surface: AppColors.black,
-    surfaceContainerLowest: AppColors.grey800,
-    surfaceContainerLow: AppColors.grey600,
-    surfaceContainer: AppColors.grey500,
-    surfaceContainerHigh: AppColors.grey300,
-    surfaceContainerHighest: AppColors.grey200,
+    surfaceContainerLowest: AppColors.grey600,
+    surfaceContainerLow: AppColors.grey400,
+    surfaceContainer: AppColors.grey300,
+    surfaceContainerHigh: AppColors.grey200,
+    surfaceContainerHighest: AppColors.grey100,
     error: AppColors.error400,
     onError: AppColors.white,
     shadow: Colors.white24,

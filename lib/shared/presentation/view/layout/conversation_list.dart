@@ -14,6 +14,7 @@ class ConversationList extends StatelessWidget {
       padding: EdgeInsets.zero,
       physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,
       shrinkWrap: shrinkWrap,
+      clipBehavior: Clip.antiAlias,
       itemBuilder: (_, _) => const ConversationTile(),
       separatorBuilder: (_, _) => Gap.small(),
       itemCount: count,

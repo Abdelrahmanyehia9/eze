@@ -4,7 +4,9 @@ import 'package:eze/core/components/app_bottom_nav_bar.dart';
 import 'package:eze/core/components/app_scaffold.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:eze/features/chat/presentation/view/conversations_screen.dart';
+import 'package:eze/features/dictionary/presentation/view/dictionary_screen.dart';
 import 'package:eze/features/home/presentation/view/home_screen.dart';
+import 'package:eze/features/profile/presentation/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eze/shared/presentation/controllers/main_layout_cubit.dart';
@@ -20,7 +22,7 @@ class MainLayout extends StatelessWidget {
       builder: (_, index) => AppScaffold(
         bottomPadding: false,
         hPadding: 0,
-        topPadding: _pages[index].topPadding,
+        topPadding: false,
         bottomNavigationBar: AppBottomNavBar(
           currentIndex: index,
           onTap: cubit.changePage,
