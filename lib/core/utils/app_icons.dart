@@ -22,9 +22,22 @@ abstract class AppIcons {
   static const IconData settings = CupertinoIcons.gear;
   static const IconData edit = CupertinoIcons.square_pencil;
   static const IconData champion = Icons.emoji_events_outlined;
-  static const IconData gallery = Icons.photo_library_rounded;
+  static const IconData gallery = CupertinoIcons.photo_fill_on_rectangle_fill;
   static const IconData saved = CupertinoIcons.bookmark;
   static const IconData savedFilled = CupertinoIcons.bookmark_fill;
   static const IconData share = CupertinoIcons.share;
   static const IconData shareFilled = CupertinoIcons.share_solid;
+  static const IconData control = CupertinoIcons.settings;
+  static const IconData block = CupertinoIcons.nosign;
+  static const IconData notification = CupertinoIcons.bell;
+  static const IconData info = CupertinoIcons.info;
+  static const IconData support = CupertinoIcons.headphones;
+  static const IconData notificationFilled = CupertinoIcons.bell_fill;
+  static const IconData paintBrush = CupertinoIcons.paintbrush;
+  static const IconData translate = Icons.translate;
+  static const IconData privacyPolicy = CupertinoIcons.checkmark_shield;
+  static const IconData attach = CupertinoIcons.paperclip;
+  static const IconData send = Icons.send;
+  static const IconData photo = CupertinoIcons.photo_fill;
+  static const IconData menuVert = CupertinoIcons.ellipsis_vertical;
 }

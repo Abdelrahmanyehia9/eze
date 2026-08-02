@@ -36,9 +36,8 @@ class _ProfileAlbumAndRank extends StatelessWidget {
     Color? iconColor,
   }) => Builder(
     builder: (context) {
-      return AppChip(
+      return AppCard(
         height: UISizes.sp128,
-        color: context.cardTheme.color,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -58,7 +57,7 @@ class _ProfileAlbumAndRank extends StatelessWidget {
                   icon: icon,
                   radius: UISizes.r12,
                   size: UISizes.sp20,
-                  backgroundColor: AppColors.white,
+                  backgroundColor: iconColor?.veryLight,
                 ),
               ],
             ),

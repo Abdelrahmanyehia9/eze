@@ -215,6 +215,7 @@ class AppTextField extends StatelessWidget {
             focusedBorder ?? border,
             decoration.focusedBorder,
           ),
+
           enabledBorder: _resolvedBorder(
             enabledBorder ?? border,
             decoration.enabledBorder,

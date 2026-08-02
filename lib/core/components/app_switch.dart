@@ -11,8 +11,8 @@ class AppSwitch extends StatefulWidget {
     this.inactiveColor,
     this.activeColor,
     this.thumbColor = Colors.white,
-    this.width = 52,
-    this.height = 30,
+    this.width = 42,
+    this.height = 24,
     this.thumbPadding = 3,
     this.duration = const Duration(milliseconds: 200),
   });

@@ -1,10 +1,14 @@
+import 'package:eze/core/components/app_chip.dart';
+import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/widgets.dart';
+import 'package:eze/core/theme/app_decorations.dart';
 import 'package:flutter/material.dart';
 
 class AppCard extends StatelessWidget {
   final double paddingHr, paddingVr;
   final Widget child;
   final Color? color;
+  final double? height ;
 
   const AppCard({
     super.key,
@@ -12,13 +16,18 @@ class AppCard extends StatelessWidget {
     this.paddingVr = 16,
     required this.child,
     this.color,
+    this.height
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: color,
-      child: child.appPaddingVr(paddingVr).appPaddingHr(paddingHr),
+    return AppChip(
+      height: height,
+      paddingVr: paddingVr,
+      paddingHr: paddingHr,
+      color: color??context.colors.surface,
+      boxShadow: AppDecorations.cardShadow,
+      child: child,
     );
   }
 }

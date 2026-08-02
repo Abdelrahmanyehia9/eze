@@ -10,10 +10,13 @@ import 'package:eze/core/components/app_text_read_more.dart';
 import 'package:eze/core/components/default_appbar.dart';
 import 'package:eze/core/components/gap.dart';
 import 'package:eze/core/components/section_header.dart';
+import 'package:eze/core/extensions/color.dart';
+import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/extensions/sizes.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
+import 'package:eze/core/routing/routes.dart';
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:eze/shared/presentation/view/overlays/edit_overlay.dart';
@@ -36,12 +39,13 @@ class ProfileScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       topPadding: false,
       hPadding: 0,
-      appBar: const DefaultAppBar(
+      appBar:  DefaultAppBar(
         centerTitle: true,
         actions: [
           AppIconButton(
             backgroundColor: Colors.transparent,
             icon: AppIcons.settings,
+            onTap:()=> context.pushNamed(Routes.settings),
           ),
         ],
         backgroundColor: Colors.black26,

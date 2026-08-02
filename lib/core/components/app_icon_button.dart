@@ -45,11 +45,14 @@ class AppIconButton extends StatelessWidget {
 }
 
 class AppBackButton extends StatelessWidget {
-  const AppBackButton({super.key});
+  final Color? backgroundColor  ,iconColor;
+  const AppBackButton({super.key, this.backgroundColor, this.iconColor});
 
   @override
   Widget build(BuildContext context) {
     return AppIconButton(
+      backgroundColor: backgroundColor,
+      color: iconColor,
       icon: AppIcons.arrowBackward,
       onTap: () {
         if (context.canPop()) {

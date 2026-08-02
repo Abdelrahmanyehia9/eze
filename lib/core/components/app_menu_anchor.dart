@@ -1,3 +1,4 @@
+import 'package:eze/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 
 import 'package:eze/core/extensions/theme.dart';
@@ -83,9 +84,9 @@ class AppMenuAnchor extends StatelessWidget {
       child:
           anchorIcon ??
           Icon(
-            Icons.more_vert,
+            AppIcons.menuVert,
             color: anchorColor ?? context.colors.onSurfaceVariant,
-            size: UISizes.sp20,
+            size: UISizes.r22,
           ),
     );
   }

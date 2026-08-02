@@ -35,5 +35,6 @@ extension Navigation on BuildContext {
     Navigator.of(this).pop<T>(result);
   }
 
+
   bool canPop() => Navigator.of(this).canPop();
 }

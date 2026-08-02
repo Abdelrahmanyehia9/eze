@@ -87,17 +87,16 @@ class AppColors {
   static const Color warning = warning500;
   static const Color gold = Color(0xfffab700);
   // ─── Error ─────────────────────────────────────────────
-  static const Color error100 = Color(0xffFEDDCB);
-  static const Color error200 = Color(0xffFEB398);
-  static const Color error300 = Color(0xffFE8065);
-  static const Color error400 = Color(0xffFE503F);
-  static const Color error500 = Color(0xffFE0000);
-  static const Color error600 = Color(0xffDA0012);
-  static const Color error700 = Color(0xffB6001F);
-  static const Color error800 = Color(0xff930026);
-  static const Color error900 = Color(0xff79002A);
+  static const Color error100 = Color(0xffFBDCD4);
+  static const Color error200 = Color(0xffF4B3A2);
+  static const Color error300 = Color(0xffEC8870);
+  static const Color error400 = Color(0xffE25F44);
+  static const Color error500 = Color(0xffD8402A);
+  static const Color error600 = Color(0xffBB3020);
+  static const Color error700 = Color(0xff9C2419);
+  static const Color error800 = Color(0xff7D1B12);
+  static const Color error900 = Color(0xff67150E);
   static const Color error = error500;
-
   // ─── Main Colors ───────────────────────────
   static const List<Color> mainColors = [
     primary,

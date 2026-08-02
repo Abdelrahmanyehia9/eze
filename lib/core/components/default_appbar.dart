@@ -1,8 +1,7 @@
 import 'package:eze/core/components/app_logo.dart';
-import 'package:eze/core/extensions/routing.dart';
+import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:flutter/material.dart';
-
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/components/app_icon_button.dart';
@@ -10,21 +9,27 @@ import 'package:eze/core/components/app_text.dart';
 
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
+  final Widget? customTitle;
   final List<Widget>? actions;
   final bool centerTitle;
   final bool hasLeading;
   final Widget? leading;
+  final double? toolbarHeight, leadingWidth;
+
   final Color? foregroundColor, backgroundColor;
 
   const DefaultAppBar({
     super.key,
     this.hasLeading = true,
+    this.customTitle,
     this.centerTitle = false,
     this.actions,
     this.title,
     this.leading,
     this.backgroundColor,
+    this.toolbarHeight,
     this.foregroundColor,
+    this.leadingWidth
   });
 
   factory DefaultAppBar.logo({required String title, List<Widget>? actions}) =>
@@ -38,13 +43,17 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      toolbarHeight: toolbarHeight,
       foregroundColor: foregroundColor,
       backgroundColor: backgroundColor,
-      title: AppText(
-        title,
-        style: context.textTheme.titleLarge,
-        color: foregroundColor,
-      ),
+      leadingWidth: leadingWidth,
+      title:
+          customTitle ??
+          AppText(
+            title,
+            style: context.textTheme.titleLarge,
+            color: foregroundColor,
+          ),
       actions: actions,
       centerTitle: centerTitle,
       leading: _buildLeading(context),
@@ -55,14 +64,17 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
     if (!hasLeading) return null;
 
     if (leading != null) return leading!;
-
-    if (context.canPop()) {
-      return const AppBackButton().appPaddingHr(12).appPaddingVr(6);
+    final showBack = !(ModalRoute.of(context)?.isFirst ?? true);
+    if (showBack) {
+      return AppBackButton(
+        backgroundColor: foregroundColor?.withAppOpacity(0.1),
+        iconColor: foregroundColor,
+      ).appPaddingHr(12).appPaddingVr(6);
     }
 
     return null;
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(UISizes.h40);
+  Size get preferredSize => Size.fromHeight(toolbarHeight ?? UISizes.h48);
 }

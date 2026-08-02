@@ -1,3 +1,4 @@
+import 'package:eze/core/components/app_card.dart';
 import 'package:eze/core/components/gap.dart';
 import 'package:flutter/material.dart';
 
@@ -10,14 +11,16 @@ class ConversationList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: EdgeInsets.zero,
-      physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,
-      shrinkWrap: shrinkWrap,
-      clipBehavior: Clip.antiAlias,
-      itemBuilder: (_, _) => const ConversationTile(),
-      separatorBuilder: (_, _) => Gap.small(),
-      itemCount: count,
+    return AppCard(
+      child: ListView.separated(
+        padding: EdgeInsets.zero,
+        physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,
+        shrinkWrap: shrinkWrap,
+        clipBehavior: Clip.antiAlias,
+        itemBuilder: (_, _) => const ConversationTile(),
+        separatorBuilder: (_, _) => Divider(),
+        itemCount: count,
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:eze/core/components/app_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:eze/core/extensions/theme.dart';
@@ -7,7 +8,7 @@ class AppIconText extends StatelessWidget {
   final IconData? icon;
   final String? text;
   final Widget? customIcon;
-  final double? iconSize, gap;
+  final double? iconSize, gap , textSize;
   final TextStyle? textStyle;
   final Color? iconColor, textColor, color;
   final bool reverse;
@@ -26,6 +27,7 @@ class AppIconText extends StatelessWidget {
     this.iconSize,
     this.textColor,
     this.textStyle,
+    this.textSize
   });
 
   @override
@@ -40,7 +42,7 @@ class AppIconText extends StatelessWidget {
       else if (icon != null)
         Icon(icon, size: iconSize, color: iconColor),
 
-      if (text != null) Text(text!, style: style?.copyWith(color: textColor)),
+      if (text != null) AppText(text!, style: style?.copyWith(color: textColor, fontSize: textSize)),
     ];
 
     return Row(

@@ -1,3 +1,4 @@
+import 'package:eze/core/components/app_card.dart';
 import 'package:eze/core/components/app_menu_anchor.dart';
 import 'package:eze/core/components/app_scaffold.dart';
 import 'package:eze/core/components/app_text.dart';
@@ -11,7 +12,7 @@ import 'package:eze/shared/presentation/view/widgets/inputs/search_field.dart';
 import 'package:flutter/material.dart';
 
 part 'widgets/conversation_new_chat_floating_button.dart';
-part 'widgets/chat_request_tile.dart';
+part 'widgets/conversation_chat_request_tile.dart';
 
 class ConversationsScreen extends StatelessWidget {
   const ConversationsScreen({super.key});
@@ -34,7 +35,7 @@ class ConversationsScreen extends StatelessWidget {
               filters: ["الجميع", "المجموعات", "القنوات", "المفضلة", "الارشيف"],
               activeIndex: 1,
             ),
-            ChatRequestTile(),
+            ConversationChatRequestTile(),
             ConversationList(count: 12),
           ],
         ),

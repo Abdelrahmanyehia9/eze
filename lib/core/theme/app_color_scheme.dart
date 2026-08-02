@@ -19,8 +19,8 @@ abstract class AppColorScheme {
   );
 
   static final ColorScheme dark = const ColorScheme.dark(
-    primary: AppColors.secondary,
-    secondary: AppColors.primary,
+    primary: AppColors.primary,
+    secondary: AppColors.secondary,
     tertiary: AppColors.tertiary,
     onPrimary: AppColors.white,
     onSecondary: AppColors.white,

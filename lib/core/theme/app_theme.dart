@@ -24,8 +24,8 @@ class AppTheme {
     splashColor: AppColors.secondary,
     inputDecorationTheme: AppInputDecorationTheme.light,
     dividerTheme: const DividerThemeData(
-      color: AppColors.grey300,
-      thickness: 1,
+      color: AppColors.grey200,
+      thickness: 0.8,
     ),
     colorScheme: AppColorScheme.light,
     extensions: const [
@@ -36,7 +36,7 @@ class AppTheme {
   static ThemeData darkTheme() => ThemeData(
     brightness: Brightness.dark,
     cardTheme: AppCardTheme.dark,
-    primaryColor: AppColors.secondary,
+    primaryColor: AppColors.primary,
     fontFamily: TextStyles.arFontFamily,
     splashColor: AppColors.secondary,
     shadowColor: const Color.fromRGBO(200, 200, 200, 0.1),
