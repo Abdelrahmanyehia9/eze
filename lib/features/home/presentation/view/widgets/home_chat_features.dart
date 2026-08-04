@@ -1,20 +1,17 @@
 part of '../home_screen.dart';
 
-class _HomeChatFeatures extends StatefulWidget {
-  const _HomeChatFeatures();
+class _HomeChatFeatures extends StatelessWidget {
+  final bool showTitle ;
+  const _HomeChatFeatures({this.showTitle = true});
 
-  @override
-  State<_HomeChatFeatures> createState() => _HomeChatFeaturesState();
-}
-
-class _HomeChatFeaturesState extends State<_HomeChatFeatures> {
   @override
   Widget build(BuildContext context) {
     return Column(
       spacing: UISizes.h8,
-      children: const [
-        SectionHeader(title: "عناصر التحكم"),
-        _ChatFeaturesGrid(),
+      children:  [
+        if(showTitle)
+        const SectionHeader(title: "عناصر التحكم"),
+        const _ChatFeaturesGrid(),
       ],
     );
   }

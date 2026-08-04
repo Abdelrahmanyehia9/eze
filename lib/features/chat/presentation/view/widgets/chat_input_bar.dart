@@ -36,7 +36,7 @@ class _ChatInputBar extends StatelessWidget {
         height: UISizes.sp48,
         width: UISizes.sp48,
         decoration: BoxDecoration(
-            color: context.colors.primary,
+            color: context.chatTheme.appBarBackgroundColor,
             borderRadius: BorderRadius.circular(UISizes.r20)
         ),
         child:  Icon(AppIcons.send, color: AppColors.white,size:UISizes.sp24 ,),

@@ -1,38 +1,60 @@
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/gap.dart';
-import 'package:eze/core/extensions/color.dart';
+import 'package:eze/core/extensions/chat_theme.dart';
 import 'package:eze/core/extensions/date_time.dart';
 import 'package:eze/core/extensions/sizes.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
-import 'package:eze/core/theme/app_colors.dart';
+import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/core/theme/app_decorations.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
 
+@immutable
+class BubbleStyle {
+  final Color bubbleColor;
+  final Color textColor;
+  final Color senderNameColor;
+  final Color replyBackgroundColor;
+  final Color replyBorderColor;
+
+  const BubbleStyle({
+    required this.bubbleColor,
+    required this.textColor,
+    required this.senderNameColor,
+    required this.replyBackgroundColor,
+    required this.replyBorderColor,
+  });
+
+  Color get statusIconColor => textColor;
+}
+
+
 class ChatBubble extends StatelessWidget {
-  const ChatBubble({super.key, required this.isMe});
+  final ChatStyle? theme ;
+  const ChatBubble({super.key,  this.theme, required this.isMe});
+
   final bool isMe;
+
   @override
   Widget build(BuildContext context) {
-    final bubbleColor = isMe ? AppColors.white : context.colors.primary;
-    final textColor = isMe ? AppColors.black : AppColors.white;
+    final theme = (this.theme ?? context.chatTheme).bubble(isMe);
     return Row(
       spacing: UISizes.sp4,
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: isMe ? MainAxisAlignment.start : MainAxisAlignment.end,
       children: [
-        _ChatBubbleContainer(
-        color: bubbleColor,
+        ChatBubbleContainer(
           isMe: isMe,
+          bubbleColor: theme.bubbleColor,
           child: Column(
             spacing: UISizes.sp4,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _ReplyPreview(textColor: textColor,),
-               Gap.small(),
-               _ChatMessageBody(textColor: textColor,senderColor: bubbleColor,),
-               _ChatMessageStatus(textColor: textColor)
+              _ReplyPreview(bubbleStyle: theme),
+              Gap.small(),
+              _ChatMessageBody(bubbleStyle: theme, showSenderName: !isMe),
+              _ChatMessageStatus(bubbleStyle: theme),
             ],
           ),
         ),
@@ -42,29 +64,31 @@ class ChatBubble extends StatelessWidget {
   }
 }
 
-class _ChatBubbleContainer extends StatelessWidget {
+class ChatBubbleContainer extends StatelessWidget {
   final Widget child;
   final bool isMe;
-  final Color color;
-  const _ChatBubbleContainer({
+  final Color bubbleColor;
+
+  const ChatBubbleContainer({super.key,
     required this.child,
-    required this.color,
     required this.isMe,
+    required this.bubbleColor,
   });
 
   @override
   Widget build(BuildContext context) {
+    final radius = UISizes.r20  ;
     return Container(
       constraints: BoxConstraints(maxWidth: context.width * .7),
       padding: EdgeInsets.all(UISizes.sp12),
       decoration: BoxDecoration(
-        color: color,
+        color: bubbleColor,
         boxShadow: AppDecorations.cardShadow,
         borderRadius: BorderRadiusDirectional.only(
-          topStart: isMe ? Radius.zero : Radius.circular(UISizes.r22),
-          topEnd: Radius.circular(UISizes.r22),
-          bottomStart: Radius.circular(UISizes.r22),
-          bottomEnd: isMe ? Radius.circular(UISizes.r22) : Radius.zero,
+          topStart: isMe ? Radius.zero : Radius.circular(radius),
+          topEnd: Radius.circular(radius),
+          bottomStart: Radius.circular(radius),
+          bottomEnd: isMe ? Radius.circular(radius) : Radius.zero,
         ),
       ),
       child: child,
@@ -72,69 +96,70 @@ class _ChatBubbleContainer extends StatelessWidget {
   }
 }
 class _ChatMessageStatus extends StatelessWidget {
-  final Color textColor ;
-  const _ChatMessageStatus({required this.textColor});
+  final BubbleStyle bubbleStyle;
+
+  const _ChatMessageStatus({required this.bubbleStyle});
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       spacing: UISizes.sp2,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         if (true)
-          Icon(Icons.check, size: UISizes.sp12, color: textColor),
-        AppText(
+          Icon(
+            Icons.check,
+            size: UISizes.sp12,
+            color: bubbleStyle.statusIconColor,
+          ),
+         AppText(
           DateTime.now()
               .subtract(const Duration(minutes: 30))
               .time12Only(locale: "ar"),
           style: context.textTheme.bodySmall,
           fontSize: UISizes.sp14,
-          color: textColor,
+          color: bubbleStyle.textColor,
         ),
       ],
     );
   }
 }
 class _ChatMessageBody extends StatelessWidget {
-  final Color? senderColor ;
-  final Color textColor ;
-  const _ChatMessageBody({required this.textColor , this.senderColor});
+  final BubbleStyle bubbleStyle;
+  final bool showSenderName;
+  const _ChatMessageBody({required this.bubbleStyle, required this.showSenderName});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if(5<3)
-          AppText("مريم خالد", color: senderColor?.lighten(.4)),
+        if (showSenderName) AppText("مريم خالد", color: bubbleStyle.senderNameColor),
         AppText(
-          "ممنونك انا عالبعاد ممنونك... عم عيش بهنا يا حبيبي من دونك",
+          "ممنونك انا عالبعاد ممنونك... عم عيش بهنا يا حبيبي من دونك هجرك ما ضيعني انت اللى قلبك ضاع ندمان شو يعني مطرح ما كنت ارجع ♥",
           style: context.textTheme.labelMedium,
-          color: textColor,
+          color: bubbleStyle.textColor,
         ),
       ],
     );
   }
 }
 class _ReplyPreview extends StatelessWidget {
-  final Color textColor ;
-  const _ReplyPreview({required this.textColor});
+  final BubbleStyle bubbleStyle;
+  const _ReplyPreview({required this.bubbleStyle});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-       padding: EdgeInsets.all(UISizes.sp8),
-       decoration: BoxDecoration(
-         color: Colors.black.withAppOpacity(0.05),
-         borderRadius: BorderRadius.circular(UISizes.r12),
-         border: BorderDirectional(
-           start: BorderSide(color:context.colors.secondary,width: UISizes.sp4),
-         )
-       ),
-       child: _ChatMessageBody(textColor: textColor),
+      padding: EdgeInsets.all(UISizes.sp8),
+      decoration: BoxDecoration(
+        color: bubbleStyle.replyBackgroundColor,
+        borderRadius: BorderRadius.circular(UISizes.r12),
+        border: BorderDirectional(
+          start: BorderSide(color: bubbleStyle.replyBorderColor, width: UISizes.sp4),
+        ),
+      ),
+      child: _ChatMessageBody(bubbleStyle: bubbleStyle, showSenderName: true),
     );
   }
 }
-
-
-

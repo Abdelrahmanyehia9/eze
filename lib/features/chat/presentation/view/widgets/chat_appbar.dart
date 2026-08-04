@@ -6,8 +6,8 @@ class _ChatAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final size =  UISizes.sp72;
-    final Color backgroundColor = context.colors.primary;
-    final Color foregroundColor = context.colors.onPrimary;
+    final Color backgroundColor = context.chatTheme.appBarBackgroundColor;
+    final Color foregroundColor = context.chatTheme.appBarForegroundColor;
     return DefaultAppBar(
       toolbarHeight: size,
       backgroundColor: backgroundColor,
@@ -45,7 +45,7 @@ class _ChatAppbar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       actions: [AppMenuAnchor(
-          anchorColor: foregroundColor, items: [])],
+          anchorColor: foregroundColor, items: const[])],
     );
   }
 

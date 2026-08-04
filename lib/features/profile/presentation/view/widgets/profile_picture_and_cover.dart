@@ -1,7 +1,7 @@
 part of '../profile_screen.dart';
 
-class _ProfileEditPic extends StatelessWidget {
-  const _ProfileEditPic();
+class _ProfilePictureAndCover extends StatelessWidget {
+  const _ProfilePictureAndCover();
 
   @override
   Widget build(BuildContext context) {

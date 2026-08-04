@@ -33,18 +33,30 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(spacing: UISizes.sp16, children: [_header(), _body()]),
+      child: Column(
+          spacing: UISizes.sp16, children: [
+         _header(),
+        _body()
+      ]
+      ),
     );
   }
 
   Widget _header() => const _HomeCompleteProfileBanner();
-  Widget _body() => Column(
-    spacing: UISizes.h12,
-    children: const [
-      _HomeChatFeatures(),
-      _QuickMessagesPeople(),
-      _HomeUnreadMessages(),
-      _HomeFeaturedGroup(),
-    ],
-  ).paddingHr;
+  Widget _body({bool showTitle = true}) => Builder(
+    builder: (context) {
+      return Padding(
+        padding: EdgeInsetsGeometry.only(top:showTitle ? 0 :  context.safeTopArea+UISizes.sp16),
+        child: Column(
+          spacing: UISizes.h12,
+          children:  [
+            _HomeChatFeatures(showTitle: showTitle,),
+            const _QuickMessagesPeople(),
+            const _HomeUnreadMessages(),
+            const _HomeFeaturedGroup(),
+          ],
+        ).paddingHr,
+      );
+    }
+  );
 }

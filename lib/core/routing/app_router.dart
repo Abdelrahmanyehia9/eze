@@ -5,7 +5,8 @@ import 'package:eze/features/auth/presentation/view/phone_login_screen.dart';
 import 'package:eze/features/chat/presentation/view/chat_screen.dart';
 import 'package:eze/features/intro/presentation/view/splash_screen.dart';
 import 'package:eze/features/profile/presentation/view/profile_screen.dart';
-import 'package:eze/features/profile/presentation/view/settings_screen.dart';
+import 'package:eze/features/settings/presentation/view/setting_details_screen.dart';
+import 'package:eze/features/settings/presentation/view/settings_screen.dart';
 import 'package:eze/shared/presentation/controllers/main_layout_cubit.dart';
 import 'package:eze/shared/presentation/view/main_layout.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,9 @@ class AppRouter {
         return _page(const SettingsScreen(), name: Routes.settings);
       case Routes.chat :
         return _page(const ChatScreen(), name: Routes.chat);
-
+      case Routes.settingDetails :
+        final args = settings.arguments as SettingDetailsScreenArgs ;
+        return _page( SettingDetailsScreen(args: args), name: Routes.settingDetails) ;
       default:
         return null;
     }

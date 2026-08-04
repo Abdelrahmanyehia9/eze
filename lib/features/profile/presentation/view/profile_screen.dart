@@ -23,7 +23,7 @@ import 'package:eze/shared/presentation/view/overlays/edit_overlay.dart';
 import 'package:eze/shared/presentation/view/widgets/circle_progress_with_value.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
-part 'widgets/profile_edit_pic.dart';
+part 'widgets/profile_picture_and_cover.dart';
 part 'widgets/profile_album_and_rank.dart';
 part 'widgets/profile_name_and_email.dart';
 part 'widgets/complete_profile_progress_tile.dart';
@@ -67,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
 
   Widget _buildHeading() => Column(
     spacing: UISizes.h4,
-    children: const [_ProfileEditPic(), _ProfileNameAndEmail()],
+    children: const [_ProfilePictureAndCover(), _ProfileNameAndEmail()],
   );
 
   Widget _buildBody() => Column(

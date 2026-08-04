@@ -1,6 +1,5 @@
 import 'package:eze/core/components/app_chip.dart';
 import 'package:eze/core/extensions/theme.dart';
-import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/theme/app_decorations.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +8,7 @@ class AppCard extends StatelessWidget {
   final Widget child;
   final Color? color;
   final double? height ;
+  final bool shadow ;
 
   const AppCard({
     super.key,
@@ -16,7 +16,8 @@ class AppCard extends StatelessWidget {
     this.paddingVr = 16,
     required this.child,
     this.color,
-    this.height
+    this.height,
+    this.shadow = true
   });
 
   @override
@@ -26,7 +27,7 @@ class AppCard extends StatelessWidget {
       paddingVr: paddingVr,
       paddingHr: paddingHr,
       color: color??context.colors.surface,
-      boxShadow: AppDecorations.cardShadow,
+      boxShadow: shadow ?  AppDecorations.cardShadow : null,
       child: child,
     );
   }

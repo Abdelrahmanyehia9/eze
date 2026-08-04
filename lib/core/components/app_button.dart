@@ -94,6 +94,7 @@ class AppButton extends StatelessWidget {
     Color? loadingColor,
     EdgeInsetsGeometry? padding,
     EdgeInsetsGeometry? margin,
+        double ? radius
   }) => AppButton(
     color: backgroundColor,
     onTap: onTap,
@@ -105,6 +106,7 @@ class AppButton extends StatelessWidget {
     loadingColor: loadingColor,
     padding: padding,
     margin: margin,
+    borderRadius: radius,
     child: Text(
       text,
       style:

@@ -7,11 +7,11 @@ import 'package:eze/core/helper/ui_sizes.dart';
 class AppIconText extends StatelessWidget {
   final IconData? icon;
   final String? text;
-  final Widget? customIcon;
+  final Widget? customIcon, customText;
   final double? iconSize, gap , textSize;
   final TextStyle? textStyle;
   final Color? iconColor, textColor, color;
-  final bool reverse;
+  final bool reverse, expandedText;
   final MainAxisAlignment mainAxisAlignment;
 
   const AppIconText({
@@ -27,7 +27,9 @@ class AppIconText extends StatelessWidget {
     this.iconSize,
     this.textColor,
     this.textStyle,
-    this.textSize
+    this.textSize,
+    this.customText,
+    this.expandedText = false
   });
 
   @override
@@ -42,13 +44,32 @@ class AppIconText extends StatelessWidget {
       else if (icon != null)
         Icon(icon, size: iconSize, color: iconColor),
 
-      if (text != null) AppText(text!, style: style?.copyWith(color: textColor, fontSize: textSize)),
+      if (customText != null)
+        expandedText ? Expanded(child: customText!) : customText!
+      else if (text != null)
+        expandedText
+            ? Expanded(
+          child: AppText(
+            text!,
+            style: style?.copyWith(
+              color: textColor,
+              fontSize: textSize,
+            ),
+          ),
+        )
+            : AppText(
+          text!,
+          style: style?.copyWith(
+            color: textColor,
+            fontSize: textSize,
+          ),
+        ),
     ];
 
     return Row(
       spacing: gap ?? UISizes.w6,
       mainAxisAlignment: mainAxisAlignment,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: expandedText ? MainAxisSize.max : MainAxisSize.min,
       children: reverse ? children.reversed.toList() : children,
     );
   }

@@ -1,5 +1,4 @@
 import 'package:eze/core/components/app_card.dart';
-import 'package:eze/core/components/gap.dart';
 import 'package:flutter/material.dart';
 
 import 'package:eze/shared/presentation/view/widgets/conversation_tile.dart';
@@ -18,7 +17,7 @@ class ConversationList extends StatelessWidget {
         shrinkWrap: shrinkWrap,
         clipBehavior: Clip.antiAlias,
         itemBuilder: (_, _) => const ConversationTile(),
-        separatorBuilder: (_, _) => Divider(),
+        separatorBuilder: (_, _) => const Divider(),
         itemCount: count,
       ),
     );

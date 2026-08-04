@@ -40,4 +40,9 @@ abstract class AppIcons {
   static const IconData send = Icons.send;
   static const IconData photo = CupertinoIcons.photo_fill;
   static const IconData menuVert = CupertinoIcons.ellipsis_vertical;
+  static const IconData lamp = CupertinoIcons.lightbulb;
+  static const IconData lampFilled = CupertinoIcons.lightbulb_fill;
+  static const IconData darkTheme = CupertinoIcons.moon_fill;
+  static const IconData lightTheme = CupertinoIcons.sun_max_fill;
+
 }
