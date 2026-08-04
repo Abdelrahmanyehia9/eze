@@ -4,6 +4,7 @@ import 'package:eze/features/auth/presentation/view/otp_verification_screen.dart
 import 'package:eze/features/auth/presentation/view/phone_login_screen.dart';
 import 'package:eze/features/chat/presentation/view/chat_screen.dart';
 import 'package:eze/features/intro/presentation/view/splash_screen.dart';
+import 'package:eze/features/profile/presentation/view/profile_gallery_screen.dart';
 import 'package:eze/features/profile/presentation/view/profile_screen.dart';
 import 'package:eze/features/settings/presentation/view/setting_details_screen.dart';
 import 'package:eze/features/settings/presentation/view/settings_screen.dart';
@@ -41,11 +42,17 @@ class AppRouter {
         return _page(const ProfileScreen(), name: Routes.profile);
       case Routes.settings:
         return _page(const SettingsScreen(), name: Routes.settings);
-      case Routes.chat :
+      case Routes.chat:
         return _page(const ChatScreen(), name: Routes.chat);
-      case Routes.settingDetails :
-        final args = settings.arguments as SettingDetailsScreenArgs ;
-        return _page( SettingDetailsScreen(args: args), name: Routes.settingDetails) ;
+      case Routes.settingDetails:
+        final args = settings.arguments as SettingDetailsScreenArgs;
+        return _page(
+          SettingDetailsScreen(args: args),
+          name: Routes.settingDetails,
+        );
+
+      case Routes.profileGallery:
+        return _page(const ProfileGalleryScreen(), name: Routes.profileGallery);
       default:
         return null;
     }

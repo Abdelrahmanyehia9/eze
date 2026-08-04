@@ -7,8 +7,8 @@ class AppCard extends StatelessWidget {
   final double paddingHr, paddingVr;
   final Widget child;
   final Color? color;
-  final double? height ;
-  final bool shadow ;
+  final double? height;
+  final bool shadow;
 
   const AppCard({
     super.key,
@@ -17,7 +17,7 @@ class AppCard extends StatelessWidget {
     required this.child,
     this.color,
     this.height,
-    this.shadow = true
+    this.shadow = true,
   });
 
   @override
@@ -26,8 +26,8 @@ class AppCard extends StatelessWidget {
       height: height,
       paddingVr: paddingVr,
       paddingHr: paddingHr,
-      color: color??context.colors.surface,
-      boxShadow: shadow ?  AppDecorations.cardShadow : null,
+      color: color ?? context.colors.surface,
+      boxShadow: shadow ? AppDecorations.cardShadow : null,
       child: child,
     );
   }

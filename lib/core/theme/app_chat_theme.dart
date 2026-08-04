@@ -1,4 +1,3 @@
-
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/core/utils/app_assets.dart';
@@ -6,18 +5,25 @@ import 'package:flutter/material.dart';
 
 class AppChatTheme {
   const AppChatTheme._();
-  static const List<ChatStyle>themes = [defaultLight, defaultDark, tealStyle , hotStyle , blackLover, beachStyle] ;
+  static const List<ChatStyle> themes = [
+    defaultLight,
+    defaultDark,
+    tealStyle,
+    hotStyle,
+    blackLover,
+    beachStyle,
+  ];
   static const ChatStyle defaultLight = ChatStyle(
-      outgoingBubbleColor: AppColors.white,
-      outgoingTextColor: AppColors.black,
-      incomingBubbleColor: AppColors.primary,
-      incomingTextColor: AppColors.white,
-      senderNameColor: AppColors.primary100,
-      replyBackgroundColor: Color.fromRGBO(0, 0, 0, 0.05),
-      replyBorderColor: AppColors.primary200,
-      appBarBackgroundColor: AppColors.primary,
-      appBarForegroundColor: AppColors.white,
-      chatBackgroundImage: AppAssets.defaultChatBackground,
+    outgoingBubbleColor: AppColors.white,
+    outgoingTextColor: AppColors.black,
+    incomingBubbleColor: AppColors.primary,
+    incomingTextColor: AppColors.white,
+    senderNameColor: AppColors.primary100,
+    replyBackgroundColor: Color.fromRGBO(0, 0, 0, 0.05),
+    replyBorderColor: AppColors.primary200,
+    appBarBackgroundColor: AppColors.primary,
+    appBarForegroundColor: AppColors.white,
+    chatBackgroundImage: AppAssets.defaultChatBackground,
   );
   static const ChatStyle defaultDark = ChatStyle(
     outgoingBubbleColor: AppColors.black,
@@ -29,10 +35,9 @@ class AppChatTheme {
     replyBorderColor: AppColors.secondary,
     appBarBackgroundColor: AppColors.primary400,
     appBarForegroundColor: AppColors.white,
-
   );
   static const ChatStyle tealStyle = ChatStyle(
-    outgoingBubbleColor:Color(0xFF00D9FF),
+    outgoingBubbleColor: Color(0xFF00D9FF),
     outgoingTextColor: Colors.white,
     incomingBubbleColor: Colors.teal,
     incomingTextColor: AppColors.white,
@@ -42,10 +47,9 @@ class AppChatTheme {
     replyBorderColor: Colors.orange,
     appBarBackgroundColor: Colors.teal,
     appBarForegroundColor: AppColors.white,
-
   );
   static const ChatStyle hotStyle = ChatStyle(
-    outgoingBubbleColor:Color(0xFFFFE0B2),
+    outgoingBubbleColor: Color(0xFFFFE0B2),
     outgoingTextColor: Colors.black,
     incomingBubbleColor: Colors.red,
     incomingTextColor: AppColors.white,
@@ -55,7 +59,6 @@ class AppChatTheme {
     replyBorderColor: Colors.yellow,
     appBarBackgroundColor: Colors.red,
     appBarForegroundColor: AppColors.white,
-
   );
   static const ChatStyle blackLover = ChatStyle(
     outgoingBubbleColor: AppColors.grey700,
@@ -68,7 +71,6 @@ class AppChatTheme {
     replyBorderColor: Colors.grey,
     appBarBackgroundColor: AppColors.black,
     appBarForegroundColor: AppColors.white,
-
   );
   static const ChatStyle beachStyle = ChatStyle(
     outgoingBubbleColor: Color(0xFFFFF59D),
@@ -82,8 +84,5 @@ class AppChatTheme {
     replyBorderColor: Colors.yellow,
     appBarBackgroundColor: Colors.blueAccent,
     appBarForegroundColor: AppColors.white,
-
   );
-
-
 }

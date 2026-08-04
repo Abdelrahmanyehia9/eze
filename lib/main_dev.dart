@@ -13,7 +13,7 @@ void main() async {
     ScreenUtil.ensureScreenSize(),
     AppConfigs.init(),
     DI.init(),
-   initializeDateFormatting("ar")
+    initializeDateFormatting("ar"),
   ]);
   AppRouter router = AppRouter();
   runApp(EzeApp(router: router));

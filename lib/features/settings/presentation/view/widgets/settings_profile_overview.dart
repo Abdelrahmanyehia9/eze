@@ -1,13 +1,14 @@
 part of '../settings_screen.dart';
+
 class _SettingsProfileOverview extends StatelessWidget {
   const _SettingsProfileOverview();
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       spacing: UISizes.sp4,
       children: [
-        SectionHeader.smallHeader("الملف الشخصي", context: context) ,
+        SectionHeader.smallHeader("الملف الشخصي", context: context),
         AppChip(
           onTap: context.pop,
           color: context.colors.primary,
@@ -20,16 +21,24 @@ class _SettingsProfileOverview extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppText("مريم خالد",
+                    AppText(
+                      "مريم خالد",
                       color: AppColors.white,
-                      style: context.textTheme.labelMedium,),
-                    AppText("Mariem@gmail.com",
+                      style: context.textTheme.labelMedium,
+                    ),
+                    AppText(
+                      "Mariem@gmail.com",
                       color: AppColors.white,
-                      style: context.textTheme.bodyMedium,),
+                      style: context.textTheme.bodyMedium,
+                    ),
                   ],
                 ),
               ),
-              Icon(AppIcons.arrowForward, size: UISizes.sp20, color: AppColors.white,)
+              Icon(
+                AppIcons.arrowForward,
+                size: UISizes.sp20,
+                color: AppColors.white,
+              ),
             ],
           ),
         ),

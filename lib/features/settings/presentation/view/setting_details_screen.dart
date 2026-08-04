@@ -15,42 +15,36 @@ class SettingDetailsScreenArgs {
 
   SettingDetailsScreenArgs({
     required this.title,
-     this.info,
+    this.info,
     required this.body,
   });
 }
+
 class SettingDetailsScreen extends StatelessWidget {
-  final SettingDetailsScreenArgs args ;
-  const SettingDetailsScreen({super.key,required this.args});
+  final SettingDetailsScreenArgs args;
+  const SettingDetailsScreen({super.key, required this.args});
 
   @override
   Widget build(BuildContext context) {
-      return AppScaffold(
-        appBar:  DefaultAppBar(title: args.title,
-          centerTitle: true,
+    return AppScaffold(
+      appBar: DefaultAppBar(title: args.title, centerTitle: true),
+      body: SingleChildScrollView(
+        child: Column(
+          spacing: UISizes.h16,
+          children: [if (args.info != null) _buildHeading(), args.body],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            spacing: UISizes.h16,
-            children: [
-              if(args.info!=null)
-              _buildHeading(),
-              args.body,
-            ],
-          ),
-        ),
-      );
-    }
-
-    Widget _buildHeading() =>  AppCard(
-      color: AppColors.warning.veryLight,
-      shadow: false,
-      child: AppIconText(
-        expandedText: true,
-        icon: AppIcons.lamp,
-        color: AppColors.warning,
-        text: args.info
       ),
     );
-}
+  }
 
+  Widget _buildHeading() => AppCard(
+    color: AppColors.warning.veryLight,
+    shadow: false,
+    child: AppIconText(
+      expandedText: true,
+      icon: AppIcons.lamp,
+      color: AppColors.warning,
+      text: args.info,
+    ),
+  );
+}

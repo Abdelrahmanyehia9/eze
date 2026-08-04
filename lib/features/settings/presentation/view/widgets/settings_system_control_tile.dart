@@ -8,8 +8,12 @@ import 'package:flutter_svg/svg.dart';
 
 class SettingsSystemControlTile extends StatelessWidget {
   final ChatFeatures feature;
-  final bool isEnabled ;
-  const SettingsSystemControlTile({super.key, required this.isEnabled, required this.feature});
+  final bool isEnabled;
+  const SettingsSystemControlTile({
+    super.key,
+    required this.isEnabled,
+    required this.feature,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +27,18 @@ class SettingsSystemControlTile extends StatelessWidget {
               colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
             ),
       title: AppText(
-          height: 0,
-          feature.title, style: context.textTheme.labelMedium),
+        height: 0,
+        feature.title,
+        style: context.textTheme.labelMedium,
+      ),
       subtitle: feature.description == null
           ? null
-          : AppText(feature.description,
-          color: context.colors.surfaceContainerHigh,
-          height: 0,
-          style: context.textTheme.bodySmall),
+          : AppText(
+              feature.description,
+              color: context.colors.surfaceContainerHigh,
+              height: 0,
+              style: context.textTheme.bodySmall,
+            ),
       trailing: AppSwitch(
         value: isEnabled,
         onChanged: (_) {},

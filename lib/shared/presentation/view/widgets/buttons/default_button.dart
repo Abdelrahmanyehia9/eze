@@ -31,7 +31,9 @@ class DefaultButton extends StatelessWidget {
       borderRadius: radius,
       isDisabled: !enabled,
       fixedSize: fixedSize ?? Size(double.infinity, UISizes.h48),
-      child: customChild ?? AppText(text, color: AppColors.white, textAlign: TextAlign.center,),
+      child:
+          customChild ??
+          AppText(text, color: AppColors.white, textAlign: TextAlign.center),
     );
   }
 }

@@ -1,6 +1,5 @@
 part of '../chat_screen.dart';
 
-
 class _ChatInputBar extends StatelessWidget {
   const _ChatInputBar();
 
@@ -14,14 +13,14 @@ class _ChatInputBar extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-              child: AppTextField(
-                hintText: "اكتب رسالتك هنا ..",
-                maxLines: 6,
-                minLines: 1,
-                padding: EdgeInsets.symmetric(horizontal: UISizes.w8),
-                filled: false,
-                border: InputBorder.none,
-              )
+            child: AppTextField(
+              hintText: "اكتب رسالتك هنا ..",
+              maxLines: 6,
+              minLines: 1,
+              padding: EdgeInsets.symmetric(horizontal: UISizes.w8),
+              filled: false,
+              border: InputBorder.none,
+            ),
           ),
           _buildAttachmentIcon(),
           _buildSendIcon(),
@@ -30,21 +29,22 @@ class _ChatInputBar extends StatelessWidget {
     );
   }
 
-  Widget _buildSendIcon()=>Builder(
+  Widget _buildSendIcon() => Builder(
     builder: (context) {
       return Container(
         height: UISizes.sp48,
         width: UISizes.sp48,
         decoration: BoxDecoration(
-            color: context.chatTheme.appBarBackgroundColor,
-            borderRadius: BorderRadius.circular(UISizes.r20)
+          color: context.chatTheme.appBarBackgroundColor,
+          borderRadius: BorderRadius.circular(UISizes.r20),
         ),
-        child:  Icon(AppIcons.send, color: AppColors.white,size:UISizes.sp24 ,),
+        child: Icon(AppIcons.send, color: AppColors.white, size: UISizes.sp24),
       );
-    }
+    },
   );
-  Widget _buildAttachmentIcon()=> AppIconButton(
-      backgroundColor: Colors.transparent,
-      size: UISizes.sp24,
-      icon: AppIcons.attach) ;
+  Widget _buildAttachmentIcon() => AppIconButton(
+    backgroundColor: Colors.transparent,
+    size: UISizes.sp24,
+    icon: AppIcons.attach,
+  );
 }

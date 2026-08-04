@@ -10,8 +10,7 @@ class BlockedUsersList extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (_, i) =>
-          const SettingsBlockedUserTile(),
+      itemBuilder: (_, i) => const SettingsBlockedUserTile(),
       separatorBuilder: (_, i) => Gap.medium(),
       itemCount: 15,
     );

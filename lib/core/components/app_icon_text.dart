@@ -8,7 +8,7 @@ class AppIconText extends StatelessWidget {
   final IconData? icon;
   final String? text;
   final Widget? customIcon, customText;
-  final double? iconSize, gap , textSize;
+  final double? iconSize, gap, textSize;
   final TextStyle? textStyle;
   final Color? iconColor, textColor, color;
   final bool reverse, expandedText;
@@ -29,7 +29,7 @@ class AppIconText extends StatelessWidget {
     this.textStyle,
     this.textSize,
     this.customText,
-    this.expandedText = false
+    this.expandedText = false,
   });
 
   @override
@@ -49,21 +49,15 @@ class AppIconText extends StatelessWidget {
       else if (text != null)
         expandedText
             ? Expanded(
-          child: AppText(
-            text!,
-            style: style?.copyWith(
-              color: textColor,
-              fontSize: textSize,
-            ),
-          ),
-        )
+                child: AppText(
+                  text!,
+                  style: style?.copyWith(color: textColor, fontSize: textSize),
+                ),
+              )
             : AppText(
-          text!,
-          style: style?.copyWith(
-            color: textColor,
-            fontSize: textSize,
-          ),
-        ),
+                text!,
+                style: style?.copyWith(color: textColor, fontSize: textSize),
+              ),
     ];
 
     return Row(

@@ -29,10 +29,9 @@ class BubbleStyle {
   Color get statusIconColor => textColor;
 }
 
-
 class ChatBubble extends StatelessWidget {
-  final ChatStyle? theme ;
-  const ChatBubble({super.key,  this.theme, required this.isMe});
+  final ChatStyle? theme;
+  const ChatBubble({super.key, this.theme, required this.isMe});
 
   final bool isMe;
 
@@ -69,7 +68,8 @@ class ChatBubbleContainer extends StatelessWidget {
   final bool isMe;
   final Color bubbleColor;
 
-  const ChatBubbleContainer({super.key,
+  const ChatBubbleContainer({
+    super.key,
     required this.child,
     required this.isMe,
     required this.bubbleColor,
@@ -77,7 +77,7 @@ class ChatBubbleContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radius = UISizes.r20  ;
+    final radius = UISizes.r20;
     return Container(
       constraints: BoxConstraints(maxWidth: context.width * .7),
       padding: EdgeInsets.all(UISizes.sp12),
@@ -95,6 +95,7 @@ class ChatBubbleContainer extends StatelessWidget {
     );
   }
 }
+
 class _ChatMessageStatus extends StatelessWidget {
   final BubbleStyle bubbleStyle;
 
@@ -112,7 +113,7 @@ class _ChatMessageStatus extends StatelessWidget {
             size: UISizes.sp12,
             color: bubbleStyle.statusIconColor,
           ),
-         AppText(
+        AppText(
           DateTime.now()
               .subtract(const Duration(minutes: 30))
               .time12Only(locale: "ar"),
@@ -124,17 +125,22 @@ class _ChatMessageStatus extends StatelessWidget {
     );
   }
 }
+
 class _ChatMessageBody extends StatelessWidget {
   final BubbleStyle bubbleStyle;
   final bool showSenderName;
-  const _ChatMessageBody({required this.bubbleStyle, required this.showSenderName});
+  const _ChatMessageBody({
+    required this.bubbleStyle,
+    required this.showSenderName,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (showSenderName) AppText("مريم خالد", color: bubbleStyle.senderNameColor),
+        if (showSenderName)
+          AppText("مريم خالد", color: bubbleStyle.senderNameColor),
         AppText(
           "ممنونك انا عالبعاد ممنونك... عم عيش بهنا يا حبيبي من دونك هجرك ما ضيعني انت اللى قلبك ضاع ندمان شو يعني مطرح ما كنت ارجع ♥",
           style: context.textTheme.labelMedium,
@@ -144,6 +150,7 @@ class _ChatMessageBody extends StatelessWidget {
     );
   }
 }
+
 class _ReplyPreview extends StatelessWidget {
   final BubbleStyle bubbleStyle;
   const _ReplyPreview({required this.bubbleStyle});
@@ -156,7 +163,10 @@ class _ReplyPreview extends StatelessWidget {
         color: bubbleStyle.replyBackgroundColor,
         borderRadius: BorderRadius.circular(UISizes.r12),
         border: BorderDirectional(
-          start: BorderSide(color: bubbleStyle.replyBorderColor, width: UISizes.sp4),
+          start: BorderSide(
+            color: bubbleStyle.replyBorderColor,
+            width: UISizes.sp4,
+          ),
         ),
       ),
       child: _ChatMessageBody(bubbleStyle: bubbleStyle, showSenderName: true),

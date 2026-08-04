@@ -1,5 +1,4 @@
 import 'package:eze/core/theme/app_chat_theme.dart';
-import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/core/theme/app_pin_field_theme.dart';
 import 'package:eze/core/theme/app_text_theme.dart';
 import 'package:eze/core/theme/app_input_decoration_theme.dart';
@@ -18,13 +17,17 @@ class AppTheme {
   static ThemeData lightTheme() => ThemeData(
     cardTheme: AppCardTheme.light,
     primaryColor: AppColors.primary,
+    splashFactory: NoSplash.splashFactory,
     fontFamily: TextStyles.arFontFamily,
     shadowColor: const Color.fromRGBO(12, 12, 12, 0.3),
     scaffoldBackgroundColor: AppColorScheme.scaffoldBackgroundColorLight,
     appBarTheme: AppAppBarTheme.light,
     disabledColor: AppColors.grey400,
     textTheme: AppTextTheme.textTheme,
-    splashColor: AppColors.secondary,
+    splashColor: Colors.transparent,
+    hoverColor: Colors.transparent,
+    highlightColor: Colors.transparent,
+    focusColor: Colors.transparent,
     inputDecorationTheme: AppInputDecorationTheme.light,
     dividerTheme: const DividerThemeData(
       color: AppColors.grey200,

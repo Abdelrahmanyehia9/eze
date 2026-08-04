@@ -4,9 +4,7 @@ import 'package:intl/intl.dart';
 extension OnDateTime on DateTime {
   String _iniTime({required String format, String? locale}) {
     /// This function is used to format the DateTime object into a string representation based on the provided format and locale.
-        return DateFormat(format, locale ?? 'en').format(this);
-
-
+    return DateFormat(format, locale ?? 'en').format(this);
   }
 
   String time12Only({String? locale}) =>
@@ -35,13 +33,11 @@ extension OnDateTime on DateTime {
       _iniTime(format: 'E d MMM yyyy hh:mm aaa', locale: locale);
   String toMessageTime({String? locale}) {
     final now = DateTime.now();
-    final isToday =
-        year == now.year &&
-            month == now.month &&
-            day == now.day;
+    final isToday = year == now.year && month == now.month && day == now.day;
     if (isToday) return time12Only(locale: locale);
     return toDateOnly(locale: locale);
   }
+
   int get toTimeStamp => millisecondsSinceEpoch;
   int get toTimeStampForHours =>
       DateTime(year, 0, 0, hour, minute, second).millisecondsSinceEpoch;

@@ -1,5 +1,3 @@
-import 'package:eze/core/theme/app_colors.dart';
-import 'package:eze/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -13,9 +11,8 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
   final Color replyBorderColor;
   final Color appBarBackgroundColor;
   final Color appBarForegroundColor;
-  final String? chatBackgroundImage ;
-  final Color? chatBackgroundColor ;
-
+  final String? chatBackgroundImage;
+  final Color? chatBackgroundColor;
 
   const ChatStyle({
     required this.outgoingBubbleColor,
@@ -27,11 +24,9 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
     required this.replyBorderColor,
     required this.appBarBackgroundColor,
     required this.appBarForegroundColor,
-     this.chatBackgroundColor,
-     this.chatBackgroundImage
+    this.chatBackgroundColor,
+    this.chatBackgroundImage,
   });
-
-
 
   @override
   ChatStyle copyWith({
@@ -44,40 +39,28 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
     Color? replyBorderColor,
     Color? appBarBackgroundColor,
     Color? appBarForegroundColor,
-    Color ? backgroundColor ,
-    String? backgroundImage
+    Color? backgroundColor,
+    String? backgroundImage,
   }) {
     return ChatStyle(
-      outgoingBubbleColor:
-      outgoingBubbleColor ?? this.outgoingBubbleColor,
-      outgoingTextColor:
-      outgoingTextColor ?? this.outgoingTextColor,
-      incomingBubbleColor:
-      incomingBubbleColor ?? this.incomingBubbleColor,
-      incomingTextColor:
-      incomingTextColor ?? this.incomingTextColor,
-      senderNameColor:
-      senderNameColor ?? this.senderNameColor,
-      replyBackgroundColor:
-      replyBackgroundColor ?? this.replyBackgroundColor,
-      replyBorderColor:
-      replyBorderColor ?? this.replyBorderColor,
+      outgoingBubbleColor: outgoingBubbleColor ?? this.outgoingBubbleColor,
+      outgoingTextColor: outgoingTextColor ?? this.outgoingTextColor,
+      incomingBubbleColor: incomingBubbleColor ?? this.incomingBubbleColor,
+      incomingTextColor: incomingTextColor ?? this.incomingTextColor,
+      senderNameColor: senderNameColor ?? this.senderNameColor,
+      replyBackgroundColor: replyBackgroundColor ?? this.replyBackgroundColor,
+      replyBorderColor: replyBorderColor ?? this.replyBorderColor,
       appBarBackgroundColor:
-      appBarBackgroundColor ?? this.appBarBackgroundColor,
+          appBarBackgroundColor ?? this.appBarBackgroundColor,
       appBarForegroundColor:
-      appBarForegroundColor ?? this.appBarForegroundColor,
-      chatBackgroundColor:  backgroundColor?? this.chatBackgroundColor,
-      chatBackgroundImage: backgroundImage ?? this.chatBackgroundImage
-
+          appBarForegroundColor ?? this.appBarForegroundColor,
+      chatBackgroundColor: backgroundColor ?? chatBackgroundColor,
+      chatBackgroundImage: backgroundImage ?? chatBackgroundImage,
     );
   }
 
   @override
-  ChatStyle lerp(
-      ThemeExtension<ChatStyle>? other,
-      double t,
-      )
-  {
+  ChatStyle lerp(ThemeExtension<ChatStyle>? other, double t) {
     if (other is! ChatStyle) return this;
 
     return ChatStyle(
@@ -101,11 +84,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
         other.incomingTextColor,
         t,
       )!,
-      senderNameColor: Color.lerp(
-        senderNameColor,
-        other.senderNameColor,
-        t,
-      )!,
+      senderNameColor: Color.lerp(senderNameColor, other.senderNameColor, t)!,
       replyBackgroundColor: Color.lerp(
         replyBackgroundColor,
         other.replyBackgroundColor,
@@ -132,11 +111,6 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
         t,
       ),
       chatBackgroundImage: other.chatBackgroundImage,
-
     );
   }
 }
-
-
-
-

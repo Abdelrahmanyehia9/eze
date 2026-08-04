@@ -22,6 +22,7 @@ class _ProfileAlbumAndRank extends StatelessWidget {
             title: "معرض الصور",
             description: "اضغط لرؤية المعرض الخاص بك",
             icon: AppIcons.gallery,
+            onTap: () => context.pushNamed(Routes.profileGallery),
           ),
         ),
       ],
@@ -34,39 +35,43 @@ class _ProfileAlbumAndRank extends StatelessWidget {
     String? subtitle,
     String? description,
     Color? iconColor,
+    GestureTapCallback? onTap,
   }) => Builder(
     builder: (context) {
-      return AppCard(
-        height: UISizes.sp128,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppText(title, style: context.textTheme.labelMedium),
-                    if (subtitle != null)
-                      AppText(subtitle, style: context.textTheme.bodyMedium),
-                  ],
-                ),
-                AppIconButton(
-                  color: iconColor,
-                  icon: icon,
-                  radius: UISizes.r12,
-                  size: UISizes.sp20,
-                  backgroundColor: iconColor?.veryLight,
-                ),
-              ],
-            ),
-            AppText(
-              description,
-              style: context.textTheme.bodyMedium,
-              color: context.colors.surfaceContainer,
-            ),
-          ],
+      return AppClick(
+        onTap: onTap,
+        child: AppCard(
+          height: UISizes.sp128,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppText(title, style: context.textTheme.labelMedium),
+                      if (subtitle != null)
+                        AppText(subtitle, style: context.textTheme.bodyMedium),
+                    ],
+                  ),
+                  AppIconButton(
+                    color: iconColor,
+                    icon: icon,
+                    radius: UISizes.r12,
+                    size: UISizes.sp20,
+                    backgroundColor: iconColor?.veryLight,
+                  ),
+                ],
+              ),
+              AppText(
+                description,
+                style: context.textTheme.bodyMedium,
+                color: context.colors.surfaceContainer,
+              ),
+            ],
+          ),
         ),
       );
     },

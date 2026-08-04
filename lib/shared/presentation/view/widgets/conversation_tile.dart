@@ -17,7 +17,7 @@ class ConversationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppClick(
-      onTap:()=> context.pushNamed(Routes.chat),
+      onTap: () => context.pushNamed(Routes.chat),
       child: Row(
         spacing: UISizes.w8,
         children: [
@@ -26,10 +26,7 @@ class ConversationTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppText(
-                  "مريم خالد",
-                  style: context.textTheme.labelMedium,
-                ),
+                AppText("مريم خالد", style: context.textTheme.labelMedium),
                 AppText(
                   style: context.textTheme.bodySmall,
                   maxLines: 1,

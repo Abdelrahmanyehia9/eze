@@ -45,7 +45,7 @@ class AppIconButton extends StatelessWidget {
 }
 
 class AppBackButton extends StatelessWidget {
-  final Color? backgroundColor  ,iconColor;
+  final Color? backgroundColor, iconColor;
   const AppBackButton({super.key, this.backgroundColor, this.iconColor});
 
   @override

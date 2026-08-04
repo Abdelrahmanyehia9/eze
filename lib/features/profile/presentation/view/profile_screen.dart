@@ -1,7 +1,7 @@
 import 'package:eze/core/components/app_button.dart';
 import 'package:eze/core/components/app_cached_network_image.dart';
 import 'package:eze/core/components/app_card.dart';
-import 'package:eze/core/components/app_chip.dart';
+import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/components/app_icon_button.dart';
 import 'package:eze/core/components/app_logo.dart';
 import 'package:eze/core/components/app_scaffold.dart';
@@ -19,6 +19,7 @@ import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/routing/routes.dart';
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_icons.dart';
+import 'package:eze/features/profile/presentation/view/layout/profile_interests_wrap.dart';
 import 'package:eze/shared/presentation/view/overlays/edit_overlay.dart';
 import 'package:eze/shared/presentation/view/widgets/circle_progress_with_value.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
@@ -39,13 +40,13 @@ class ProfileScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       topPadding: false,
       hPadding: 0,
-      appBar:  DefaultAppBar(
+      appBar: DefaultAppBar(
         centerTitle: true,
         actions: [
           AppIconButton(
             backgroundColor: Colors.transparent,
             icon: AppIcons.settings,
-            onTap:()=> context.pushNamed(Routes.settings),
+            onTap: () => context.pushNamed(Routes.settings),
           ),
         ],
         backgroundColor: Colors.black26,

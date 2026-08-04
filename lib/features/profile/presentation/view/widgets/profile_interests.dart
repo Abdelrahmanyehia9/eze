@@ -10,11 +10,7 @@ class _ProfileInterests extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionHeader.smallHeader("الهوايات ", context: context),
-        Wrap(
-          spacing: UISizes.w4,
-          runSpacing: UISizes.w4,
-          children: List.generate(8, (i) => const AppChip(title: "القراءة")),
-        ),
+        const ProfileInterestsWrap()
       ],
     );
   }

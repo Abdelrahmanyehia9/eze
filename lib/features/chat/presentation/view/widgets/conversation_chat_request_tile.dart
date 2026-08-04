@@ -44,7 +44,7 @@ class ConversationChatRequestTile extends StatelessWidget {
           Badge(
             backgroundColor: context.colors.primary,
             label: const AppText("2"),
-          )
+          ),
         ],
       ),
     );

@@ -9,13 +9,16 @@ import 'package:flutter/material.dart';
 class EditOverlay extends StatelessWidget {
   final Widget child;
   final GestureTapCallback? onEdit;
-
-  const EditOverlay({super.key, this.onEdit, required this.child});
+  final EdgeInsetsGeometry? margin ;
+  final AlignmentGeometry align ;
+  const EditOverlay({super.key,
+    this.margin , this.align = AlignmentGeometry.bottomStart,
+    this.onEdit, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return AppWidgetOverlay(
-      overlay: [(AlignmentGeometry.bottomStart, _buildIcon())],
+      overlay: [(align, _buildIcon())],
       child: child,
     );
   }
@@ -25,6 +28,7 @@ class EditOverlay extends StatelessWidget {
       return AppClick(
         onTap: onEdit,
         child: Container(
+          margin: margin,
           padding: EdgeInsets.all(UISizes.sp6),
           decoration: BoxDecoration(
             color: context.colors.surface,

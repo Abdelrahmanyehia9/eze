@@ -12,11 +12,14 @@ class _ProfilePictureAndCover extends StatelessWidget {
       alignment: AlignmentGeometry.topCenter,
       children: [
         SizedBox(height: coverSize + (profileSize * .5)),
-        AppCachedNetworkImage(
-          width: context.width,
-          height: coverSize,
-          "https://static.vecteezy.com/system/resources/thumbnails/071/963/718/small/a-beautiful-portrait-of-a-happy-young-african-woman-photo.jpg",
-          placeholder: _placeHolderCover(context.width, coverSize),
+        EditOverlay(
+          margin: EdgeInsets.all(UISizes.sp12),
+          child: AppCachedNetworkImage(
+            width: context.width,
+            height: coverSize,
+            "https://static.vecteezy.com/system/resources/thumbnails/071/963/718/small/a-beautiful-portrait-of-a-happy-young-african-woman-photo.jpg",
+            placeholder: _placeHolderCover(context.width, coverSize),
+          ),
         ),
         Positioned(
           bottom: 0,

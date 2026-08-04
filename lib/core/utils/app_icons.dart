@@ -44,5 +44,11 @@ abstract class AppIcons {
   static const IconData lampFilled = CupertinoIcons.lightbulb_fill;
   static const IconData darkTheme = CupertinoIcons.moon_fill;
   static const IconData lightTheme = CupertinoIcons.sun_max_fill;
-
+  static const IconData check = CupertinoIcons.checkmark;
+  static const IconData checkCircle = CupertinoIcons.check_mark_circled;
+  static const IconData arrowDown = CupertinoIcons.arrow_down;
+  static const IconData male = Icons.male;
+  static const IconData female = Icons.female;
+  static const IconData nonBinary = Icons.transgender;
+  static const IconData calender = CupertinoIcons.calendar;
 }

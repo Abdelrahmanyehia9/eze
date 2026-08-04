@@ -5,7 +5,7 @@ import 'package:eze/core/components/overlays/app_widget_overlay.dart';
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/shared/presentation/view/widgets/buttons/share_button.dart';
-import 'package:eze/shared/presentation/view/widgets/dictionary_word_card.dart';
+import 'package:eze/features/dictionary/presentation/view/widgets/dictionary_word_card.dart';
 import 'package:eze/shared/presentation/view/widgets/filter_chips.dart';
 import 'package:eze/shared/presentation/view/widgets/inputs/search_field.dart';
 import 'package:flutter/material.dart';

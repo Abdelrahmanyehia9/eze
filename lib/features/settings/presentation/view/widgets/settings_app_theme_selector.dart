@@ -5,10 +5,10 @@ class _SettingsAppThemeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  AppCard(
+    return AppCard(
       paddingVr: 8,
       child: ListTile(
-        leading: Icon(AppIcons.lightTheme, size: UISizes.sp28,),
+        leading: Icon(AppIcons.lightTheme, size: UISizes.sp28),
         title: AppText(
           "سمة التطبيق",
           style: context.textTheme.labelMedium,
@@ -17,7 +17,7 @@ class _SettingsAppThemeSelector extends StatelessWidget {
         subtitle: AppText(
           "الوضع النهارى",
           style: context.textTheme.bodySmall,
-          height: 0 ,
+          height: 0,
           color: context.colors.surfaceContainer,
         ),
         trailing: AppText(

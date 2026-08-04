@@ -29,7 +29,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.toolbarHeight,
     this.foregroundColor,
-    this.leadingWidth
+    this.leadingWidth,
   });
 
   factory DefaultAppBar.logo({required String title, List<Widget>? actions}) =>

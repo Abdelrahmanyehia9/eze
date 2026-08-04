@@ -5,14 +5,14 @@ class _SettingTileData {
   final String? subTitle;
   final IconData? iconData;
   final GestureTapCallback? onTap;
-  final Widget? customTrailing ;
+  final Widget? customTrailing;
 
   _SettingTileData({
     required this.title,
-     this.subTitle,
-     this.iconData,
-     this.onTap,
-    this.customTrailing
+    this.subTitle,
+    this.iconData,
+    this.onTap,
+    this.customTrailing,
   });
 }
 
@@ -35,9 +35,8 @@ class _SettingsSection extends StatelessWidget {
             shrinkWrap: true,
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (_, i) =>  _SettingTile(data[i]),
-            separatorBuilder: (_, _) =>  const Divider(
-            ),
+            itemBuilder: (_, i) => _SettingTile(data[i]),
+            separatorBuilder: (_, _) => const Divider(),
             itemCount: data.length,
           ),
         ),
@@ -53,7 +52,6 @@ class _SettingTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Material(
       color: Colors.transparent,
       child: ListTile(
@@ -61,7 +59,9 @@ class _SettingTile extends StatelessWidget {
         onTap: data.onTap,
         minTileHeight: UISizes.h40,
         contentPadding: EdgeInsets.zero,
-        leading:data.iconData==null? null : Icon(data.iconData, size: UISizes.sp28),
+        leading: data.iconData == null
+            ? null
+            : Icon(data.iconData, size: UISizes.sp28),
         title: AppText(
           data.title,
           style: context.textTheme.labelMedium,
@@ -75,7 +75,9 @@ class _SettingTile extends StatelessWidget {
                 style: context.textTheme.bodySmall,
                 color: context.colors.surfaceContainerHigh,
               ),
-        trailing: data.customTrailing ??   Icon(AppIcons.arrowForward, size: UISizes.sp18,),
+        trailing:
+            data.customTrailing ??
+            Icon(AppIcons.arrowForward, size: UISizes.sp18),
       ),
     );
   }

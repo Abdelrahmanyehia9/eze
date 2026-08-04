@@ -13,8 +13,10 @@ import 'package:eze/core/routing/routes.dart';
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:eze/features/settings/presentation/view/layout/blocked_users_list.dart';
+import 'package:eze/features/settings/presentation/view/layout/languages_list.dart';
 import 'package:eze/features/settings/presentation/view/layout/system_control_list.dart';
 import 'package:eze/features/settings/presentation/view/setting_details_screen.dart';
+import 'package:eze/features/settings/presentation/view/widgets/settings_profile.dart';
 import 'package:eze/features/settings/presentation/view/widgets/settings_theme.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +58,13 @@ class SettingsScreen extends StatelessWidget {
         title: "المعلومات الشخصية",
         subTitle: "الاسم ,تاريخ الميلاد,الجنس ... الخ",
         iconData: AppIcons.profileCircle,
-        onTap: () {},
+        onTap: () => context.pushNamed(
+          Routes.settingDetails,
+          arguments: SettingDetailsScreenArgs(
+            title: "الملف الشخصى ",
+            body: const SettingsProfile(),
+          ),
+        ),
       ),
       _SettingTileData(
         title: "عناصر التحكم",
@@ -93,43 +101,51 @@ class SettingsScreen extends StatelessWidget {
     ],
   );
 
-  _SettingsSection _buildAppSettingsSection(BuildContext context) =>
-      _SettingsSection(
-        header: "الاعدادات",
-        data: [
-          _SettingTileData(
-            title: "الاشعارات ",
-            iconData: AppIcons.notification,
-            customTrailing: AppSwitch(value: true, onChanged: (_) {}),
-          ),
-          _SettingTileData(
+  _SettingsSection _buildAppSettingsSection(
+    BuildContext context,
+  ) => _SettingsSection(
+    header: "الاعدادات",
+    data: [
+      _SettingTileData(
+        title: "الاشعارات ",
+        iconData: AppIcons.notification,
+        customTrailing: AppSwitch(value: true, onChanged: (_) {}),
+      ),
+      _SettingTileData(
+        title: "السمة",
+        subTitle: "تخصيص الدردشة وسمة التطبيق",
+        iconData: AppIcons.paintBrush,
+        onTap: () => context.pushNamed(
+          Routes.settingDetails,
+          arguments: SettingDetailsScreenArgs(
             title: "السمة",
-            subTitle: "تخصيص الدردشة وسمة التطبيق",
-            iconData: AppIcons.paintBrush,
-            onTap: () => context.pushNamed(
-              Routes.settingDetails,
-              arguments: SettingDetailsScreenArgs(
-                title: "السمة",
-                info: "تحكم في مظهر التطبيق بالكامل، بما في ذلك السمة، وألوان الدردشات، والخطوط، وغيرها من خيارات التخصيص، لتصميم تجربة تناسب ذوقك.",
-                body: const SettingsTheme(),
-              ),
-            ),
+            info:
+                "تحكم في مظهر التطبيق بالكامل، بما في ذلك السمة، وألوان الدردشات، والخطوط، وغيرها من خيارات التخصيص، لتصميم تجربة تناسب ذوقك.",
+            body: const SettingsTheme(),
           ),
-          _SettingTileData(
-            title: "لغة التطبيق",
-            iconData: AppIcons.translate,
-            customTrailing: AppIconText(
-              reverse: true,
-              text: "العربية",
-              icon: AppIcons.arrowForward,
-              iconSize: UISizes.sp18,
-            ),
-            onTap: ()=>context.pushNamed(Routes.settingDetails, arguments: SettingDetailsScreenArgs(title: "اللغة", body: SizedBox(),
-            info: "غيّر لغة واجهة التطبيق واختر اللغة التي تناسبك لتجربة استخدام أكثر راحة وسهولة."
-            ))
+        ),
+      ),
+      _SettingTileData(
+        title: "لغة التطبيق",
+        iconData: AppIcons.translate,
+        customTrailing: AppIconText(
+          reverse: true,
+          text: "العربية",
+          icon: AppIcons.arrowForward,
+          iconSize: UISizes.sp18,
+        ),
+        onTap: () => context.pushNamed(
+          Routes.settingDetails,
+          arguments: SettingDetailsScreenArgs(
+            title: "اللغة",
+            body: const LanguagesList(),
+            info:
+                "غيّر لغة واجهة التطبيق واختر اللغة التي تناسبك لتجربة استخدام أكثر راحة وسهولة.",
           ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 
   _SettingsSection _buildAboutAppSection() => _SettingsSection(
     header: "حول التطبيق",
