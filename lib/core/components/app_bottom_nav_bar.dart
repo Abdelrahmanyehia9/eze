@@ -38,7 +38,7 @@ class AppBottomNavBar extends StatelessWidget {
               offset: Offset(0, -UISizes.h1),
             ),
           ],
-          color: context.scaffoldBackgroundColor,
+          color: context.colors.surface,
         ),
         child: Row(
           children: List.generate(items.length, (index) {

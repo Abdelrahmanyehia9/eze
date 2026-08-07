@@ -2,9 +2,16 @@ library;
 
 import 'package:eze/core/components/app_bottom_nav_bar.dart';
 import 'package:eze/core/components/app_scaffold.dart';
+import 'package:eze/core/di/get_it.dart';
 import 'package:eze/core/utils/app_icons.dart';
+import 'package:eze/features/chat/presentation/controller/all_conversations_cubit.dart';
+import 'package:eze/features/chat/presentation/controller/conversation_requests_cubit.dart';
 import 'package:eze/features/chat/presentation/view/conversations_screen.dart';
+import 'package:eze/features/dictionary/presentation/controller/dictionary_words_cubit.dart';
 import 'package:eze/features/dictionary/presentation/view/dictionary_screen.dart';
+import 'package:eze/features/home/presentation/controller/boosted_users_cubit.dart';
+import 'package:eze/features/home/presentation/controller/popular_groups_cubit.dart';
+import 'package:eze/features/home/presentation/controller/unread_conversation_cubit.dart';
 import 'package:eze/features/home/presentation/view/home_screen.dart';
 import 'package:eze/features/profile/presentation/view/profile_screen.dart';
 import 'package:flutter/material.dart';

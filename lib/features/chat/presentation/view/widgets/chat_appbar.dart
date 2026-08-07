@@ -1,7 +1,8 @@
 part of '../chat_screen.dart';
 
 class _ChatAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const _ChatAppbar();
+  final ConversationPeerEntity peer ;
+  const _ChatAppbar(this.peer);
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +23,20 @@ class _ChatAppbar extends StatelessWidget implements PreferredSizeWidget {
       customTitle: Row(
         spacing: UISizes.w8,
         children: [
-          UserCircleAvatar(size: size - UISizes.sp16),
+          UserCircleAvatar(size: size - UISizes.sp16,
+            username: peer.name, image: peer.image,),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppText(
-                  "مريم خالد",
+                 peer.name,
                   style: context.textTheme.titleMedium,
                   color: foregroundColor,
                   height: 0,
                 ),
                 AppText(
-                  "متصل الان",
+                  peer.lastOnlineStr ,
                   style: context.textTheme.bodySmall,
                   color: foregroundColor.withAppOpacity(0.8),
                   height: 0,

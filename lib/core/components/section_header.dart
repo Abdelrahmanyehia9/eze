@@ -1,6 +1,7 @@
 import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class SectionHeader extends StatelessWidget {
   final Widget? customAction;
   final GestureTapCallback? onAction;
   final bool hasAction;
+  final double paddingVr ;
 
   final TextStyle? titleStyle, actionStyle;
 
@@ -22,6 +24,7 @@ class SectionHeader extends StatelessWidget {
     this.hasAction = true,
     this.actionStyle,
     this.titleStyle,
+    this.paddingVr = 12
   });
 
   factory SectionHeader.smallHeader(
@@ -30,6 +33,7 @@ class SectionHeader extends StatelessWidget {
   }) => SectionHeader(
     title: title,
     hasAction: false,
+    paddingVr: 6,
     titleStyle: context.textTheme.titleSmall?.copyWith(fontSize: UISizes.sp14),
   );
 
@@ -41,7 +45,7 @@ class SectionHeader extends StatelessWidget {
         AppText(title, style: titleStyle ?? context.textTheme.titleSmall),
         if (hasAction) AppClick(onTap: onAction, child: buildAction(context)),
       ],
-    );
+    ).appPaddingVr(paddingVr);
   }
 
   Widget buildAction(BuildContext context) =>

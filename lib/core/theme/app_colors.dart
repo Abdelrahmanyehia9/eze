@@ -101,11 +101,27 @@ class AppColors {
   static const List<Color> mainColors = [
     primary,
     secondary,
-    tertiary,
     warning,
     error,
     success,
+    grey,
+    info
   ];
+
+  static const List<Color> randomDarkColors =[
+    Color(0xff782230),
+    Color(0xff57174e),
+    Color(0xff4f0891),
+    Color(0xff1908b8),
+    Color(0xff076c7e),
+    Color(0xff135a3a),
+    Color(0xff144a0f),
+    Color(0xff747c24),
+    Color(0xff4c4318),
+    Color(0xffa15702),
+    Color(0xff6e8181),
+    Color(0xff4a868e),
+  ] ;
   static const List<Color> mainDarkColors = [
     primary700,
     info700,

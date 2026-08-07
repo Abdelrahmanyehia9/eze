@@ -7,7 +7,6 @@ class _ProfileBio extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppCard(
       child: Column(
-        spacing: UISizes.sp4,
         children: [
           SectionHeader.smallHeader("نبذة عنى", context: context),
           AppReadMore(

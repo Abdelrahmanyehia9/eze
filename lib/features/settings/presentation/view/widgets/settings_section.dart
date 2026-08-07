@@ -26,7 +26,6 @@ class _SettingsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: UISizes.sp4,
       children: [
         if (header != null)
           SectionHeader.smallHeader(header!, context: context),

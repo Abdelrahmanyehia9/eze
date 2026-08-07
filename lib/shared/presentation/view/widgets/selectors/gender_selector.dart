@@ -2,7 +2,6 @@ import 'package:eze/core/components/app_dropdown.dart';
 import 'package:eze/core/components/app_icon_text.dart';
 import 'package:eze/core/components/section_header.dart';
 import 'package:eze/core/enums/gender.dart';
-import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:flutter/material.dart';
 
 class GenderSelector extends StatelessWidget {
@@ -12,7 +11,6 @@ class GenderSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: UISizes.h4,
       children: [
         if(showHeader)
         SectionHeader.smallHeader("الجنس", context: context),
@@ -27,6 +25,7 @@ class GenderSelector extends StatelessWidget {
             icon: g.icon,
           ),
         ),
+
       ],
     );
   }

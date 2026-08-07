@@ -7,7 +7,6 @@ class _HomeChatFeatures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: UISizes.h8,
       children: [
         if (showTitle) const SectionHeader(title: "عناصر التحكم"),
         const _ChatFeaturesGrid(),

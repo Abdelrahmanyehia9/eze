@@ -19,6 +19,7 @@ import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/routing/routes.dart';
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_icons.dart';
+import 'package:eze/core/utils/fake_data.dart';
 import 'package:eze/features/profile/presentation/view/layout/profile_interests_wrap.dart';
 import 'package:eze/shared/presentation/view/overlays/edit_overlay.dart';
 import 'package:eze/shared/presentation/view/widgets/circle_progress_with_value.dart';

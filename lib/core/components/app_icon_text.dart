@@ -12,6 +12,8 @@ class AppIconText extends StatelessWidget {
   final TextStyle? textStyle;
   final Color? iconColor, textColor, color;
   final bool reverse, expandedText;
+  final int ? maxLines ;
+  final TextOverflow? textOverflow ;
   final MainAxisAlignment mainAxisAlignment;
 
   const AppIconText({
@@ -21,6 +23,7 @@ class AppIconText extends StatelessWidget {
     this.customIcon,
     this.reverse = false,
     this.gap,
+    this.textOverflow,
     this.icon,
     this.iconColor,
     this.text,
@@ -29,6 +32,7 @@ class AppIconText extends StatelessWidget {
     this.textStyle,
     this.textSize,
     this.customText,
+    this.maxLines,
     this.expandedText = false,
   });
 
@@ -51,6 +55,8 @@ class AppIconText extends StatelessWidget {
             ? Expanded(
                 child: AppText(
                   text!,
+                  overflow: textOverflow,
+                  maxLines: maxLines,
                   style: style?.copyWith(color: textColor, fontSize: textSize),
                 ),
               )

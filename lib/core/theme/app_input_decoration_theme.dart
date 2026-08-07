@@ -37,7 +37,7 @@ class AppInputDecorationTheme {
     ),
     hintStyle: TextStyles.bodySmall.copyWith(
       fontSize: UISizes.sp16,
-      color: AppColors.grey300,
+      color: AppColors.grey400,
     ),
   );
 }

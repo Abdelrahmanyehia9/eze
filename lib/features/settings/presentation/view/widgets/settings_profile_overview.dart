@@ -6,17 +6,17 @@ class _SettingsProfileOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: UISizes.sp4,
       children: [
         SectionHeader.smallHeader("الملف الشخصي", context: context),
         AppChip(
+          paddingVr: 8,
           onTap: context.pop,
           color: context.colors.primary,
           paddingHr: UISizes.w16,
           child: Row(
             spacing: UISizes.w8,
             children: [
-              UserCircleAvatar(),
+              UserCircleAvatar(username: FakeData.string(), size: UISizes.sp64 , color: context.colors.primary,),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

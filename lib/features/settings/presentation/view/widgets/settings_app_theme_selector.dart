@@ -6,7 +6,8 @@ class _SettingsAppThemeSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppCard(
-      paddingVr: 8,
+      paddingVr: 0,
+      paddingHr: 0,
       child: ListTile(
         leading: Icon(AppIcons.lightTheme, size: UISizes.sp28),
         title: AppText(

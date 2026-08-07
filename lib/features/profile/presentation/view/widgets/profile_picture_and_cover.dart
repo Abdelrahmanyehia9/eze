@@ -24,7 +24,7 @@ class _ProfilePictureAndCover extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: EditOverlay(
-            child: UserCircleAvatar(size: profileSize),
+            child: UserCircleAvatar(size: profileSize, username: FakeData.string(),),
             onEdit: () {},
           ),
         ),

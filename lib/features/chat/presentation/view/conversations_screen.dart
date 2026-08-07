@@ -2,10 +2,15 @@ import 'package:eze/core/components/app_card.dart';
 import 'package:eze/core/components/app_menu_anchor.dart';
 import 'package:eze/core/components/app_scaffold.dart';
 import 'package:eze/core/components/app_text.dart';
+import 'package:eze/core/components/base_bloc_consumer.dart';
 import 'package:eze/core/components/default_appbar.dart';
+import 'package:eze/core/extensions/fake_data.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/utils/app_icons.dart';
+import 'package:eze/features/chat/presentation/controller/all_conversations_cubit.dart';
+import 'package:eze/features/chat/presentation/controller/conversation_requests_cubit.dart';
+import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:eze/shared/presentation/view/layout/conversation_list.dart';
 import 'package:eze/shared/presentation/view/widgets/filter_chips.dart';
 import 'package:eze/shared/presentation/view/widgets/inputs/search_field.dart';
@@ -29,14 +34,17 @@ class ConversationsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: UISizes.h16,
-          children: const [
-            SearchField(),
-            FilterChips(
-              filters: ["الجميع", "المجموعات", "القنوات", "المفضلة", "الارشيف"],
+          children:  [
+            const SearchField(),
+            const FilterChips(
+              filters: ["الجميع", "المجموعات", "القنوات", "المفضلة", "الارشيف" ,"+اضافة"],
               activeIndex: 1,
             ),
-            ConversationChatRequestTile(),
-            ConversationList(count: 12),
+            const ConversationChatRequestTile(),
+            BaseBlocConsumer<AllConversationsCubit, List<ConversationEntity>>(
+                successBuilder:(c)=> ConversationList(conversations: c,),
+                loadingBuilder: ()=>const ConversationList(),
+            ),
           ],
         ),
       ),

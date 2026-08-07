@@ -1,4 +1,4 @@
-import 'package:eze/core/models/time_message.dart';
+import 'package:eze/core/utils/time_message.dart';
 import 'package:intl/intl.dart';
 
 extension OnDateTime on DateTime {

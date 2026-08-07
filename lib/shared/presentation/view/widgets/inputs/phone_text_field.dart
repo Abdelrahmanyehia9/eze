@@ -5,7 +5,6 @@ import 'package:eze/core/components/section_header.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/app_validation.dart';
-import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,7 +21,6 @@ class PhoneTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: UISizes.h4,
       children: [
         SectionHeader.smallHeader("رقم الهاتف", context: context),
         Directionality(

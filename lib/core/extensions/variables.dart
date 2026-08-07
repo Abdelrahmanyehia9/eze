@@ -1,4 +1,4 @@
-import 'package:eze/core/models/number_messages.dart';
+import 'package:eze/core/utils/number_messages.dart';
 
 /// String ///
 extension StringExtension on String? {

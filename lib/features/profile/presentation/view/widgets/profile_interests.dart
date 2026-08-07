@@ -6,7 +6,6 @@ class _ProfileInterests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: UISizes.sp4,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionHeader.smallHeader("الهوايات ", context: context),

@@ -14,7 +14,22 @@ final List<_MainLayoutPage> _pages = [
       selectedIcon: AppIcons.homeFilled,
       title: "الرئيسية",
     ),
-    body: const HomeScreen(),
+    body: MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<BoostedUsersCubit>()..getBoostedUsers(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              sl<UnreadConversationCubit>()..getUnreadConversations(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              sl<PopularGroupsCubit>()..getPopularGroupsConversations(),
+        ),
+      ],
+      child: const HomeScreen(),
+    ),
   ),
   _MainLayoutPage(
     navbar: const BottomNavItem(
@@ -23,7 +38,19 @@ final List<_MainLayoutPage> _pages = [
       title: "دردشة",
       badge: "",
     ),
-    body: const ConversationsScreen(),
+    body: MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              sl<AllConversationsCubit>()..getAllConversations(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              sl<ConversationRequestsCubit>()..getConversationRequests(),
+        ),
+      ],
+      child: const ConversationsScreen(),
+    ),
   ),
 
   _MainLayoutPage(
@@ -32,7 +59,15 @@ final List<_MainLayoutPage> _pages = [
       selectedIcon: AppIcons.savedFilled,
       title: "قاموسى",
     ),
-    body: const DictionaryScreen(),
+    body: MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              sl<DictionaryWordsCubit>()..getAllWordsByFilters(),
+        ),
+      ],
+      child: const DictionaryScreen(),
+    ),
   ),
 
   _MainLayoutPage(
@@ -43,5 +78,6 @@ final List<_MainLayoutPage> _pages = [
 
 extension _MainLayoutPages on List<_MainLayoutPage> {
   List<BottomNavItem> get navBars => map((e) => e.navbar).toList();
+
   List<Widget> get bodies => map((e) => e.body).toList();
 }

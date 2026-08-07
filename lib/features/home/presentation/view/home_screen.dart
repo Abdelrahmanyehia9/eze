@@ -1,15 +1,22 @@
 import 'package:eze/core/components/app_switch.dart';
 import 'package:eze/core/components/app_text.dart';
+import 'package:eze/core/components/base_bloc_consumer.dart';
 import 'package:eze/core/components/gap.dart';
 import 'package:eze/core/components/section_header.dart';
 import 'package:eze/core/enums/chat_features.dart';
 import 'package:eze/core/extensions/color.dart';
+import 'package:eze/core/extensions/fake_data.dart';
 import 'package:eze/core/extensions/sizes.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/theme/text_styles.dart';
 import 'package:eze/core/utils/app_assets.dart';
+import 'package:eze/features/home/presentation/controller/boosted_users_cubit.dart';
+import 'package:eze/features/home/presentation/controller/popular_groups_cubit.dart';
+import 'package:eze/features/home/presentation/controller/unread_conversation_cubit.dart';
+import 'package:eze/shared/domain/entities/conversation_entity.dart';
+import 'package:eze/shared/domain/entities/conversation_peer_entity.dart';
 import 'package:eze/shared/presentation/view/layout/users_circle_avatar_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,6 +32,7 @@ part 'widgets/home_featured_groups.dart';
 part 'widgets/home_chat_features.dart';
 
 part 'layout/chat_features_grid.dart';
+
 part 'widgets/quick_messages_people.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -38,6 +46,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _header() => const _HomeCompleteProfileBanner();
+
   Widget _body({bool showTitle = true}) => Builder(
     builder: (context) {
       return Padding(

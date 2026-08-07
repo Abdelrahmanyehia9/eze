@@ -10,25 +10,31 @@ import 'package:flutter/material.dart';
 
 class CountrySelector extends StatelessWidget {
   final Country country;
-  final ValueChanged<Country> onChanged;
+  final ValueChanged<Country>? onChanged;
+  final bool enabled  ;
+  final String? header ;
   const CountrySelector({
     super.key,
     required this.country,
-    required this.onChanged,
+     this.onChanged,
+    this.enabled = true,
+    this.header
   });
+
+
 
   @override
   Widget build(BuildContext context) {
+    final header = this.header ?? "اختر الدولة";
     return Column(
-      spacing: UISizes.h4,
       children: [
-        SectionHeader.smallHeader("اختر الدولة", context: context),
+        SectionHeader.smallHeader(header, context: context),
         AppClick(
-          onTap: () => showCountryPicker(
+          onTap: enabled? () => showCountryPicker(
             countryListTheme: _theme(context),
             context: context,
-            onSelect: onChanged,
-          ),
+            onSelect:(country)=> onChanged?.call(country),
+          ): null,
           child: Container(
             padding: EdgeInsets.symmetric(
               horizontal: UISizes.w16,
@@ -36,15 +42,18 @@ class CountrySelector extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               boxShadow: AppDecorations.cardShadow,
-              color: context.colors.surfaceContainerLowest,
+              color: enabled? context.colors.surfaceContainerLowest : context.colors.surfaceContainerLow,
               borderRadius: BorderRadius.circular(UISizes.r12),
             ),
             child: Row(
               spacing: UISizes.sp8,
               children: [
-                AppText(country.flagEmoji),
-                AppText(country.displayNameNoCountryCode),
+                AppText(country.flagEmoji,
+                color:!enabled ? context.colors.surfaceContainer : null,
+                ),
+                AppText(country.displayNameNoCountryCode,),
                 const Spacer(),
+                if(enabled)
                 const Icon(AppIcons.arrowForward),
               ],
             ),
@@ -57,6 +66,7 @@ class CountrySelector extends StatelessWidget {
   CountryListThemeData _theme(BuildContext context) => CountryListThemeData(
     inputDecoration: InputDecoration(
       labelText: "البحث",
+      enabled: enabled,
       labelStyle: context.textTheme.bodySmall,
       border: context.inputDecorationTheme.border,
       enabledBorder: context.inputDecorationTheme.enabledBorder,

@@ -1,4 +1,4 @@
-/* 
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 extension CubitExt<T> on Cubit<T> {
@@ -8,4 +8,4 @@ extension CubitExt<T> on Cubit<T> {
       emit(state);
     }
   }
-} */
+}

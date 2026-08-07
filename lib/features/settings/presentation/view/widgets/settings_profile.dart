@@ -23,7 +23,7 @@ class SettingsProfile extends StatelessWidget {
         const UsernameField(),
         const EmailField(),
         const DateField(),
-        CountrySelector(country: Country.parse("EG"), onChanged: (_){}),
+        CountrySelector(country: Country.parse("EG"), enabled: false, header: "البلد",),
         const BioField(),
         const SettingsProfileInterests(),
         const GenderSelector(),

@@ -12,6 +12,7 @@ import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/routing/routes.dart';
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_icons.dart';
+import 'package:eze/core/utils/fake_data.dart';
 import 'package:eze/features/settings/presentation/view/layout/blocked_users_list.dart';
 import 'package:eze/features/settings/presentation/view/layout/languages_list.dart';
 import 'package:eze/features/settings/presentation/view/layout/system_control_list.dart';

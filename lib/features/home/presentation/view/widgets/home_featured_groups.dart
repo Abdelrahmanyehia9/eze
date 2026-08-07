@@ -5,12 +5,18 @@ class _HomeFeaturedGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: UISizes.h8,
-      children: const [
-        SectionHeader(title: "ابرز المجموعات", action: "الكل"),
-        ConversationList(count: 4),
-      ],
+    return  BaseBlocConsumer<PopularGroupsCubit, List<ConversationEntity>>(
+      successBuilder: _builder,
+      loadingBuilder: ()=>_builder(ConversationEntity.fake.fakeList()),
     );
   }
+
+  Widget _builder(List<ConversationEntity> conversations)=> Column(
+    children: [
+      const SectionHeader(title: "ابرز المجموعات", action: "الكل"),
+      ConversationList(
+        conversations: conversations,
+      ),
+    ],
+  );
 }
