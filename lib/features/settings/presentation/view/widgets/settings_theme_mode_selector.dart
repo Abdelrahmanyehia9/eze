@@ -1,7 +1,8 @@
 part of "settings_theme.dart";
 
-class _SettingsAppThemeSelector extends StatelessWidget {
-  const _SettingsAppThemeSelector();
+class _SettingsThemeModeSelector extends StatelessWidget {
+  final ThemeMode themeMode ;
+  const _SettingsThemeModeSelector(this.themeMode);
 
   @override
   Widget build(BuildContext context) {
@@ -9,14 +10,14 @@ class _SettingsAppThemeSelector extends StatelessWidget {
       paddingVr: 0,
       paddingHr: 0,
       child: ListTile(
-        leading: Icon(AppIcons.lightTheme, size: UISizes.sp28),
+        leading: Icon(themeMode.icon, size: UISizes.sp28),
         title: AppText(
-          "سمة التطبيق",
+          "السمة ",
           style: context.textTheme.labelMedium,
           height: 0,
         ),
         subtitle: AppText(
-          "الوضع النهارى",
+          themeMode.title,
           style: context.textTheme.bodySmall,
           height: 0,
           color: context.colors.surfaceContainer,

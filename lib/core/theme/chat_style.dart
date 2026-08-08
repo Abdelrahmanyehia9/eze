@@ -13,6 +13,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
   final Color appBarForegroundColor;
   final String? chatBackgroundImage;
   final Color? chatBackgroundColor;
+  final double fontSize ;
 
   const ChatStyle({
     required this.outgoingBubbleColor,
@@ -26,6 +27,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
     required this.appBarForegroundColor,
     this.chatBackgroundColor,
     this.chatBackgroundImage,
+     this.fontSize = 18
   });
 
   @override
@@ -41,6 +43,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
     Color? appBarForegroundColor,
     Color? backgroundColor,
     String? backgroundImage,
+    double? fontSize
   }) {
     return ChatStyle(
       outgoingBubbleColor: outgoingBubbleColor ?? this.outgoingBubbleColor,
@@ -56,6 +59,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
           appBarForegroundColor ?? this.appBarForegroundColor,
       chatBackgroundColor: backgroundColor ?? chatBackgroundColor,
       chatBackgroundImage: backgroundImage ?? chatBackgroundImage,
+      fontSize: fontSize ?? this.fontSize
     );
   }
 
@@ -111,6 +115,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
         t,
       ),
       chatBackgroundImage: other.chatBackgroundImage,
+
     );
   }
 }

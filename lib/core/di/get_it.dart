@@ -23,6 +23,17 @@ import 'package:eze/features/home/domain/usecases/get_unread_conversations_use_c
 import 'package:eze/features/home/presentation/controller/boosted_users_cubit.dart';
 import 'package:eze/features/home/presentation/controller/popular_groups_cubit.dart';
 import 'package:eze/features/home/presentation/controller/unread_conversation_cubit.dart';
+import 'package:eze/features/profile/data/datasource/profile_local_datasource.dart';
+import 'package:eze/features/profile/data/datasource/profile_remote_datasource.dart';
+import 'package:eze/features/profile/data/repository/profile_repository_impl.dart';
+import 'package:eze/features/profile/domain/repository/profile_repository.dart';
+import 'package:eze/features/profile/domain/usecases/get_my_profile_use_case.dart';
+import 'package:eze/features/profile/presentation/controller/profile_cubit.dart';
+import 'package:eze/features/settings/data/datasource/settings_local_datasource.dart';
+import 'package:eze/features/settings/data/repository/settings_repository_impl.dart';
+import 'package:eze/features/settings/domain/repository/settings_repository.dart';
+import 'package:eze/features/settings/domain/usecases/get_app_settings_use_case.dart';
+import 'package:eze/features/settings/presentation/controller/settings_cubit.dart';
 import 'package:eze/shared/data/datasource/conversation_local_datasource.dart';
 import 'package:eze/shared/data/datasource/conversation_remote_datasource.dart';
 import 'package:eze/shared/data/repository/conversation_repository_impl.dart';
@@ -71,6 +82,17 @@ class DI {
     sl.registerLazySingleton<ChatRemoteDatasource>(
       () => ChatRemoteDatasource(),
     );
+
+
+    sl.registerLazySingleton<ProfileRemoteDatasource>(
+          () => ProfileRemoteDatasource(),
+    );
+    sl.registerLazySingleton<ProfileLocalDatasource>(
+          () => ProfileLocalDatasource(),
+    );
+    sl.registerLazySingleton<SettingsLocalDatasource>(
+          () => SettingsLocalDatasource(),
+    );
   }
 
   static void _registerRepositories() {
@@ -97,6 +119,17 @@ class DI {
         remoteDatasource: sl<ChatRemoteDatasource>(),
       ),
     );
+    sl.registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(
+        localDatasource: sl<ProfileLocalDatasource>(),
+        remoteDatasource: sl<ProfileRemoteDatasource>(),
+      ),
+    );
+    sl.registerLazySingleton<SettingsRepository>(
+      () => SettingsRepositoryImpl(
+        localDatasource: sl<SettingsLocalDatasource>(),
+      ),
+    );
   }
 
   static void _registerUseCases() {
@@ -121,6 +154,13 @@ class DI {
     sl.registerFactory<GetChatMessagesByIdUseCase>(
       () => GetChatMessagesByIdUseCase(sl<ChatRepository>()),
     );
+    sl.registerFactory<GetProfileInfoUseCase>(
+      () => GetProfileInfoUseCase(sl<ProfileRepository>()),
+    );
+    sl.registerFactory<GetAppSettingsUseCase>(
+      () => GetAppSettingsUseCase(sl<SettingsRepository>()),
+    );
+
   }
 
   static void _registerCubits() {
@@ -146,6 +186,12 @@ class DI {
     );
     sl.registerFactory<ChatByIdCubit>(
       () => ChatByIdCubit(sl<GetChatMessagesByIdUseCase>()),
+    );
+    sl.registerFactory<ProfileCubit>(
+      () => ProfileCubit(sl<GetProfileInfoUseCase>()),
+    );
+    sl.registerFactory<SettingsCubit>(
+      () => SettingsCubit(sl<GetAppSettingsUseCase>()),
     );
 
   }

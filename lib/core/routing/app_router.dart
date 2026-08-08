@@ -1,15 +1,24 @@
 import 'package:eze/core/di/get_it.dart';
 import 'package:eze/core/routing/routes.dart';
+import 'package:eze/features/auth/data/models/otp_verification_screen_args.dart';
 import 'package:eze/features/auth/presentation/view/auth_screen.dart';
 import 'package:eze/features/auth/presentation/view/otp_verification_screen.dart';
 import 'package:eze/features/auth/presentation/view/phone_login_screen.dart';
 import 'package:eze/features/chat/presentation/controller/chat_by_id_cubit.dart';
+import 'package:eze/features/chat/presentation/view/chat_requests_screen.dart';
 import 'package:eze/features/chat/presentation/view/chat_screen.dart';
 import 'package:eze/features/intro/presentation/view/splash_screen.dart';
+import 'package:eze/features/profile/domain/entities/profile_entity.dart';
+import 'package:eze/features/profile/presentation/controller/profile_cubit.dart';
 import 'package:eze/features/profile/presentation/view/profile_gallery_screen.dart';
 import 'package:eze/features/profile/presentation/view/profile_screen.dart';
+import 'package:eze/features/settings/data/model/settings_details_screen_args.dart';
+import 'package:eze/features/settings/data/model/settings_screen_args.dart';
+import 'package:eze/features/settings/presentation/controller/settings_cubit.dart';
 import 'package:eze/features/settings/presentation/view/setting_details_screen.dart';
 import 'package:eze/features/settings/presentation/view/settings_screen.dart';
+import 'package:eze/shared/data/models/typed_media_model.dart';
+import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:eze/shared/domain/entities/conversation_peer_entity.dart';
 import 'package:eze/shared/presentation/controllers/main_layout_cubit.dart';
 import 'package:eze/shared/presentation/view/main_layout.dart';
@@ -26,8 +35,8 @@ class AppRouter {
       case Routes.phoneLogin:
         return _page(const PhoneLoginScreen(), name: Routes.phoneLogin);
       case Routes.otpVerification:
-        final OtpVerificationArgs args =
-            settings.arguments as OtpVerificationArgs;
+        final OtpVerificationScreenArgs args =
+            settings.arguments as OtpVerificationScreenArgs;
         return _page(
           OtpVerificationScreen(args: args),
           name: Routes.otpVerification,
@@ -37,6 +46,12 @@ class AppRouter {
           MultiBlocProvider(
             providers: [
               BlocProvider(create: (context) => sl<MainLayoutCubit>()),
+              BlocProvider(
+                create: (context) => sl<ProfileCubit>()..getProfileData(),
+              ),
+              BlocProvider(
+                create: (context) => sl<SettingsCubit>()..getSettings(),
+              ),
             ],
             child: const MainLayout(),
           ),
@@ -44,9 +59,21 @@ class AppRouter {
         );
 
       case Routes.profile:
-        return _page(const ProfileScreen(), name: Routes.profile);
+        final ProfileEntity profile = settings.arguments as ProfileEntity;
+        return _page(ProfileScreen(profile: profile), name: Routes.profile);
       case Routes.settings:
-        return _page(const SettingsScreen(), name: Routes.settings);
+        final SettingsScreenArgs args =
+            settings.arguments as SettingsScreenArgs;
+        return _page(
+          MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: args.profileCubit),
+              BlocProvider.value(value: args.settingsCubit),
+            ],
+            child: const SettingsScreen(),
+          ),
+          name: Routes.settings,
+        );
       case Routes.chat:
         final ConversationPeerEntity sender =
             settings.arguments as ConversationPeerEntity;
@@ -58,9 +85,7 @@ class AppRouter {
                     sl<ChatByIdCubit>()..getChatById(id: sender.uid),
               ),
             ],
-            child:  ChatScreen(
-              sender: sender,
-            ),
+            child: ChatScreen(sender: sender),
           ),
           name: Routes.chat,
         );
@@ -72,7 +97,20 @@ class AppRouter {
         );
 
       case Routes.profileGallery:
-        return _page(const ProfileGalleryScreen(), name: Routes.profileGallery);
+        final List<TypedMediaModel> gallery =
+            settings.arguments as List<TypedMediaModel>;
+        return _page(
+          ProfileGalleryScreen(gallery: gallery),
+          name: Routes.profileGallery,
+        );
+
+      case Routes.chatRequests:
+        final List<ConversationEntity> conv =
+            settings.arguments as List<ConversationEntity>;
+        return _page(
+          ChatRequestsScreen(conversations: conv),
+          name: Routes.chatRequests,
+        );
       default:
         return null;
     }

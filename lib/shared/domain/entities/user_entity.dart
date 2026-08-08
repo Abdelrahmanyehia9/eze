@@ -20,4 +20,6 @@ class UserEntity extends Equatable {
     username: FakeData.string(),
     image: FakeData.string(),
   );
+
+  bool get isMe => uid == "1" ;
 }

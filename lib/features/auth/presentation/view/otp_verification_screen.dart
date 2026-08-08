@@ -8,6 +8,7 @@ import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/theme/text_styles.dart';
 import 'package:eze/core/utils/app_assets.dart';
+import 'package:eze/features/auth/data/models/otp_verification_screen_args.dart';
 import 'package:eze/features/auth/presentation/view/widgets/otp_cold_down.dart';
 import 'package:eze/shared/presentation/view/widgets/buttons/default_button.dart';
 import 'package:eze/shared/presentation/view/widgets/inputs/otp_field.dart';
@@ -15,20 +16,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class OtpVerificationArgs {
-  final String code;
-  final String phone;
-  final OtpChannel channel;
-
-  OtpVerificationArgs({
-    required this.code,
-    required this.phone,
-    this.channel = OtpChannel.sms,
-  });
-}
 
 class OtpVerificationScreen extends StatefulWidget {
-  final OtpVerificationArgs args;
+  final OtpVerificationScreenArgs args;
   const OtpVerificationScreen({super.key, required this.args});
 
   @override

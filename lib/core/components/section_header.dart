@@ -30,11 +30,13 @@ class SectionHeader extends StatelessWidget {
   factory SectionHeader.smallHeader(
     String title, {
     required BuildContext context,
+        TextStyle ?style,
+        double? paddingVr
   }) => SectionHeader(
     title: title,
     hasAction: false,
-    paddingVr: 6,
-    titleStyle: context.textTheme.titleSmall?.copyWith(fontSize: UISizes.sp14),
+    paddingVr: paddingVr ?? 6,
+    titleStyle: style ?? context.textTheme.titleSmall?.copyWith(fontSize: UISizes.sp14),
   );
 
   @override

@@ -10,4 +10,5 @@ class Routes {
   static const String chat = "/chat";
   static const String settingDetails = "/setting-details";
   static const String profileGallery = "/profile-gallery";
+  static const String chatRequests = "/chat-requests" ;
 }

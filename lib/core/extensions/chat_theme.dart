@@ -11,6 +11,7 @@ extension ToBubble on ChatStyle {
       senderNameColor: isMe ? incomingBubbleColor : senderNameColor,
       replyBackgroundColor: replyBackgroundColor,
       replyBorderColor: isMe ? incomingBubbleColor : replyBorderColor,
+      fontSize: fontSize
     );
   }
 }

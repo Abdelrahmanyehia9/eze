@@ -6,6 +6,7 @@ import 'package:eze/core/enums/otp_channel.dart';
 import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/routing/routes.dart';
+import 'package:eze/features/auth/data/models/otp_verification_screen_args.dart';
 import 'package:eze/features/auth/presentation/view/otp_verification_screen.dart';
 import 'package:eze/shared/presentation/view/widgets/buttons/default_button.dart';
 import 'package:eze/shared/presentation/view/widgets/selectors/country_selector.dart';
@@ -35,7 +36,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
       child: OtpChannelSelector(channels: OtpChannel.channelsOfVerifyPhone),
     );
     if (channel != null && mounted) {
-      final args = OtpVerificationArgs(
+      final args = OtpVerificationScreenArgs(
         code: _countryNotifier.value.phoneCode,
         phone: _phoneController.text,
         channel: channel,

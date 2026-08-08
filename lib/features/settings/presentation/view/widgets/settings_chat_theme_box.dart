@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 class SettingsChatThemeBox extends StatelessWidget {
   final ChatStyle theme;
-
   final bool isSelected;
 
   const SettingsChatThemeBox({
@@ -28,8 +27,8 @@ class SettingsChatThemeBox extends StatelessWidget {
       data: const RibbonData(text: "المختار"),
       child: Container(
         padding: EdgeInsets.all(UISizes.sp8),
-        height: UISizes.sp128,
-        width: UISizes.sp110,
+        height: UISizes.sp110,
+        width: UISizes.sp96,
         decoration: BoxDecoration(
           color: backgroundColor,
           border: Border.all(

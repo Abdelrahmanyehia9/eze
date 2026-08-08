@@ -6,19 +6,9 @@ import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_icons.dart';
+import 'package:eze/features/settings/data/model/settings_details_screen_args.dart';
 import 'package:flutter/material.dart';
 
-class SettingDetailsScreenArgs {
-  final String title;
-  final String? info;
-  final Widget body;
-
-  SettingDetailsScreenArgs({
-    required this.title,
-    this.info,
-    required this.body,
-  });
-}
 
 class SettingDetailsScreen extends StatelessWidget {
   final SettingDetailsScreenArgs args;

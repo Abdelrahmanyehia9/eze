@@ -1,7 +1,9 @@
 part of '../profile_screen.dart';
 
 class _ProfileNameAndEmail extends StatelessWidget {
-  const _ProfileNameAndEmail();
+  final String username ;
+  final String? subtitle ;
+  const _ProfileNameAndEmail({required this.username, this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -9,13 +11,14 @@ class _ProfileNameAndEmail extends StatelessWidget {
       children: [
         AppText(
           textAlign: TextAlign.center,
-          "مريم خالد",
+          username,
           style: context.textTheme.labelLarge,
           height: 0,
         ),
+        if(subtitle!=null)
         AppText(
           textAlign: TextAlign.center,
-          "Mariem12@gmail.com",
+          subtitle,
           style: context.textTheme.bodyMedium,
           color: context.colors.surfaceContainer,
           height: 0,

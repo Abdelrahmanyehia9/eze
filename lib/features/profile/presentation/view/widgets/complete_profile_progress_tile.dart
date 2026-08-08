@@ -1,11 +1,12 @@
 part of '../profile_screen.dart';
 
 class _CompleteProfileProgressTile extends StatelessWidget {
-  const _CompleteProfileProgressTile();
+  final double profileProgress ;
+  const _CompleteProfileProgressTile(this.profileProgress);
 
   @override
   Widget build(BuildContext context) {
-    double value = 0.76;
+    double value = profileProgress;
     return AppCard(
       child: Row(
         spacing: UISizes.w16,

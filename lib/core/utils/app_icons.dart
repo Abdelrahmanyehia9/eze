@@ -51,4 +51,5 @@ abstract class AppIcons {
   static const IconData female = Icons.female;
   static const IconData nonBinary = Icons.transgender;
   static const IconData calender = CupertinoIcons.calendar;
+  static const IconData phone = CupertinoIcons.device_phone_portrait;
 }

@@ -31,11 +31,11 @@ class SettingsLanguageTile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(UISizes.r12),
-            child: SvgPicture.asset(locale.svg, width: UISizes.sp64),
+            child: SvgPicture.asset(locale.svg, width: UISizes.sp48),
           ),
           AppText(
             locale.title,
-            style: context.textTheme.labelLarge,
+            style: context.textTheme.labelMedium,
             color: isSelected ? color : null,
           ),
           const Spacer(),

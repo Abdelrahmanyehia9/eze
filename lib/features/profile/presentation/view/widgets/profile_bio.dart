@@ -1,7 +1,8 @@
 part of '../profile_screen.dart';
 
 class _ProfileBio extends StatelessWidget {
-  const _ProfileBio();
+  final String bio ;
+  const _ProfileBio(this.bio);
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +12,7 @@ class _ProfileBio extends StatelessWidget {
           SectionHeader.smallHeader("نبذة عنى", context: context),
           AppReadMore(
             maxLines: 2,
-            text:
-                "شخص طموح وهادئ، أقدّر الصداقات الحقيقية وأحب خوض التحديات. أستمتع بالموسيقى، والسفر، وتجربة أشياء جديدة، وأؤمن بأن الاحترام واللطف هما أساس أي علاقة ناجحة.",
+            text:bio,
             style: context.textTheme.bodyMedium,
           ),
         ],

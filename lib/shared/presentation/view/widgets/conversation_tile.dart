@@ -1,13 +1,12 @@
 import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/components/app_icon_text.dart';
 import 'package:eze/core/components/app_text.dart';
-import 'package:eze/core/enums/message_status.dart';
+import 'package:eze/core/extensions/chat_theme.dart';
 import 'package:eze/core/extensions/date_time.dart';
 import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/variables.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
-import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/time_message.dart';
 import 'package:eze/core/routing/routes.dart';
 import 'package:eze/core/theme/text_styles.dart';
@@ -36,9 +35,12 @@ class ConversationTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppText(peer.name, style: context.textTheme.labelMedium),
+                  AppText(peer.name, style: context.textTheme.labelMedium,
+                  ),
                   AppIconText(
-                    textStyle: context.textTheme.bodySmall,
+                    expandedText: true,
+                    textStyle: context.textTheme.bodyMedium,
+                    textSize: UISizes.sp18,
                     maxLines: 1,
                     customIcon: conversation.lastMessage.isMe ?  MessageReceiptIcon(status: status.status,): null,
                     textOverflow: TextOverflow.ellipsis,

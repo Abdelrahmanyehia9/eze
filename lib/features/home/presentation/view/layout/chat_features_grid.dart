@@ -9,7 +9,7 @@ class _ChatFeaturesGrid extends StatelessWidget {
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: ChatFeatures.values.length,
+      itemCount: ChatFeature.values.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: UISizes.sp2 * 1.1,
@@ -17,13 +17,13 @@ class _ChatFeaturesGrid extends StatelessWidget {
         mainAxisSpacing: UISizes.sp6,
       ),
       itemBuilder: (_, i) =>
-          _FeatureBox(feature: ChatFeatures.values[i], isEnabled: i == 0),
+          _FeatureBox(feature: ChatFeature.values[i], isEnabled: i == 0),
     );
   }
 }
 
 class _FeatureBox extends StatelessWidget {
-  final ChatFeatures feature;
+  final ChatFeature feature;
   final bool isEnabled;
   const _FeatureBox({required this.feature, this.isEnabled = true});
 

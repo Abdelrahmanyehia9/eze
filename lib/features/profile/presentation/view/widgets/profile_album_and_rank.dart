@@ -1,7 +1,10 @@
 part of '../profile_screen.dart';
 
 class _ProfileAlbumAndRank extends StatelessWidget {
-  const _ProfileAlbumAndRank();
+  final Rank rank;
+  final List<TypedMediaModel> gallery;
+
+  const _ProfileAlbumAndRank(this.rank, this.gallery);
 
   @override
   Widget build(BuildContext context) {
@@ -11,18 +14,27 @@ class _ProfileAlbumAndRank extends StatelessWidget {
         Expanded(
           child: _item(
             title: "الرتية الحالية",
-            subtitle: "جولد",
+            subtitle: rank.title,
             description: "استكشف مميزات ومتطلبات كل رتبة.",
             icon: AppIcons.champion,
-            iconColor: AppColors.gold,
+            iconColor: rank.color,
           ),
         ),
         Expanded(
-          child: _item(
-            title: "معرض الصور",
-            description: "اضغط لرؤية المعرض الخاص بك",
-            icon: AppIcons.gallery,
-            onTap: () => context.pushNamed(Routes.profileGallery),
+          child: Badge(
+            isLabelVisible: !gallery.isNullOrEmpty,
+            label: AppText(
+              gallery.length.toString(),
+              style: context.textTheme.labelMedium,
+              color: AppColors.white,
+            ),
+            child: _item(
+              title: "معرض الصور",
+              description: "اضغط لرؤية المعرض الخاص بك",
+              icon: AppIcons.gallery,
+              onTap: () =>
+                  context.pushNamed(Routes.profileGallery, arguments: gallery),
+            ),
           ),
         ),
       ],

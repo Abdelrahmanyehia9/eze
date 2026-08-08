@@ -3,7 +3,7 @@ import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 
-enum ChatFeatures {
+enum ChatFeature {
   autoTranslate,
   privacyMode,
   ghostMode,

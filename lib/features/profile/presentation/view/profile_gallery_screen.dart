@@ -5,16 +5,18 @@ import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:eze/features/profile/presentation/view/layout/profile_gallery_grid.dart';
+import 'package:eze/shared/data/models/typed_media_model.dart';
 import 'package:flutter/material.dart';
 
 class ProfileGalleryScreen extends StatelessWidget {
-  const ProfileGalleryScreen({super.key});
+  final List<TypedMediaModel> gallery ;
+  const ProfileGalleryScreen({super.key, required this.gallery});
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
       appBar: const DefaultAppBar(title: "معرض الصور", centerTitle: true),
-      body: ProfileGalleryGrid(start: _addNew()),
+      body: ProfileGalleryGrid(start: _addNew(), gallery: gallery,),
     );
   }
 

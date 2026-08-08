@@ -2,6 +2,7 @@ library;
 
 import 'package:eze/core/components/app_bottom_nav_bar.dart';
 import 'package:eze/core/components/app_scaffold.dart';
+import 'package:eze/core/components/base_bloc_consumer.dart';
 import 'package:eze/core/di/get_it.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:eze/features/chat/presentation/controller/all_conversations_cubit.dart';
@@ -13,6 +14,8 @@ import 'package:eze/features/home/presentation/controller/boosted_users_cubit.da
 import 'package:eze/features/home/presentation/controller/popular_groups_cubit.dart';
 import 'package:eze/features/home/presentation/controller/unread_conversation_cubit.dart';
 import 'package:eze/features/home/presentation/view/home_screen.dart';
+import 'package:eze/features/profile/domain/entities/profile_entity.dart';
+import 'package:eze/features/profile/presentation/controller/profile_cubit.dart';
 import 'package:eze/features/profile/presentation/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

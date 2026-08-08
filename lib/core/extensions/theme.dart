@@ -1,3 +1,4 @@
+import 'package:eze/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 
 extension ThemExt on BuildContext {
@@ -16,4 +17,19 @@ extension ThemExt on BuildContext {
   ButtonThemeData get buttonTheme => Theme.of(this).buttonTheme;
   bool get isRTL => Directionality.of(this) == TextDirection.rtl;
   CardThemeData get cardTheme => Theme.of(this).cardTheme;
+}
+
+
+extension ThemeModeExt on ThemeMode{
+
+  String get title =>switch(this){
+    ThemeMode.light=>"نهارى",
+    ThemeMode.dark => "ليلى",
+   ThemeMode.system => "النظاك"
+  };
+  IconData get icon =>switch(this){
+    ThemeMode.light=>AppIcons.lightTheme,
+    ThemeMode.dark => AppIcons.darkTheme,
+   ThemeMode.system => AppIcons.phone
+  };
 }

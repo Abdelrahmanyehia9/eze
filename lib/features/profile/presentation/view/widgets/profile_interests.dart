@@ -1,7 +1,8 @@
 part of '../profile_screen.dart';
 
 class _ProfileInterests extends StatelessWidget {
-  const _ProfileInterests();
+  final List<String>?interests ;
+  const _ProfileInterests(this.interests);
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +10,7 @@ class _ProfileInterests extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionHeader.smallHeader("الهوايات ", context: context),
-        const ProfileInterestsWrap()
+         ProfileInterestsWrap(interests: interests,)
       ],
     );
   }

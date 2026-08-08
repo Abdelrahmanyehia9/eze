@@ -8,41 +8,43 @@ class ConversationPeerEntity extends Equatable {
   final String uid;
   final String name;
   final String? image;
-  final ConversationType type ;
-  final DateTime lastOnline ;
+  final ConversationType type;
+
+  final DateTime lastOnline;
+
   const ConversationPeerEntity({
     required this.uid,
     required this.name,
-     this.image,
+    this.image,
     this.type = ConversationType.single,
-    required this.lastOnline
+    required this.lastOnline,
   });
 
   @override
   List<Object?> get props => [uid];
 
   static ConversationPeerEntity fake = ConversationPeerEntity(
-      uid: FakeData.string(2) ,
-      name: FakeData.string(),
-      type: ConversationType.group,
-      image: FakeData.string(4),
-    lastOnline: FakeData.dateTime
+    uid: FakeData.string(2),
+    name: FakeData.string(),
+    type: ConversationType.group,
+    image: FakeData.string(4),
+    lastOnline: FakeData.dateTime,
   );
-
-
 
   bool get isOnline {
     final threshold = DateTime.now().subtract(const Duration(minutes: 2));
     return lastOnline.isAfter(threshold);
   }
+
   bool get isOffline {
     final threshold = DateTime.now().subtract(const Duration(days: 40));
     return lastOnline.isBefore(threshold);
   }
+
   String get lastOnlineStr {
-    if(isOffline) return "غير متصل" ;
-    return isOnline ? "متصل الان" :  "متصل ${lastOnline.timeAgo(messages: TimeMessagesAr())}";
+    if (isOffline) return "غير متصل";
+    return isOnline
+        ? "متصل الان"
+        : "متصل ${lastOnline.timeAgo(messages: const TimeMessagesAr())}";
   }
-
-
 }

@@ -2,14 +2,20 @@ import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/section_header.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
+import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/features/chat/presentation/view/widgets/chat_bubble.dart';
+import 'package:eze/features/settings/domain/entities/theme_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsThemeCustomizeChatFont extends StatelessWidget {
-  const SettingsThemeCustomizeChatFont({super.key});
+  final ThemeEntity theme;
+
+  const SettingsThemeCustomizeChatFont({super.key, required this.theme});
 
   @override
   Widget build(BuildContext context) {
+    final fontSize =theme.chatTheme.fontSize ;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,9 +28,9 @@ class SettingsThemeCustomizeChatFont extends StatelessWidget {
           isMe: true,
           bubbleColor: context.colors.primary,
           child: AppText(
-            "مرحبا بك يا مريم , هذا مجرد نص استعراض للخط الحجم المتوسط",
+            "هذا مثال بسيط لمعاينة النص بالحجم الحالى (${theme.fontSizeStr}).",
             color: context.colors.onPrimary,
-            fontSize: UISizes.sp18,
+            fontSize: fontSize.sp,
           ),
         ),
       ],

@@ -30,6 +30,6 @@ class MessageEntity {
     if(!autoTranslate) return originalMessage.string ;
     return translatedMessage?.string ?? originalMessage.string ;
   }
-  bool get isMe => sender.uid == "1" ;
+  bool get isMe => sender.isMe;
 
 }

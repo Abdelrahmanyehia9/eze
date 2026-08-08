@@ -1,0 +1,6 @@
+enum MediaType {
+  photo ,
+  video ;
+
+
+}

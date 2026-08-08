@@ -1,7 +1,10 @@
 part of '../profile_screen.dart';
 
 class _ProfilePictureAndCover extends StatelessWidget {
-  const _ProfilePictureAndCover();
+  final String? profilePic ;
+  final String? cover ;
+  final String username ;
+  const _ProfilePictureAndCover({this.cover,required this.username, this.profilePic});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +20,14 @@ class _ProfilePictureAndCover extends StatelessWidget {
           child: AppCachedNetworkImage(
             width: context.width,
             height: coverSize,
-            "https://static.vecteezy.com/system/resources/thumbnails/071/963/718/small/a-beautiful-portrait-of-a-happy-young-african-woman-photo.jpg",
+            cover,
             placeholder: _placeHolderCover(context.width, coverSize),
           ),
         ),
         Positioned(
           bottom: 0,
           child: EditOverlay(
-            child: UserCircleAvatar(size: profileSize, username: FakeData.string(),),
+            child: UserCircleAvatar(size: profileSize, username: username, image: profilePic,),
             onEdit: () {},
           ),
         ),

@@ -15,6 +15,8 @@ import 'package:eze/core/utils/app_assets.dart';
 import 'package:eze/features/home/presentation/controller/boosted_users_cubit.dart';
 import 'package:eze/features/home/presentation/controller/popular_groups_cubit.dart';
 import 'package:eze/features/home/presentation/controller/unread_conversation_cubit.dart';
+import 'package:eze/features/profile/domain/entities/profile_entity.dart';
+import 'package:eze/features/profile/presentation/controller/profile_cubit.dart';
 import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:eze/shared/domain/entities/conversation_peer_entity.dart';
 import 'package:eze/shared/presentation/view/layout/users_circle_avatar_list.dart';
@@ -47,22 +49,17 @@ class HomeScreen extends StatelessWidget {
 
   Widget _header() => const _HomeCompleteProfileBanner();
 
-  Widget _body({bool showTitle = true}) => Builder(
+  Widget _body() => Builder(
     builder: (context) {
-      return Padding(
-        padding: EdgeInsetsGeometry.only(
-          top: showTitle ? 0 : context.safeTopArea + UISizes.sp16,
-        ),
-        child: Column(
-          spacing: UISizes.h12,
-          children: [
-            _HomeChatFeatures(showTitle: showTitle),
-            const _QuickMessagesPeople(),
-            const _HomeUnreadMessages(),
-            const _HomeFeaturedGroup(),
-          ],
-        ).paddingHr,
-      );
+      return Column(
+        spacing: UISizes.h12,
+        children: const [
+          _HomeChatFeatures(),
+          _QuickMessagesPeople(),
+          _HomeUnreadMessages(),
+          _HomeFeaturedGroup(),
+        ],
+      ).paddingHr;
     },
   );
 }

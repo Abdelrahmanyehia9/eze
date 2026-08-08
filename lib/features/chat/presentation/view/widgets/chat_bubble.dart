@@ -1,5 +1,4 @@
 import 'package:eze/core/components/app_text.dart';
-import 'package:eze/core/components/gap.dart';
 import 'package:eze/core/extensions/chat_theme.dart';
 import 'package:eze/core/extensions/date_time.dart';
 import 'package:eze/core/extensions/sizes.dart';
@@ -7,11 +6,11 @@ import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/core/theme/app_decorations.dart';
-import 'package:eze/core/utils/fake_data.dart';
 import 'package:eze/features/chat/presentation/view/widgets/message_recipt_icon.dart';
 import 'package:eze/shared/domain/entities/message_entity.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @immutable
 class BubbleStyle {
@@ -20,6 +19,7 @@ class BubbleStyle {
   final Color senderNameColor;
   final Color replyBackgroundColor;
   final Color replyBorderColor;
+  final double? fontSize ;
 
   const BubbleStyle({
     required this.bubbleColor,
@@ -27,6 +27,7 @@ class BubbleStyle {
     required this.senderNameColor,
     required this.replyBackgroundColor,
     required this.replyBorderColor,
+    this.fontSize
   });
 
   Color get statusIconColor => textColor;
@@ -110,6 +111,7 @@ class _ChatMessageStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fontSize = bubbleStyle.fontSize!=null ? bubbleStyle.fontSize!.sp *.8 :  UISizes.sp14 ;
     return Row(
       spacing: UISizes.sp2,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -120,7 +122,7 @@ class _ChatMessageStatus extends StatelessWidget {
           message.messageTime
               .time12Only(locale: "ar"),
           style: context.textTheme.bodySmall,
-          fontSize: UISizes.sp14,
+          fontSize: fontSize,
           color: bubbleStyle.textColor,
         ),
       ],
@@ -140,15 +142,20 @@ class _ChatMessageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fontSize = bubbleStyle.fontSize!=null ? bubbleStyle.fontSize!.sp  :  UISizes.sp18 ;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (showSenderName)
-          AppText(message.sender.username, color: bubbleStyle.senderNameColor),
+          AppText(message.sender.username, color: bubbleStyle.senderNameColor
+            , style: context.textTheme.labelSmall
+          , fontSize: fontSize*.8,
+          ),
         AppText(
           message.message(),
           style: context.textTheme.labelMedium,
           color: bubbleStyle.textColor,
+          fontSize: fontSize,
         ),
       ],
     );
