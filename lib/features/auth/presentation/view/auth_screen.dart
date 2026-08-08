@@ -8,6 +8,7 @@ import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/theme/app_colors.dart';
+import 'package:eze/core/theme/text_styles.dart';
 import 'package:eze/core/utils/app_assets.dart';
 import 'package:eze/features/auth/presentation/view/widgets/privacy_and_terms.dart';
 import 'package:eze/features/auth/presentation/view/widgets/social_buttons.dart';

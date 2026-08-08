@@ -34,7 +34,7 @@ class AppTheme {
       thickness: 0.8,
     ),
     colorScheme: AppColorScheme.light,
-    extensions: const [
+    extensions:  [
       MaterialPinThemeExtension(theme: AppPinFieldTheme.light),
       AppChatTheme.defaultLight,
     ],

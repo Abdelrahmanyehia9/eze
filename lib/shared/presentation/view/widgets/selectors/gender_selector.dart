@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 class GenderSelector extends StatelessWidget {
   final bool showHeader ;
-  const GenderSelector({super.key, this.showHeader =true});
+  final Gender? initialGender ;
+  const GenderSelector({super.key, this.initialGender, this.showHeader =true});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,8 @@ class GenderSelector extends StatelessWidget {
         SectionHeader.smallHeader("الجنس", context: context),
         AppDropdown<Gender>(
           items: Gender.values,
-          value: Gender.male,
+          value: initialGender,
+          hintText: "اختر الجنس",
           borderColor: Colors.transparent,
           padding: EdgeInsets.zero,
           onChange: (_){},

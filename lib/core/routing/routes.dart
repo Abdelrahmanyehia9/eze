@@ -4,6 +4,7 @@ class Routes {
   static const String auth = "/auth" ;
   static const String phoneLogin = "/phone-login";
   static const String otpVerification = "/otp-verification";
+  static const String completeProfile = "/complete-profile" ;
   static const String main = "/main";
   static const String settings = "/settings";
   static const String profile = "/profile";

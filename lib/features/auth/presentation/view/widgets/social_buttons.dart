@@ -29,7 +29,7 @@ class _AuthButton extends StatelessWidget {
         children: [
           AppIconText(
             color: Colors.black,
-            textStyle: context.textTheme.bodySmall,
+            textStyle: context.textTheme.bodyMedium,
             customIcon: svgIcon,
             text: title,
           ),

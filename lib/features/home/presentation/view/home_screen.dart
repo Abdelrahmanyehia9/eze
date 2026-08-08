@@ -17,6 +17,9 @@ import 'package:eze/features/home/presentation/controller/popular_groups_cubit.d
 import 'package:eze/features/home/presentation/controller/unread_conversation_cubit.dart';
 import 'package:eze/features/profile/domain/entities/profile_entity.dart';
 import 'package:eze/features/profile/presentation/controller/profile_cubit.dart';
+import 'package:eze/features/settings/domain/entities/settings_entity.dart';
+import 'package:eze/features/settings/domain/entities/system_control_entity.dart';
+import 'package:eze/features/settings/presentation/controller/settings_cubit.dart';
 import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:eze/shared/domain/entities/conversation_peer_entity.dart';
 import 'package:eze/shared/presentation/view/layout/users_circle_avatar_list.dart';

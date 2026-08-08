@@ -31,10 +31,18 @@ class SectionHeader extends StatelessWidget {
     String title, {
     required BuildContext context,
         TextStyle ?style,
-        double? paddingVr
+        double? paddingVr,
+        String? action,
+        GestureTapCallback? onAction,
+        TextStyle? actionStyle,
+        Widget ? customAction
   }) => SectionHeader(
     title: title,
-    hasAction: false,
+    hasAction: action != null || customAction !=null,
+    action: action,
+    customAction: customAction,
+    onAction: onAction,
+    actionStyle: actionStyle,
     paddingVr: paddingVr ?? 6,
     titleStyle: style ?? context.textTheme.titleSmall?.copyWith(fontSize: UISizes.sp14),
   );

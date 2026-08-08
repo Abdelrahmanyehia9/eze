@@ -52,4 +52,6 @@ abstract class AppIcons {
   static const IconData nonBinary = Icons.transgender;
   static const IconData calender = CupertinoIcons.calendar;
   static const IconData phone = CupertinoIcons.device_phone_portrait;
+  static const IconData warning = CupertinoIcons.exclamationmark_triangle;
+  static const IconData error = CupertinoIcons.exclamationmark_circle;
 }

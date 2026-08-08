@@ -1,3 +1,4 @@
+import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -21,13 +22,13 @@ abstract final class AppPinFieldTheme {
     borderWidth: 0.5,
     borderRadius: BorderRadius.all(Radius.circular(12)),
   );
-  static const MaterialPinTheme light = MaterialPinTheme(
+  static  MaterialPinTheme light = MaterialPinTheme(
     fillColor: AppColors.grey100,
     borderColor: AppColors.grey300,
     borderWidth: 1,
-    textStyle: TextStyle(color: AppColors.success600),
-    errorTextStyle: TextStyle(color: AppColors.error600),
-    disabledTextStyle: TextStyle(color: AppColors.grey400),
+    textStyle: TextStyle(color: AppColors.success600, fontSize: UISizes.sp20),
+    errorTextStyle: TextStyle(color: AppColors.error600, fontSize: UISizes.sp20),
+    disabledTextStyle: TextStyle(color: AppColors.grey400, fontSize: UISizes.sp20),
     focusedFillColor: AppColors.grey100,
     focusedBorderColor: AppColors.primary600,
     focusedBorderWidth: 1.5,

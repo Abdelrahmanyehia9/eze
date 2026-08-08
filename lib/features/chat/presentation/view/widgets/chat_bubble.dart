@@ -19,7 +19,7 @@ class BubbleStyle {
   final Color senderNameColor;
   final Color replyBackgroundColor;
   final Color replyBorderColor;
-  final double? fontSize ;
+  final double? fontSize;
 
   const BubbleStyle({
     required this.bubbleColor,
@@ -27,7 +27,7 @@ class BubbleStyle {
     required this.senderNameColor,
     required this.replyBackgroundColor,
     required this.replyBorderColor,
-    this.fontSize
+    this.fontSize,
   });
 
   Color get statusIconColor => textColor;
@@ -35,13 +35,13 @@ class BubbleStyle {
 
 class ChatBubble extends StatelessWidget {
   final ChatStyle? theme;
-  final MessageEntity message ;
-  const ChatBubble({super.key, required this.message, this.theme});
+  final MessageEntity message;
 
+  const ChatBubble({super.key, required this.message, this.theme});
 
   @override
   Widget build(BuildContext context) {
-    final bool isMe = message.isMe ;
+    final bool isMe = message.isMe;
     final theme = (this.theme ?? context.chatTheme).bubble(isMe);
     return Row(
       spacing: UISizes.sp4,
@@ -55,17 +55,29 @@ class ChatBubble extends StatelessWidget {
             spacing: UISizes.sp4,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if(message.repliedMessage!=null)
-              Padding(
-                padding:  EdgeInsets.only(bottom: UISizes.sp8),
-                child: _ReplyPreview(bubbleStyle: theme, repliedMessage: message.repliedMessage!,),
+              if (message.repliedMessage != null)
+                Padding(
+                  padding: EdgeInsets.only(bottom: UISizes.sp8),
+                  child: _ReplyPreview(
+                    bubbleStyle: theme,
+                    repliedMessage: message.repliedMessage!,
+                  ),
+                ),
+              _ChatMessageBody(
+                bubbleStyle: theme,
+                message: message,
+                showSenderName: !isMe,
               ),
-              _ChatMessageBody(bubbleStyle: theme,message: message ,showSenderName: !isMe),
-              _ChatMessageStatus(bubbleStyle: theme, message: message,),
+              _ChatMessageStatus(bubbleStyle: theme, message: message),
             ],
           ),
         ),
-        if (!isMe) UserCircleAvatar(size: UISizes.sp56, username: message.sender.username , image: message.sender.image,),
+        if (!isMe)
+          UserCircleAvatar(
+            size: UISizes.sp56,
+            username: message.sender.username,
+            image: message.sender.image,
+          ),
       ],
     );
   }
@@ -85,42 +97,45 @@ class ChatBubbleContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radius = UISizes.r20;
-    return Container(
-      constraints: BoxConstraints(maxWidth: context.width * .7),
-      padding: EdgeInsets.all(UISizes.sp12),
-      decoration: BoxDecoration(
-        color: bubbleColor,
-        boxShadow: AppDecorations.cardShadow,
-        borderRadius: BorderRadiusDirectional.only(
-          topStart: isMe ? Radius.zero : Radius.circular(radius),
-          topEnd: Radius.circular(radius),
-          bottomStart: Radius.circular(radius),
-          bottomEnd: isMe ? Radius.circular(radius) : Radius.zero,
-        ),
+    final radius = UISizes.r16;
+    return ClipRSuperellipse(
+      borderRadius: BorderRadiusDirectional.only(
+        topStart: isMe ? Radius.zero : Radius.circular(radius),
+        topEnd: Radius.circular(radius),
+        bottomStart: Radius.circular(radius),
+        bottomEnd: isMe ? Radius.circular(radius) : Radius.zero,
       ),
-      child: child,
+      child: Container(
+        constraints: BoxConstraints(maxWidth: context.width * .7),
+        padding: EdgeInsets.all(UISizes.sp12),
+        decoration: BoxDecoration(
+          color: bubbleColor,
+          boxShadow: AppDecorations.cardShadow,
+        ),
+        child: child,
+      ),
     );
   }
 }
 
 class _ChatMessageStatus extends StatelessWidget {
   final BubbleStyle bubbleStyle;
-   final MessageEntity message ;
+  final MessageEntity message;
+
   const _ChatMessageStatus({required this.bubbleStyle, required this.message});
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = bubbleStyle.fontSize!=null ? bubbleStyle.fontSize!.sp *.8 :  UISizes.sp14 ;
+    final fontSize = bubbleStyle.fontSize != null
+        ? bubbleStyle.fontSize!.sp * .8
+        : UISizes.sp14;
     return Row(
       spacing: UISizes.sp2,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        if (message.isMe)
-          MessageReceiptIcon(status: message.status),
+        if (message.isMe) MessageReceiptIcon(status: message.status),
         AppText(
-          message.messageTime
-              .time12Only(locale: "ar"),
+          message.messageTime.time12Only(locale: "ar"),
           style: context.textTheme.bodySmall,
           fontSize: fontSize,
           color: bubbleStyle.textColor,
@@ -132,24 +147,30 @@ class _ChatMessageStatus extends StatelessWidget {
 
 class _ChatMessageBody extends StatelessWidget {
   final BubbleStyle bubbleStyle;
-  final MessageEntity message ;
-  final bool showSenderName ;
-   const _ChatMessageBody({
+  final MessageEntity message;
+
+  final bool showSenderName;
+
+  const _ChatMessageBody({
     required this.bubbleStyle,
     required this.message,
-     required this.showSenderName
+    required this.showSenderName,
   });
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = bubbleStyle.fontSize!=null ? bubbleStyle.fontSize!.sp  :  UISizes.sp18 ;
+    final fontSize = bubbleStyle.fontSize != null
+        ? bubbleStyle.fontSize!.sp
+        : UISizes.sp18;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (showSenderName)
-          AppText(message.sender.username, color: bubbleStyle.senderNameColor
-            , style: context.textTheme.labelSmall
-          , fontSize: fontSize*.8,
+          AppText(
+            message.sender.username,
+            color: bubbleStyle.senderNameColor,
+            style: context.textTheme.labelSmall,
+            fontSize: fontSize * .8,
           ),
         AppText(
           message.message(),
@@ -164,8 +185,12 @@ class _ChatMessageBody extends StatelessWidget {
 
 class _ReplyPreview extends StatelessWidget {
   final BubbleStyle bubbleStyle;
-  final MessageEntity repliedMessage ;
-  const _ReplyPreview({required this.bubbleStyle, required this.repliedMessage});
+  final MessageEntity repliedMessage;
+
+  const _ReplyPreview({
+    required this.bubbleStyle,
+    required this.repliedMessage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -181,7 +206,11 @@ class _ReplyPreview extends StatelessWidget {
           ),
         ),
       ),
-      child: _ChatMessageBody(bubbleStyle: bubbleStyle, message: repliedMessage, showSenderName: true),
+      child: _ChatMessageBody(
+        bubbleStyle: bubbleStyle,
+        message: repliedMessage,
+        showSenderName: true,
+      ),
     );
   }
 }

@@ -192,26 +192,29 @@ class AppButton extends StatelessWidget {
       onTap: isClickable ? onTap : null,
       onDoubleTap: isClickable ? onDoubleTap : null,
       onLongPress: isClickable ? onLongPress : null,
-      child: Container(
-        alignment: Alignment.center,
-        width: fixedSize?.width,
-        height: fixedSize?.height,
-        padding: padding,
-        margin: margin,
-        decoration: BoxDecoration(
-          gradient: isDisabled ? null : gradient,
-          borderRadius: BorderRadius.circular(borderRadius ?? 16),
-          color: isDisabled
-              ? _resolvedDisabledColor(context)
-              : _resolvedColor(context),
-          border: Border.all(
+      child: ClipRSuperellipse(
+        borderRadius: BorderRadiusGeometry.circular(borderRadius??16),
+
+        child: Container(
+          alignment: Alignment.center,
+          width: fixedSize?.width,
+          height: fixedSize?.height,
+          padding: padding,
+          margin: margin,
+          decoration: BoxDecoration(
+            gradient: isDisabled ? null : gradient,
             color: isDisabled
-                ? _resolvedDisabledBorderColor(context)
-                : (borderColor ?? Colors.transparent),
-            width: borderWidth,
+                ? _resolvedDisabledColor(context)
+                : _resolvedColor(context),
+            border: Border.all(
+              color: isDisabled
+                  ? _resolvedDisabledBorderColor(context)
+                  : (borderColor ?? Colors.transparent),
+              width: borderWidth,
+            ),
           ),
+          child: isLoading ? _buildLoading(context) : child,
         ),
-        child: isLoading ? _buildLoading(context) : child,
       ),
     );
   }

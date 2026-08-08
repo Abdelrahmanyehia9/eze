@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  bottom_picker:
+    dependency: "direct main"
+    description:
+      name: bottom_picker
+      sha256: "9e710eafb33268d31241e6756b7566acf4471bb661aca6e179fe8f01ab45f3aa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.0"
   cached_network_image:
     dependency: "direct main"
     description:

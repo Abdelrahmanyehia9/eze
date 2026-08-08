@@ -2,6 +2,7 @@ import 'package:eze/core/di/get_it.dart';
 import 'package:eze/core/routing/routes.dart';
 import 'package:eze/features/auth/data/models/otp_verification_screen_args.dart';
 import 'package:eze/features/auth/presentation/view/auth_screen.dart';
+import 'package:eze/features/auth/presentation/view/complete_profile_screen.dart';
 import 'package:eze/features/auth/presentation/view/otp_verification_screen.dart';
 import 'package:eze/features/auth/presentation/view/phone_login_screen.dart';
 import 'package:eze/features/chat/presentation/controller/chat_by_id_cubit.dart';
@@ -111,6 +112,9 @@ class AppRouter {
           ChatRequestsScreen(conversations: conv),
           name: Routes.chatRequests,
         );
+      case Routes.completeProfile:
+        return _page(const CompleteProfileScreen(), name: Routes.completeProfile);
+
       default:
         return null;
     }

@@ -10,6 +10,7 @@ import 'package:eze/core/components/app_text_read_more.dart';
 import 'package:eze/core/components/default_appbar.dart';
 import 'package:eze/core/components/gap.dart';
 import 'package:eze/core/components/section_header.dart';
+import 'package:eze/core/enums/profile_interests.dart';
 import 'package:eze/core/enums/rank.dart';
 import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/routing.dart';
@@ -29,6 +30,7 @@ import 'package:eze/features/settings/presentation/controller/settings_cubit.dar
 import 'package:eze/shared/data/models/typed_media_model.dart';
 import 'package:eze/shared/presentation/view/overlays/edit_overlay.dart';
 import 'package:eze/shared/presentation/view/widgets/circle_progress_with_value.dart';
+import 'package:eze/shared/presentation/view/widgets/cover_profile.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

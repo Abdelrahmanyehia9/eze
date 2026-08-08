@@ -7,28 +7,28 @@ class TextStyles {
   static const String arFontFamily = 'tajawal';
   static final TextStyle displayLarge = TextStyle(
     fontSize: 56.sp,
-    fontWeight: FontWeightHelper.regular,
+    fontWeight: FontWeightHelper.bold,
     letterSpacing: -0.25,
   );
   static final TextStyle displayMedium = TextStyle(
     fontSize: 48.sp,
-    fontWeight: FontWeightHelper.regular,
+    fontWeight: FontWeightHelper.bold,
   );
   static final TextStyle displaySmall = TextStyle(
     fontSize: 40.sp,
-    fontWeight: FontWeightHelper.regular,
+    fontWeight: FontWeightHelper.bold,
   );
   static final TextStyle headlineLarge = TextStyle(
     fontSize: 32.sp,
-    fontWeight: FontWeightHelper.bold,
+    fontWeight: FontWeightHelper.medium,
   );
   static final TextStyle headlineMedium = TextStyle(
     fontSize: 28.sp,
-    fontWeight: FontWeightHelper.bold,
+    fontWeight: FontWeightHelper.medium,
   );
   static final TextStyle headlineSmall = TextStyle(
     fontSize: 24.sp,
-    fontWeight: FontWeightHelper.bold,
+    fontWeight: FontWeightHelper.medium,
   );
   static final TextStyle titleLarge = TextStyle(
     fontSize: 20.sp,

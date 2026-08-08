@@ -37,30 +37,32 @@ class BottomSheets {
     double? borderRadius,
     List<BoxShadow>? shadow,
   }) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        boxShadow: shadow,
-        color: backgroundColor ?? context.colors.surfaceContainerLowest,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(borderRadius ?? UISizes.r12),
-        ),
+    return ClipRSuperellipse(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(borderRadius ?? UISizes.r12),
       ),
-      child: Padding(
-        padding: EdgeInsets.only(bottom: context.safeBottomArea),
-        child: Stack(
-          alignment: AlignmentDirectional.topEnd,
-          children: [
-            child,
-            if (showCloseButton)
-              AppClick(
-                onTap: context.pop,
-                child: CircleAvatar(
-                  radius: UISizes.sp20,
-                  backgroundColor: context.primaryColor,
-                  child: Icon(AppIcons.close, size: 22.sp, color: Colors.white),
-                ).paddingVr.appPaddingHr(8),
-              ),
-          ],
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          boxShadow: shadow,
+          color: backgroundColor ?? context.colors.surfaceContainerLowest,
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(bottom: context.safeBottomArea),
+          child: Stack(
+            alignment: AlignmentDirectional.topEnd,
+            children: [
+              child,
+              if (showCloseButton)
+                AppClick(
+                  onTap: context.pop,
+                  child: CircleAvatar(
+                    radius: UISizes.sp20,
+                    backgroundColor: context.primaryColor,
+                    child: Icon(AppIcons.close, size: 22.sp, color: Colors.white),
+                  ).paddingVr.appPaddingHr(8),
+                ),
+            ],
+          ),
         ),
       ),
     );

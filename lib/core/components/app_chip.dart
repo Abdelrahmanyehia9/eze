@@ -141,39 +141,42 @@ class AppChip extends StatelessWidget {
           ],
         );
 
-    Widget chip = Container(
-      width: width,
-      height: height,
-      alignment: alignment,
-      padding: EdgeInsets.symmetric(
-        horizontal: paddingHr ?? UISizes.w8,
-        vertical: paddingVr ?? UISizes.h4,
-      ),
-      margin: EdgeInsets.symmetric(
-        horizontal: marginHr ?? 0,
-        vertical: marginVr ?? 0,
-      ),
-      decoration: BoxDecoration(
-        color: gradient == null
-            ? (monochromatic ? baseColor.veryLight : baseColor)
-            : null,
-        gradient: gradient,
-        borderRadius: effectiveRadius,
-        border: Border.all(
-          color: borderColor ?? Colors.transparent,
-          width: borderWidth ?? 1,
+    Widget chip = ClipRSuperellipse(
+      borderRadius: effectiveRadius ?? BorderRadius.zero,
+      clipBehavior: Clip.hardEdge,
+      child: Container(
+        width: width,
+        height: height,
+        alignment: alignment,
+        padding: EdgeInsets.symmetric(
+          horizontal: paddingHr ?? UISizes.w8,
+          vertical: paddingVr ?? UISizes.h4,
         ),
-        boxShadow: boxShadow,
-        shape: shape,
+        margin: EdgeInsets.symmetric(
+          horizontal: marginHr ?? 0,
+          vertical: marginVr ?? 0,
+        ),
+        decoration: BoxDecoration(
+          color: gradient == null
+              ? (monochromatic ? baseColor.veryLight : baseColor)
+              : null,
+          gradient: gradient,
+          border: Border.all(
+            color: borderColor ?? Colors.transparent,
+            width: borderWidth ?? 1,
+          ),
+          boxShadow: boxShadow,
+          shape: shape,
+        ),
+        clipBehavior: clipBehavior ?? Clip.hardEdge,
+        constraints: BoxConstraints(
+          maxWidth: maxWidth ?? double.infinity,
+          minWidth: minWidth ?? 0,
+          maxHeight: maxHeight ?? double.infinity,
+          minHeight: minHeight ?? 0,
+        ),
+        child: content,
       ),
-      clipBehavior: clipBehavior ?? Clip.hardEdge,
-      constraints: BoxConstraints(
-        maxWidth: maxWidth ?? double.infinity,
-        minWidth: minWidth ?? 0,
-        maxHeight: maxHeight ?? double.infinity,
-        minHeight: minHeight ?? 0,
-      ),
-      child: content,
     );
 
     // Wrap with tap handling only when needed, keeping ripple clipped
@@ -210,3 +213,5 @@ class AppChip extends StatelessWidget {
     return chip;
   }
 }
+
+

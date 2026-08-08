@@ -37,20 +37,19 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  AppScaffold(
+    return AppScaffold(
       appBar: const DefaultAppBar(),
       body: BaseBlocConsumer<SettingsCubit, SettingsEntity>(
-          successBuilder:(settings)=> _SettingsScreenBody(settings,),
-          loadingBuilder: ()=>_SettingsScreenBody(SettingsEntity.fake()),
-      )
+        successBuilder: (settings) => _SettingsScreenBody(settings),
+        loadingBuilder: () => _SettingsScreenBody(SettingsEntity.fake()),
+      ),
     );
   }
-
-
 }
 
 class _SettingsScreenBody extends StatelessWidget {
   final SettingsEntity settings;
+
   const _SettingsScreenBody(this.settings);
 
   @override
@@ -61,7 +60,9 @@ class _SettingsScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const _SettingsProfileOverview(),
-          _buildAccountSection(context),
+          BaseBlocConsumer<ProfileCubit, ProfileEntity>(
+            successBuilder: (p) => _buildAccountSection(context, p),
+          ),
           _buildAppSettingsSection(context),
           _buildAboutAppSection(),
           _buildSupportSection(),
@@ -70,70 +71,72 @@ class _SettingsScreenBody extends StatelessWidget {
       ),
     );
   }
+
   _SettingsSection _buildAccountSection(
-      BuildContext context,
-      ) =>
-      _SettingsSection(
-        header: "الحساب",
-        data: [
-          _SettingTileData(
-            title: "المعلومات الشخصية",
-            subTitle: "الاسم ,تاريخ الميلاد,الجنس ... الخ",
-            iconData: AppIcons.profileCircle,
-            onTap: () => context.pushNamed(
-              Routes.settingDetails,
-              arguments: SettingDetailsScreenArgs(
-                title: "الملف الشخصى ",
-                body: const SettingsProfile(),
-              ),
-            ),
+    BuildContext context,
+    ProfileEntity entity,
+  ) => _SettingsSection(
+    header: "الحساب",
+    data: [
+      _SettingTileData(
+        title: "المعلومات الشخصية",
+        subTitle: "الاسم ,تاريخ الميلاد,الجنس ... الخ",
+        iconData: AppIcons.profileCircle,
+        onTap: () => context.pushNamed(
+          Routes.settingDetails,
+          arguments: SettingDetailsScreenArgs(
+            title: "الملف الشخصى ",
+            body: SettingsProfile(profile: entity),
           ),
-          _SettingTileData(
+        ),
+      ),
+      _SettingTileData(
+        title: "عناصر التحكم",
+        iconData: AppIcons.control,
+        onTap: () => context.pushNamed(
+          Routes.settingDetails,
+          arguments: SettingDetailsScreenArgs(
             title: "عناصر التحكم",
-            iconData: AppIcons.control,
-            onTap: () => context.pushNamed(
-              Routes.settingDetails,
-              arguments: SettingDetailsScreenArgs(
-                title: "عناصر التحكم",
-                info:
+            info:
                 "تحكّم في الميزات الحصرية للتطبيق لتخصيص تجربتك والاستفادة من الإمكانيات التي تناسب أسلوب استخدامك.",
-                body:  ChatFeaturesList(
-                  features: settings.sysControl.features,
-                ),
-              ),
-            ),
+            body: ChatFeaturesList(features: settings.sysControl.features),
           ),
-          _SettingTileData(
-            title: "الحسابات المحظورة ",
-            iconData: AppIcons.block,
-            customTrailing: AppIconText(
-              reverse: true,
-              text: "15",
-              iconSize: UISizes.sp18,
-              icon: AppIcons.arrowForward,
-            ),
-            onTap: () => context.pushNamed(
-              Routes.settingDetails,
-              arguments: SettingDetailsScreenArgs(
-                title: "الحسابات المحظورة",
-                info:
+        ),
+      ),
+      _SettingTileData(
+        title: "الحسابات المحظورة ",
+        iconData: AppIcons.block,
+        customTrailing: AppIconText(
+          reverse: true,
+          text: "15",
+          iconSize: UISizes.sp18,
+          icon: AppIcons.arrowForward,
+        ),
+        onTap: () => context.pushNamed(
+          Routes.settingDetails,
+          arguments: SettingDetailsScreenArgs(
+            title: "الحسابات المحظورة",
+            info:
                 "الحسابات التي منعت تواصلها معك، ويمكنك إلغاء الحظر عنها متى شئت.",
-                body: const BlockedUsersList(),
-              ),
-            ),
+            body: const BlockedUsersList(),
           ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 
   _SettingsSection _buildAppSettingsSection(
-      BuildContext context,
-      ) => _SettingsSection(
+    BuildContext context,
+  ) => _SettingsSection(
     header: "الاعدادات",
     data: [
       _SettingTileData(
         title: "الاشعارات ",
         iconData: AppIcons.notification,
-        customTrailing: AppSwitch(value: settings.enabledNotification, onChanged: (_) {}),
+        customTrailing: AppSwitch(
+          value: settings.enabledNotification,
+          onChanged: (_) {},
+        ),
       ),
       _SettingTileData(
         title: "السمة",
@@ -144,8 +147,8 @@ class _SettingsScreenBody extends StatelessWidget {
           arguments: SettingDetailsScreenArgs(
             title: "السمة",
             info:
-            "تحكم في مظهر التطبيق بالكامل، بما في ذلك السمة، وألوان الدردشات، والخطوط، وغيرها من خيارات التخصيص، لتصميم تجربة تناسب ذوقك.",
-            body:  SettingsTheme(theme: settings.theme,),
+                "تحكم في مظهر التطبيق بالكامل، بما في ذلك السمة، وألوان الدردشات، والخطوط، وغيرها من خيارات التخصيص، لتصميم تجربة تناسب ذوقك.",
+            body: SettingsTheme(theme: settings.theme),
           ),
         ),
       ),
@@ -163,7 +166,8 @@ class _SettingsScreenBody extends StatelessWidget {
           arguments: SettingDetailsScreenArgs(
             title: "اللغة",
             body: const LanguagesList(),
-            info: "غيّر لغة واجهة التطبيق واختر اللغة التي تناسبك لتجربة استخدام أكثر راحة وسهولة.",
+            info:
+                "غيّر لغة واجهة التطبيق واختر اللغة التي تناسبك لتجربة استخدام أكثر راحة وسهولة.",
           ),
         ),
       ),
@@ -195,6 +199,4 @@ class _SettingsScreenBody extends StatelessWidget {
       );
     },
   );
-
 }
-

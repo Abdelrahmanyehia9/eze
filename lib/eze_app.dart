@@ -21,7 +21,7 @@ class EzeApp extends StatelessWidget {
           navigatorKey: NavigationService.navigatorKey,
           scrollBehavior: AppScrollBehavior(),
           onGenerateRoute: router.generateRoute,
-          initialRoute: Routes.main,
+          initialRoute: Routes.completeProfile,
           theme: AppTheme.lightTheme(),
           debugShowCheckedModeBanner: false,
           darkTheme: AppTheme.darkTheme(),

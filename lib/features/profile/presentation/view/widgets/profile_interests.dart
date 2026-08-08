@@ -1,7 +1,7 @@
 part of '../profile_screen.dart';
 
 class _ProfileInterests extends StatelessWidget {
-  final List<String>?interests ;
+  final List<ProfileInterests>?interests ;
   const _ProfileInterests(this.interests);
 
   @override

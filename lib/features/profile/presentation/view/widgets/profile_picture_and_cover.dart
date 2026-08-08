@@ -17,12 +17,7 @@ class _ProfilePictureAndCover extends StatelessWidget {
         SizedBox(height: coverSize + (profileSize * .5)),
         EditOverlay(
           margin: EdgeInsets.all(UISizes.sp12),
-          child: AppCachedNetworkImage(
-            width: context.width,
-            height: coverSize,
-            cover,
-            placeholder: _placeHolderCover(context.width, coverSize),
-          ),
+          child: CoverProfile(cover, height: coverSize)
         ),
         Positioned(
           bottom: 0,
@@ -35,16 +30,4 @@ class _ProfilePictureAndCover extends StatelessWidget {
     );
   }
 
-  Widget _placeHolderCover(double width, double height) => Builder(
-    builder: (context) {
-      return ColoredBox(
-        color: context.colors.secondary,
-        child: SizedBox(
-          width: width,
-          height: height,
-          child: Center(child: AppLogo(size: height * .5)),
-        ),
-      );
-    },
-  );
 }

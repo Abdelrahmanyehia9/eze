@@ -1,5 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:eze/core/enums/gender.dart';
+import 'package:eze/core/enums/profile_interests.dart';
 import 'package:eze/core/enums/rank.dart';
 import 'package:eze/core/utils/fake_data.dart';
 import 'package:eze/shared/data/models/phone_number_model.dart';
@@ -9,7 +10,7 @@ import 'package:eze/shared/domain/entities/user_entity.dart';
 class ProfileEntity extends UserEntity {
   final String? email;
   final String? bio;
-  final List<String>? interests;
+  final List<ProfileInterests>? interests;
   final String? cover;
   final Gender? gender;
 
@@ -41,7 +42,7 @@ class ProfileEntity extends UserEntity {
     uid: FakeData.string(),
     username: FakeData.string(),
     bio: FakeData.string(24),
-    interests: FakeData.list<String>(FakeData.string()),
+    interests: FakeData.list<ProfileInterests>(ProfileInterests.animals),
   );
 
 

@@ -1,14 +1,12 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:eze/core/enums/gender.dart';
+import 'package:eze/core/enums/profile_interests.dart';
 import 'package:eze/core/enums/rank.dart';
 import 'package:eze/features/profile/domain/entities/profile_entity.dart';
 import 'package:eze/shared/data/models/typed_media_model.dart';
 
 class ProfileRemoteDatasource {
-
-
-
-  Future<ProfileEntity>getProfile([String? id])async{
+Future<ProfileEntity>getProfile([String? id])async{
     return ProfileEntity(
       uid: "1",
       username: "امينه خليل",
@@ -20,11 +18,10 @@ class ProfileRemoteDatasource {
       gender: Gender.female,
       country: Country.parse("EG"),
       interests:const [
-        "القراءة",
-        "السفر",
-        "التصوير",
-        "الطبخ",
-        "الرياضة",
+        ProfileInterests.reading,
+        ProfileInterests.travel,
+        ProfileInterests.cooking,
+        ProfileInterests.art
       ],
       cover: "https://bitajarod.com/wp-content/uploads/2025/10/aminakhalil.jpg",
       gallery: const [

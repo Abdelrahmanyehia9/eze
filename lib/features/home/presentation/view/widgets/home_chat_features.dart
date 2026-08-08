@@ -5,11 +5,16 @@ class _HomeChatFeatures extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SectionHeader(title: "عناصر التحكم"),
-        const _ChatFeaturesGrid(),
-      ],
+    return BaseBlocConsumer<SettingsCubit, SettingsEntity>(
+      successBuilder: _builder,
+      loadingBuilder: ()=>_builder(SettingsEntity.fake()),
     );
   }
+
+  Widget _builder(SettingsEntity settings)=>Column(
+    children: [
+      const SectionHeader(title: "عناصر التحكم"),
+       _ChatFeaturesGrid(settings.sysControl.features),
+    ],
+  );
 }
