@@ -1,14 +1,9 @@
-import 'package:eze/features/settings/domain/entities/settings_entity.dart';
-import 'package:flutter/material.dart';
+import 'package:eze/core/enums/settings_detail_type.dart';
+import 'package:eze/features/profile/domain/entities/profile_entity.dart';
 
 class SettingDetailsScreenArgs {
-  final String title;
-  final String? info;
-  final Widget  body;
+  const SettingDetailsScreenArgs({required this.type, this.profile});
 
-  SettingDetailsScreenArgs({
-    required this.title,
-    this.info,
-    required this.body,
-  });
+  final SettingDetailType type;
+  final ProfileEntity? profile;
 }

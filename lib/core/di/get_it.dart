@@ -40,6 +40,7 @@ import 'package:eze/shared/data/datasource/conversation_remote_datasource.dart';
 import 'package:eze/shared/data/repository/conversation_repository_impl.dart';
 import 'package:eze/shared/domain/repository/conversation_repository.dart';
 import 'package:eze/shared/presentation/controllers/main_layout_cubit.dart';
+import 'package:eze/shared/presentation/controllers/selection_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt sl = GetIt.instance;
@@ -202,6 +203,12 @@ class DI {
     );
     sl.registerFactory<SystemControlCubit>(
       () => SystemControlCubit(
+        sl<GetAppSettingsUseCase>(),
+        sl<EditAppSettingsUseCase>(),
+      ),
+    );
+    sl.registerFactory<NotificationCubit>(
+      () => NotificationCubit(
         sl<GetAppSettingsUseCase>(),
         sl<EditAppSettingsUseCase>(),
       ),

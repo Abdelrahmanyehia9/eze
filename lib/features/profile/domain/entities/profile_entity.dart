@@ -13,9 +13,7 @@ class ProfileEntity extends UserEntity {
   final List<ProfileInterests>? interests;
   final String? cover;
   final Gender? gender;
-
   final DateTime? birthDate;
-
   final List<TypedMediaModel> gallery;
   final Rank rank;
   final Country? country;
@@ -60,7 +58,7 @@ extension ProfileEntityExt on ProfileEntity {
     gallery,
     rank,
     country,
-    phone
+    phone,
   ];
 
   List<Object> get _unNullable => _fields.whereType<Object>().toList();

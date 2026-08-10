@@ -7,8 +7,12 @@ import 'package:flutter_svg/svg.dart';
 
 class SettingsSystemControlTile extends StatelessWidget {
   final ChatFeatureEntity entity;
-  final ValueChanged<ChatFeatureEntity> onChanged ;
-  const SettingsSystemControlTile(this.entity, {super.key, required this.onChanged});
+  final ValueChanged<ChatFeatureEntity> onChanged;
+  const SettingsSystemControlTile(
+    this.entity, {
+    super.key,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +26,11 @@ class SettingsSystemControlTile extends StatelessWidget {
               width: UISizes.sp32,
               colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
             ),
-      title:feature.title,
+      title: feature.title,
       subtitle: feature.description,
       customTrailing: AppSwitch(
         value: entity.enabled,
-        onChanged: (r)=>onChanged.call(entity.copyWith(enabled: r)),
+        onChanged: (r) => onChanged.call(entity.copyWith(enabled: r)),
         activeColor: color,
       ),
     );

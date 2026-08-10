@@ -7,11 +7,13 @@ class ConversationEntity extends Equatable {
   final ConversationPeerEntity peer;
   final MessageStatusEntity messageStatus;
   final MessageEntity lastMessage;
+  final bool pinned;
 
   const ConversationEntity({
     required this.peer,
     required this.messageStatus,
     required this.lastMessage,
+    this.pinned = false,
   });
 
   @override
@@ -21,5 +23,12 @@ class ConversationEntity extends Equatable {
     peer: ConversationPeerEntity.fake,
     messageStatus: MessageStatusEntity.fake,
     lastMessage: MessageEntity.fake(),
+  );
+
+  ConversationEntity copyWith({bool? pinned}) => ConversationEntity(
+    peer: peer,
+    messageStatus: messageStatus,
+    pinned: pinned ?? this.pinned,
+    lastMessage: lastMessage,
   );
 }

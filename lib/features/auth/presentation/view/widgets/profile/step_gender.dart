@@ -12,8 +12,8 @@ class _StepGender extends StatelessWidget {
         Wrap(
           spacing: UISizes.sp8,
           runSpacing: UISizes.sp8,
-          children: List.generate(genders.length, (i)=>_item(genders[i])),
-        )
+          children: List.generate(genders.length, (i) => _item(genders[i])),
+        ),
       ],
     );
   }

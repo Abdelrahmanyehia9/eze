@@ -9,7 +9,8 @@ import 'package:eze/features/settings/domain/usecases/get_app_settings_use_case.
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'local_cubit.dart';
 part 'system_control_cubit.dart';
-part 'theme_cubit.dart' ;
+part 'theme_cubit.dart';
+part 'notification_cubit.dart';
 
 abstract class BaseSettingsCubit<T> extends Cubit<BaseState<T>> {
   final GetAppSettingsUseCase _getUseCase;
@@ -31,6 +32,7 @@ abstract class BaseSettingsCubit<T> extends Cubit<BaseState<T>> {
 
     safeEmit(.success(select(settings)));
   }
+
   Future<void> _edit(SettingsEntity settings) async {
     safeEmit(const .loading());
 

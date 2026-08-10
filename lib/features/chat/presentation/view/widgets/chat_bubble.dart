@@ -1,9 +1,12 @@
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/extensions/chat_theme.dart';
+import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/date_time.dart';
 import 'package:eze/core/extensions/sizes.dart';
 import 'package:eze/core/extensions/theme.dart';
+import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
+import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/theme/app_decorations.dart';
 import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/features/chat/presentation/view/widgets/message_recipt_icon.dart';
@@ -36,49 +39,60 @@ class BubbleStyle {
 
 class ChatBubble extends StatelessWidget {
   final MessageEntity message;
-  final BubbleStyle  style ;
-  const ChatBubble({super.key,required this.style, required this.message,});
+  final BubbleStyle style;
+  final bool isSelected;
+  const ChatBubble({
+    super.key,
+    this.isSelected = false,
+    required this.style,
+    required this.message,
+  });
 
   @override
   Widget build(BuildContext context) {
     final bool isMe = message.isMe;
-    return Row(
-      spacing: UISizes.sp4,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      mainAxisAlignment: isMe ? MainAxisAlignment.start : MainAxisAlignment.end,
-      children: [
-        ChatBubbleContainer(
-          isMe: isMe,
-          bubbleColor: style.bubbleColor,
-          child: Column(
-            spacing: UISizes.sp4,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (message.repliedMessage != null)
-                Padding(
-                  padding: EdgeInsets.only(bottom: UISizes.sp8),
-                  child: _ReplyPreview(
-                    bubbleStyle: style,
-                    repliedMessage: message.repliedMessage!,
+    return ColoredBox(
+      color: isSelected ? context.primaryColor.softLight : Colors.transparent,
+      child: Row(
+        spacing: UISizes.sp4,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: isMe
+            ? MainAxisAlignment.start
+            : MainAxisAlignment.end,
+        children: [
+          ChatBubbleContainer(
+            isMe: isMe,
+            bubbleColor: style.bubbleColor,
+            child: Column(
+              spacing: UISizes.sp4,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (message.repliedMessage != null)
+                  Padding(
+                    padding: EdgeInsets.only(bottom: UISizes.sp8),
+                    child: _ReplyPreview(
+                      bubbleStyle: style,
+                      repliedMessage: message.repliedMessage!,
+                    ),
                   ),
+                _ChatMessageBody(
+                  bubbleStyle: style,
+                  message: message,
+                  showSenderName: !isMe,
                 ),
-              _ChatMessageBody(
-                bubbleStyle: style,
-                message: message,
-                showSenderName: !isMe,
-              ),
-              _ChatMessageStatus(bubbleStyle: style, message: message),
-            ],
+                _ChatMessageStatus(bubbleStyle: style, message: message),
+              ],
+            ),
           ),
-        ),
-        if (!isMe)
-          UserCircleAvatar(
-            size: UISizes.sp56,
-            username: message.sender.username,
-            image: message.sender.image,
-          ),
-      ],
-    );
+          if (!isMe)
+            UserCircleAvatar(
+              size: UISizes.sp56,
+              username: message.sender.username,
+              image: message.sender.image,
+            ),
+        ],
+      ).paddingHr.appPaddingVr(4),
+    ).appPaddingVr(2);
   }
 }
 
@@ -105,8 +119,8 @@ class ChatBubbleContainer extends StatelessWidget {
         bottomEnd: isMe ? Radius.circular(radius) : Radius.zero,
       ),
       child: Container(
-        constraints: BoxConstraints(maxWidth: context.width * .7),
-        padding: EdgeInsets.all(UISizes.sp12),
+        constraints: BoxConstraints(maxWidth: context.width * .65),
+        padding: EdgeInsets.all(UISizes.sp8),
         decoration: BoxDecoration(
           color: bubbleColor,
           boxShadow: AppDecorations.cardShadow,

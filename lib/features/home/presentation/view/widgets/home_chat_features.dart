@@ -11,7 +11,7 @@ class _HomeChatFeatures extends StatelessWidget {
     );
   }
 
-  Widget _builder(SystemControlEntity control,) {
+  Widget _builder(SystemControlEntity control) {
     return Builder(
       builder: (context) {
         final settingsCubit = context.read<SystemControlCubit>();
@@ -21,14 +21,12 @@ class _HomeChatFeatures extends StatelessWidget {
             _ChatFeaturesGrid(
               control.features,
               onChanged: (entity) {
-                settingsCubit.edit(
-                  control.updateFeature(entity),
-                );
+                settingsCubit.edit(control.updateFeature(entity));
               },
             ),
           ],
         );
-      }
+      },
     );
   }
 }

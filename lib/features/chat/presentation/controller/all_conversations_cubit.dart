@@ -8,12 +8,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AllConversationsCubit extends Cubit<BaseState<List<ConversationEntity>>> {
   final GetAllConversationsUseCase _useCase;
   AllConversationsCubit(this._useCase) : super(const .initial());
+  List<ConversationEntity> _conversation = [];
 
   Future<void> getAllConversations([ConversationFilters? filters]) async {
     safeEmit(const .loading());
     final result = await _useCase.call();
     result.fold((e) => safeEmit(.failure(e)), (conv) {
       if (conv.isEmpty) return safeEmit(const .empty());
+      _conversation = conv;
       safeEmit(.success(conv));
     });
   }

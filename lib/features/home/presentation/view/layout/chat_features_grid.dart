@@ -18,14 +18,15 @@ class _ChatFeaturesGrid extends StatelessWidget {
         crossAxisSpacing: UISizes.sp6,
         mainAxisSpacing: UISizes.sp6,
       ),
-      itemBuilder: (_, i) => _FeatureBox(entity: features[i], onChanged: onChanged,),
+      itemBuilder: (_, i) =>
+          _FeatureBox(entity: features[i], onChanged: onChanged),
     );
   }
 }
 
 class _FeatureBox extends StatelessWidget {
   final ChatFeatureEntity entity;
-  final ValueChanged<ChatFeatureEntity> onChanged ;
+  final ValueChanged<ChatFeatureEntity> onChanged;
   const _FeatureBox({required this.entity, required this.onChanged});
 
   @override
@@ -57,7 +58,7 @@ class _FeatureBox extends StatelessWidget {
             width: UISizes.w32,
             height: UISizes.h16,
             value: entity.enabled,
-            onChanged: (r)=>onChanged.call(entity.copyWith(enabled: r)),
+            onChanged: (r) => onChanged.call(entity.copyWith(enabled: r)),
             activeColor: color,
           ),
         ],

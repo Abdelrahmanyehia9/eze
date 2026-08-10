@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 class SettingsThemeCustomizeChatColors extends StatelessWidget {
   final ChatStyle selectedChatStyle;
-  final ValueChanged<ChatStyle>? onChanged ;
+  final ValueChanged<ChatStyle>? onChanged;
   const SettingsThemeCustomizeChatColors({
     super.key,
     required this.selectedChatStyle,
-    this.onChanged
+    this.onChanged,
   });
 
   @override
@@ -22,9 +22,7 @@ class SettingsThemeCustomizeChatColors extends StatelessWidget {
           title: "الوان الدردشة",
           actionStyle: context.textTheme.titleSmall,
         ),
-        ChatThemesWrap(selectedChat: selectedChatStyle,
-          onChanged: onChanged
-        ),
+        ChatThemesWrap(selectedChat: selectedChatStyle, onChanged: onChanged),
       ],
     );
   }

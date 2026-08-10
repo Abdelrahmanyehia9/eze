@@ -7,6 +7,6 @@ class GetAppSettingsUseCase {
   const GetAppSettingsUseCase(this._repository);
   Future<SettingsEntity> call() async {
     final settings = await _repository.getSettings();
-    return settings ?? SettingsEntity.defaultSettings ;
+    return settings ?? SettingsEntity.defaultSettings;
   }
 }

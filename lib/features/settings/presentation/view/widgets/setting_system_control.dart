@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingSystemControl extends StatelessWidget {
-
-  const SettingSystemControl({super.key, });
+  const SettingSystemControl({super.key});
 
   void _onChange(ChatFeatureEntity feature, SystemControlCubit controlCubit) {
     controlCubit.edit(controlCubit.value.updateFeature(feature));
@@ -19,7 +18,7 @@ class SettingSystemControl extends StatelessWidget {
     final settingsCubit = context.read<SystemControlCubit>();
     return BaseBlocConsumer(
       bloc: settingsCubit,
-      builder:(_)=> ChatFeaturesList(
+      builder: (_) => ChatFeaturesList(
         features: settingsCubit.value.features,
         onChanged: (entity) => _onChange(entity, settingsCubit),
       ),

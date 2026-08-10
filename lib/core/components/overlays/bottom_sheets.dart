@@ -52,9 +52,12 @@ class BottomSheets {
           child: Stack(
             alignment: AlignmentDirectional.topEnd,
             children: [
-              child.appPaddingVr(showCloseButton?24:0),
+              child.appPaddingVr(showCloseButton ? 24 : 0),
               if (showCloseButton)
-                AppIconButton(icon: AppIcons.close, onTap: context.pop).paddingAll,
+                AppIconButton(
+                  icon: AppIcons.close,
+                  onTap: context.pop,
+                ).paddingAll,
             ],
           ),
         ),

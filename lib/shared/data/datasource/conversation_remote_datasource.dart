@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:eze/core/enums/message_status.dart';
 import 'package:eze/shared/data/models/localized_string_model.dart';
 import 'package:eze/core/utils/fake_data.dart';
@@ -33,6 +34,7 @@ class ConversationRemoteDatasource {
         ),
       ),
       ConversationEntity(
+        pinned: true,
         peer: ConversationPeerEntity(
           uid: "uid1",
           name: "اميرة",
@@ -51,6 +53,14 @@ class ConversationRemoteDatasource {
           sender: const UserEntity(uid: "uid1", username: "اميرة"),
         ),
       ),
-    ];
+    ].sorted((a, b) {
+      if (a.pinned != b.pinned) {
+        return a.pinned ? -1 : 1;
+      }
+
+      return b.messageStatus.lastMessageTime.compareTo(
+        a.messageStatus.lastMessageTime,
+      );
+    }).toList();
   }
 }

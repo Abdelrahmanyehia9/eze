@@ -9,26 +9,30 @@ import 'package:flutter/material.dart';
 
 class SettingsThemeCustomizeChatFont extends StatelessWidget {
   final ChatFontTypes font;
-  final ValueChanged<ChatFontTypes>? onChanged ;
-  const SettingsThemeCustomizeChatFont({super.key,  this.onChanged, required this.font});
+  final ValueChanged<ChatFontTypes>? onChanged;
+  const SettingsThemeCustomizeChatFont({
+    super.key,
+    this.onChanged,
+    required this.font,
+  });
 
-
-  Future<void>_onSelect()async{
+  Future<void> _onSelect() async {
     final fonts = ChatFontTypes.values;
     final result = await BottomSheets.show(
       child: SelectorBottomSheet(
         data: List.generate(
           fonts.length,
-              (i) => SelectorBottomSheetData<ChatFontTypes>(
+          (i) => SelectorBottomSheetData<ChatFontTypes>(
             title: fonts[i].text,
-            selected: fonts[i]== font,
+            selected: fonts[i] == font,
             id: fonts[i],
           ),
         ),
       ),
     );
-    if(result !=null && result !=font )return onChanged?.call(result);
+    if (result != null && result != font) return onChanged?.call(result);
   }
+
   @override
   Widget build(BuildContext context) {
     final fontSize = font.size;

@@ -1,11 +1,11 @@
 import 'package:eze/core/components/app_chip.dart';
 import 'package:eze/core/components/app_icon_button.dart';
-import 'package:eze/core/components/app_menu_anchor.dart';
 import 'package:eze/core/components/app_scaffold.dart';
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/app_text_field.dart';
 import 'package:eze/core/components/base_bloc_consumer.dart';
 import 'package:eze/core/components/default_appbar.dart';
+import 'package:eze/core/components/overlays/app_menu_anchor.dart';
 import 'package:eze/core/extensions/chat_theme.dart';
 import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/fake_data.dart';
@@ -21,6 +21,7 @@ import 'package:eze/features/chat/presentation/view/layout/chat_list.dart';
 import 'package:eze/features/settings/presentation/controller/base_settings_cubit.dart';
 import 'package:eze/shared/domain/entities/conversation_peer_entity.dart';
 import 'package:eze/shared/domain/entities/message_entity.dart';
+import 'package:eze/shared/presentation/controllers/selection_cubit.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,35 +39,49 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = context.read<ThemeCubit>().value.chatTheme ?? context.chatTheme;
-    return AppScaffold(
-      bottomPadding: false,
-      hPadding: 0,
-      topPadding: false,
-      appBar: _ChatAppbar(sender, style: style),
-      body: Stack(
-        alignment: AlignmentGeometry.bottomCenter,
-        children: [
-          _ChatBackgroundContainer(style: style),
-          Column(
-            children: [
-              Expanded(
-                child: BaseBlocConsumer<ChatByIdCubit, ChatEntity>(
-                  successBuilder: (chat) =>
-                      ChatList(messages: chat.message, chatStyle: style),
-                  loadingBuilder: () => ChatList(
-                    messages: MessageEntity.fake().fakeList(12),
-                    chatStyle: style,
+    final style =
+        context.read<ThemeCubit>().value.chatTheme ?? context.chatTheme;
+    return SelectionBuilder<MessageEntity>(
+      builder: (cubit, state) => AppScaffold(
+        bottomPadding: false,
+        hPadding: 0,
+        topPadding: false,
+        appBar: _ChatAppbar(sender, style: style),
+        body: Stack(
+          alignment: AlignmentGeometry.bottomCenter,
+          children: [
+            _ChatBackgroundContainer(style: style),
+            Column(
+              children: [
+                Expanded(
+                  child: BaseBlocConsumer<ChatByIdCubit, ChatEntity>(
+                    onSuccess: (c) => cubit.setAll(c.message),
+                    successBuilder: (chat) => ChatList(
+                      messages: chat.message,
+                      onTap: state.isSelectionMode ? cubit.toggle : null,
+                      onLongPress: cubit.toggle,
+                      selectedMessage: state.selected.toList(),
+                      chatStyle: style,
+                    ),
+                    loadingBuilder: () => ChatList(
+                      messages: MessageEntity.fake().fakeList(12),
+                      chatStyle: style,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: context.safeBottomArea),
-                child: _ChatInputBar(style: style),
-              ),
-            ],
-          ).paddingHr,
-        ],
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    UISizes.sp16,
+                    0,
+                    UISizes.sp16,
+                    context.safeBottomArea,
+                  ),
+                  child: _ChatInputBar(style: style),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

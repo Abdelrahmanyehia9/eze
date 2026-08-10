@@ -5,27 +5,25 @@ import 'package:eze/shared/presentation/view/widgets/message_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
 class ResultScreen extends StatelessWidget {
-  final ResultScreenArgs args ;
+  final ResultScreenArgs args;
   const ResultScreen({super.key, required this.args});
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar:  args.showAppbar ?  const DefaultAppBar() : null,
+      appBar: args.showAppbar ? const DefaultAppBar() : null,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 8.h,
         children: [
           MessageAlert(
-              customIcon: args.customIcon,
-              customTitle: args.customTitle,
-              customMessage: args.customMessage,
-              args.type),
-          if(args.action != null) args.action!.call(context),
-
+            customIcon: args.customIcon,
+            customTitle: args.customTitle,
+            customMessage: args.customMessage,
+            args.type,
+          ),
+          if (args.action != null) args.action!.call(context),
         ],
       ),
     );

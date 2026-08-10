@@ -1,7 +1,7 @@
 part of '../chat_screen.dart';
 
 class _ChatInputBar extends StatelessWidget {
-  final ChatStyle style ;
+  final ChatStyle style;
   const _ChatInputBar({required this.style});
 
   @override
@@ -39,7 +39,11 @@ class _ChatInputBar extends StatelessWidget {
           color: style.appBarBackgroundColor,
           borderRadius: BorderRadius.circular(UISizes.r20),
         ),
-        child: Icon(AppIcons.send, color: style.incomingTextColor, size: UISizes.sp24),
+        child: Icon(
+          AppIcons.send,
+          color: style.incomingTextColor,
+          size: UISizes.sp24,
+        ),
       );
     },
   );

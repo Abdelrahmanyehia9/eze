@@ -15,7 +15,7 @@ class SettingsChatThemeBox extends StatelessWidget {
     super.key,
     required this.theme,
     this.isSelected = false,
-    this.onTap
+    this.onTap,
   });
 
   @override

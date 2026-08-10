@@ -48,6 +48,7 @@ final List<_MainLayoutPage> _pages = [
           create: (context) =>
               sl<ConversationRequestsCubit>()..getConversationRequests(),
         ),
+        BlocProvider(create: (context) => SelectionCubit<ConversationEntity>()),
       ],
       child: const ConversationsScreen(),
     ),

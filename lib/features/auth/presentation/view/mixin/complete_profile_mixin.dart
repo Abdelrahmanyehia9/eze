@@ -56,7 +56,7 @@ mixin _CompleteProfileMixin on State<CompleteProfileScreen> {
         type: MessagesAlertType.profileCompleted,
         action: (context) => DefaultButton(
           text: "المتابعة",
-          onTap: () => context.pushNamedAndRemoveUntil(Routes.main,),
+          onTap: () => context.pushNamedAndRemoveUntil(Routes.main),
         ),
       ),
     );

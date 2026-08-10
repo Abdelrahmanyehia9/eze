@@ -15,8 +15,4 @@ class SettingsRepositoryImpl implements SettingsRepository {
   Future<SettingsEntity?> getSettings() {
     return localDatasource.getSettings();
   }
-
-
-
-
 }

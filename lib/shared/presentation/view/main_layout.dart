@@ -17,6 +17,8 @@ import 'package:eze/features/home/presentation/view/home_screen.dart';
 import 'package:eze/features/profile/domain/entities/profile_entity.dart';
 import 'package:eze/features/profile/presentation/controller/profile_cubit.dart';
 import 'package:eze/features/profile/presentation/view/profile_screen.dart';
+import 'package:eze/shared/domain/entities/conversation_entity.dart';
+import 'package:eze/shared/presentation/controllers/selection_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eze/shared/presentation/controllers/main_layout_cubit.dart';

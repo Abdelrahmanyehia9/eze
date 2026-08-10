@@ -54,4 +54,9 @@ abstract class AppIcons {
   static const IconData phone = CupertinoIcons.device_phone_portrait;
   static const IconData warning = CupertinoIcons.exclamationmark_triangle;
   static const IconData error = CupertinoIcons.exclamationmark_circle;
+  static const IconData pin = CupertinoIcons.pin;
+  static const IconData unPin = CupertinoIcons.pin_slash;
+  static const IconData delete = CupertinoIcons.delete;
+  static const IconData archived = CupertinoIcons.archivebox;
+  static const IconData move = CupertinoIcons.move;
 }

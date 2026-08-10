@@ -1,9 +1,11 @@
-// selection_cubit.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectionCubit<T> extends Cubit<SelectionState<T>> {
   SelectionCubit() : super(SelectionState<T>());
+  Set<T> _all = {};
+
+  Set<T> get all => _all;
 
   void toggle(T item) {
     final updated = Set<T>.from(state.selected);
@@ -11,9 +13,15 @@ class SelectionCubit<T> extends Cubit<SelectionState<T>> {
     emit(state.copyWith(selected: updated));
   }
 
-  void selectAll(List<T> items) =>
-      emit(state.copyWith(selected: Set<T>.from(items)));
+  void selectAll([List<T>? items]) =>
+      emit(state.copyWith(selected: Set<T>.from(items ?? _all)));
+
   void unselectAll() => emit(state.copyWith(selected: {}));
+
+  void setAll(List<T> list) {
+    _all = list.toSet();
+  }
+
   void clear() => emit(state.copyWith(selected: {}));
 }
 
@@ -29,15 +37,22 @@ class SelectionState<T> {
 }
 
 class SelectionBuilder<T> extends StatelessWidget {
-  final Widget Function(SelectionState<T> state, SelectionCubit<T> bloc)
+  final Widget Function(SelectionCubit<T> bloc, SelectionState<T> state)
   builder;
   const SelectionBuilder({super.key, required this.builder});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SelectionCubit<T>, SelectionState<T>>(
-      builder: (context, state) =>
-          builder(state, context.read<SelectionCubit<T>>()),
+      builder: (context, state) => PopScope(
+        canPop: !state.isSelectionMode,
+        onPopInvokedWithResult: (didPop, result) {
+          if (!didPop && state.isSelectionMode) {
+            context.read<SelectionCubit<T>>().unselectAll();
+          }
+        },
+        child: builder(context.read<SelectionCubit<T>>(), state),
+      ),
     );
   }
 }

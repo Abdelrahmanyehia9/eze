@@ -13,7 +13,7 @@ class BaseBlocConsumer<B extends BlocBase<BaseState<S>>, S>
   final Widget Function(S data)? successBuilder;
   final Widget Function(AppException error)? failureBuilder;
   final Widget Function()? emptyBuilder;
-  final void Function(S? data)? onSuccess;
+  final void Function(S data)? onSuccess;
   final void Function()? onLoading;
   final void Function(AppException error)? onFailure;
   final void Function()? onEmpty;
@@ -60,7 +60,7 @@ class BaseBlocConsumer<B extends BlocBase<BaseState<S>>, S>
           } else if (state.isLoading && onLoading != null) {
             onLoading!();
           } else if (state.isSuccess && onSuccess != null) {
-            onSuccess!(state.data);
+            onSuccess!(state.data as S);
           } else if (state.isEmpty && onEmpty != null) {
             onEmpty!();
           }

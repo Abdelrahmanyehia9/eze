@@ -8,17 +8,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SettingsLocal extends StatelessWidget {
   const SettingsLocal({super.key});
 
-  
-  void _onChange(AppLocale local, LocalCubit settingCubit)=>settingCubit.edit(local);
+  void _onChange(AppLocale local, LocalCubit settingCubit) =>
+      settingCubit.edit(local);
 
   @override
   Widget build(BuildContext context) {
     final settingCubit = context.read<LocalCubit>();
     return BaseBlocConsumer(
       bloc: settingCubit,
-      builder:(_)=> LanguagesList(
+      builder: (_) => LanguagesList(
         currentLocal: settingCubit.value,
-        onChanged: (locale)  => _onChange(locale, settingCubit)
+        onChanged: (locale) => _onChange(locale, settingCubit),
       ),
     );
   }

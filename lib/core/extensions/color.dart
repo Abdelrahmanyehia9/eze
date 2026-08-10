@@ -20,4 +20,5 @@ extension ColorExt on Color {
   }
 
   Color get veryLight => lighten().withAppOpacity(0.1);
+  Color get softLight => lighten(0.2).withAppOpacity(0.6);
 }

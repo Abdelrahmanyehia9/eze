@@ -28,7 +28,6 @@ class _SettingsSection extends StatelessWidget {
     return Column(
       children: [
         if (header != null)
-
           SectionHeader.smallHeader(header!, context: context),
         AppCard(
           child: ListView.separated(
@@ -56,10 +55,10 @@ class _SettingTile extends StatelessWidget {
       onTap: data.onTap,
       minTileHeight: UISizes.sp40,
       leadingIconSize: UISizes.sp32,
-      leading:data.iconData,
+      leading: data.iconData,
       title: data.title,
       subtitle: data.subTitle,
-     customTrailing: data.customTrailing,
+      customTrailing: data.customTrailing,
     );
   }
 }

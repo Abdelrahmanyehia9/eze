@@ -9,12 +9,14 @@ import 'package:flutter/material.dart';
 
 class SettingsEntity extends Equatable {
   final SystemControlEntity sysControl;
+  final bool notificationEnabled;
   final ThemeEntity theme;
   final AppLocale locale;
 
   const SettingsEntity({
     required this.sysControl,
     required this.theme,
+    this.notificationEnabled = false,
     required this.locale,
   });
 
@@ -27,29 +29,29 @@ class SettingsEntity extends Equatable {
     locale: AppLocale.ar,
   );
 
-
   SettingsEntity copyWith({
     SystemControlEntity? sysControl,
     bool? enabledNotification,
     ThemeEntity? theme,
     AppLocale? locale,
+    bool? notificationEnabled,
   }) => SettingsEntity(
-      sysControl: sysControl ?? this.sysControl,
-      theme: theme ?? this.theme,
-      locale: locale ?? this.locale,
-    );
-
-  static SettingsEntity get defaultSettings => SettingsEntity(
-      sysControl: SystemControlEntity(
-        features: ChatFeature.values
-            .map((e) => ChatFeatureEntity(feature: e))
-            .toList(),
-      ),
-      theme:  const ThemeEntity(
-          mode: ThemeMode.system,
-          chatTheme: AppChatTheme.defaultLight
-      ),
-      locale: AppLocale.ar
+    sysControl: sysControl ?? this.sysControl,
+    theme: theme ?? this.theme,
+    locale: locale ?? this.locale,
+    notificationEnabled: notificationEnabled ?? this.notificationEnabled,
   );
 
+  static SettingsEntity get defaultSettings => SettingsEntity(
+    sysControl: SystemControlEntity(
+      features: ChatFeature.values
+          .map((e) => ChatFeatureEntity(feature: e))
+          .toList(),
+    ),
+    theme: const ThemeEntity(
+      mode: ThemeMode.system,
+      chatTheme: AppChatTheme.defaultLight,
+    ),
+    locale: AppLocale.ar,
+  );
 }

@@ -33,7 +33,7 @@ class AppListTile extends StatelessWidget {
     this.leadingIconSize,
     this.minTileHeight,
     this.trailingIconSize,
-    this.showLeading = true
+    this.showLeading = true,
   });
 
   @override
@@ -43,10 +43,16 @@ class AppListTile extends StatelessWidget {
       child: ListTile(
         onTap: onTap,
         minTileHeight: minTileHeight,
-        leading: showLeading ? customLeading ?? Icon(leading, size: leadingIconSize ??  UISizes.sp40) : null,
+        leading: showLeading
+            ? customLeading ??
+                  Icon(leading, size: leadingIconSize ?? UISizes.sp40)
+            : null,
         trailing: showTrailing
             ? customTrailing ??
-                  Icon(trailing ?? AppIcons.arrowForward, size:trailingIconSize?? UISizes.sp18)
+                  Icon(
+                    trailing ?? AppIcons.arrowForward,
+                    size: trailingIconSize ?? UISizes.sp18,
+                  )
             : null,
         title:
             customTitle ??

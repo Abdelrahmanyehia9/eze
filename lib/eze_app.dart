@@ -22,9 +22,10 @@ class EzeApp extends StatelessWidget {
       builder: (_, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider(create: (context)=>sl<SystemControlCubit>()..load()),
-            BlocProvider(create: (context)=>sl<ThemeCubit>()..load()),
-            BlocProvider(create: (context)=>sl<LocalCubit>()..load())
+            BlocProvider(create: (context) => sl<SystemControlCubit>()..load()),
+            BlocProvider(create: (context) => sl<NotificationCubit>()..load()),
+            BlocProvider(create: (context) => sl<ThemeCubit>()..load()),
+            BlocProvider(create: (context) => sl<LocalCubit>()..load()),
           ],
           child: MaterialApp(
             navigatorKey: NavigationService.navigatorKey,

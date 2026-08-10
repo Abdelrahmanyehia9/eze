@@ -1,3 +1,4 @@
+import 'package:eze/core/components/overlays/app_menu_overlay.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -30,25 +31,27 @@ class AppMenuData {
 }
 
 class AppMenuAnchor extends StatelessWidget {
-  final List<AppMenuData> items;
+  final List<AppMenuData>? items;
   final double? menuWidth;
   final Widget? anchorIcon;
   final Color? anchorColor, backgroundColor, foregroundColor;
+  final MenuAnchorChildBuilder? builder;
 
   const AppMenuAnchor({
     super.key,
-    required this.items,
+    this.items,
     this.menuWidth,
     this.anchorColor,
     this.backgroundColor,
     this.foregroundColor,
     this.anchorIcon,
+    this.builder,
   });
 
   @override
   Widget build(BuildContext context) {
-    return MenuAnchor(
-      alignmentOffset: Offset(0, UISizes.h8),
+    return AppMenuOverlay(
+      offset: Offset(0, UISizes.h8),
       style: MenuStyle(
         backgroundColor: WidgetStatePropertyAll(
           backgroundColor ?? context.scaffoldBackgroundColor,
@@ -68,19 +71,21 @@ class AppMenuAnchor extends StatelessWidget {
           ),
         ),
       ),
-      builder: (context, controller, child) {
-        return AppClick(
-          child: child!,
-          onTap: () {
-            if (controller.isOpen) {
-              controller.close();
-              return;
-            }
-            controller.open();
+      builder:
+          builder ??
+          (context, controller, child) {
+            return AppClick(
+              child: child!,
+              onTap: () {
+                if (controller.isOpen) {
+                  controller.close();
+                  return;
+                }
+                controller.open();
+              },
+            );
           },
-        );
-      },
-      menuChildren: items.map((e) => _item(e, context)).toList(),
+      children: items?.map((e) => _item(e, context)).toList() ?? [],
       child:
           anchorIcon ??
           Icon(

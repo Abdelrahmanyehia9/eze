@@ -5,7 +5,6 @@ import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:flutter/material.dart';
 
-
 class MessageAlert extends StatelessWidget {
   final MessagesAlertType type;
   final TextStyle? titleStyle;
@@ -32,7 +31,11 @@ class MessageAlert extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Center(child: customIcon ?? AppLottie(type.lottie, width: icoSize, repeat: false)),
+        Center(
+          child:
+              customIcon ??
+              AppLottie(type.lottie, width: icoSize, repeat: false),
+        ),
         AppText(
           customTitle ?? type.title,
           textAlign: TextAlign.center,

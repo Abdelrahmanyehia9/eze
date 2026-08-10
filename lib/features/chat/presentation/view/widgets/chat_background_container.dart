@@ -1,7 +1,7 @@
 part of '../chat_screen.dart';
 
 class _ChatBackgroundContainer extends StatelessWidget {
-  final ChatStyle style ;
+  final ChatStyle style;
   const _ChatBackgroundContainer({required this.style});
 
   @override

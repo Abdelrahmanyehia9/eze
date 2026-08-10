@@ -8,7 +8,7 @@ class ChatThemesWrap extends StatelessWidget {
   final ChatStyle selectedChat;
   final ValueChanged<ChatStyle>? onChanged;
 
-  const ChatThemesWrap({super.key,required this.selectedChat, this.onChanged});
+  const ChatThemesWrap({super.key, required this.selectedChat, this.onChanged});
 
   @override
   Widget build(BuildContext context) {

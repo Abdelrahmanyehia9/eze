@@ -85,7 +85,7 @@ class SelectorBottomSheet extends StatelessWidget {
           borderRadius: BorderRadius.circular(UISizes.r12),
         ),
         child: AppListTile(
-          showLeading: data.leading!=null,
+          showLeading: data.leading != null,
           customLeading: data.leading,
           title: data.title,
           titleStyle: context.textTheme.labelSmall?.copyWith(

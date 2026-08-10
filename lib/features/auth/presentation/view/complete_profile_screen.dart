@@ -68,7 +68,8 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen>
             hPadding: 0,
             appBar: DefaultAppBar(
               actions: [
-                if (value > 1 &&value!=_steps.length-1) AppButton.text("تخطي", onTap: _onFinish),
+                if (value > 1 && value != _steps.length - 1)
+                  AppButton.text("تخطي", onTap: _onFinish),
               ],
               leading: AppBackButton(
                 onTap: !_isFirstStep ? _goPrev : null,

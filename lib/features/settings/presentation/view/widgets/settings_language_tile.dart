@@ -12,13 +12,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 class SettingsLanguageTile extends StatelessWidget {
   final AppLocale locale;
   final bool isSelected;
-  final GestureTapCallback? onTap ;
+  final GestureTapCallback? onTap;
 
   const SettingsLanguageTile({
     super.key,
     required this.locale,
     this.isSelected = false,
-    this.onTap
+    this.onTap,
   });
 
   @override
