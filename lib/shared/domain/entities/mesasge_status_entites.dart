@@ -12,10 +12,9 @@ class MessageStatusEntity {
     required this.lastMessageTime,
   });
 
-
   static MessageStatusEntity fake = MessageStatusEntity(
-      status: MessageStatus.unRead,
-      lastMessageTime: FakeData.dateTime,
-      unReadCount:  FakeData.integer
+    status: MessageStatus.unRead,
+    lastMessageTime: FakeData.dateTime,
+    unReadCount: FakeData.integer,
   );
 }

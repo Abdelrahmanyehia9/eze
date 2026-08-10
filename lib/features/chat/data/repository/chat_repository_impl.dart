@@ -13,12 +13,7 @@ class ChatRepositoryImpl implements ChatRepository {
   });
 
   @override
-  Future<ChatEntity> getChatById(String id) async{
-    return  localDatasource.getChat(id);
+  Future<ChatEntity> getChatById(String id) async {
+    return localDatasource.getChat(id);
   }
-
-
-
-
-
 }

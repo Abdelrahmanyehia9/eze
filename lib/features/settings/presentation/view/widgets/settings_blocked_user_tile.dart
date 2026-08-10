@@ -14,7 +14,7 @@ class SettingsBlockedUserTile extends StatelessWidget {
     return Row(
       spacing: UISizes.w8,
       children: [
-        UserCircleAvatar(size: UISizes.sp64,username: FakeData.string(),),
+        UserCircleAvatar(size: UISizes.sp64, username: FakeData.string()),
         Expanded(
           flex: 2,
           child: Column(

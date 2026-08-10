@@ -4,7 +4,8 @@ import 'package:eze/features/chat/domain/usecases/get_conversation_requests_use_
 import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ConversationRequestsCubit extends Cubit<BaseState<List<ConversationEntity>>> {
+class ConversationRequestsCubit
+    extends Cubit<BaseState<List<ConversationEntity>>> {
   final GetConversationRequestsUseCase _useCase;
 
   ConversationRequestsCubit(this._useCase) : super(const BaseState.initial());

@@ -6,7 +6,8 @@ class _StepCountry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _CompleteProfileScreenLayout(
-      subtitle: "اختر دولتك بشكل صحيح، لأننا سنستخدمها لضبط الترجمة التلقائية للرسائل لتصلك بلغتك بسهولة، بدون الحاجة إلى مترجم.",
+      subtitle:
+          "اختر دولتك بشكل صحيح، لأننا سنستخدمها لضبط الترجمة التلقائية للرسائل لتصلك بلغتك بسهولة، بدون الحاجة إلى مترجم.",
       fields: [
         const CountrySelector(showHeader: false),
         const AppIconText(

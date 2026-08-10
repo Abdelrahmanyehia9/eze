@@ -22,10 +22,8 @@ class _StepPictures extends StatelessWidget {
         SectionHeader.smallHeader("الغلاف", context: context),
         EditOverlay(
           margin: EdgeInsets.all(UISizes.sp12),
-          child: CoverProfile(null,
-              height: UISizes.h128)
+          child: CoverProfile(null, height: UISizes.h128),
         ),
-
       ],
     );
   }

@@ -1,8 +1,9 @@
 part of "../home_screen.dart";
 
 class _ChatFeaturesGrid extends StatelessWidget {
-  final List<ChatFeatureEntity>features ;
-  const _ChatFeaturesGrid(this.features);
+  final List<ChatFeatureEntity> features;
+  final ValueChanged<ChatFeatureEntity> onChanged;
+  const _ChatFeaturesGrid(this.features, {required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +18,19 @@ class _ChatFeaturesGrid extends StatelessWidget {
         crossAxisSpacing: UISizes.sp6,
         mainAxisSpacing: UISizes.sp6,
       ),
-      itemBuilder: (_, i) =>
-          _FeatureBox(entity: features[i],),
+      itemBuilder: (_, i) => _FeatureBox(entity: features[i], onChanged: onChanged,),
     );
   }
 }
 
 class _FeatureBox extends StatelessWidget {
- final ChatFeatureEntity entity ;
-  const _FeatureBox({required this.entity});
+  final ChatFeatureEntity entity;
+  final ValueChanged<ChatFeatureEntity> onChanged ;
+  const _FeatureBox({required this.entity, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
-    final feature = entity.feature ;
+    final feature = entity.feature;
     final color = feature.color(context);
     return Container(
       decoration: BoxDecoration(
@@ -53,11 +54,10 @@ class _FeatureBox extends StatelessWidget {
             color: color,
           ),
           AppSwitch(
-
             width: UISizes.w32,
             height: UISizes.h16,
             value: entity.enabled,
-            onChanged: (r) {},
+            onChanged: (r)=>onChanged.call(entity.copyWith(enabled: r)),
             activeColor: color,
           ),
         ],

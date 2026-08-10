@@ -1,33 +1,55 @@
 import 'package:equatable/equatable.dart';
 import 'package:eze/core/enums/app_locale.dart';
-import 'package:eze/core/utils/fake_data.dart';
+import 'package:eze/core/enums/chat_features.dart';
+import 'package:eze/core/theme/app_chat_theme.dart';
+import 'package:eze/features/settings/domain/entities/chat_feature_entity.dart';
 import 'package:eze/features/settings/domain/entities/system_control_entity.dart';
 import 'package:eze/features/settings/domain/entities/theme_entity.dart';
+import 'package:flutter/material.dart';
 
-class SettingsEntity extends Equatable{
+class SettingsEntity extends Equatable {
   final SystemControlEntity sysControl;
-  final bool enabledNotification;
   final ThemeEntity theme;
-  final AppLocale locale ;
+  final AppLocale locale;
 
- const SettingsEntity({
+  const SettingsEntity({
     required this.sysControl,
-    required this.enabledNotification,
     required this.theme,
-   required this.locale
+    required this.locale,
   });
 
   @override
-  // TODO: implement props
-  List<Object?> get props => [sysControl, enabledNotification, theme];
+  List<Object?> get props => [sysControl, theme, locale];
+
+  static SettingsEntity fake() => SettingsEntity(
+    sysControl: SystemControlEntity.fake(),
+    theme: ThemeEntity.fake(),
+    locale: AppLocale.ar,
+  );
 
 
-  static SettingsEntity fake()=> SettingsEntity(
-      sysControl: SystemControlEntity.fake(),
-      enabledNotification: FakeData.boolean,
-      theme: ThemeEntity.fake(),
-      locale: AppLocale.ar);
+  SettingsEntity copyWith({
+    SystemControlEntity? sysControl,
+    bool? enabledNotification,
+    ThemeEntity? theme,
+    AppLocale? locale,
+  }) => SettingsEntity(
+      sysControl: sysControl ?? this.sysControl,
+      theme: theme ?? this.theme,
+      locale: locale ?? this.locale,
+    );
+
+  static SettingsEntity get defaultSettings => SettingsEntity(
+      sysControl: SystemControlEntity(
+        features: ChatFeature.values
+            .map((e) => ChatFeatureEntity(feature: e))
+            .toList(),
+      ),
+      theme:  const ThemeEntity(
+          mode: ThemeMode.system,
+          chatTheme: AppChatTheme.defaultLight
+      ),
+      locale: AppLocale.ar
+  );
+
 }
-
-
-

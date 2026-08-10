@@ -6,11 +6,7 @@ class UserEntity extends Equatable {
   final String username;
   final String? image;
 
-  const UserEntity({
-    required this.uid,
-    required this.username,
-     this.image,
-  });
+  const UserEntity({required this.uid, required this.username, this.image});
 
   @override
   List<Object?> get props => [uid];
@@ -21,5 +17,5 @@ class UserEntity extends Equatable {
     image: FakeData.string(),
   );
 
-  bool get isMe => uid == "1" ;
+  bool get isMe => uid == "1";
 }

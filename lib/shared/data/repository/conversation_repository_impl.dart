@@ -21,9 +21,10 @@ class ConversationRepositoryImpl implements ConversationRepository {
     ConversationFilters? filters,
   ) async {
     return CacheManger.instance.cacheFirst(
-        getLocal:()=> _localDatasource.getConversations(filters),
-        getRemote: ()=>_remoteDatasource.getConversations(filters),
-        saveLocal: _localDatasource.saveConversations,
-        cacheMiss: (c)=>c == null);
+      getLocal: () => _localDatasource.getConversations(filters),
+      getRemote: () => _remoteDatasource.getConversations(filters),
+      saveLocal: _localDatasource.saveConversations,
+      cacheMiss: (c) => c == null,
+    );
   }
 }

@@ -4,12 +4,12 @@ import 'package:eze/core/utils/fake_data.dart';
 import 'package:eze/shared/domain/entities/user_entity.dart';
 
 class MessageEntity {
-  final LocalizedStringModel originalMessage ;
-  final LocalizedStringModel? translatedMessage ;
+  final LocalizedStringModel originalMessage;
+  final LocalizedStringModel? translatedMessage;
   final UserEntity sender;
-  final MessageEntity? repliedMessage ;
+  final MessageEntity? repliedMessage;
   final DateTime messageTime;
-  final MessageStatus status ;
+  final MessageStatus status;
 
   const MessageEntity({
     this.translatedMessage,
@@ -17,19 +17,19 @@ class MessageEntity {
     required this.sender,
     this.repliedMessage,
     required this.messageTime,
-     this.status = MessageStatus.read
+    this.status = MessageStatus.read,
   });
 
-  static  MessageEntity fake()=>MessageEntity(
+  static MessageEntity fake() => MessageEntity(
     translatedMessage: LocalizedStringModel.fake(),
     originalMessage: LocalizedStringModel.fake("US"),
     sender: UserEntity.fake(),
-    messageTime: FakeData.dateTime
+    messageTime: FakeData.dateTime,
   );
-  String message({bool autoTranslate = false}){
-    if(!autoTranslate) return originalMessage.string ;
-    return translatedMessage?.string ?? originalMessage.string ;
+  String message({bool autoTranslate = false}) {
+    if (!autoTranslate) return originalMessage.string;
+    return translatedMessage?.string ?? originalMessage.string;
   }
-  bool get isMe => sender.isMe;
 
+  bool get isMe => sender.isMe;
 }

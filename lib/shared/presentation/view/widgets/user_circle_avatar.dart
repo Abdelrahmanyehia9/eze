@@ -58,8 +58,11 @@ class _UserCircleAvatarState extends State<UserCircleAvatar> {
   @override
   void initState() {
     super.initState();
-    randomColor = widget.color ??  AppColors
-        .randomDarkColors[Random().nextInt(AppColors.randomDarkColors.length)];
+    randomColor =
+        widget.color ??
+        AppColors.randomDarkColors[Random().nextInt(
+          AppColors.randomDarkColors.length,
+        )];
   }
 
   @override

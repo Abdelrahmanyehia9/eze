@@ -5,16 +5,21 @@ class ConversationChatRequestTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseBlocConsumer<ConversationRequestsCubit, List<ConversationEntity>>(
+    return BaseBlocConsumer<
+      ConversationRequestsCubit,
+      List<ConversationEntity>
+    >(
       successBuilder: _builder,
-      loadingBuilder: ()=>_builder(ConversationEntity.fake.fakeList()),
+      loadingBuilder: () => _builder(ConversationEntity.fake.fakeList()),
     );
   }
-  Widget _builder(List<ConversationEntity> conversations)=> Builder(
+
+  Widget _builder(List<ConversationEntity> conversations) => Builder(
     builder: (context) {
-      final users = conversations.map((e)=>e.peer.name).toList().join(" , ") ;
+      final users = conversations.map((e) => e.peer.name).toList().join(" , ");
       return AppClick(
-        onTap: ()=>context.pushNamed(Routes.chatRequests, arguments: conversations),
+        onTap: () =>
+            context.pushNamed(Routes.chatRequests, arguments: conversations),
         child: AppCard(
           child: Row(
             spacing: UISizes.w8,
@@ -55,12 +60,12 @@ class ConversationChatRequestTile extends StatelessWidget {
               ),
               Badge(
                 backgroundColor: context.colors.primary,
-                label:  AppText(conversations.length.toString()),
+                label: AppText(conversations.length.toString()),
               ),
             ],
           ),
         ),
       );
-    }
+    },
   );
 }

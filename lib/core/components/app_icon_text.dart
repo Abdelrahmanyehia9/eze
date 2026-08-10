@@ -12,8 +12,8 @@ class AppIconText extends StatelessWidget {
   final TextStyle? textStyle;
   final Color? iconColor, textColor, color;
   final bool reverse, expandedText;
-  final int ? maxLines ;
-  final TextOverflow? textOverflow ;
+  final int? maxLines;
+  final TextOverflow? textOverflow;
   final MainAxisAlignment mainAxisAlignment;
 
   const AppIconText({

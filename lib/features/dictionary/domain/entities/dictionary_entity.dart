@@ -13,9 +13,9 @@ class DictionaryEntity {
     required this.translated,
   });
 
-
-  static DictionaryEntity  fake() =>DictionaryEntity(
-  uid: FakeData.string(2),
-  original: LocalizedStringModel.fake(),
-  translated: LocalizedStringModel.fake().fakeList());
+  static DictionaryEntity fake() => DictionaryEntity(
+    uid: FakeData.string(2),
+    original: LocalizedStringModel.fake(),
+    translated: LocalizedStringModel.fake().fakeList(),
+  );
 }

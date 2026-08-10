@@ -13,9 +13,4 @@ class GetUnreadConversationsUseCase {
       const ConversationFilters(status: MessageStatus.unRead, limit: 4),
     );
   }
-
-
-
 }
-
-

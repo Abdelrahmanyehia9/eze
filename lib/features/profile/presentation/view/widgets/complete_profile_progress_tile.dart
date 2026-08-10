@@ -1,7 +1,7 @@
 part of '../profile_screen.dart';
 
 class _CompleteProfileProgressTile extends StatelessWidget {
-  final double profileProgress ;
+  final double profileProgress;
   const _CompleteProfileProgressTile(this.profileProgress);
 
   @override

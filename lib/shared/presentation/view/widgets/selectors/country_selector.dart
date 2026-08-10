@@ -12,7 +12,7 @@ class CountrySelector extends StatelessWidget {
   final ValueChanged<Country>? onChanged;
   final bool enabled;
   final String? header;
-  final bool showHeader ;
+  final bool showHeader;
 
   const CountrySelector({
     super.key,
@@ -20,7 +20,7 @@ class CountrySelector extends StatelessWidget {
     this.onChanged,
     this.enabled = true,
     this.header,
-    this.showHeader = true
+    this.showHeader = true,
   });
 
   @override
@@ -33,18 +33,15 @@ class CountrySelector extends StatelessWidget {
 
     return Column(
       children: [
-        if(showHeader)
-        SectionHeader.smallHeader(
-          header ?? "اختر الدولة",
-          context: context,
-        ),
+        if (showHeader)
+          SectionHeader.smallHeader(header ?? "اختر الدولة", context: context),
         AppClick(
           onTap: enabled
               ? () => showCountryPicker(
-            context: context,
-            countryListTheme: _theme(context),
-            onSelect: (country) => onChanged?.call(country),
-          )
+                  context: context,
+                  countryListTheme: _theme(context),
+                  onSelect: (country) => onChanged?.call(country),
+                )
               : null,
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -64,17 +61,14 @@ class CountrySelector extends StatelessWidget {
                     color: enabled ? null : disabledColor,
                   )
                 else
-                  Icon(
-                    AppIcons.add,
-                    size: UISizes.sp20,
-                    color: disabledColor,
-                  ),
+                  Icon(AppIcons.add, size: UISizes.sp20, color: disabledColor),
                 AppText(
                   country?.displayNameNoCountryCode ?? "اختر الدولة",
                   color: enabled ? null : disabledColor,
                 ),
                 const Spacer(),
-                if (enabled && country!=null) const Icon(AppIcons.arrowForward),
+                if (enabled && country != null)
+                  const Icon(AppIcons.arrowForward),
               ],
             ),
           ),

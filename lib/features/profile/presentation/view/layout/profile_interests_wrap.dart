@@ -44,7 +44,7 @@ class ProfileInterestsWrap extends StatelessWidget {
             iconSize: UISizes.sp14,
             color: isSelected || selected == null
                 ? context.colors.onPrimary
-                : context.colors.surfaceContainer,
+                : context.colors.surfaceContainerHigh,
             icon: selected == null
                 ? null
                 : isSelected

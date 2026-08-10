@@ -6,8 +6,8 @@ import 'package:eze/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 
 class WarningChip extends StatelessWidget {
-  final String? text ;
-  final Color? backgroundColor ;
+  final String? text;
+  final Color? backgroundColor;
   const WarningChip({super.key, required this.text, this.backgroundColor});
 
   @override
@@ -15,7 +15,7 @@ class WarningChip extends StatelessWidget {
     return AppCard(
       paddingHr: 8,
       paddingVr: 8,
-      color:backgroundColor ??  AppColors.error.veryLight,
+      color: backgroundColor ?? AppColors.error.veryLight,
       shadow: false,
       child: AppIconText(
         expandedText: true,
@@ -28,14 +28,14 @@ class WarningChip extends StatelessWidget {
 }
 
 class ErrorChip extends StatelessWidget {
-  final String? text ;
-  final Color? backgroundColor ;
+  final String? text;
+  final Color? backgroundColor;
   const ErrorChip({super.key, required this.text, this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
     return AppCard(
-      color:backgroundColor ??  AppColors.error.veryLight,
+      color: backgroundColor ?? AppColors.error.veryLight,
       shadow: false,
       paddingVr: 8,
       paddingHr: 8,
@@ -49,10 +49,9 @@ class ErrorChip extends StatelessWidget {
   }
 }
 
-
 class InfoChip extends StatelessWidget {
-  final String? text ;
-  const InfoChip({super.key,required this.text});
+  final String? text;
+  const InfoChip({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

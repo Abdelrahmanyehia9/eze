@@ -9,29 +9,25 @@ class _StepGender extends StatelessWidget {
     return _CompleteProfileScreenLayout(
       title: "ما هو جنسك",
       fields: [
-        Expanded(
-          child: GridView.builder(
-            itemCount: genders.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: UISizes.sp8 ,
-              mainAxisSpacing: UISizes.sp8
-            ),
-            itemBuilder: (_, i) => _item(genders[i]),
-          ),
-        ),
+        Wrap(
+          spacing: UISizes.sp8,
+          runSpacing: UISizes.sp8,
+          children: List.generate(genders.length, (i)=>_item(genders[i])),
+        )
       ],
     );
   }
 
   Widget _item(Gender gender) => Builder(
-    builder: (context) => AppCard(
-      color: gender.color.veryLight,
-      shadow: false,
+    builder: (context) => AppChip(
+      color: Colors.transparent,
+      minWidth: UISizes.sp96,
+      minHeight: UISizes.sp72,
+      borderColor: gender.color,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(gender.icon, color: gender.color, size: UISizes.sp40),
+          Icon(gender.icon, color: gender.color, size: UISizes.sp32),
           AppText(
             gender.text,
             color: gender.color,

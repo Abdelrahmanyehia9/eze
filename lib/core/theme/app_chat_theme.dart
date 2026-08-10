@@ -35,6 +35,7 @@ class AppChatTheme {
     replyBorderColor: AppColors.secondary,
     appBarBackgroundColor: AppColors.primary400,
     appBarForegroundColor: AppColors.white,
+
   );
   static const ChatStyle tealStyle = ChatStyle(
     outgoingBubbleColor: Color(0xFF00D9FF),

@@ -5,11 +5,11 @@ import 'package:eze/shared/data/models/conversation_filters.dart';
 import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AllConversationsCubit extends Cubit<BaseState<List<ConversationEntity>>>{
-  final GetAllConversationsUseCase _useCase ;
-  AllConversationsCubit(this._useCase):super(const .initial());
+class AllConversationsCubit extends Cubit<BaseState<List<ConversationEntity>>> {
+  final GetAllConversationsUseCase _useCase;
+  AllConversationsCubit(this._useCase) : super(const .initial());
 
-  Future<void>getAllConversations([ConversationFilters? filters])async{
+  Future<void> getAllConversations([ConversationFilters? filters]) async {
     safeEmit(const .loading());
     final result = await _useCase.call();
     result.fold((e) => safeEmit(.failure(e)), (conv) {
@@ -17,6 +17,4 @@ class AllConversationsCubit extends Cubit<BaseState<List<ConversationEntity>>>{
       safeEmit(.success(conv));
     });
   }
-
-
 }

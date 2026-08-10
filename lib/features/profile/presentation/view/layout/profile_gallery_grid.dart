@@ -7,11 +7,7 @@ class ProfileGalleryGrid extends StatelessWidget {
   final Widget? start;
   final List<TypedMediaModel> gallery;
 
-  const ProfileGalleryGrid({
-    super.key,
-    required this.gallery,
-    this.start,
-  });
+  const ProfileGalleryGrid({super.key, required this.gallery, this.start});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +23,7 @@ class ProfileGalleryGrid extends StatelessWidget {
       itemBuilder: (context, index) {
         if (hasStart && index == 0) return start!;
         final offset = hasStart ? 1 : 0;
-        return AppCachedNetworkImage(
-          gallery[index - offset].media,
-        );
+        return AppCachedNetworkImage(gallery[index - offset].media);
       },
     );
   }

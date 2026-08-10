@@ -7,7 +7,6 @@ import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/routing/routes.dart';
 import 'package:eze/features/auth/data/models/otp_verification_screen_args.dart';
-import 'package:eze/features/auth/presentation/view/otp_verification_screen.dart';
 import 'package:eze/shared/presentation/view/widgets/buttons/default_button.dart';
 import 'package:eze/shared/presentation/view/widgets/selectors/country_selector.dart';
 import 'package:eze/shared/presentation/view/widgets/inputs/phone_text_field.dart';

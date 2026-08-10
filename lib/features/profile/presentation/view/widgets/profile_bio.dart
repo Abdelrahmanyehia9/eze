@@ -1,7 +1,7 @@
 part of '../profile_screen.dart';
 
 class _ProfileBio extends StatelessWidget {
-  final String bio ;
+  final String bio;
   const _ProfileBio(this.bio);
 
   @override
@@ -12,7 +12,7 @@ class _ProfileBio extends StatelessWidget {
           SectionHeader.smallHeader("نبذة عنى", context: context),
           AppReadMore(
             maxLines: 2,
-            text:bio,
+            text: bio,
             style: context.textTheme.bodyMedium,
           ),
         ],

@@ -2,8 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/services.dart';
 
 class AppConfigs {
-
- static final  Country country = Country.parse("EG") ;
+  static final Country country = Country.parse("EG");
   const AppConfigs._();
 
   static Future<void> init() async {

@@ -119,13 +119,30 @@ enum ProfileInterests {
   shopping,
   learning;
 
- static List<ProfileInterests>get popular => [
-    travel, reading, writing, fishing, hiking, football, food, music, art, history,
-    shopping, gaming, gym, nature, religion, volunteering, cars, business, environment
+  static List<ProfileInterests> get popular => [
+    travel,
+    reading,
+    writing,
+    fishing,
+    hiking,
+    football,
+    food,
+    music,
+    art,
+    history,
+    shopping,
+    gaming,
+    gym,
+    nature,
+    religion,
+    volunteering,
+    cars,
+    business,
+    environment,
   ];
 
   String get text => switch (this) {
-  // القراءة والكتابة
+    // القراءة والكتابة
     reading => "القراءة",
     writing => "الكتابة",
     poetry => "الشعر",
@@ -134,7 +151,7 @@ enum ProfileInterests {
     calligraphy => "الخط العربي",
     languages => "اللغات",
 
-  // الفنون والإبداع
+    // الفنون والإبداع
     art => "الفن",
     drawing => "الرسم",
     painting => "الرسم بالألوان",
@@ -151,7 +168,7 @@ enum ProfileInterests {
     crafts => "الحرف اليدوية",
     handmadeCrafts => "الصناعات اليدوية",
 
-  // الموسيقى والترفيه
+    // الموسيقى والترفيه
     music => "الموسيقى",
     singing => "الغناء",
     instruments => "العزف على الآلات",
@@ -163,7 +180,7 @@ enum ProfileInterests {
     podcasts => "البودكاست",
     streaming => "البث المباشر",
 
-  // الطعام والشراب
+    // الطعام والشراب
     cooking => "الطبخ",
     baking => "الخبز والحلويات",
     food => "الطعام",
@@ -171,7 +188,7 @@ enum ProfileInterests {
     tea => "الشاي",
     wineTasting => "تذوق النبيذ",
 
-  // الرياضة واللياقة
+    // الرياضة واللياقة
     fitness => "اللياقة البدنية",
     gym => "الجيم",
     running => "الجري",
@@ -194,14 +211,14 @@ enum ProfileInterests {
     fishing => "الصيد",
     camping => "التخييم",
 
-  // الألعاب والتسلية
+    // الألعاب والتسلية
     gaming => "الألعاب",
     esports => "الرياضات الإلكترونية",
     chess => "الشطرنج",
     boardGames => "ألعاب الطاولة",
     puzzles => "الألغاز",
 
-  // التكنولوجيا والعلوم
+    // التكنولوجيا والعلوم
     technology => "التكنولوجيا",
     programming => "البرمجة",
     ai => "الذكاء الاصطناعي",
@@ -211,7 +228,7 @@ enum ProfileInterests {
     psychology => "علم النفس",
     philosophy => "الفلسفة",
 
-  // الأعمال والمال
+    // الأعمال والمال
     business => "الأعمال",
     entrepreneurship => "ريادة الأعمال",
     marketing => "التسويق",
@@ -220,21 +237,21 @@ enum ProfileInterests {
     realEstate => "العقارات",
     economics => "الاقتصاد",
 
-  // السفر والمركبات
+    // السفر والمركبات
     travel => "السفر",
     cars => "السيارات",
     motorcycles => "الدراجات النارية",
     aviation => "الطيران",
     sailing => "الإبحار",
 
-  // الطبيعة والحيوانات
+    // الطبيعة والحيوانات
     nature => "الطبيعة",
     animals => "الحيوانات",
     pets => "الحيوانات الأليفة",
     gardening => "البستنة",
     environment => "البيئة",
 
-  // المجتمع والحياة
+    // المجتمع والحياة
     history => "التاريخ",
     religion => "الدين",
     politics => "السياسة",

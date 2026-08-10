@@ -9,18 +9,19 @@ import 'package:flutter/material.dart';
 class EditOverlay extends StatelessWidget {
   final Widget child;
   final GestureTapCallback? onEdit;
-  final EdgeInsetsGeometry? margin ;
-  final AlignmentGeometry align ;
-  const EditOverlay({super.key,
-    this.margin , this.align = AlignmentGeometry.bottomStart,
-    this.onEdit, required this.child});
+  final EdgeInsetsGeometry? margin;
+  final AlignmentGeometry align;
+  const EditOverlay({
+    super.key,
+    this.margin,
+    this.align = AlignmentGeometry.bottomStart,
+    this.onEdit,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return AppWidgetOverlay(
-      overlay: [(align, _buildIcon())],
-      child: child,
-    );
+    return AppWidgetOverlay(overlay: [(align, _buildIcon())], child: child);
   }
 
   Widget _buildIcon() => Builder(

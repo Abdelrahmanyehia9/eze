@@ -1,3 +1,4 @@
+import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/components/app_ribbon.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
@@ -8,11 +9,13 @@ import 'package:flutter/material.dart';
 class SettingsChatThemeBox extends StatelessWidget {
   final ChatStyle theme;
   final bool isSelected;
+  final GestureTapCallback? onTap;
 
   const SettingsChatThemeBox({
     super.key,
     required this.theme,
     this.isSelected = false,
+    this.onTap
   });
 
   @override
@@ -25,46 +28,49 @@ class SettingsChatThemeBox extends StatelessWidget {
     return AppRibbon(
       enabled: isSelected,
       data: const RibbonData(text: "المختار"),
-      child: Container(
-        padding: EdgeInsets.all(UISizes.sp8),
-        height: UISizes.sp110,
-        width: UISizes.sp96,
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          border: Border.all(
-            color: isSelected
-                ? context.primaryColor
-                : context.colors.surfaceContainerLowest,
+      child: AppClick(
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.all(UISizes.sp8),
+          height: UISizes.sp110,
+          width: UISizes.sp96,
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            border: Border.all(
+              color: isSelected
+                  ? context.primaryColor
+                  : context.colors.surfaceContainerLowest,
+            ),
+            borderRadius: BorderRadius.circular(UISizes.r12),
+            image: background == null
+                ? null
+                : DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(background),
+                  ),
           ),
-          borderRadius: BorderRadius.circular(UISizes.r12),
-          image: background == null
-              ? null
-              : DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(background),
+          child: Column(
+            spacing: UISizes.sp12,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                alignment: AlignmentGeometry.topStart,
+                child: ChatBubbleContainer(
+                  isMe: true,
+                  bubbleColor: outgoingColor,
+                  child: SizedBox(width: UISizes.sp48),
                 ),
-        ),
-        child: Column(
-          spacing: UISizes.sp12,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Align(
-              alignment: AlignmentGeometry.topStart,
-              child: ChatBubbleContainer(
-                isMe: true,
-                bubbleColor: outgoingColor,
-                child: SizedBox(width: UISizes.sp48),
               ),
-            ),
-            Align(
-              alignment: AlignmentGeometry.bottomEnd,
-              child: ChatBubbleContainer(
-                isMe: false,
-                bubbleColor: incomingColor,
-                child: SizedBox(width: UISizes.sp48),
+              Align(
+                alignment: AlignmentGeometry.bottomEnd,
+                child: ChatBubbleContainer(
+                  isMe: false,
+                  bubbleColor: incomingColor,
+                  child: SizedBox(width: UISizes.sp48),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

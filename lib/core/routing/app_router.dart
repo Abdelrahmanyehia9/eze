@@ -15,14 +15,15 @@ import 'package:eze/features/profile/presentation/view/profile_gallery_screen.da
 import 'package:eze/features/profile/presentation/view/profile_screen.dart';
 import 'package:eze/features/settings/data/model/settings_details_screen_args.dart';
 import 'package:eze/features/settings/data/model/settings_screen_args.dart';
-import 'package:eze/features/settings/presentation/controller/settings_cubit.dart';
 import 'package:eze/features/settings/presentation/view/setting_details_screen.dart';
 import 'package:eze/features/settings/presentation/view/settings_screen.dart';
+import 'package:eze/shared/data/models/result_screen_args.dart';
 import 'package:eze/shared/data/models/typed_media_model.dart';
 import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:eze/shared/domain/entities/conversation_peer_entity.dart';
 import 'package:eze/shared/presentation/controllers/main_layout_cubit.dart';
 import 'package:eze/shared/presentation/view/main_layout.dart';
+import 'package:eze/shared/presentation/view/result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,11 +51,8 @@ class AppRouter {
               BlocProvider(
                 create: (context) => sl<ProfileCubit>()..getProfileData(),
               ),
-              BlocProvider(
-                create: (context) => sl<SettingsCubit>()..getSettings(),
-              ),
             ],
-            child: const MainLayout(),
+            child: const  MainLayout(),
           ),
           name: Routes.main,
         );
@@ -69,7 +67,6 @@ class AppRouter {
           MultiBlocProvider(
             providers: [
               BlocProvider.value(value: args.profileCubit),
-              BlocProvider.value(value: args.settingsCubit),
             ],
             child: const SettingsScreen(),
           ),
@@ -113,7 +110,13 @@ class AppRouter {
           name: Routes.chatRequests,
         );
       case Routes.completeProfile:
-        return _page(const CompleteProfileScreen(), name: Routes.completeProfile);
+        return _page(
+          const CompleteProfileScreen(),
+          name: Routes.completeProfile,
+        );
+      case Routes.result:
+        final ResultScreenArgs args = settings.arguments as ResultScreenArgs;
+        return _page(ResultScreen(args: args), name: Routes.result);
 
       default:
         return null;

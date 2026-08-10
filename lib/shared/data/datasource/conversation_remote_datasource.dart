@@ -14,25 +14,26 @@ class ConversationRemoteDatasource {
   ) async {
     return [
       ConversationEntity(
-        peer:  ConversationPeerEntity(
+        peer: ConversationPeerEntity(
           uid: "uid0",
           name: "حازم احمد",
-          image: "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
-          lastOnline: DateTime.now()
+          image:
+              "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
+          lastOnline: DateTime.now(),
         ),
         messageStatus: MessageStatusEntity(
           status: MessageStatus.unRead,
           unReadCount: 434,
-          lastMessageTime: DateTime.now().subtract( const Duration(days: 2)),
+          lastMessageTime: DateTime.now().subtract(const Duration(days: 2)),
         ),
-        lastMessage:  MessageEntity(
-            originalMessage: LocalizedStringModel.fake(),
-            messageTime: FakeData.dateTime,
-            sender: const UserEntity(uid: "uid1", username: "اميرة", )
+        lastMessage: MessageEntity(
+          originalMessage: LocalizedStringModel.fake(),
+          messageTime: FakeData.dateTime,
+          sender: const UserEntity(uid: "uid1", username: "اميرة"),
         ),
       ),
       ConversationEntity(
-        peer:  ConversationPeerEntity(
+        peer: ConversationPeerEntity(
           uid: "uid1",
           name: "اميرة",
           lastOnline: FakeData.dateTime,
@@ -44,13 +45,12 @@ class ConversationRemoteDatasource {
           unReadCount: 2,
           lastMessageTime: DateTime.now().subtract(const Duration(minutes: 22)),
         ),
-        lastMessage:  MessageEntity(
-            messageTime: FakeData.dateTime,
-            originalMessage: LocalizedStringModel.fake(),
-            sender: const UserEntity(uid: "uid1", username: "اميرة", )
+        lastMessage: MessageEntity(
+          messageTime: FakeData.dateTime,
+          originalMessage: LocalizedStringModel.fake(),
+          sender: const UserEntity(uid: "uid1", username: "اميرة"),
         ),
       ),
-
     ];
   }
 }

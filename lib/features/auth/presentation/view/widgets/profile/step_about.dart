@@ -7,11 +7,9 @@ class _StepAbout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const _CompleteProfileScreenLayout(
       title: "خلى الناس تعرفك اكتر !",
-      subtitle: "عرّف الآخرين بك بشكل أفضل من خلال اسم مستخدم مميز ونبذة قصيرة عنك.",
-      fields: [
-        UsernameField(),
-        BioField()
-      ],
+      subtitle:
+          "عرّف الآخرين بك بشكل أفضل من خلال اسم مستخدم مميز ونبذة قصيرة عنك.",
+      fields: [UsernameField(), BioField()],
     );
   }
 }

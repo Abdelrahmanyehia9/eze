@@ -4,7 +4,7 @@ class AppWidgetOverlay extends StatelessWidget {
   final Widget child;
   final List<(AlignmentGeometry, Widget)>? overlay;
   final Clip clipBehavior;
-  final bool showOverlays ;
+  final bool showOverlays;
 
   const AppWidgetOverlay({
     super.key,

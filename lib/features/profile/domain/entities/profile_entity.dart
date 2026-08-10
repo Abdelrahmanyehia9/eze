@@ -29,14 +29,13 @@ class ProfileEntity extends UserEntity {
     this.bio,
     this.interests,
     this.cover,
-    this.gallery = const[] ,
+    this.gallery = const [],
     this.gender,
     this.birthDate,
     this.rank = Rank.bronze,
     this.country,
     this.phone,
   });
-
 
   static ProfileEntity fake() => ProfileEntity(
     uid: FakeData.string(),
@@ -45,9 +44,7 @@ class ProfileEntity extends UserEntity {
     interests: FakeData.list<ProfileInterests>(ProfileInterests.animals),
   );
 
-
-  String? get loginProviderStr => email ?? phone?.phoneWithCountryCode ;
-
+  String? get loginProviderStr => email ?? phone?.phoneWithCountryCode;
 }
 
 extension ProfileEntityExt on ProfileEntity {
@@ -55,7 +52,6 @@ extension ProfileEntityExt on ProfileEntity {
     username,
     uid,
     image,
-    email,
     bio,
     interests,
     cover,
@@ -64,12 +60,10 @@ extension ProfileEntityExt on ProfileEntity {
     gallery,
     rank,
     country,
-    phone,
+    phone
   ];
 
   List<Object> get _unNullable => _fields.whereType<Object>().toList();
-
   bool get isCompleted => _fields.every((e) => e != null);
-
   double get progress => _unNullable.length / _fields.length;
 }

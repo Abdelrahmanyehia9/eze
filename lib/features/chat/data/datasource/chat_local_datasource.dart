@@ -23,9 +23,12 @@ class ChatLocalDatasource {
             "وعليكم السلام، أخبارك إيه؟",
             Country.parse("EG"),
           ),
-          sender: const UserEntity(        uid: "uid0",
+          sender: const UserEntity(
+            uid: "uid0",
             username: "حازم احمد",
-            image: "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",),
+            image:
+                "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
+          ),
           messageTime: DateTime.now().subtract(const Duration(minutes: 19)),
         ),
         MessageEntity(
@@ -41,9 +44,12 @@ class ChatLocalDatasource {
             "تمام الحمد لله.",
             Country.parse("EG"),
           ),
-          sender: const UserEntity(        uid: "uid0",
+          sender: const UserEntity(
+            uid: "uid0",
             username: "حازم احمد",
-            image: "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",),
+            image:
+                "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
+          ),
           messageTime: DateTime.now().subtract(const Duration(minutes: 17)),
         ),
         MessageEntity(
@@ -51,9 +57,12 @@ class ChatLocalDatasource {
             "هتيجي القهوة النهارده؟",
             Country.parse("EG"),
           ),
-          sender: const UserEntity(        uid: "uid0",
+          sender: const UserEntity(
+            uid: "uid0",
             username: "حازم احمد",
-            image: "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",),
+            image:
+                "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
+          ),
           messageTime: DateTime.now().subtract(const Duration(minutes: 16)),
         ),
         MessageEntity(
@@ -69,9 +78,12 @@ class ChatLocalDatasource {
             "تمام، أنا هبقى هناك حوالي ٨.",
             Country.parse("EG"),
           ),
-          sender: const UserEntity(        uid: "uid0",
+          sender: const UserEntity(
+            uid: "uid0",
             username: "حازم احمد",
-            image: "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",),
+            image:
+                "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
+          ),
           messageTime: DateTime.now().subtract(const Duration(minutes: 14)),
         ),
         MessageEntity(
@@ -87,9 +99,12 @@ class ChatLocalDatasource {
             "ما تنساش تجيب الشاحن معاك.",
             Country.parse("EG"),
           ),
-          sender: const UserEntity(        uid: "uid0",
+          sender: const UserEntity(
+            uid: "uid0",
             username: "حازم احمد",
-            image: "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",),
+            image:
+                "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
+          ),
           messageTime: DateTime.now().subtract(const Duration(minutes: 12)),
         ),
         MessageEntity(
@@ -105,9 +120,12 @@ class ChatLocalDatasource {
             "طيب أشوفك بالليل.",
             Country.parse("EG"),
           ),
-          sender: const UserEntity(        uid: "uid0",
+          sender: const UserEntity(
+            uid: "uid0",
             username: "حازم احمد",
-            image: "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",),
+            image:
+                "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
+          ),
           messageTime: DateTime.now().subtract(const Duration(minutes: 10)),
         ),
         MessageEntity(
@@ -116,9 +134,12 @@ class ChatLocalDatasource {
               "طيب أشوفك بالليل.",
               Country.parse("EG"),
             ),
-            sender: const UserEntity(        uid: "uid0",
+            sender: const UserEntity(
+              uid: "uid0",
               username: "حازم احمد",
-              image: "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",),
+              image:
+                  "https://img.magnific.com/free-photo/portrit-trendy-handsome-man-sunglasses-photo-studio_613910-5880.jpg?semt=ais_hybrid&w=740&q=80",
+            ),
             messageTime: DateTime.now().subtract(const Duration(minutes: 10)),
           ),
           originalMessage: LocalizedStringModel(

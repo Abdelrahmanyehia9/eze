@@ -1,7 +1,6 @@
 import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/components/app_icon_text.dart';
 import 'package:eze/core/components/app_text.dart';
-import 'package:eze/core/extensions/chat_theme.dart';
 import 'package:eze/core/extensions/date_time.dart';
 import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/extensions/theme.dart';
@@ -30,19 +29,24 @@ class ConversationTile extends StatelessWidget {
         child: Row(
           spacing: UISizes.w8,
           children: [
-            UserCircleAvatar(size: UISizes.sp64, username: peer.name, image: peer.image),
+            UserCircleAvatar(
+              size: UISizes.sp64,
+              username: peer.name,
+              image: peer.image,
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppText(peer.name, style: context.textTheme.labelMedium,
-                  ),
+                  AppText(peer.name, style: context.textTheme.labelMedium),
                   AppIconText(
                     expandedText: true,
                     textStyle: context.textTheme.bodyMedium,
                     textSize: UISizes.sp18,
                     maxLines: 1,
-                    customIcon: conversation.lastMessage.isMe ?  MessageReceiptIcon(status: status.status,): null,
+                    customIcon: conversation.lastMessage.isMe
+                        ? MessageReceiptIcon(status: status.status)
+                        : null,
                     textOverflow: TextOverflow.ellipsis,
                     color: context.colors.surfaceContainerHigh,
                     text: _message(),
@@ -53,7 +57,9 @@ class ConversationTile extends StatelessWidget {
             Column(
               children: [
                 AppText(
-                  status.lastMessageTime.timeAgoAbbr(messages: const TimeMessagesAr()),
+                  status.lastMessageTime.timeAgoAbbr(
+                    messages: const TimeMessagesAr(),
+                  ),
                   style: TextStyles.bodySmall,
                   color: context.colors.surfaceContainer,
                   fontSize: UISizes.sp12,
@@ -74,8 +80,8 @@ class ConversationTile extends StatelessWidget {
   String _message() {
     final last = conversation.lastMessage;
     final showSender = !last.isMe && conversation.peer.type.isGroup;
-    return showSender ? "${last.sender.username} : ${last.message()}" : last.message();
+    return showSender
+        ? "${last.sender.username} : ${last.message()}"
+        : last.message();
   }
-
-
 }

@@ -1,7 +1,7 @@
 part of 'settings_profile.dart';
 
 class _SettingsProfileInterests extends StatelessWidget {
-  final List<ProfileInterests> interests ;
+  final List<ProfileInterests> interests;
   const _SettingsProfileInterests({required this.interests});
 
   @override
@@ -12,23 +12,21 @@ class _SettingsProfileInterests extends StatelessWidget {
       children: [
         SectionHeader.smallHeader(
           paddingVr: 0,
-          "الهواايات", context: context,
-        customAction: AppChip(
-          monochromatic: true,
-          radius: UISizes.r8,
-          child: AppIconText(
-            text: "تعديل",
-            icon:  AppIcons.edit,
-            iconSize: UISizes.sp12,
-            textSize: UISizes.sp14,
-            color: context.colors.primary,
+          "الهواايات",
+          context: context,
+          customAction: AppChip(
+            monochromatic: true,
+            radius: UISizes.r8,
+            child: AppIconText(
+              text: "تعديل",
+              icon: AppIcons.edit,
+              iconSize: UISizes.sp12,
+              textSize: UISizes.sp14,
+              color: context.colors.primary,
+            ),
           ),
         ),
-        ),
-         ProfileInterestsWrap(
-          interests: interests,
-        )
-
+        ProfileInterestsWrap(interests: interests),
       ],
     );
   }

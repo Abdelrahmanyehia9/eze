@@ -4,17 +4,29 @@ import 'package:eze/features/settings/presentation/view/widgets/settings_languag
 import 'package:flutter/material.dart';
 
 class LanguagesList extends StatelessWidget {
-  const LanguagesList({super.key});
+  final AppLocale currentLocal;
+
+  final ValueChanged<AppLocale>? onChanged;
+
+  const LanguagesList({super.key, required this.currentLocal, this.onChanged});
+
+  void _onSelect(AppLocale local) {
+    if (local != currentLocal) return onChanged?.call(local);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final locals = AppLocale.values;
     return ListView.separated(
       shrinkWrap: true,
       separatorBuilder: (_, _) => Gap.medium(),
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: AppLocale.values.length,
-      itemBuilder: (_, i) =>
-          SettingsLanguageTile(locale: AppLocale.values[i], isSelected: i == 0),
+      itemCount: locals.length,
+      itemBuilder: (_, i) => SettingsLanguageTile(
+        locale: locals[i],
+        isSelected: locals[i] == currentLocal,
+        onTap: () => _onSelect(locals[i]),
+      ),
     );
   }
 }

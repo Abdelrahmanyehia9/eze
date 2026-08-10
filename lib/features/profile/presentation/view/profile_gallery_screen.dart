@@ -1,9 +1,5 @@
 import 'package:eze/core/components/app_scaffold.dart';
-import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/default_appbar.dart';
-import 'package:eze/core/extensions/theme.dart';
-import 'package:eze/core/helper/ui_sizes.dart';
-import 'package:eze/core/utils/app_icons.dart';
 import 'package:eze/features/profile/presentation/view/layout/profile_gallery_grid.dart';
 import 'package:eze/shared/data/models/typed_media_model.dart';
 import 'package:eze/shared/presentation/view/widgets/add_media_container.dart';

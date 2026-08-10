@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:eze/core/components/app_click.dart';
+import 'package:eze/core/components/app_icon_button.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/services/navigation_service.dart';
 import 'package:eze/core/utils/app_icons.dart';
@@ -51,16 +52,9 @@ class BottomSheets {
           child: Stack(
             alignment: AlignmentDirectional.topEnd,
             children: [
-              child,
+              child.appPaddingVr(showCloseButton?24:0),
               if (showCloseButton)
-                AppClick(
-                  onTap: context.pop,
-                  child: CircleAvatar(
-                    radius: UISizes.sp20,
-                    backgroundColor: context.primaryColor,
-                    child: Icon(AppIcons.close, size: 22.sp, color: Colors.white),
-                  ).paddingVr.appPaddingHr(8),
-                ),
+                AppIconButton(icon: AppIcons.close, onTap: context.pop).paddingAll,
             ],
           ),
         ),

@@ -7,16 +7,14 @@ class _HomeUnreadMessages extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseBlocConsumer<UnreadConversationCubit, List<ConversationEntity>>(
       successBuilder: _builder,
-      loadingBuilder: ()=>_builder(ConversationEntity.fake.fakeList()),
+      loadingBuilder: () => _builder(ConversationEntity.fake.fakeList()),
     );
   }
 
-  Widget _builder(List<ConversationEntity>conversations)=> Column(
+  Widget _builder(List<ConversationEntity> conversations) => Column(
     children: [
       const SectionHeader(title: "رسائل غير مقروءة", action: "الكل"),
-      ConversationList(
-        conversations: conversations,
-      ),
+      ConversationList(conversations: conversations),
     ],
   );
 }

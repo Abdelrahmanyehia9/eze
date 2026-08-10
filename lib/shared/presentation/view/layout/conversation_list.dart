@@ -17,7 +17,7 @@ class ConversationList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c =conversations ?? ConversationEntity.fake.fakeList();
+    final c = conversations ?? ConversationEntity.fake.fakeList();
     return AppCard(
       child: ListView.separated(
         padding: EdgeInsets.zero,

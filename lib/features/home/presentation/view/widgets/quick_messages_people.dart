@@ -5,17 +5,16 @@ class _QuickMessagesPeople extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  BaseBlocConsumer<BoostedUsersCubit, List<ConversationPeerEntity>>(
+    return BaseBlocConsumer<BoostedUsersCubit, List<ConversationPeerEntity>>(
       successBuilder: _builder,
-      loadingBuilder: ()  => _builder(ConversationPeerEntity.fake.fakeList(5))
+      loadingBuilder: () => _builder(ConversationPeerEntity.fake.fakeList(5)),
     );
-
   }
 
-  Widget _builder(List<ConversationPeerEntity> users)=>Column(
+  Widget _builder(List<ConversationPeerEntity> users) => Column(
     children: [
       const SectionHeader(title: "وصول سريع"),
-      UsersCircleAvatarList(size: UISizes.sp96, users: users,),
+      UsersCircleAvatarList(size: UISizes.sp96, users: users),
     ],
   );
 }

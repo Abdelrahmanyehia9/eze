@@ -7,16 +7,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class BoostedUsersCubit extends Cubit<BaseState<List<ConversationPeerEntity>>> {
   final GetBoostedUserUseCase _boostedUserUseCase;
 
-  BoostedUsersCubit(this._boostedUserUseCase) : super(const BaseState.initial());
+  BoostedUsersCubit(this._boostedUserUseCase)
+    : super(const BaseState.initial());
 
-  Future<void> getBoostedUsers() async{
+  Future<void> getBoostedUsers() async {
     safeEmit(const .loading());
     final result = await _boostedUserUseCase.call();
     result.fold((e) => safeEmit(.failure(e)), (u) {
       if (u.isEmpty) return safeEmit(const .empty());
       return safeEmit(.success(u));
-    }
-    );
+    });
   }
-
 }

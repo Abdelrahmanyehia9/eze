@@ -1,5 +1,6 @@
 import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/components/app_icon_button.dart';
+import 'package:eze/core/components/app_list_tile.dart';
 import 'package:eze/core/components/app_ribbon.dart';
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/gap.dart';
@@ -15,6 +16,7 @@ class SelectorBottomSheetData<T> {
   final Widget? leading;
   final T id;
   final RibbonData? ribbon;
+  final bool selected;
 
   const SelectorBottomSheetData({
     required this.title,
@@ -22,6 +24,7 @@ class SelectorBottomSheetData<T> {
     this.leading,
     required this.id,
     this.ribbon,
+    this.selected = false,
   });
 }
 
@@ -31,6 +34,7 @@ class SelectorBottomSheet extends StatelessWidget {
   final Widget? footer;
   final List<SelectorBottomSheetData> data;
   final bool showTrailing;
+
   const SelectorBottomSheet({
     super.key,
     this.header,
@@ -62,7 +66,7 @@ class SelectorBottomSheet extends StatelessWidget {
               onTap: () => context.pop(data[i].id),
               child: _item(data[i]),
             ),
-            itemCount: 2,
+            itemCount: data.length,
           ),
           ?footer,
         ],
@@ -71,38 +75,29 @@ class SelectorBottomSheet extends StatelessWidget {
   }
 
   Widget _item(SelectorBottomSheetData data) => Builder(
-    builder: (context) {
-      return AppRibbon(
-        enabled: data.ribbon != null,
-        data: data.ribbon,
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: context.colors.surfaceContainerLow),
-            borderRadius: BorderRadius.circular(UISizes.r12),
-          ),
-          child: ListTile(
-            leading: data.leading,
-            title: AppText(
-              data.title,
-              style: context.textTheme.labelSmall,
-              height: 0,
-            ),
-            subtitle: data.subTitle == null
-                ? null
-                : AppText(
-                    data.subTitle,
-                    style: context.textTheme.bodySmall,
-                    color: context.colors.surfaceContainer,
-                  ),
-            trailing: showTrailing
-                ? Icon(
-                    AppIcons.arrowForward,
-                    color: context.colors.surfaceContainer,
-                  )
-                : null,
-          ),
+    builder: (context) => AppRibbon(
+      enabled: data.ribbon != null,
+      data: data.ribbon,
+      child: Container(
+        decoration: BoxDecoration(
+          color: data.selected ? context.colors.primary : null,
+          border: Border.all(color: context.colors.surfaceContainerLow),
+          borderRadius: BorderRadius.circular(UISizes.r12),
         ),
-      );
-    },
+        child: AppListTile(
+          showLeading: data.leading!=null,
+          customLeading: data.leading,
+          title: data.title,
+          titleStyle: context.textTheme.labelSmall?.copyWith(
+            color: data.selected ? context.colors.onPrimary : null,
+          ),
+          subtitle: data.subTitle,
+          subtitleStyle: context.textTheme.bodySmall?.copyWith(
+            color: data.selected ? context.colors.onPrimary : null,
+          ),
+          showTrailing: showTrailing,
+        ),
+      ),
+    ),
   );
 }

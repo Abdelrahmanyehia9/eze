@@ -85,7 +85,8 @@ class _AppCheckboxState extends State<AppCheckbox>
                   ? widget.inactiveColor ?? context.colors.surfaceContainerLow
                   : widget.activeColor ?? context.colors.primary,
               border: Border.all(
-                color: widget.borderColor ??
+                color:
+                    widget.borderColor ??
                     context.colors.outline.withAppOpacity(1 - t),
                 width: widget.borderWidth,
               ),
@@ -95,10 +96,7 @@ class _AppCheckboxState extends State<AppCheckbox>
               child: Center(
                 child: CustomPaint(
                   size: Size(widget.size * 0.55, widget.size * 0.55),
-                  painter: _CheckPainter(
-                    color: widget.checkColor,
-                    progress: t,
-                  ),
+                  painter: _CheckPainter(color: widget.checkColor, progress: t),
                 ),
               ),
             ),

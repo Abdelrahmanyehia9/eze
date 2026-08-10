@@ -32,8 +32,9 @@ import 'package:eze/features/profile/presentation/controller/profile_cubit.dart'
 import 'package:eze/features/settings/data/datasource/settings_local_datasource.dart';
 import 'package:eze/features/settings/data/repository/settings_repository_impl.dart';
 import 'package:eze/features/settings/domain/repository/settings_repository.dart';
+import 'package:eze/features/settings/domain/usecases/edit_app_settings_use_case.dart';
 import 'package:eze/features/settings/domain/usecases/get_app_settings_use_case.dart';
-import 'package:eze/features/settings/presentation/controller/settings_cubit.dart';
+import 'package:eze/features/settings/presentation/controller/base_settings_cubit.dart';
 import 'package:eze/shared/data/datasource/conversation_local_datasource.dart';
 import 'package:eze/shared/data/datasource/conversation_remote_datasource.dart';
 import 'package:eze/shared/data/repository/conversation_repository_impl.dart';
@@ -83,15 +84,14 @@ class DI {
       () => ChatRemoteDatasource(),
     );
 
-
     sl.registerLazySingleton<ProfileRemoteDatasource>(
-          () => ProfileRemoteDatasource(),
+      () => ProfileRemoteDatasource(),
     );
     sl.registerLazySingleton<ProfileLocalDatasource>(
-          () => ProfileLocalDatasource(),
+      () => ProfileLocalDatasource(),
     );
     sl.registerLazySingleton<SettingsLocalDatasource>(
-          () => SettingsLocalDatasource(),
+      () => SettingsLocalDatasource(),
     );
   }
 
@@ -160,7 +160,9 @@ class DI {
     sl.registerFactory<GetAppSettingsUseCase>(
       () => GetAppSettingsUseCase(sl<SettingsRepository>()),
     );
-
+    sl.registerFactory<EditAppSettingsUseCase>(
+      () => EditAppSettingsUseCase(sl<SettingsRepository>()),
+    );
   }
 
   static void _registerCubits() {
@@ -190,10 +192,20 @@ class DI {
     sl.registerFactory<ProfileCubit>(
       () => ProfileCubit(sl<GetProfileInfoUseCase>()),
     );
-    sl.registerFactory<SettingsCubit>(
-      () => SettingsCubit(sl<GetAppSettingsUseCase>()),
+    sl.registerFactory<LocalCubit>(
+      () =>
+          LocalCubit(sl<GetAppSettingsUseCase>(), sl<EditAppSettingsUseCase>()),
     );
-
+    sl.registerFactory<ThemeCubit>(
+      () =>
+          ThemeCubit(sl<GetAppSettingsUseCase>(), sl<EditAppSettingsUseCase>()),
+    );
+    sl.registerFactory<SystemControlCubit>(
+      () => SystemControlCubit(
+        sl<GetAppSettingsUseCase>(),
+        sl<EditAppSettingsUseCase>(),
+      ),
+    );
   }
 
   static Future<void> reset() async {

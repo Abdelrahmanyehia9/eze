@@ -1,9 +1,7 @@
 import 'package:eze/core/components/app_button.dart';
-import 'package:eze/core/components/app_cached_network_image.dart';
 import 'package:eze/core/components/app_card.dart';
 import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/components/app_icon_button.dart';
-import 'package:eze/core/components/app_logo.dart';
 import 'package:eze/core/components/app_scaffold.dart';
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/app_text_read_more.dart';
@@ -14,7 +12,6 @@ import 'package:eze/core/enums/profile_interests.dart';
 import 'package:eze/core/enums/rank.dart';
 import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/routing.dart';
-import 'package:eze/core/extensions/sizes.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/variables.dart';
 import 'package:eze/core/extensions/widgets.dart';
@@ -26,7 +23,6 @@ import 'package:eze/features/profile/domain/entities/profile_entity.dart';
 import 'package:eze/features/profile/presentation/controller/profile_cubit.dart';
 import 'package:eze/features/profile/presentation/view/layout/profile_interests_wrap.dart';
 import 'package:eze/features/settings/data/model/settings_screen_args.dart';
-import 'package:eze/features/settings/presentation/controller/settings_cubit.dart';
 import 'package:eze/shared/data/models/typed_media_model.dart';
 import 'package:eze/shared/presentation/view/overlays/edit_overlay.dart';
 import 'package:eze/shared/presentation/view/widgets/circle_progress_with_value.dart';
@@ -69,7 +65,6 @@ class ProfileScreen extends StatelessWidget {
                 Routes.settings,
                 arguments: SettingsScreenArgs(
                   profileCubit: context.read<ProfileCubit>(),
-                  settingsCubit: context.read<SettingsCubit>(),
                 ),
               ),
             ),
@@ -102,7 +97,6 @@ class ProfileScreen extends StatelessWidget {
       _ProfileNameAndEmail(
         username: profile.username,
         subtitle: profile.loginProviderStr,
-
       ),
     ],
   );

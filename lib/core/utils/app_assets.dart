@@ -17,4 +17,6 @@ abstract class AppAssets {
   static const String helloIllustration = "assets/svgs/Hello-cuate.svg";
   static const String saFlag = "assets/svgs/sa.svg";
   static const String gbFlag = "assets/svgs/gb.svg";
+  static const String successLottie = "assets/lottie/success.json";
+
 }

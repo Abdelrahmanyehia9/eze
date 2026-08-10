@@ -53,6 +53,7 @@ class BaseBlocConsumer<B extends BlocBase<BaseState<S>>, S>
       ),
       child: BlocConsumer<B, BaseState<S>>(
         bloc: cubit,
+
         listener: (context, state) {
           if (state.isFailure && onFailure != null) {
             onFailure!(state.error!);

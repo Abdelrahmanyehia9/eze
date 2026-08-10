@@ -15,9 +15,9 @@ class _StepGallery extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             mainAxisSpacing: UISizes.sp8,
-            crossAxisSpacing: UISizes.sp8
+            crossAxisSpacing: UISizes.sp8,
           ),
-          itemBuilder: (_,i)=>AddMediaContainer(
+          itemBuilder: (_, i) => AddMediaContainer(
             filled: false,
             borderRadius: BorderRadiusGeometry.circular(UISizes.r12),
           ),

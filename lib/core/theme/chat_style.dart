@@ -1,3 +1,4 @@
+import 'package:eze/features/settings/domain/entities/theme_entity.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -13,7 +14,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
   final Color appBarForegroundColor;
   final String? chatBackgroundImage;
   final Color? chatBackgroundColor;
-  final double fontSize ;
+  final ChatFontTypes font;
 
   const ChatStyle({
     required this.outgoingBubbleColor,
@@ -27,7 +28,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
     required this.appBarForegroundColor,
     this.chatBackgroundColor,
     this.chatBackgroundImage,
-     this.fontSize = 18
+    this.font = ChatFontTypes.medium,
   });
 
   @override
@@ -43,7 +44,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
     Color? appBarForegroundColor,
     Color? backgroundColor,
     String? backgroundImage,
-    double? fontSize
+    ChatFontTypes? font,
   }) {
     return ChatStyle(
       outgoingBubbleColor: outgoingBubbleColor ?? this.outgoingBubbleColor,
@@ -59,7 +60,7 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
           appBarForegroundColor ?? this.appBarForegroundColor,
       chatBackgroundColor: backgroundColor ?? chatBackgroundColor,
       chatBackgroundImage: backgroundImage ?? chatBackgroundImage,
-      fontSize: fontSize ?? this.fontSize
+      font: font ?? this.font,
     );
   }
 
@@ -115,7 +116,6 @@ class ChatStyle extends ThemeExtension<ChatStyle> {
         t,
       ),
       chatBackgroundImage: other.chatBackgroundImage,
-
     );
   }
 }

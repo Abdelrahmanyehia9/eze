@@ -9,9 +9,5 @@ class LocalizedStringModel {
   LocalizedStringModel(this.string, this.country);
 
   static LocalizedStringModel fake([String? country]) =>
-      LocalizedStringModel
-        (FakeData.string(3),
-          Country.parse(country ?? "EG"));
-
-
+      LocalizedStringModel(FakeData.string(3), Country.parse(country ?? "EG"));
 }

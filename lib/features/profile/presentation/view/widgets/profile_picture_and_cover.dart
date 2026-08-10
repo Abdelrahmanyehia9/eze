@@ -1,10 +1,14 @@
 part of '../profile_screen.dart';
 
 class _ProfilePictureAndCover extends StatelessWidget {
-  final String? profilePic ;
-  final String? cover ;
-  final String username ;
-  const _ProfilePictureAndCover({this.cover,required this.username, this.profilePic});
+  final String? profilePic;
+  final String? cover;
+  final String username;
+  const _ProfilePictureAndCover({
+    this.cover,
+    required this.username,
+    this.profilePic,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +21,20 @@ class _ProfilePictureAndCover extends StatelessWidget {
         SizedBox(height: coverSize + (profileSize * .5)),
         EditOverlay(
           margin: EdgeInsets.all(UISizes.sp12),
-          child: CoverProfile(cover, height: coverSize)
+          child: CoverProfile(cover, height: coverSize),
         ),
         Positioned(
           bottom: 0,
           child: EditOverlay(
-            child: UserCircleAvatar(size: profileSize, username: username, image: profilePic,),
+            child: UserCircleAvatar(
+              size: profileSize,
+              username: username,
+              image: profilePic,
+            ),
             onEdit: () {},
           ),
         ),
       ],
     );
   }
-
 }

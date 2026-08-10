@@ -73,8 +73,8 @@ final List<_MainLayoutPage> _pages = [
   _MainLayoutPage(
     navbar: const BottomNavItem(icon: AppIcons.profileCircle, title: "الملف "),
     body: BaseBlocConsumer<ProfileCubit, ProfileEntity>(
-        successBuilder:(p)=>ProfileScreen(profile: p,),
-        loadingBuilder:  ()=>ProfileScreen(profile: ProfileEntity.fake()),
+      successBuilder: (p) => ProfileScreen(profile: p),
+      loadingBuilder: () => ProfileScreen(profile: ProfileEntity.fake()),
     ),
   ),
 ];

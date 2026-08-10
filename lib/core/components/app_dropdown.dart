@@ -97,9 +97,9 @@ class AppDropdown<T> extends StatelessWidget {
     this.isExpanded = true,
     this.isDense = false,
   }) : assert(
-  itemBuilder != null || itemLabelBuilder != null,
-  'Either itemBuilder or itemLabelBuilder must be provided.',
-  );
+         itemBuilder != null || itemLabelBuilder != null,
+         'Either itemBuilder or itemLabelBuilder must be provided.',
+       );
 
   InputBorder? _resolvedBorder(InputBorder? explicit, InputBorder? theme) {
     if (explicit != null) return explicit;
@@ -126,38 +126,37 @@ class AppDropdown<T> extends StatelessWidget {
 
   Widget _dropdown(BuildContext context) {
     final InputDecorationThemeData decoration = context.inputDecorationTheme;
-
     final Color hintColor =
         decoration.hintStyle?.color ?? Theme.of(context).hintColor;
     final Color labelColor =
         decoration.labelStyle?.color ?? Theme.of(context).hintColor;
     final Color helperColor =
         decoration.helperStyle?.color ?? Theme.of(context).hintColor;
-
     final TextStyle? resolvedHintStyle =
         hintStyle ?? context.textTheme.bodyMedium?.copyWith(color: hintColor);
 
     return SizedBox(
       height: height,
+
       child: DropdownButtonFormField<T>(
         initialValue: value,
         items: items
             .map(
               (item) => DropdownMenuItem<T>(
-            value: item,
-            alignment: alignment,
-            child:
-            itemBuilder?.call(item) ??
-                Text(
-                  itemLabelBuilder!(item),
-                  style: style ?? context.textTheme.bodyMedium,
-                ),
-          ),
-        )
+                value: item,
+                alignment: alignment,
+                child:
+                    itemBuilder?.call(item) ??
+                    Text(
+                      itemLabelBuilder!(item),
+                      style: style ?? context.textTheme.bodyMedium,
+                    ),
+              ),
+            )
             .toList(),
         selectedItemBuilder: selectedItemBuilder != null
             ? (context) =>
-            items.map((item) => selectedItemBuilder!(item)).toList()
+                  items.map((item) => selectedItemBuilder!(item)).toList()
             : null,
         onChanged: enabled ? onChange : null,
         onTap: onTap,
@@ -173,6 +172,7 @@ class AppDropdown<T> extends StatelessWidget {
         isDense: isDense,
         alignment: alignment,
         menuMaxHeight: menuMaxHeight,
+
         borderRadius: BorderRadius.circular(borderRadius),
         decoration: InputDecoration(
           focusedBorder: _resolvedBorder(
@@ -201,26 +201,26 @@ class AppDropdown<T> extends StatelessWidget {
           isDense: decoration.isDense,
           prefixIcon: prefix != null
               ? IconTheme(
-            data: IconThemeData(color: hintColor),
-            child: prefix!,
-          )
+                  data: IconThemeData(color: hintColor),
+                  child: prefix!,
+                )
               : null,
           suffixIcon: suffix != null
               ? IconTheme(
-            data: IconThemeData(color: hintColor),
-            child: suffix!,
-          )
+                  data: IconThemeData(color: hintColor),
+                  child: suffix!,
+                )
               : null,
           enabled: enabled,
           labelText: labelText,
           hintText: hintText,
           helperText: helperText,
           labelStyle:
-          labelStyle ??
+              labelStyle ??
               context.textTheme.bodyMedium?.copyWith(color: labelColor),
           hintStyle: resolvedHintStyle,
           helperStyle:
-          helperStyle ??
+              helperStyle ??
               context.textTheme.bodyMedium?.copyWith(color: helperColor),
           errorStyle: errorStyle,
           contentPadding: padding,

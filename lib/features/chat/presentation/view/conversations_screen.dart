@@ -37,16 +37,23 @@ class ConversationsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: UISizes.h16,
-          children:  [
+          children: [
             const SearchField(),
             const FilterChips(
-              filters: ["الجميع", "المجموعات", "القنوات", "المفضلة", "الارشيف" ,"+اضافة"],
+              filters: [
+                "الجميع",
+                "المجموعات",
+                "القنوات",
+                "المفضلة",
+                "الارشيف",
+                "+اضافة",
+              ],
               activeIndex: 1,
             ),
             const ConversationChatRequestTile(),
             BaseBlocConsumer<AllConversationsCubit, List<ConversationEntity>>(
-                successBuilder:(c)=> ConversationList(conversations: c,),
-                loadingBuilder: ()=>const ConversationList(),
+              successBuilder: (c) => ConversationList(conversations: c),
+              loadingBuilder: () => const ConversationList(),
             ),
           ],
         ),

@@ -2,7 +2,6 @@ import 'package:eze/core/components/app_scaffold.dart';
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/default_appbar.dart';
 import 'package:eze/core/components/gap.dart';
-import 'package:eze/core/enums/otp_channel.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
@@ -15,7 +14,6 @@ import 'package:eze/shared/presentation/view/widgets/inputs/otp_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
 
 class OtpVerificationScreen extends StatefulWidget {
   final OtpVerificationScreenArgs args;

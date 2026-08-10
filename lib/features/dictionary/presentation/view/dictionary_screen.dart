@@ -33,11 +33,12 @@ class DictionaryScreen extends StatelessWidget {
             filters: ["الجميع", "فى الخروجات", "رومانسية", "تحيات", "+ اضافة"],
           ),
           Expanded(
-            child: BaseBlocConsumer<DictionaryWordsCubit, List<DictionaryEntity>>(
-              successBuilder: _buildDictList,
-              loadingBuilder: () =>
-                  _buildDictList(DictionaryEntity.fake().fakeList()),
-            ),
+            child:
+                BaseBlocConsumer<DictionaryWordsCubit, List<DictionaryEntity>>(
+                  successBuilder: _buildDictList,
+                  loadingBuilder: () =>
+                      _buildDictList(DictionaryEntity.fake().fakeList()),
+                ),
           ),
         ],
       ).paddingHr,

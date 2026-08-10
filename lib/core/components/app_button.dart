@@ -193,7 +193,7 @@ class AppButton extends StatelessWidget {
       onDoubleTap: isClickable ? onDoubleTap : null,
       onLongPress: isClickable ? onLongPress : null,
       child: ClipRSuperellipse(
-        borderRadius: BorderRadiusGeometry.circular(borderRadius??16),
+        borderRadius: BorderRadiusGeometry.circular(borderRadius ?? 16),
 
         child: Container(
           alignment: Alignment.center,

@@ -5,31 +5,25 @@ import 'package:eze/core/enums/gender.dart';
 import 'package:flutter/material.dart';
 
 class GenderSelector extends StatelessWidget {
-  final bool showHeader ;
-  final Gender? initialGender ;
-  const GenderSelector({super.key, this.initialGender, this.showHeader =true});
+  final bool showHeader;
+  final Gender? initialGender;
+  const GenderSelector({super.key, this.initialGender, this.showHeader = true});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if(showHeader)
-        SectionHeader.smallHeader("الجنس", context: context),
+        if (showHeader) SectionHeader.smallHeader("الجنس", context: context),
         AppDropdown<Gender>(
           items: Gender.values,
           value: initialGender,
           hintText: "اختر الجنس",
           borderColor: Colors.transparent,
           padding: EdgeInsets.zero,
-          onChange: (_){},
-          itemBuilder: (g)=>AppIconText(
-            text: g.text,
-            icon: g.icon,
-          ),
+          onChange: (_) {},
+          itemBuilder: (g) => AppIconText(text: g.text, icon: g.icon),
         ),
-
       ],
     );
   }
-
 }

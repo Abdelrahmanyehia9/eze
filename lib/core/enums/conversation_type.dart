@@ -1,8 +1,9 @@
 enum ConversationType {
-  single, group , channel  ;
+  single,
+  group,
+  channel;
 
-  bool get isSingle => this == single ;
-  bool get isGroup => this == group ;
-  bool get isChannel => this == channel ;
-
+  bool get isSingle => this == single;
+  bool get isGroup => this == group;
+  bool get isChannel => this == channel;
 }

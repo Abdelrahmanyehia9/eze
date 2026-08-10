@@ -5,12 +5,12 @@ import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:eze/shared/domain/repository/conversation_repository.dart';
 
 class GetAllConversationsUseCase {
-  final ConversationRepository _repository ;
+  final ConversationRepository _repository;
   const GetAllConversationsUseCase(this._repository);
 
-
-  Future<Either<AppException, List<ConversationEntity>>>call([ConversationFilters? filters])async{
-    return _repository.getConversations(filters) ;
+  Future<Either<AppException, List<ConversationEntity>>> call([
+    ConversationFilters? filters,
+  ]) async {
+    return _repository.getConversations(filters);
   }
-
 }

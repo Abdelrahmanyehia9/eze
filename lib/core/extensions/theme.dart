@@ -19,17 +19,15 @@ extension ThemExt on BuildContext {
   CardThemeData get cardTheme => Theme.of(this).cardTheme;
 }
 
-
-extension ThemeModeExt on ThemeMode{
-
-  String get title =>switch(this){
-    ThemeMode.light=>"نهارى",
+extension ThemeModeExt on ThemeMode {
+  String get title => switch (this) {
+    ThemeMode.light => "نهارى",
     ThemeMode.dark => "ليلى",
-   ThemeMode.system => "النظاك"
+    ThemeMode.system => "النظام",
   };
-  IconData get icon =>switch(this){
-    ThemeMode.light=>AppIcons.lightTheme,
+  IconData get icon => switch (this) {
+    ThemeMode.light => AppIcons.lightTheme,
     ThemeMode.dark => AppIcons.darkTheme,
-   ThemeMode.system => AppIcons.phone
+    ThemeMode.system => AppIcons.phone,
   };
 }

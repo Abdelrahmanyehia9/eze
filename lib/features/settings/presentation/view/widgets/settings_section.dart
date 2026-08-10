@@ -28,6 +28,7 @@ class _SettingsSection extends StatelessWidget {
     return Column(
       children: [
         if (header != null)
+
           SectionHeader.smallHeader(header!, context: context),
         AppCard(
           child: ListView.separated(
@@ -51,33 +52,14 @@ class _SettingTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: ListTile(
-        splashColor: Colors.transparent,
-        onTap: data.onTap,
-        minTileHeight: UISizes.h40,
-        contentPadding: EdgeInsets.zero,
-        leading: data.iconData == null
-            ? null
-            : Icon(data.iconData, size: UISizes.sp28),
-        title: AppText(
-          data.title,
-          style: context.textTheme.labelMedium,
-          height: 0,
-        ),
-        subtitle: data.subTitle == null
-            ? null
-            : AppText(
-                data.subTitle,
-                height: 0,
-                style: context.textTheme.bodySmall,
-                color: context.colors.surfaceContainerHigh,
-              ),
-        trailing:
-            data.customTrailing ??
-            Icon(AppIcons.arrowForward, size: UISizes.sp18),
-      ),
+    return AppListTile(
+      onTap: data.onTap,
+      minTileHeight: UISizes.sp40,
+      leadingIconSize: UISizes.sp32,
+      leading:data.iconData,
+      title: data.title,
+      subtitle: data.subTitle,
+     customTrailing: data.customTrailing,
     );
   }
 }

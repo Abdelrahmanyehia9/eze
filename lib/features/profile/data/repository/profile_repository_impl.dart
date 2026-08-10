@@ -6,7 +6,7 @@ import 'package:eze/features/profile/data/datasource/profile_remote_datasource.d
 import 'package:eze/features/profile/domain/entities/profile_entity.dart';
 import 'package:eze/features/profile/domain/repository/profile_repository.dart';
 
-class ProfileRepositoryImpl implements ProfileRepository{
+class ProfileRepositoryImpl implements ProfileRepository {
   final ProfileRemoteDatasource remoteDatasource;
   final ProfileLocalDatasource localDatasource;
 
@@ -14,7 +14,6 @@ class ProfileRepositoryImpl implements ProfileRepository{
     required this.remoteDatasource,
     required this.localDatasource,
   });
-
 
   @override
   Future<Either<AppException, ProfileEntity>> getProfile([String? id]) async {

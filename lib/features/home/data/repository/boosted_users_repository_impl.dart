@@ -7,7 +7,7 @@ import 'package:eze/features/home/data/datacource/boosted_users_remote_datasourc
 import 'package:eze/features/home/domain/repository/boosted_users_repository.dart';
 import 'package:eze/shared/domain/entities/conversation_peer_entity.dart';
 
-class BoostedUsersRepositoryImpl implements BoostedUsersRepository{
+class BoostedUsersRepositoryImpl implements BoostedUsersRepository {
   final BoostedUsersRemoteDatasource remoteDataSource;
   final BoostedUsersLocalDatasource localDataSource;
 

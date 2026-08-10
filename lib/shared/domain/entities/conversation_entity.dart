@@ -22,5 +22,4 @@ class ConversationEntity extends Equatable {
     messageStatus: MessageStatusEntity.fake,
     lastMessage: MessageEntity.fake(),
   );
-
 }

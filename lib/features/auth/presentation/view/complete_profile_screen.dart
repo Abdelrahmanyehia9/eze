@@ -1,6 +1,6 @@
 import 'package:eze/core/components/app_button.dart';
-import 'package:eze/core/components/app_card.dart';
 import 'package:eze/core/components/app_checkbox.dart';
+import 'package:eze/core/components/app_chip.dart';
 import 'package:eze/core/components/app_icon_button.dart';
 import 'package:eze/core/components/app_icon_text.dart';
 import 'package:eze/core/components/app_scaffold.dart';
@@ -9,16 +9,19 @@ import 'package:eze/core/components/default_appbar.dart';
 import 'package:eze/core/components/gap.dart';
 import 'package:eze/core/components/section_header.dart';
 import 'package:eze/core/enums/gender.dart';
+import 'package:eze/core/enums/message_alert_type.dart';
 import 'package:eze/core/enums/profile_interests.dart';
-import 'package:eze/core/extensions/color.dart';
+import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/variables.dart';
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
+import 'package:eze/core/routing/routes.dart';
 import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:eze/core/utils/fake_data.dart';
 import 'package:eze/features/profile/presentation/view/layout/profile_interests_wrap.dart';
+import 'package:eze/shared/data/models/result_screen_args.dart';
 import 'package:eze/shared/presentation/view/overlays/edit_overlay.dart';
 import 'package:eze/shared/presentation/view/widgets/add_media_container.dart';
 import 'package:eze/shared/presentation/view/widgets/buttons/default_button.dart';
@@ -48,9 +51,8 @@ class CompleteProfileScreen extends StatefulWidget {
   State<CompleteProfileScreen> createState() => _CompleteProfileScreenState();
 }
 
-class _CompleteProfileScreenState extends State<CompleteProfileScreen> with _CompleteProfileMixin {
-
-
+class _CompleteProfileScreenState extends State<CompleteProfileScreen>
+    with _CompleteProfileMixin {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -58,7 +60,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> with _Com
       builder: (context, value, child) {
         return PopScope(
           canPop: _isFirstStep,
-          onPopInvokedWithResult: (didPop, result) {
+          onPopInvokedWithResult: (didPop, _) {
             if (didPop) return;
             _goPrev();
           },
@@ -66,8 +68,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> with _Com
             hPadding: 0,
             appBar: DefaultAppBar(
               actions: [
-                if(value > 1)
-                AppButton.text("تخطي", onTap: _onFinish,)
+                if (value > 1 &&value!=_steps.length-1) AppButton.text("تخطي", onTap: _onFinish),
               ],
               leading: AppBackButton(
                 onTap: !_isFirstStep ? _goPrev : null,

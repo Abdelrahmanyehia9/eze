@@ -12,9 +12,7 @@ class ChatRequestsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: const DefaultAppBar(title: "طلبات المراسلة",
-      centerTitle: true,
-      ),
+      appBar: const DefaultAppBar(title: "طلبات المراسلة", centerTitle: true),
       body: ConversationList(conversations: conversations),
     );
   }

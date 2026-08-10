@@ -4,9 +4,10 @@ import 'package:eze/core/extensions/date_time.dart';
 import 'package:eze/core/extensions/sizes.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
-import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/core/theme/app_decorations.dart';
+import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/features/chat/presentation/view/widgets/message_recipt_icon.dart';
+import 'package:eze/features/settings/domain/entities/theme_entity.dart';
 import 'package:eze/shared/domain/entities/message_entity.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class BubbleStyle {
   final Color senderNameColor;
   final Color replyBackgroundColor;
   final Color replyBorderColor;
-  final double? fontSize;
+  final ChatFontTypes? font;
 
   const BubbleStyle({
     required this.bubbleColor,
@@ -27,22 +28,20 @@ class BubbleStyle {
     required this.senderNameColor,
     required this.replyBackgroundColor,
     required this.replyBorderColor,
-    this.fontSize,
+    this.font,
   });
 
   Color get statusIconColor => textColor;
 }
 
 class ChatBubble extends StatelessWidget {
-  final ChatStyle? theme;
   final MessageEntity message;
-
-  const ChatBubble({super.key, required this.message, this.theme});
+  final BubbleStyle  style ;
+  const ChatBubble({super.key,required this.style, required this.message,});
 
   @override
   Widget build(BuildContext context) {
     final bool isMe = message.isMe;
-    final theme = (this.theme ?? context.chatTheme).bubble(isMe);
     return Row(
       spacing: UISizes.sp4,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -50,7 +49,7 @@ class ChatBubble extends StatelessWidget {
       children: [
         ChatBubbleContainer(
           isMe: isMe,
-          bubbleColor: theme.bubbleColor,
+          bubbleColor: style.bubbleColor,
           child: Column(
             spacing: UISizes.sp4,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -59,16 +58,16 @@ class ChatBubble extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: UISizes.sp8),
                   child: _ReplyPreview(
-                    bubbleStyle: theme,
+                    bubbleStyle: style,
                     repliedMessage: message.repliedMessage!,
                   ),
                 ),
               _ChatMessageBody(
-                bubbleStyle: theme,
+                bubbleStyle: style,
                 message: message,
                 showSenderName: !isMe,
               ),
-              _ChatMessageStatus(bubbleStyle: theme, message: message),
+              _ChatMessageStatus(bubbleStyle: style, message: message),
             ],
           ),
         ),
@@ -126,8 +125,8 @@ class _ChatMessageStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = bubbleStyle.fontSize != null
-        ? bubbleStyle.fontSize!.sp * .8
+    final fontSize = bubbleStyle.font?.size != null
+        ? bubbleStyle.font!.size.sp * .8
         : UISizes.sp14;
     return Row(
       spacing: UISizes.sp2,
@@ -159,8 +158,8 @@ class _ChatMessageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = bubbleStyle.fontSize != null
-        ? bubbleStyle.fontSize!.sp
+    final fontSize = bubbleStyle.font?.size != null
+        ? bubbleStyle.font!.size.sp
         : UISizes.sp18;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

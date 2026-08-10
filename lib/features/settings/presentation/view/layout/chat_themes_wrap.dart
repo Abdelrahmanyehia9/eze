@@ -5,25 +5,31 @@ import 'package:eze/features/settings/presentation/view/widgets/settings_chat_th
 import 'package:flutter/material.dart';
 
 class ChatThemesWrap extends StatelessWidget {
-  final ChatStyle? selectedChat;
+  final ChatStyle selectedChat;
+  final ValueChanged<ChatStyle>? onChanged;
 
-  const ChatThemesWrap({super.key, this.selectedChat});
+  const ChatThemesWrap({super.key,required this.selectedChat, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     final chatThemes = AppChatTheme.themes;
+    final selected = selectedChat;
+
     return Wrap(
       alignment: WrapAlignment.spaceEvenly,
       runSpacing: UISizes.sp8,
-      children: List.generate(chatThemes.length, (i) {
-        final bool isSelected = selectedChat != null
-            ? chatThemes[i] == selectedChat
-            : i == 2;
-        return SettingsChatThemeBox(
-          theme: chatThemes[i],
-          isSelected: isSelected,
-        );
-      }),
+      children: [
+        for (final theme in chatThemes)
+          SettingsChatThemeBox(
+            theme: theme,
+            isSelected: theme == selected,
+            onTap: () {
+              if (theme != selected) {
+                onChanged?.call(theme);
+              }
+            },
+          ),
+      ],
     );
   }
 }

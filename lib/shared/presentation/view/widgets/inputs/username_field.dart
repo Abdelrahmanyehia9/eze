@@ -7,11 +7,11 @@ class UsernameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  AppTextField(
+    return AppTextField(
       controller: controller,
       borderColor: Colors.transparent,
       headerText: "اسم المستخدم",
-      hintText:  "ادخل اسم المستحدم ",
+      hintText: "ادخل اسم المستحدم ",
       maxLength: 50,
     );
   }

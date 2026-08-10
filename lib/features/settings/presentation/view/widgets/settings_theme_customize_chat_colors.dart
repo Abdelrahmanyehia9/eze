@@ -5,8 +5,13 @@ import 'package:eze/features/settings/presentation/view/layout/chat_themes_wrap.
 import 'package:flutter/material.dart';
 
 class SettingsThemeCustomizeChatColors extends StatelessWidget {
-  final ChatStyle selectedChatStyle ;
-  const SettingsThemeCustomizeChatColors({super.key, required this.selectedChatStyle});
+  final ChatStyle selectedChatStyle;
+  final ValueChanged<ChatStyle>? onChanged ;
+  const SettingsThemeCustomizeChatColors({
+    super.key,
+    required this.selectedChatStyle,
+    this.onChanged
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +20,11 @@ class SettingsThemeCustomizeChatColors extends StatelessWidget {
       children: [
         SectionHeader(
           title: "الوان الدردشة",
-          action: "تخصيص",
           actionStyle: context.textTheme.titleSmall,
         ),
-         ChatThemesWrap(
-           selectedChat: selectedChatStyle,
-         ),
+        ChatThemesWrap(selectedChat: selectedChatStyle,
+          onChanged: onChanged
+        ),
       ],
     );
   }

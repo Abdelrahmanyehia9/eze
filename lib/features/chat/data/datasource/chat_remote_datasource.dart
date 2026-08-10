@@ -1,8 +1,1 @@
-class ChatRemoteDatasource {
-
-
-
-
-
-
-}
+class ChatRemoteDatasource {}

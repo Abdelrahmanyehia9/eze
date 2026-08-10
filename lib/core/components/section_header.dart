@@ -11,7 +11,7 @@ class SectionHeader extends StatelessWidget {
   final Widget? customAction;
   final GestureTapCallback? onAction;
   final bool hasAction;
-  final double paddingVr ;
+  final double paddingVr;
 
   final TextStyle? titleStyle, actionStyle;
 
@@ -24,27 +24,28 @@ class SectionHeader extends StatelessWidget {
     this.hasAction = true,
     this.actionStyle,
     this.titleStyle,
-    this.paddingVr = 12
+    this.paddingVr = 12,
   });
 
   factory SectionHeader.smallHeader(
     String title, {
     required BuildContext context,
-        TextStyle ?style,
-        double? paddingVr,
-        String? action,
-        GestureTapCallback? onAction,
-        TextStyle? actionStyle,
-        Widget ? customAction
+    TextStyle? style,
+    double? paddingVr,
+    String? action,
+    GestureTapCallback? onAction,
+    TextStyle? actionStyle,
+    Widget? customAction,
   }) => SectionHeader(
     title: title,
-    hasAction: action != null || customAction !=null,
+    hasAction: action != null || customAction != null,
     action: action,
     customAction: customAction,
     onAction: onAction,
     actionStyle: actionStyle,
     paddingVr: paddingVr ?? 6,
-    titleStyle: style ?? context.textTheme.titleSmall?.copyWith(fontSize: UISizes.sp14),
+    titleStyle:
+        style ?? context.textTheme.titleSmall?.copyWith(fontSize: UISizes.sp14),
   );
 
   @override
