@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:eze/core/enums/conversation_type.dart';
 import 'package:eze/core/enums/message_status.dart';
 
-class ConversationFilters extends Equatable {
+class ConversationFiltersRequest extends Equatable {
   final ConversationType? type;
   final MessageStatus? status;
   final String? query;
@@ -10,8 +10,9 @@ class ConversationFilters extends Equatable {
   final bool? archivedChat;
   final String? inFolder;
   final bool isFriends;
+  final bool isFavorite;
 
-  const ConversationFilters({
+  const ConversationFiltersRequest({
     this.type,
     this.archivedChat,
     this.limit,
@@ -19,6 +20,7 @@ class ConversationFilters extends Equatable {
     this.query,
     this.inFolder,
     this.isFriends = true,
+    this.isFavorite = false
   });
 
   @override
@@ -30,5 +32,6 @@ class ConversationFilters extends Equatable {
     query,
     limit,
     archivedChat,
+    isFavorite
   ];
 }

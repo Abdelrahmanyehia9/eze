@@ -17,7 +17,6 @@ import 'package:eze/features/home/presentation/controller/unread_conversation_cu
 import 'package:eze/features/profile/domain/entities/profile_entity.dart';
 import 'package:eze/features/profile/presentation/controller/profile_cubit.dart';
 import 'package:eze/features/settings/domain/entities/chat_feature_entity.dart';
-import 'package:eze/features/settings/domain/entities/settings_entity.dart';
 import 'package:eze/features/settings/domain/entities/system_control_entity.dart';
 import 'package:eze/features/settings/presentation/controller/base_settings_cubit.dart';
 import 'package:eze/shared/domain/entities/conversation_entity.dart';

@@ -9,7 +9,7 @@ class GetAllConversationsUseCase {
   const GetAllConversationsUseCase(this._repository);
 
   Future<Either<AppException, List<ConversationEntity>>> call([
-    ConversationFilters? filters,
+    ConversationFiltersRequest? filters,
   ]) async {
     return _repository.getConversations(filters);
   }

@@ -1,4 +1,5 @@
 import 'package:eze/core/components/app_chip.dart';
+import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
@@ -7,7 +8,8 @@ import 'package:flutter/material.dart';
 class FilterChips extends StatelessWidget {
   final List<String> filters;
   final int activeIndex;
-  const FilterChips({super.key, required this.filters, this.activeIndex = 0});
+  final ValueChanged<int>?onChanged ;
+  const FilterChips({super.key, this.onChanged, required this.filters, this.activeIndex = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,14 @@ class FilterChips extends StatelessWidget {
         spacing: UISizes.w4,
         children: List.generate(filters.length, (i) {
           final bool selected = i == activeIndex;
-          return _FilterChip(text: filters[i], isSelected: selected);
+          return AppClick(
+              onTap: (){
+                if(!selected){
+                  onChanged?.call(i);
+                }
+              },
+
+              child: _FilterChip(text: filters[i], isSelected: selected));
         }),
       ),
     );

@@ -49,6 +49,9 @@ final List<_MainLayoutPage> _pages = [
               sl<ConversationRequestsCubit>()..getConversationRequests(),
         ),
         BlocProvider(create: (context) => SelectionCubit<ConversationEntity>()),
+        BlocProvider(
+          create: (context) => sl<AllConversationFiltersCubit>()..init(),
+        ),
       ],
       child: const ConversationsScreen(),
     ),
@@ -66,6 +69,7 @@ final List<_MainLayoutPage> _pages = [
           create: (context) =>
               sl<DictionaryWordsCubit>()..getAllWordsByFilters(),
         ),
+        BlocProvider(create: (context) => sl<DictionaryFiltersCubit>()..init()),
       ],
       child: const DictionaryScreen(),
     ),

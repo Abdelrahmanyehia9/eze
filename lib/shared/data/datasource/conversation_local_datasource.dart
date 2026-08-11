@@ -7,8 +7,13 @@ class ConversationLocalDatasource {
   }
 
   Future<List<ConversationEntity>?> getConversations(
-    ConversationFilters? filters,
+    ConversationFiltersRequest? filters,
   ) async {
     return null;
+  }
+
+
+  Future<List<String>>getFilters()async{
+    return ["الاصدقاء", "العائلة"] ;
   }
 }

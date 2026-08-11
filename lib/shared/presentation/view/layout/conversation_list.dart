@@ -1,3 +1,5 @@
+import 'package:animated_list_plus/animated_list_plus.dart';
+import 'package:animated_list_plus/transitions.dart';
 import 'package:eze/core/components/app_click.dart';
 import 'package:eze/core/extensions/fake_data.dart';
 import 'package:eze/core/extensions/routing.dart';
@@ -25,23 +27,40 @@ class ConversationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = conversations ?? ConversationEntity.fake.fakeList();
-    return ListView.builder(
+    return ImplicitlyAnimatedList<ConversationEntity>(
       padding: EdgeInsets.zero,
       physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,
       shrinkWrap: shrinkWrap,
       clipBehavior: Clip.antiAlias,
-      itemBuilder: (_, i) => AppClick(
-        onLongPress: () => onLongPress?.call(c[i]),
-        onTap: onTap == null
-            ? () => context.pushNamed(Routes.chat, arguments: c[i].peer)
-            : () => onTap!(c[i]),
-        child: ConversationTile(
-          conversation: c[i],
-          isSelected: selected?.contains(c[i]) ?? false,
-        ),
-      ),
+      items: c,
+      areItemsTheSame: (a, b) => a.peer.uid == b.peer.uid,
+      itemBuilder: (context, animation, item, index) {
+        return SizeFadeTransition(
+          sizeFraction: .8,
+          curve: Curves.easeInOut,
+          animation: animation,
+          child: _buildTile(context, item),
+        );
+      },
+      updateItemBuilder: (context, animation, item) {
+        return FadeTransition(
+          opacity: animation,
+          child: _buildTile(context, item),
+        );
+      },
+    );
+  }
 
-      itemCount: c.length,
+  Widget _buildTile(BuildContext context, ConversationEntity item) {
+    return AppClick(
+      onLongPress: () => onLongPress?.call(item),
+      onTap: onTap == null
+          ? () => context.pushNamed(Routes.chat, arguments: item.peer)
+          : () => onTap!(item),
+      child: ConversationTile(
+        conversation: item,
+        isSelected: selected?.contains(item) ?? false,
+      ),
     );
   }
 }

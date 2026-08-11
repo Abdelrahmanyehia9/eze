@@ -5,7 +5,6 @@ import 'package:eze/core/helper/ui_sizes.dart';
 import 'package:eze/core/services/navigation_service.dart';
 import 'package:eze/core/utils/app_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/extensions/sizes.dart';

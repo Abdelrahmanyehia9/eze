@@ -10,7 +10,7 @@ class GetPopularGroupsUseCase {
   GetPopularGroupsUseCase(this._repository);
   Future<Either<AppException, List<ConversationEntity>>> call() async {
     return _repository.getConversations(
-      const ConversationFilters(type: ConversationType.group, limit: 12),
+      const ConversationFiltersRequest(type: ConversationType.group, limit: 12),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:eze/core/enums/conversation_type.dart';
 import 'package:eze/core/enums/message_status.dart';
 import 'package:eze/shared/data/models/localized_string_model.dart';
 import 'package:eze/core/utils/fake_data.dart';
@@ -11,7 +12,7 @@ import 'package:eze/shared/domain/entities/user_entity.dart';
 
 class ConversationRemoteDatasource {
   Future<List<ConversationEntity>> getConversations(
-    ConversationFilters? filters,
+    ConversationFiltersRequest? filters,
   ) async {
     return [
       ConversationEntity(
@@ -34,7 +35,6 @@ class ConversationRemoteDatasource {
         ),
       ),
       ConversationEntity(
-        pinned: true,
         peer: ConversationPeerEntity(
           uid: "uid1",
           name: "اميرة",

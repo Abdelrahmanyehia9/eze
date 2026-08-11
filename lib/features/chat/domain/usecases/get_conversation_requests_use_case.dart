@@ -11,7 +11,7 @@ class GetConversationRequestsUseCase {
 
   Future<Either<AppException, List<ConversationEntity>>> call() async {
     return _repository.getConversations(
-      const ConversationFilters(
+      const ConversationFiltersRequest(
         isFriends: false,
         type: ConversationType.single,
       ),

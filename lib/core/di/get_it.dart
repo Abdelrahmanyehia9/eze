@@ -2,9 +2,15 @@ import 'package:eze/features/chat/data/datasource/chat_local_datasource.dart';
 import 'package:eze/features/chat/data/datasource/chat_remote_datasource.dart';
 import 'package:eze/features/chat/data/repository/chat_repository_impl.dart';
 import 'package:eze/features/chat/domain/repository/chat_repository.dart';
+import 'package:eze/features/chat/domain/usecases/get_all_conversation_filters_use_case.dart';
 import 'package:eze/features/chat/domain/usecases/get_all_conversations_use_case.dart';
 import 'package:eze/features/chat/domain/usecases/get_chat_messages_by_id_use_case.dart';
 import 'package:eze/features/chat/domain/usecases/get_conversation_requests_use_case.dart';
+import 'package:eze/features/chat/presentation/controller/all_conversation_filters_cubit.dart';
+import 'package:eze/features/dictionary/domain/usecase/get_dictionary_filters_use_case.dart';
+import 'package:eze/features/dictionary/presentation/controller/dictionary_filters_cubit.dart';
+import 'package:eze/shared/domain/entities/conversation_entity.dart';
+import 'package:eze/shared/domain/usecases/toggle_pin_use_case.dart';
 import 'package:eze/features/chat/presentation/controller/all_conversations_cubit.dart';
 import 'package:eze/features/chat/presentation/controller/chat_by_id_cubit.dart';
 import 'package:eze/features/chat/presentation/controller/conversation_requests_cubit.dart';
@@ -40,7 +46,6 @@ import 'package:eze/shared/data/datasource/conversation_remote_datasource.dart';
 import 'package:eze/shared/data/repository/conversation_repository_impl.dart';
 import 'package:eze/shared/domain/repository/conversation_repository.dart';
 import 'package:eze/shared/presentation/controllers/main_layout_cubit.dart';
-import 'package:eze/shared/presentation/controllers/selection_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt sl = GetIt.instance;
@@ -164,6 +169,17 @@ class DI {
     sl.registerFactory<EditAppSettingsUseCase>(
       () => EditAppSettingsUseCase(sl<SettingsRepository>()),
     );
+    sl.registerFactory<TogglePinUseCase<ConversationEntity>>(
+      () => TogglePinUseCase<ConversationEntity>(),
+    );
+    sl.registerFactory<GetAllConversationFiltersUseCase>(
+      () => GetAllConversationFiltersUseCase(sl<ConversationRepository>()),
+    );
+    sl.registerFactory<GetDictionaryFiltersUseCase>(
+      () => GetDictionaryFiltersUseCase(sl<DictionaryRepository>()),
+    );
+
+
   }
 
   static void _registerCubits() {
@@ -182,7 +198,7 @@ class DI {
       () => ConversationRequestsCubit(sl<GetConversationRequestsUseCase>()),
     );
     sl.registerFactory<AllConversationsCubit>(
-      () => AllConversationsCubit(sl<GetAllConversationsUseCase>()),
+      () => AllConversationsCubit(sl<GetAllConversationsUseCase>(), sl<TogglePinUseCase<ConversationEntity>>()),
     );
     sl.registerFactory<DictionaryWordsCubit>(
       () => DictionaryWordsCubit(sl<GetAllDictionaryWordsUseCase>()),
@@ -211,6 +227,16 @@ class DI {
       () => NotificationCubit(
         sl<GetAppSettingsUseCase>(),
         sl<EditAppSettingsUseCase>(),
+      ),
+    );
+    sl.registerFactory<AllConversationFiltersCubit>(
+      () => AllConversationFiltersCubit(
+        sl<GetAllConversationFiltersUseCase>()
+      ),
+    );
+    sl.registerFactory<DictionaryFiltersCubit>(
+      () => DictionaryFiltersCubit(
+        sl<GetDictionaryFiltersUseCase>()
       ),
     );
   }

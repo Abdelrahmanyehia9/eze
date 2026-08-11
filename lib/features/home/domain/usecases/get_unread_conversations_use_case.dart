@@ -10,7 +10,7 @@ class GetUnreadConversationsUseCase {
   const GetUnreadConversationsUseCase(this._repository);
   Future<Either<AppException, List<ConversationEntity>>> call() async {
     return _repository.getConversations(
-      const ConversationFilters(status: MessageStatus.unRead, limit: 4),
+      const ConversationFiltersRequest(status: MessageStatus.unRead, limit: 4),
     );
   }
 }

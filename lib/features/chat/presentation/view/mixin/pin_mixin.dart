@@ -12,4 +12,9 @@ mixin PinMixin<T> {
     final totalPinned = all.where(isPinned).length;
     return !allSelectedPinned && (totalPinned + selectedUnpinned) <= maxPinned;
   }
+
+  Future<void>onPin(List<T> items);
+  Future<void>onUnpin(List<T> items);
+
+
 }

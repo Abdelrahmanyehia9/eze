@@ -13,6 +13,8 @@ class _ConversationHeader extends StatefulWidget
 
 class _ConversationHeaderState extends State<_ConversationHeader>
     with PinMixin<ConversationEntity>, MarkReadMixin<ConversationEntity> {
+  AllConversationsCubit get convCubit => context.read<AllConversationsCubit>();
+
   @override
   Widget build(BuildContext context) {
     return SelectionBuilder<ConversationEntity>(
@@ -44,6 +46,7 @@ class _ConversationHeaderState extends State<_ConversationHeader>
       ),
     ),
   ];
+
   List<AppMenuData> _selectionModeItems(
     SelectionCubit<ConversationEntity> cubit,
     SelectionState<ConversationEntity> state,
@@ -54,14 +57,37 @@ class _ConversationHeaderState extends State<_ConversationHeader>
     ),
     const AppMenuData(title: "نقل", leadingIcon: AppIcons.move),
     if (isAllPinned(state.selected))
-      const AppMenuData(title: "إلغاء التثبيت", leadingIcon: AppIcons.pin)
+      AppMenuData(
+        title: "إلغاء التثبيت",
+        leadingIcon: AppIcons.pin,
+        onTap: () {
+          cubit.unselectAll();
+          onUnpin(state.selected.toList());
+        },
+      )
     else if (canPin(selected: state.selected, all: cubit.all))
-      const AppMenuData(title: "تثبيت", leadingIcon: AppIcons.pin),
+      AppMenuData(
+        title: "تثبيت",
+        leadingIcon: AppIcons.pin,
+        onTap: () {
+          cubit.unselectAll();
+          onPin(state.selected.toList());
+        },
+      ),
     const AppMenuData(title: "حذف", leadingIcon: AppIcons.delete),
   ];
 
   @override
   bool isPinned(ConversationEntity item) => item.pinned;
+
   @override
   MessageStatus status(ConversationEntity item) => item.messageStatus.status;
+
+  @override
+  Future<void> onPin(List<ConversationEntity> items) =>
+      convCubit.pinConversations(conversations: items);
+
+  @override
+  Future<void> onUnpin(List<ConversationEntity> items) =>
+      convCubit.unpinConversations(conversations: items);
 }

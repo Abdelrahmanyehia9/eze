@@ -1,14 +1,11 @@
 import 'package:eze/core/components/app_text.dart';
-import 'package:eze/core/extensions/chat_theme.dart';
 import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/date_time.dart';
 import 'package:eze/core/extensions/sizes.dart';
 import 'package:eze/core/extensions/theme.dart';
 import 'package:eze/core/extensions/widgets.dart';
 import 'package:eze/core/helper/ui_sizes.dart';
-import 'package:eze/core/theme/app_colors.dart';
 import 'package:eze/core/theme/app_decorations.dart';
-import 'package:eze/core/theme/chat_style.dart';
 import 'package:eze/features/chat/presentation/view/widgets/message_recipt_icon.dart';
 import 'package:eze/features/settings/domain/entities/theme_entity.dart';
 import 'package:eze/shared/domain/entities/message_entity.dart';

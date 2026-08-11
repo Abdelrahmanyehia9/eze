@@ -17,7 +17,7 @@ class ConversationEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [peer, messageStatus, lastMessage];
+  List<Object?> get props => [peer, messageStatus, lastMessage, pinned];
 
   static ConversationEntity fake = ConversationEntity(
     peer: ConversationPeerEntity.fake,

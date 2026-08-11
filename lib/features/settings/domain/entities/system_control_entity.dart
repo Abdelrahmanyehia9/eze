@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:eze/core/enums/chat_features.dart';
 import 'package:eze/core/extensions/fake_data.dart';
 import 'package:eze/features/settings/domain/entities/chat_feature_entity.dart';
 

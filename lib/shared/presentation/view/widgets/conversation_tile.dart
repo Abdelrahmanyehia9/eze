@@ -1,5 +1,4 @@
-import 'package:eze/core/components/app_chip.dart';
-import 'package:eze/core/components/app_click.dart';
+import 'package:eze/core/components/app_card.dart';
 import 'package:eze/core/components/app_icon_text.dart';
 import 'package:eze/core/components/app_text.dart';
 import 'package:eze/core/components/overlays/app_widget_overlay.dart';
@@ -31,14 +30,13 @@ class ConversationTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final peer = conversation.peer;
     final status = conversation.messageStatus;
-
     return AbsorbPointer(
-      child: AppChip(
-        paddingHr: 16,
-        radius: 0,
+      child: AppCard(
+         radius:  0 ,
+        shadow: isSelected? false : true,
         color: isSelected
-            ? context.colors.primary.softLight
-            : Colors.transparent,
+            ? context.colors.primary.veryLight
+            : null,
         child: Row(
           spacing: UISizes.w8,
           children: [
@@ -75,7 +73,7 @@ class ConversationTile extends StatelessWidget {
                         ? MessageReceiptIcon(status: status.status)
                         : null,
                     textOverflow: TextOverflow.ellipsis,
-                    color: context.colors.surfaceContainerHigh,
+                    color :  context.colors.surfaceContainerHigh,
                     text: _message(),
                   ),
                 ],
