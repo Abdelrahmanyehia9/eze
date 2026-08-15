@@ -38,6 +38,7 @@ class ChatBubble extends StatelessWidget {
   final MessageEntity message;
   final BubbleStyle style;
   final bool isSelected;
+
   const ChatBubble({
     super.key,
     this.isSelected = false,
@@ -67,7 +68,7 @@ class ChatBubble extends StatelessWidget {
                 if (message.repliedMessage != null)
                   Padding(
                     padding: EdgeInsets.only(bottom: UISizes.sp8),
-                    child: _ReplyPreview(
+                    child: BubbleReplyPreview(
                       bubbleStyle: style,
                       repliedMessage: message.repliedMessage!,
                     ),
@@ -193,11 +194,12 @@ class _ChatMessageBody extends StatelessWidget {
   }
 }
 
-class _ReplyPreview extends StatelessWidget {
+class BubbleReplyPreview extends StatelessWidget {
   final BubbleStyle bubbleStyle;
   final MessageEntity repliedMessage;
 
-  const _ReplyPreview({
+  const BubbleReplyPreview({
+    super.key,
     required this.bubbleStyle,
     required this.repliedMessage,
   });
@@ -205,6 +207,7 @@ class _ReplyPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.all(UISizes.sp8),
       decoration: BoxDecoration(
         color: bubbleStyle.replyBackgroundColor,

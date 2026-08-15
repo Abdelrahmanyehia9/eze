@@ -27,11 +27,17 @@ class DictionaryScreen extends StatefulWidget {
 }
 
 class _DictionaryScreenState extends State<DictionaryScreen> {
-  DictionaryFiltersCubit get _filtersCubit =>context.read<DictionaryFiltersCubit>() ;
+  DictionaryFiltersCubit get _filtersCubit =>
+      context.read<DictionaryFiltersCubit>();
 
-  Future<void>onChangeFilter(int i , List<DictionaryFiltersResponse> filters)async{
+  Future<void> onChangeFilter(
+    int i,
+    List<DictionaryFiltersResponse> filters,
+  ) async {
     _filtersCubit.onSelect(i);
-    context.read<DictionaryWordsCubit>().getAllWordsByFilters(filters[i].request);
+    context.read<DictionaryWordsCubit>().getAllWordsByFilters(
+      filters[i].request,
+    );
   }
 
   @override
@@ -53,10 +59,11 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                 valueListenable: _filtersCubit.selectedIndexNotifier,
                 builder: (context, value, child) {
                   return FilterChips(
-                      activeIndex: value,
-                      onChanged: (i)=> onChangeFilter(i, filters) ,
-                      filters: filters.map((e) => e.label).toList());
-                }
+                    activeIndex: value,
+                    onChanged: (i) => onChangeFilter(i, filters),
+                    filters: filters.map((e) => e.label).toList(),
+                  );
+                },
               );
             },
           ),

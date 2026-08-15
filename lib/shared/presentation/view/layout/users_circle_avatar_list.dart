@@ -1,20 +1,18 @@
 import 'package:eze/core/components/gap.dart';
+import 'package:eze/core/extensions/fake_data.dart';
 import 'package:eze/shared/domain/entities/conversation_peer_entity.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
 
 class UsersCircleAvatarList extends StatelessWidget {
   final double size;
-  final List<ConversationPeerEntity> users;
+  final List<ConversationPeerEntity>? users;
 
-  const UsersCircleAvatarList({
-    super.key,
-    required this.users,
-    required this.size,
-  });
+  const UsersCircleAvatarList({super.key, this.users, required this.size});
 
   @override
   Widget build(BuildContext context) {
+    final users = this.users ?? ConversationPeerEntity.fake.fakeList();
     return SizedBox(
       height: size,
       child: ListView.separated(

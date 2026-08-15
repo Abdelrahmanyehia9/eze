@@ -21,6 +21,16 @@ class _ConversationHeaderState extends State<_ConversationHeader>
       builder: (cubit, state) => DefaultAppBar.logo(
         title: "المحادثات",
         actions: [
+          if (state.count > 0)
+            Badge(
+              padding: EdgeInsets.all(UISizes.sp2),
+              backgroundColor: context.appBarTheme.foregroundColor?.veryLight,
+              label: AppText(
+                state.selected.length.toString(),
+                style: context.textTheme.titleMedium,
+                color: context.appBarTheme.foregroundColor,
+              ),
+            ),
           AppMenuAnchor(
             items: state.isSelectionMode
                 ? _selectionModeItems(cubit, state)
@@ -84,10 +94,10 @@ class _ConversationHeaderState extends State<_ConversationHeader>
   MessageStatus status(ConversationEntity item) => item.messageStatus.status;
 
   @override
-  Future<void> onPin(List<ConversationEntity> items) =>
+  Future<void> onPin(List<ConversationEntity> items) async =>
       convCubit.pinConversations(conversations: items);
 
   @override
-  Future<void> onUnpin(List<ConversationEntity> items) =>
+  Future<void> onUnpin(List<ConversationEntity> items) async =>
       convCubit.unpinConversations(conversations: items);
 }

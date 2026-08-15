@@ -7,6 +7,7 @@ import 'package:eze/core/components/default_appbar.dart';
 import 'package:eze/core/components/overlays/app_menu_anchor.dart';
 import 'package:eze/core/enums/message_status.dart';
 import 'package:eze/core/enums/settings_detail_type.dart';
+import 'package:eze/core/extensions/color.dart';
 import 'package:eze/core/extensions/fake_data.dart';
 import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/extensions/theme.dart';
@@ -41,13 +42,16 @@ class ConversationsScreen extends StatefulWidget {
 }
 
 class _ConversationsScreenState extends State<ConversationsScreen> {
-  AllConversationFiltersCubit get _filtersCubit => context.read<AllConversationFiltersCubit>();
+  AllConversationFiltersCubit get _filtersCubit =>
+      context.read<AllConversationFiltersCubit>();
 
-
-  Future<void>_onFiltersChanged(int newFilterIndex, List<ConversationFiltersResponse>filters)async{
-    _filtersCubit.onSelect(newFilterIndex) ;
+  Future<void> _onFiltersChanged(
+    int newFilterIndex,
+    List<ConversationFiltersResponse> filters,
+  ) async {
+    _filtersCubit.onSelect(newFilterIndex);
     context.read<AllConversationsCubit>().getAllConversations(
-     filters[_filtersCubit.selectedIndexNotifier.value].filters
+      filters[_filtersCubit.selectedIndexNotifier.value].filters,
     );
   }
 
@@ -64,16 +68,21 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
             spacing: UISizes.h16,
             children: [
               const SearchField().paddingHr,
-              BaseBlocConsumer<AllConversationFiltersCubit, List<ConversationFiltersResponse>>(
-                successBuilder:(filters) => ValueListenableBuilder(
+              BaseBlocConsumer<
+                AllConversationFiltersCubit,
+                List<ConversationFiltersResponse>
+              >(
+                successBuilder: (filters) => ValueListenableBuilder(
                   valueListenable: _filtersCubit.selectedIndexNotifier,
                   builder: (context, value, child) => _buildFilters(
-                     filters: filters.map((e)=>e.label).toList(),
-                      active: value,
-                      onChanged:(i)=> _onFiltersChanged(i, filters)
-                    ).paddingHr
+                    filters: filters.map((e) => e.label).toList(),
+                    active: value,
+                    onChanged: (i) => _onFiltersChanged(i, filters),
+                  ).paddingHr,
                 ),
-                loadingBuilder: ()=>_buildFilters(filters: FakeData.list<String>(FakeData.string())),
+                loadingBuilder: () => _buildFilters(
+                  filters: FakeData.list<String>(FakeData.string()),
+                ),
               ),
               const ConversationChatRequestTile().paddingHr,
               BaseBlocConsumer<AllConversationsCubit, List<ConversationEntity>>(
@@ -92,8 +101,12 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
         ),
       ),
     );
-
   }
 
-  Widget _buildFilters({required List<String>filters ,  int active = 0 ,  ValueChanged<int>? onChanged})=>FilterChips(filters: filters,onChanged: onChanged, activeIndex: active,) ;
+  Widget _buildFilters({
+    required List<String> filters,
+    int active = 0,
+    ValueChanged<int>? onChanged,
+  }) =>
+      FilterChips(filters: filters, onChanged: onChanged, activeIndex: active);
 }

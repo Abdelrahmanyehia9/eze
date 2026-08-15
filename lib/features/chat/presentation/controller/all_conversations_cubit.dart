@@ -10,11 +10,14 @@ class AllConversationsCubit extends Cubit<BaseState<List<ConversationEntity>>> {
   final GetAllConversationsUseCase _useCase;
   final TogglePinUseCase<ConversationEntity> _togglePinUseCase;
 
-  AllConversationsCubit(this._useCase, this._togglePinUseCase)  : super(const .initial());
+  AllConversationsCubit(this._useCase, this._togglePinUseCase)
+    : super(const .initial());
 
   List<ConversationEntity> _conversation = [];
 
-  Future<void> getAllConversations([ConversationFiltersRequest? filters]) async {
+  Future<void> getAllConversations([
+    ConversationFiltersRequest? filters,
+  ]) async {
     safeEmit(const .loading());
     final result = await _useCase.call(filters);
     result.fold((e) => safeEmit(.failure(e)), (conv) {
@@ -24,9 +27,7 @@ class AllConversationsCubit extends Cubit<BaseState<List<ConversationEntity>>> {
     });
   }
 
-  Future<void> pinConversations({
-    required List<ConversationEntity> conversations,
-  }) async {
+  void pinConversations({required List<ConversationEntity> conversations}) {
     final updated = _togglePinUseCase.call(
       allItems: _conversation,
       target: conversations,
@@ -39,9 +40,7 @@ class AllConversationsCubit extends Cubit<BaseState<List<ConversationEntity>>> {
     safeEmit(state.copyWith(data: updated));
   }
 
-  Future<void> unpinConversations({
-    required List<ConversationEntity> conversations,
-  }) async {
+  void unpinConversations({required List<ConversationEntity> conversations}) {
     final updated = _togglePinUseCase.call(
       allItems: _conversation,
       target: conversations,

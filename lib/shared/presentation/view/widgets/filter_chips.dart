@@ -8,8 +8,13 @@ import 'package:flutter/material.dart';
 class FilterChips extends StatelessWidget {
   final List<String> filters;
   final int activeIndex;
-  final ValueChanged<int>?onChanged ;
-  const FilterChips({super.key, this.onChanged, required this.filters, this.activeIndex = 0});
+  final ValueChanged<int>? onChanged;
+  const FilterChips({
+    super.key,
+    this.onChanged,
+    required this.filters,
+    this.activeIndex = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +26,14 @@ class FilterChips extends StatelessWidget {
         children: List.generate(filters.length, (i) {
           final bool selected = i == activeIndex;
           return AppClick(
-              onTap: (){
-                if(!selected){
-                  onChanged?.call(i);
-                }
-              },
+            onTap: () {
+              if (!selected) {
+                onChanged?.call(i);
+              }
+            },
 
-              child: _FilterChip(text: filters[i], isSelected: selected));
+            child: _FilterChip(text: filters[i], isSelected: selected),
+          );
         }),
       ),
     );

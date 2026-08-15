@@ -13,7 +13,7 @@ class AppListTile extends StatelessWidget {
   final bool showLeading;
 
   final GestureTapCallback? onTap;
-
+  final EdgeInsets? contentPadding;
   final Widget? customLeading, customTitle, customSubtitle, customTrailing;
 
   const AppListTile({
@@ -21,6 +21,7 @@ class AppListTile extends StatelessWidget {
     this.title,
     this.subtitle,
     this.titleStyle,
+    this.contentPadding,
     this.subtitleStyle,
     this.trailing,
     this.onTap,
@@ -42,6 +43,7 @@ class AppListTile extends StatelessWidget {
       color: Colors.transparent,
       child: ListTile(
         onTap: onTap,
+        contentPadding: contentPadding,
         minTileHeight: minTileHeight,
         leading: showLeading
             ? customLeading ??

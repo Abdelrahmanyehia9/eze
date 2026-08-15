@@ -9,10 +9,13 @@ class ChatByIdCubit extends Cubit<BaseState<ChatEntity>> {
 
   ChatByIdCubit(this._useCase) : super(const .initial());
 
+  ChatEntity? chat;
+
   Future<void> getChatById({required String id}) async {
     safeEmit(const .loading());
     final result = await _useCase.getChatById(id);
     if (result.message.isEmpty) return safeEmit(const .empty());
+    chat = result;
     safeEmit(.success(result));
   }
 }

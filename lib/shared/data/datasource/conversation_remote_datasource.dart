@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:eze/core/enums/conversation_type.dart';
 import 'package:eze/core/enums/message_status.dart';
 import 'package:eze/shared/data/models/localized_string_model.dart';
 import 'package:eze/core/utils/fake_data.dart';
@@ -29,6 +28,7 @@ class ConversationRemoteDatasource {
           lastMessageTime: DateTime.now().subtract(const Duration(days: 2)),
         ),
         lastMessage: MessageEntity(
+          id: "1",
           originalMessage: LocalizedStringModel.fake(),
           messageTime: FakeData.dateTime,
           sender: const UserEntity(uid: "uid1", username: "اميرة"),
@@ -48,6 +48,7 @@ class ConversationRemoteDatasource {
           lastMessageTime: DateTime.now().subtract(const Duration(minutes: 22)),
         ),
         lastMessage: MessageEntity(
+          id: "2",
           messageTime: FakeData.dateTime,
           originalMessage: LocalizedStringModel.fake(),
           sender: const UserEntity(uid: "uid1", username: "اميرة"),

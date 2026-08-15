@@ -6,7 +6,6 @@ import 'package:eze/core/extensions/routing.dart';
 import 'package:eze/core/routing/routes.dart';
 import 'package:eze/shared/domain/entities/conversation_entity.dart';
 import 'package:flutter/material.dart';
-
 import 'package:eze/shared/presentation/view/widgets/conversation_tile.dart';
 
 class ConversationList extends StatelessWidget {
@@ -27,6 +26,7 @@ class ConversationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = conversations ?? ConversationEntity.fake.fakeList();
+
     return ImplicitlyAnimatedList<ConversationEntity>(
       padding: EdgeInsets.zero,
       physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,

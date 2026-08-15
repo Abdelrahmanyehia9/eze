@@ -74,7 +74,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen>
               leading: AppBackButton(
                 onTap: !_isFirstStep ? _goPrev : null,
               ).appPaddingVr(4).appPaddingHr(12),
-              title: "${value + 1} / ${_steps.length}",
+              title: "خطوة ${value + 1} من ${_steps.length}",
               centerTitle: true,
             ),
             body: Column(

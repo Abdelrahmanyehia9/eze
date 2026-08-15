@@ -9,4 +9,10 @@ class ChatEntity extends Equatable {
 
   @override
   List<Object?> get props => [chatId, message];
+
+  ChatEntity copyWith({String? chatId, List<MessageEntity>? message}) =>
+      ChatEntity(
+        chatId: chatId ?? this.chatId,
+        message: message ?? this.message,
+      );
 }

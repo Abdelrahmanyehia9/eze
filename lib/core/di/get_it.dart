@@ -6,10 +6,13 @@ import 'package:eze/features/chat/domain/usecases/get_all_conversation_filters_u
 import 'package:eze/features/chat/domain/usecases/get_all_conversations_use_case.dart';
 import 'package:eze/features/chat/domain/usecases/get_chat_messages_by_id_use_case.dart';
 import 'package:eze/features/chat/domain/usecases/get_conversation_requests_use_case.dart';
+import 'package:eze/features/chat/domain/usecases/send_message_use_case.dart';
 import 'package:eze/features/chat/presentation/controller/all_conversation_filters_cubit.dart';
+import 'package:eze/features/chat/presentation/controller/send_message_cubit.dart';
 import 'package:eze/features/dictionary/domain/usecase/get_dictionary_filters_use_case.dart';
 import 'package:eze/features/dictionary/presentation/controller/dictionary_filters_cubit.dart';
 import 'package:eze/shared/domain/entities/conversation_entity.dart';
+import 'package:eze/shared/domain/entities/message_entity.dart';
 import 'package:eze/shared/domain/usecases/toggle_pin_use_case.dart';
 import 'package:eze/features/chat/presentation/controller/all_conversations_cubit.dart';
 import 'package:eze/features/chat/presentation/controller/chat_by_id_cubit.dart';
@@ -172,14 +175,18 @@ class DI {
     sl.registerFactory<TogglePinUseCase<ConversationEntity>>(
       () => TogglePinUseCase<ConversationEntity>(),
     );
+    sl.registerFactory<TogglePinUseCase<MessageEntity>>(
+      () => TogglePinUseCase<MessageEntity>(),
+    );
     sl.registerFactory<GetAllConversationFiltersUseCase>(
       () => GetAllConversationFiltersUseCase(sl<ConversationRepository>()),
     );
     sl.registerFactory<GetDictionaryFiltersUseCase>(
       () => GetDictionaryFiltersUseCase(sl<DictionaryRepository>()),
     );
-
-
+    sl.registerFactory<SendMessageUseCase>(
+      () => SendMessageUseCase(sl<ChatRepository>()),
+    );
   }
 
   static void _registerCubits() {
@@ -198,7 +205,10 @@ class DI {
       () => ConversationRequestsCubit(sl<GetConversationRequestsUseCase>()),
     );
     sl.registerFactory<AllConversationsCubit>(
-      () => AllConversationsCubit(sl<GetAllConversationsUseCase>(), sl<TogglePinUseCase<ConversationEntity>>()),
+      () => AllConversationsCubit(
+        sl<GetAllConversationsUseCase>(),
+        sl<TogglePinUseCase<ConversationEntity>>(),
+      ),
     );
     sl.registerFactory<DictionaryWordsCubit>(
       () => DictionaryWordsCubit(sl<GetAllDictionaryWordsUseCase>()),
@@ -230,14 +240,13 @@ class DI {
       ),
     );
     sl.registerFactory<AllConversationFiltersCubit>(
-      () => AllConversationFiltersCubit(
-        sl<GetAllConversationFiltersUseCase>()
-      ),
+      () => AllConversationFiltersCubit(sl<GetAllConversationFiltersUseCase>()),
     );
     sl.registerFactory<DictionaryFiltersCubit>(
-      () => DictionaryFiltersCubit(
-        sl<GetDictionaryFiltersUseCase>()
-      ),
+      () => DictionaryFiltersCubit(sl<GetDictionaryFiltersUseCase>()),
+    );
+    sl.registerFactory<SendMessageCubit>(
+      () => SendMessageCubit(sl<SendMessageUseCase>()),
     );
   }
 

@@ -6,6 +6,7 @@ import 'package:eze/features/auth/presentation/view/complete_profile_screen.dart
 import 'package:eze/features/auth/presentation/view/otp_verification_screen.dart';
 import 'package:eze/features/auth/presentation/view/phone_login_screen.dart';
 import 'package:eze/features/chat/presentation/controller/chat_by_id_cubit.dart';
+import 'package:eze/features/chat/presentation/controller/send_message_cubit.dart';
 import 'package:eze/features/chat/presentation/view/chat_requests_screen.dart';
 import 'package:eze/features/chat/presentation/view/chat_screen.dart';
 import 'package:eze/features/intro/presentation/view/splash_screen.dart';
@@ -83,6 +84,7 @@ class AppRouter {
                     sl<ChatByIdCubit>()..getChatById(id: sender.uid),
               ),
               BlocProvider(create: (_) => SelectionCubit<MessageEntity>()),
+              BlocProvider(create: (_) => sl<SendMessageCubit>()),
             ],
             child: ChatScreen(sender: sender),
           ),

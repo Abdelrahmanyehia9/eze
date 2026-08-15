@@ -41,35 +41,25 @@ class ConversationRepositoryImpl implements ConversationRepository {
       ),
       const ConversationFiltersResponse(
         label: 'المجموعات',
-        filters: ConversationFiltersRequest(
-          type: ConversationType.group,
-        ),
+        filters: ConversationFiltersRequest(type: ConversationType.group),
       ),
       const ConversationFiltersResponse(
         label: 'القنوات',
-        filters: ConversationFiltersRequest(
-          type: ConversationType.channel,
-        ),
+        filters: ConversationFiltersRequest(type: ConversationType.channel),
       ),
       const ConversationFiltersResponse(
         label: 'المفضلة',
-        filters: ConversationFiltersRequest(
-          isFavorite: true,
-        ),
+        filters: ConversationFiltersRequest(isFavorite: true),
       ),
       const ConversationFiltersResponse(
         label: 'الأرشيف',
-        filters: ConversationFiltersRequest(
-          archivedChat: true,
-        ),
+        filters: ConversationFiltersRequest(archivedChat: true),
       ),
 
       ...folders.map(
-            (folder) => ConversationFiltersResponse(
+        (folder) => ConversationFiltersResponse(
           label: folder,
-          filters: ConversationFiltersRequest(
-            inFolder: folder,
-          ),
+          filters: ConversationFiltersRequest(inFolder: folder),
         ),
       ),
     ];

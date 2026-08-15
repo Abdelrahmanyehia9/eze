@@ -20,7 +20,7 @@ class ConversationFiltersRequest extends Equatable {
     this.query,
     this.inFolder,
     this.isFriends = true,
-    this.isFavorite = false
+    this.isFavorite = false,
   });
 
   @override
@@ -32,6 +32,6 @@ class ConversationFiltersRequest extends Equatable {
     query,
     limit,
     archivedChat,
-    isFavorite
+    isFavorite,
   ];
 }

@@ -9,6 +9,8 @@ class AppConfigs {
     await Future.wait([_setupPhoneSystem()]);
   }
 
+  static const List<String> reactEmojis = ["👍", "❤️", "😭", "😮", "😡"];
+
   static Future<void> _setupPhoneSystem() async {
     await Future.wait([
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),

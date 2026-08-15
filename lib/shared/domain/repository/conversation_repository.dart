@@ -8,5 +8,5 @@ abstract class ConversationRepository {
   Future<Either<AppException, List<ConversationEntity>>> getConversations(
     ConversationFiltersRequest? filters,
   );
-  Future<List<ConversationFiltersResponse>>getConversationFilters();
+  Future<List<ConversationFiltersResponse>> getConversationFilters();
 }

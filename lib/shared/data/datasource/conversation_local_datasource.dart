@@ -12,8 +12,7 @@ class ConversationLocalDatasource {
     return null;
   }
 
-
-  Future<List<String>>getFilters()async{
-    return ["الاصدقاء", "العائلة"] ;
+  Future<List<String>> getFilters() async {
+    return ["الاصدقاء", "العائلة"];
   }
 }

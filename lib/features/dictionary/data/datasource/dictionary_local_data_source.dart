@@ -1,5 +1,4 @@
 import 'package:country_picker/country_picker.dart';
-import 'package:eze/features/dictionary/data/models/dictionary_filters_response.dart';
 import 'package:eze/shared/data/models/localized_string_model.dart';
 import 'package:eze/features/dictionary/domain/entities/dictionary_entity.dart';
 
@@ -21,8 +20,7 @@ class DictionaryLocalDataSource {
       ],
     ),
   ];
-  Future<List<String>>getDictionaryFolders()async{
-    return [  "تحيات",  "رومانسية",  "فى الخروجات"] ;
+  Future<List<String>> getDictionaryFolders() async {
+    return ["تحيات", "رومانسية", "فى الخروجات"];
   }
-
 }

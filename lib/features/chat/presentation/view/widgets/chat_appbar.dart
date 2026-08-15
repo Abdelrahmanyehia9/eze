@@ -1,71 +1,86 @@
 part of '../chat_screen.dart';
 
-class _ChatAppbar extends StatelessWidget implements PreferredSizeWidget {
+class _ChatAppbar extends StatefulWidget implements PreferredSizeWidget {
   final ConversationPeerEntity peer;
   final ChatStyle style;
 
   const _ChatAppbar(this.peer, {required this.style});
 
   @override
+  State<_ChatAppbar> createState() => _ChatAppbarState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(UISizes.sp72);
+}
+
+class _ChatAppbarState extends State<_ChatAppbar> {
+  @override
   Widget build(BuildContext context) {
-    final size = UISizes.sp72;
-    final Color backgroundColor = style.appBarBackgroundColor;
-    final Color foregroundColor = style.appBarForegroundColor;
+    final peer = widget.peer;
+    final style = widget.style;
+    final h = UISizes.sp72;
+    final foreground = style.appBarForegroundColor;
+
     return SelectionBuilder<MessageEntity>(
       builder: (cubit, state) => DefaultAppBar(
-        toolbarHeight: size,
-        backgroundColor: backgroundColor,
-        leadingWidth: size * .8,
+        toolbarHeight: h,
+        backgroundColor: style.appBarBackgroundColor,
+        leadingWidth: h * .8,
         leading: Padding(
           padding: EdgeInsetsDirectional.only(start: UISizes.w16),
           child: AppBackButton(
-            backgroundColor: foregroundColor.withAppOpacity(0.05),
-            iconColor: foregroundColor,
+            backgroundColor: foreground.withAppOpacity(.05),
+            iconColor: foreground,
           ).paddingVr,
         ),
         customTitle: Row(
           spacing: UISizes.w8,
           children: [
             UserCircleAvatar(
-              size: size - UISizes.sp16,
+              size: h - UISizes.sp16,
               username: peer.name,
               image: peer.image,
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppText(
-                    peer.name,
-                    style: context.textTheme.titleMedium,
-                    color: foregroundColor,
-                    height: 0,
-                  ),
+                  AppText(peer.name, color: foreground),
                   AppText(
                     peer.lastOnlineStr,
                     style: context.textTheme.bodySmall,
-                    color: foregroundColor.withAppOpacity(0.8),
-                    height: 0,
+                    color: foreground.withAppOpacity(.8),
                   ),
                 ],
               ),
             ),
           ],
         ),
-        actions: [
-          if (state.count > 0)
-            Badge(
-              padding: EdgeInsets.all(UISizes.sp2),
-              backgroundColor: backgroundColor.lighten(),
-              label: AppText(state.selected.length.toString()),
-            ),
-          AppMenuAnchor(anchorColor: foregroundColor, items: const []),
-        ],
+        actions: _actions(state, cubit),
       ),
     );
   }
 
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(UISizes.sp72);
+  List<Widget> _actions(
+    SelectionState<MessageEntity> state,
+    SelectionCubit<MessageEntity> cubit,
+  ) {
+    final color = widget.style.appBarForegroundColor;
+
+    Widget button(IconData icon, {GestureTapCallback? onTap}) {
+      return AppIconButton(
+        icon: icon,
+        color: color,
+        backgroundColor: color.veryLight,
+        onTap: onTap,
+      );
+    }
+
+    if (!state.isSelectionMode) {
+      return [AppMenuAnchor(anchorColor: color, items: const [])];
+    }
+
+    return [button(AppIcons.delete), Gap.small(), button(AppIcons.copy)];
+  }
 }

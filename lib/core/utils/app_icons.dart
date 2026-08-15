@@ -57,6 +57,10 @@ abstract class AppIcons {
   static const IconData pin = CupertinoIcons.pin;
   static const IconData unPin = CupertinoIcons.pin_slash;
   static const IconData delete = CupertinoIcons.delete;
+  static const IconData deleteFilled = CupertinoIcons.delete_solid;
   static const IconData archived = CupertinoIcons.archivebox;
   static const IconData move = CupertinoIcons.move;
+  static const IconData copy = CupertinoIcons.doc_on_clipboard;
+  static const IconData reply = CupertinoIcons.arrowshape_turn_up_left_fill;
+  static const IconData forward = CupertinoIcons.arrowshape_turn_up_right_fill;
 }

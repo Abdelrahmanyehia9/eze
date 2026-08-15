@@ -6,7 +6,9 @@ class GetAllDictionaryWordsUseCase {
   final DictionaryRepository _repository;
   const GetAllDictionaryWordsUseCase(this._repository);
 
-  Future<List<DictionaryEntity>> call({DictionaryFiltersRequest? filters}) async {
+  Future<List<DictionaryEntity>> call({
+    DictionaryFiltersRequest? filters,
+  }) async {
     return _repository.getAllDictionary(filters: filters);
   }
 }

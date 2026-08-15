@@ -3,6 +3,3 @@ class DictionaryFiltersRequest {
 
   const DictionaryFiltersRequest({this.inFolder});
 }
-
-
-

@@ -13,8 +13,6 @@ mixin PinMixin<T> {
     return !allSelectedPinned && (totalPinned + selectedUnpinned) <= maxPinned;
   }
 
-  Future<void>onPin(List<T> items);
-  Future<void>onUnpin(List<T> items);
-
-
+  Future<void> onPin(List<T> items);
+  Future<void> onUnpin(List<T> items);
 }

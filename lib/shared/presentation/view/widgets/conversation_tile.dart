@@ -12,6 +12,7 @@ import 'package:eze/core/utils/time_message.dart';
 import 'package:eze/core/theme/text_styles.dart';
 import 'package:eze/features/chat/presentation/view/widgets/message_recipt_icon.dart';
 import 'package:eze/shared/domain/entities/conversation_entity.dart';
+import 'package:eze/shared/domain/entities/message_entity.dart';
 import 'package:eze/shared/presentation/view/widgets/user_circle_avatar.dart';
 import 'package:flutter/material.dart';
 
@@ -32,11 +33,9 @@ class ConversationTile extends StatelessWidget {
     final status = conversation.messageStatus;
     return AbsorbPointer(
       child: AppCard(
-         radius:  0 ,
-        shadow: isSelected? false : true,
-        color: isSelected
-            ? context.colors.primary.veryLight
-            : null,
+        radius: 0,
+        shadow: isSelected ? false : true,
+        color: isSelected ? context.colors.primary.veryLight : null,
         child: Row(
           spacing: UISizes.w8,
           children: [
@@ -73,7 +72,7 @@ class ConversationTile extends StatelessWidget {
                         ? MessageReceiptIcon(status: status.status)
                         : null,
                     textOverflow: TextOverflow.ellipsis,
-                    color :  context.colors.surfaceContainerHigh,
+                    color: context.colors.surfaceContainerHigh,
                     text: _message(),
                   ),
                 ],

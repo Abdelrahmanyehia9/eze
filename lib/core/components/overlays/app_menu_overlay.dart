@@ -5,6 +5,7 @@ class AppMenuOverlay extends StatelessWidget {
   final Widget child;
   final Offset? offset;
   final MenuStyle? style;
+  final MenuController? controller;
   final Widget Function(
     BuildContext context,
     MenuController controller,
@@ -15,6 +16,7 @@ class AppMenuOverlay extends StatelessWidget {
     super.key,
     this.style,
     this.offset,
+    this.controller,
     required this.child,
     required this.children,
     this.builder,
@@ -23,6 +25,7 @@ class AppMenuOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MenuAnchor(
+      controller: controller,
       menuChildren: children,
       animated: true,
       style: style,
